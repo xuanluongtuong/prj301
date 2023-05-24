@@ -64,13 +64,13 @@ body{
     text-decoration: none;
 } */
 
-.link a:hover{
+.sub_menu a:hover{
     color: yellow;
 }
 
 .list{
     width: 100%; 
-    padding-right: 4.5%;
+    /* padding-right: 4.5%; */
 }
 
 .list ul{
@@ -82,8 +82,9 @@ body{
     margin: 0px;
 }
 
-.link{    
-    text-align: center;
+.sub_menu{ 
+    min-width: 100px;   
+    text-align: left;
     position: relative;   
     margin: 9px 0px;
 }
@@ -94,33 +95,120 @@ body{
     width: 200px;
     position: absolute;
     background-color: rgb(119, 156, 212);
-    text-align: center;
+    padding-left: 0;
     flex-direction: column;
-    /* display: block; */
-    /* opacity: 0; */
+    /* display: none; */
     top: 31px;
-    left: -30px;
+    left: -10px;
     border-radius: 4px;
-    /* visibility: hidden; */
-    padding: 0 0 10px 0; 
+    opacity: 0;
+    visibility: hidden;
+    padding-bottom: 10px;   
     z-index: 2;
+    /* animation: fadeIn ease-in 0.3s; */
 }
 
+/* animation */
+@keyframes fadIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+/* animation */
+
+
+
+/* ================================================================ */
+
+.sub_menu_gt:hover .navbar_gt{    
+    /* display: block; */
+    opacity: 1;
+    visibility: visible;
+}
+
+.navbar_gt::before{    
+    content: "";
+    width: 50%;
+    height: 10px;    
+    top: -10px;
+    left: 0;
+    display: block;
+    position: absolute;
+    /* background-color: red; */
+}
+
+.sub_menu_dv:hover .navbar_dv{    
+    /* display: block; */
+    opacity: 1;
+    visibility: visible;
+}
+
+.navbar_dv::before{    
+    content: "";
+    width: 50%;
+    height: 10px;    
+    top: -10px;
+    left: 0;
+    display: block;
+    position: absolute;
+    
+}
+
+.sub_menu_da:hover .navbar_da{    
+    /* display: block; */
+    opacity: 1;
+    visibility: visible;
+}
+
+.navbar_da::before{    
+    content: "";
+    width: 50%;
+    height: 10px;    
+    top: -10px;
+    left: 0;
+    display: block;
+    position: absolute;
+    
+}
+
+.sub_menu_tt:hover .navbar_tt{    
+    /* display: block; */
+    opacity: 1;
+    visibility: visible;
+}
+
+.navbar_tt::before{    
+    content: "";
+    width: 50%;
+    height: 10px;    
+    top: -10px;
+    left: 0;
+    display: block;
+    position: absolute;
+    
+}
+
+/* ================================================================ */
+
+
 .navbar a:hover{
-    color: rgb(164, 30, 30);
+    color: rgb(217, 141, 18);
 }
 
 .navbar li{    
     text-decoration: none;
     font-size: 20px;
-    padding: 5px 0;
+    padding: 5px 10px;
 }
 
 .navbar li a{
     color: rgb(15, 23, 99);
 }
 
-.link a{
+.sub_menu a{
     color: white;
     text-decoration: none;
     text-align: center;
@@ -198,12 +286,12 @@ body{
 
 .footer{
     text-align: center;
-    background-color: green;
+    background-image: linear-gradient(135deg, #4094d4, #0e2d4e);
     color:white;
 }
 .footer__content {
     padding: 10px;
 }
 
-/* animation */
+
 
