@@ -46,8 +46,8 @@ body{
     position: absolute; 
     padding: 5px;
     background: linear-gradient(135deg, #30CFD0 0%, #330867 100%);
-    right: 8px;  
-    top: 8px;     
+    right: 2px;  
+    top: 2px;     
 }
 
 .login button{
@@ -71,7 +71,7 @@ body{
     position: absolute;
     left: 20px;
     top: -25px;
-    background-color: #1e72c5;
+    background: linear-gradient(135deg, #4184f1 0%, #321997 100%);
     align-items: center;
     padding: 8px 15px;
     border-radius: 4px 4px 0px 0px;
