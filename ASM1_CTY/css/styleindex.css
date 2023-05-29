@@ -108,8 +108,8 @@ body{
     width: 240px;
     height: 290px;
     background: linear-gradient(135deg, #59ffff 0%, #cc7aff 100%);
-    margin: 0px 15px 45px 15px;
-    box-shadow: 4px 4px ;
+    margin: 0px 0px 35px 0px;
+    box-shadow: 4px 4px 3px;
     border-radius: 10px;
     padding-right: 20px;
 }
