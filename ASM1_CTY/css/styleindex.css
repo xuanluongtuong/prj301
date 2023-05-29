@@ -10,16 +10,14 @@ body{
     background-image: url(https://media.zicxa.com/5852926);
     background-size: cover;
     color: white;
-    font-size: 36px;
-    font-family: 'Dancing Script', cursive;
+    font-size: 36px;    
 }
 
-.logo img{
-    
+.logo img{    
     background-color: black;
     position: relative;
-    width: 120px;
-    height: 50px;
+    width: 80px;
+    height: 35px;
     display: flex;
     z-index: 1;    
     border: 4px solid #dec56c ;
@@ -28,8 +26,8 @@ body{
 .slogan{
     width: 100%;
     height: 250px;
-    position: absolute;
-    top: 60px;    
+    position: relative;
+    /* top: 0px;     */
     text-align: center; 
     vertical-align: middle;
     /* background: linear-gradient(to right, #30CFD0 0%, #330867 100%); 
@@ -37,11 +35,75 @@ body{
     color: transparent; */
 }
 
-.slogan h2{ 
-    margin: 0;   
+/* .slogan1, .slogan2, .slogan3, .slogan4{
+    position: absolute;
+    margin-top: -6px;   
     padding: 0;
-    
+    right: 0px;    
+} */
+
+
+.shadow {    
+    font-size: 55px;
+    text-align: center;
+    color: white;
+    /* background: #d52e3f; */
+    font-family: 'Dancing Script', cursive;
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 1px 1px 0px #eb452b, 
+            2px 2px 0px #efa032, 
+            3px 3px 0px #46b59b, 
+            4px 4px 0px #017e7f, 
+            5px 5px 0px #052939, 
+            6px 6px 0px #c11a2b; 
+            /* 7px 7px 0px #c11a2b, 
+            8px 8px 0px #c11a2b;  */
+            /* 9px 9px 0px #c11a2b; */
 }
+
+.shadow h2{
+    margin-right: 5px;
+}
+
+/* .split {
+position: absolute;
+}
+
+.split h1 {
+font-size: 40px;
+font-weight: 900;
+font-family: monospace;
+background-color: #e17943;
+color: #fff;
+display: block;
+text-align: center;
+}
+
+.split .split-2 {
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: #fff;
+color: #e17943;
+clip-path: inset(0 0 50% 0);
+}
+
+.typo {
+text-align: center;
+background-color: #e0e1e2;
+font-size: 40px;
+letter-spacing: 8px;
+-webkit-text-fill-color: transparent;
+-webkit-text-stroke-width: 3px;
+-webkit-text-stroke-color: white;
+text-shadow: 
+                  8px 8px #ff1f8f,
+                  20px 20px #000000;
+} */
+
 .login{
     position: absolute; 
     padding: 5px;
@@ -69,17 +131,26 @@ body{
 
 .home{
     position: absolute;
+    display: flex;
     left: 20px;
     top: -25px;
     background: linear-gradient(135deg, #4184f1 0%, #321997 100%);
     align-items: center;
-    padding: 8px 15px;
+    padding: 0px 11px 0px 5px;
     border-radius: 4px 4px 0px 0px;
+    /* justify-content: space-between; */
 }
 
 .home a{
     color: white;
     text-decoration: none;
+}
+
+.home img{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
 
 .menu_ul{
