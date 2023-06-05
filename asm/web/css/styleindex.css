@@ -1,7 +1,7 @@
 body{
-    position: relative;
+    position: relative;    
 }
-.header{    
+.myheader{    
     width: 100%;
     height: 15rem;
     position: relative;
@@ -13,37 +13,25 @@ body{
     font-size: 36px;    
 }
 
-.logo img{    
+.mylogo img{    
     background-color: black;
     position: relative;
-    width: 80px;
-    height: 35px;
+    width: 100px;
+    height: 40px;
     display: flex;
     z-index: 1;    
     border: 4px solid #dec56c ;
 }
 
-.slogan{
-    width: 100%;
-    height: 250px;
-    position: relative;
-    /* top: 0px;     */
+.myslogan{
+    width: 100%;       
+    position: relative;        
     text-align: center; 
     vertical-align: middle;
-    /* background: linear-gradient(to right, #30CFD0 0%, #330867 100%); 
-    background-clip: text;
-    color: transparent; */
 }
 
-/* .slogan1, .slogan2, .slogan3, .slogan4{
-    position: absolute;
-    margin-top: -6px;   
-    padding: 0;
-    right: 0px;    
-} */
 
-
-.shadow {    
+.myshadow {    
     font-size: 55px;
     text-align: center;
     color: white;
@@ -62,102 +50,96 @@ body{
             /* 9px 9px 0px #c11a2b; */
 }
 
-.shadow h2{
-    margin-right: 5px;
-}
-
-/* .split {
-position: absolute;
-}
-
-.split h1 {
-font-size: 40px;
-font-weight: 900;
-font-family: monospace;
-background-color: #e17943;
-color: #fff;
-display: block;
-text-align: center;
-}
-
-.split .split-2 {
-position: absolute;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background-color: #fff;
-color: #e17943;
-clip-path: inset(0 0 50% 0);
-}
-
-.typo {
-text-align: center;
-background-color: #e0e1e2;
-font-size: 40px;
-letter-spacing: 8px;
--webkit-text-fill-color: transparent;
--webkit-text-stroke-width: 3px;
--webkit-text-stroke-color: white;
-text-shadow: 
-                  8px 8px #ff1f8f,
-                  20px 20px #000000;
-} */
-
-.logout{
+.mylogout{
     position: absolute; 
     padding: 5px;
     background: linear-gradient(135deg, #30CFD0 0%, #330867 100%);
     right: 2px;  
-    top: 2px;     
+    top: 1px;     
 }
 
-.logout button{
+.mylogout button{
     width: 60px;
-    height: 25px;
+    height: auto;
+    padding: 0;
 }
 
-.logout a{
+.mylogout a{
     color: black;
     text-decoration: none;
-    font-size: 15px;    
+    font-size: 15px; 
+    font-weight: 500; 
 }
 
-.menu{
+
+.mymenu{
+    /* background-color: rgb(12, 12, 12); */
     position: relative;
-    margin: 30px 0;
+    margin: 30px 15px ;
     box-shadow: 2px 2px 2px 2px #49bfff;
     border-radius: 10px;
 }
 
-.home{
-    position: absolute;
+.myhome{
+    /* position: absolute; */
     display: flex;
-    left: 20px;
-    top: -25px;
+    /* left: 20px;
+    top: -25px; */
     background: linear-gradient(135deg, #1e57b3, #3573b0, #390867);
     align-items: center;
-    padding: 0px 11px 0px 5px;
-    border-radius: 4px 4px 0px 0px;
+    padding: 2px 10px;
+    border-radius: 5px 5px 5px 5px;
+    margin-left: -5px;
     /* justify-content: space-between; */
 }
 
-.home a{
+.myhome a{
     color: white;
     text-decoration: none;
 }
 
-.home img{
+.myhome img{
     width: 30px;
     height: 30px;
     margin-bottom: 5px;
     margin-right: 5px;
 }
 
-.menu_ul{
+
+nav {
+    display: flex;
+    background-color: #000000;    
+    padding: 5px;
+    align-items: center;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    color: #fbf7f7;
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+    /* background-color: #333; */
+    color: #f1e871;
+  }
+
+
+
+.mymenu_ul{
     position: relative;
-    margin: 15px;
-    padding-top: 30px;
+    margin: -10px 15px 15px 15px;
+    padding: 10px 0px 20px 0px;
     padding-left: 0;
     display: flex;
     flex-wrap: wrap;
@@ -165,18 +147,19 @@ text-shadow:
     list-style: none;
 }
 
-.menu_ul li{
+.mymenu_ul li{
+    margin: 10px 10px;
     padding-top: 10px;
     padding-left: 10px;
     list-style: none;
 }
 
-.menu_ul li a{
+.mymenu_ul li a{
     color: rgb(87, 0, 128);
     text-decoration: none;
 }
 
-.sub_menu{
+.mysub_menu{
     position: relative;
     width: 240px;
     height: 290px;
@@ -187,7 +170,7 @@ text-shadow:
     padding-right: 20px;
 }
 
-.sub_menu:hover .sub_menu_title{
+.mysub_menu:hover .mysub_menu_title{
     position: absolute;
     top: 0;
     color: #600c8e;
@@ -197,7 +180,7 @@ text-shadow:
     margin-top: 15px;
 }
 
-.sub_menu:hover .sub_menu_logo img{
+.mysub_menu:hover .mysub_menu_logo img{
     position: absolute;
     top: 15px;
     left: 15px;
@@ -205,7 +188,7 @@ text-shadow:
     height: 30px;
 }
 
-.sub_menu:hover .navbar{
+.mysub_menu:hover .mynavbar{
     opacity: 1;
     visibility: visible;
     /* position: absolute;
@@ -214,49 +197,35 @@ text-shadow:
     margin-left: 35px;
 }
 
-.sub_menu_title{
+.mysub_menu_title{
     color: #600c8e;
-    font-size: 48px;
+    font-size: 40px;
     margin-top: 190px;
     text-align: center;
+    
 }
 
-.sub_menu_logo img{
+.mysub_menu_logo img{
     position: absolute;
     width: 150px;
     height: 150px;
     top: 40px;
-    left: 60px;
+    left: 43px;
 }
 
-.sub_menu ul{   
+.mysub_menu ul{   
     margin-top: 5px;
     margin-left: 30px;
     padding: 0;
 }
 
-.navbar {
-    /* margin-top: 40px; */
+.mynavbar {    
     opacity: 0;
     visibility: hidden;
 }
 
-.navbar li{
-    font-size: 25px;
+.mynavbar li{
+    font-size: 20px;
     padding: 5px;
-    margin-left: 1px;
+    margin: 0 0 0 1px;
 }
-
-.footer{
-    /* position: absolute; */
-    /* bottom: 0; */
-    text-align: center;
-    background: #286696;
-    /* background-image: linear-gradient(135deg, #59ffff 0%, #cc7aff 100%); */
-    color:white;
-}
-
-.footer_content {
-    padding: 40px 0px;
-}
-
