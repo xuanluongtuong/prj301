@@ -9,8 +9,8 @@ package model;
  * @author admin
  */
 public class Account {
-    String user;
-    String password;
+    private String user;
+    private String password;
 
     public Account() {
     }
