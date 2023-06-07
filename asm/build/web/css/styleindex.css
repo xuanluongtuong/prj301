@@ -1,5 +1,5 @@
 body{
-    position: relative;    
+    position: relative;
 }
 .myheader{    
     width: 100%;
@@ -37,7 +37,7 @@ body{
     color: white;
     /* background: #d52e3f; */
     font-family: 'Dancing Script', cursive;
-    margin: 0;
+    margin: 15px 0px 0px 0px;
     font-weight: 700;
     text-shadow: 1px 1px 0px #eb452b, 
             2px 2px 0px #efa032, 
@@ -72,13 +72,7 @@ body{
 }
 
 
-.mymenu{
-    /* background-color: rgb(12, 12, 12); */
-    position: relative;
-    margin: 30px 15px ;
-    box-shadow: 2px 2px 2px 2px #49bfff;
-    border-radius: 10px;
-}
+
 
 .myhome{
     /* position: absolute; */
@@ -135,16 +129,29 @@ nav {
   }
 
 
+.mymenu{    
+    margin: 15px 15px 20px 15px; 
 
-.mymenu_ul{
+    /* width: 100%;
+    
+    background-color: rgb(12, 12, 12);
     position: relative;
-    margin: -10px 15px 15px 15px;
+    margin: 30px 15px ;
+    box-shadow: 2px 2px 2px 2px #49bfff;
+    border-radius: 10px; */
+}
+
+.mymenu_ul{     
+    position: relative;
+       
     padding: 10px 0px 20px 0px;
     padding-left: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     list-style: none;
+    box-shadow: 2px 2px 2px 2px #1a1c1e;
+    border-radius: 10px;
 }
 
 .mymenu_ul li{

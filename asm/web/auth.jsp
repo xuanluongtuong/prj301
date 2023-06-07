@@ -15,12 +15,13 @@
     <link rel="stylesheet" href="css/stylelogin.css">
     
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    <title>Form login unitop.vn</title>
+    <title>Happy Home</title>
 </head>
 <body>
     <div id="wrapper">
         <form action="login" id="form-login">
-            <h1 class="form-heading">Form đăng nhập</h1>
+            <h1 class="form-heading">Đăng nhập</h1>
+            <h4 style="color: red;text-align: center">${error}</h4>
             <div class="form-group">
                 <i class="far fa-user"></i>
                 <input type="text" name="username" class="form-input" placeholder="Tên đăng nhập">
