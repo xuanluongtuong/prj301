@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller;
+package AccountController;
 
 import DAL.LoginDAO;
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class login extends HttpServlet {
             if(ac==null){
                 String mes = "Sai mật khẩu hoặc tên đăng nhập.";
                 request.setAttribute("error", mes);
-                request.getRequestDispatcher("auth.jsp").forward(request, response);                
+                request.getRequestDispatcher("login.jsp").forward(request, response);                
             }else{
                 response.sendRedirect("home.html");
             }

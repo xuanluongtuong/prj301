@@ -4,13 +4,44 @@ body{
   background-position-y: -80px;
   font-size: 16px;
 }
+
+
+.headwrapper{
+  width: 100%;  
+  display: inline-flex;
+  justify-content: right;
+  font-size: 20px;
+  color: #fff;
+}
+
+.headwrapper__btn{
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.auth{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
 #wrapper{
+  position: absolute;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+#wrapper.sign_in{
+  opacity: 0;
+  visibility: hidden;
+}
+
 #form-login{
+
   max-width: 400px;
   background: rgba(0, 0, 0 , 0.8);
   flex-grow: 1;
@@ -36,13 +67,14 @@ body{
   padding-right: 10px;
 }
 .form-input{
+  height: 25px;
   background: transparent;
   border: 0;
   outline: 0;
   color: #f5f5f5;
   flex-grow: 1;
 }
-.form-input::placeholder{
+.form-input::placeholder{  
   color: #f5f5f5;
 }
 #eye i{

@@ -22,13 +22,13 @@ public class NhanVien {
     String viTri;
     String maQL;
     String phongBan;
-    int maPH;
+    int maPB;
     float luong;
 
     public NhanVien() {
     }
 
-    public NhanVien(String maNV, String hoVaTen, String ten, int gt, Date ngaySinh, String diaChi, String SDT, String Email, String viTri, String maQL, String phongBan, int maPH, float luong) {
+    public NhanVien(String maNV, String hoVaTen, String ten, int gt, Date ngaySinh, String diaChi, String SDT, String Email, String viTri, String maQL, String phongBan, int maPB, float luong) {
         this.maNV = maNV;
         this.hoVaTen = hoVaTen;
         this.ten = ten;
@@ -40,10 +40,11 @@ public class NhanVien {
         this.viTri = viTri;
         this.maQL = maQL;
         this.phongBan = phongBan;
-        this.maPH = maPH;
+        this.maPB = maPB;
         this.luong = luong;
     }
 
+   
     
     
     public String getMaNV() {
@@ -134,12 +135,12 @@ public class NhanVien {
         this.phongBan = phongBan;
     }
 
-    public int getMaPH() {
-        return maPH;
+    public int getMaPB() {
+        return maPB;
     }
 
-    public void setMaPH(int maPH) {
-        this.maPH = maPH;
+    public void setMaPB(int maPB) {
+        this.maPB = maPB;
     }
 
     public float getLuong() {

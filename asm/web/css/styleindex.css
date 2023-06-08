@@ -130,20 +130,16 @@ nav {
 
 
 .mymenu{    
-    margin: 15px 15px 20px 15px; 
-
-    /* width: 100%;
     
-    background-color: rgb(12, 12, 12);
-    position: relative;
-    margin: 30px 15px ;
-    box-shadow: 2px 2px 2px 2px #49bfff;
-    border-radius: 10px; */
+    background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);
+    overflow: hidden; 
+    border-bottom: #000000 3px solid;   
 }
 
-.mymenu_ul{     
-    position: relative;
-       
+.mymenu_ul{ 
+    background-color: white; 
+    margin: 15px 30px 30px 30px;    
+    position: relative;    
     padding: 10px 0px 20px 0px;
     padding-left: 0;
     display: flex;
