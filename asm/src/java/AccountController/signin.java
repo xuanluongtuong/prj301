@@ -34,21 +34,33 @@ public class signin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
             String user = request.getParameter("username");
+            String email = request.getParameter("email");
             String pass = request.getParameter("password");
+            String repass = request.getParameter("repassword");
             SignDAO sg = new SignDAO();
-            Account ac = sg.getAccount(user);
-            if (user.equals("")) {
-                request.setAttribute("error", "Tên đăng nhập không thể để trống!");
-                request.getRequestDispatcher("sign.jsp").forward(request, response);
-            } else if (pass.equals("")) {
-                request.setAttribute("error", "Mật khẩu không thể để trống!");
+            Account ac = sg.getAccount(user, email);
+            if (ac != null) {
+                request.setAttribute("error", "Tài khoản đã tồn tại!");
                 request.getRequestDispatcher("sign.jsp").forward(request, response);
             } else {
-                if (ac != null) {
-                    request.setAttribute("error", "Tài khoản đã tồn tại!");
+                if (user.equals("")) {
+                    request.setAttribute("error", "Tên đăng nhập không thể để trống!");
+                    request.getRequestDispatcher("sign.jsp").forward(request, response);
+                } else if (!sg.checkEmail(email)) {
+                    if (email.equals("")) {
+                        request.setAttribute("error", "Email không thể để trống.");
+                    } else {
+                        request.setAttribute("error", "Email không hợp lệ.");
+                    }
+                    request.getRequestDispatcher("sign.jsp").forward(request, response);
+                } else if (pass.equals("")) {
+                    request.setAttribute("error", "Mật khẩu không thể để trống!");
+                    request.getRequestDispatcher("sign.jsp").forward(request, response);
+                } else if (repass.equals(pass) == false) {
+                    request.setAttribute("error", "Mật khẩu không trùng khớp!");
                     request.getRequestDispatcher("sign.jsp").forward(request, response);
                 } else {
-                    Account acc = new Account(user, pass);
+                    Account acc = new Account(user, email, pass);
                     sg.insertAccount(acc);
                     response.sendRedirect("home.html");
                 }

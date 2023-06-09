@@ -37,14 +37,25 @@
                     <input type="text" name="username" class="form-input" placeholder="Tên đăng nhập">
                 </div>
                 <div class="form-group">
+                    <i class="far fa-user"></i>
+                    <input type="text" name="email" class="form-input" placeholder="Email">
+                </div>
+                <div class="form-group">
                     <i class="fas fa-key"></i>
                     <input type="password" name="password" class="form-input" placeholder="Mật khẩu">
                     <div id="eye">
                         <i class="far fa-eye"></i>
                     </div>
                 </div>
+                <div class="form-group">
+                    <i class="fas fa-key"></i>
+                    <input type="password" name="repassword" class="form-input" placeholder="Nhập lại mật khẩu">
+                    <div id="eye">
+                        <i class="far fa-eye"></i>
+                    </div>
+                </div>
                 <input type="submit" value="Tiếp theo" class="form-submit">
-                <h4 style="color: red;text-align: center">${error}</h4>
+                <h6 style="color: red;text-align: center;margin-top: 15px;">${error}</h6>
             </form>
         </div>
         

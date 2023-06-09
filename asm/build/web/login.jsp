@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <input type="submit" value="Đăng nhập" class="form-submit">
-                <h4 style="color: red;text-align: center">${error}</h4>
+                <h6 style="color: red;text-align: center;margin-top: 15px;">${error}</h6>
             </form>
         </div>
         

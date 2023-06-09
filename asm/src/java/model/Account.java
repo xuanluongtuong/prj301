@@ -10,8 +10,9 @@ package model;
  */
 public class Account {
     private String user;
-    private String password;
-
+    private String email;
+    private String password;   
+    
     public Account() {
     }
 
@@ -20,6 +21,12 @@ public class Account {
         this.password = password;
     }
 
+    public Account(String user, String email, String password) {
+        this.user = user;
+        this.email = email;
+        this.password = password;
+    }
+    
     public String getUser() {
         return user;
     }
@@ -34,6 +41,14 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     

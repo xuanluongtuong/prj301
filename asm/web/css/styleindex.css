@@ -136,6 +136,26 @@ nav {
     border-bottom: #000000 3px solid;   
 }
 
+#mytable{
+    max-width: 100%;
+    margin: 0px 10px;
+}
+
+#mytable table tr{
+    max-width: 100%;
+}
+
+.mylist{
+    background-color: white; 
+    margin: 15px 30px 30px 30px;    
+    position: relative;    
+    padding: 10px 0px 20px 0px;
+    padding-left: 0;
+    align-items: center;    
+    box-shadow: 2px 2px 2px 2px #1a1c1e;
+    border-radius: 10px;
+}
+
 .mymenu_ul{ 
     background-color: white; 
     margin: 15px 30px 30px 30px;    

@@ -30,21 +30,24 @@ public class login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            String user = request.getParameter("username");
+        String user = request.getParameter("username");
             String pass = request.getParameter("password");
             LoginDAO lg = new LoginDAO();
             Account ac = lg.checkLogin(user, pass);
-            if(ac==null){
-                String mes = "Sai mật khẩu hoặc tên đăng nhập.";
-                request.setAttribute("error", mes);
-                request.getRequestDispatcher("login.jsp").forward(request, response);                
-            }else{
-                response.sendRedirect("home.html");
+            if (user.equals("")) {
+                request.setAttribute("error", "Tên đăng nhập không thể để trống!");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            } else if (pass.equals("")) {
+                request.setAttribute("error", "Mật khẩu không thể để trống!");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            } else {
+                if (ac == null) {
+                    request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu.");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                } else {                    
+                    response.sendRedirect("home.html");
+                }
             }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
