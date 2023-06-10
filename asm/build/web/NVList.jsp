@@ -50,7 +50,7 @@
         <nav>
             <div class="myhome">
                 <img src="img/home1.png" alt="">
-                <a href="home.html">Trang chủ</a>
+                <a href="home.jsp">Trang chủ</a>
             </div>
             <ul>              
                 <li><a href="#">Danh mục 1</a></li>
@@ -72,90 +72,87 @@
                         <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                    Product name
+                                    ID
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Color
+                                    Full name
                                 </th>
                                 <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                    Category
+                                    Name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Price
+                                    Gender
                                 </th>
+                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                                    Date of birth
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Address
+                                </th>
+                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                                    Phone Number
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Email
+                                </th>
+                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                                    Position
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Manager ID
+                                </th>
+                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                                    Department
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Salary<br>
+                                    (milions Dong)
+                                </th>
+                                
                             </tr>
                         </thead>
                         <tbody>
+                            <% for (NhanVien nv : list) {
+                            %>
                             <tr class="border-b border-gray-200 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    Apple MacBook Pro 17"
+                                    <%=nv.getMaNV()%>
                                 </th>
                                 <td class="px-6 py-4">
-                                    Silver
+                                    <%=nv.getHoVaTen()%>
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    Laptop
+                                    <%=nv.getTen()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    $2999
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    Microsoft Surface Pro
-                                </th>
-                                <td class="px-6 py-4">
-                                    White
+                                    <%=nv.getGt()%>
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    Laptop PC
+                                    <%=nv.getNgaySinh()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    $1999
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    Magic Mouse 2
-                                </th>
-                                <td class="px-6 py-4">
-                                    Black
+                                    <%=nv.getDiaChi()%>
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    Accessories
+                                    <%=nv.getSDT()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    $99
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    Google Pixel Phone
-                                </th>
-                                <td class="px-6 py-4">
-                                    Gray
+                                    <%=nv.getEmail()%>
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    Phone
+                                    <%=nv.getViTri()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    $799
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    Apple Watch 5
-                                </th>
-                                <td class="px-6 py-4">
-                                    Red
+                                    <%=nv.getMaQL()%>
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    Wearables
+                                    <%=nv.getPhongBan()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    $999
-                                </td>
-                            </tr>
+                                    <%=nv.getLuong()%>
+                                </td>                                
+                            </tr>  
+                            <%}%>                          
                         </tbody>
                     </table>
                 </div>     

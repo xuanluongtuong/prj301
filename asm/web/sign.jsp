@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fontawesome-free-6.4.0/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="css/stylesign.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +23,12 @@
 </head>
 <body>
     <div class="headwrapper">
-        <a href="login.jsp" class="headwrapper__btn headwrapper__btn__log">Đăng nhập</a>|
-        <a href="sign.jsp" class="headwrapper__btn headwrapper__btn__sign">Đăng ký</a>
+        <div class="myheadwrapper__btn myheadwrapper__btn__log">
+            <a href="login.jsp" >Đăng nhập</a>
+        </div>
+        <div class="myheadwrapper__btn myheadwrapper__btn__sign">
+            <a href="sign.jsp" >Đăng ký</a>
+        </div>
     </div>
 
     <div class="auth">        
@@ -37,7 +42,7 @@
                     <input type="text" name="username" class="form-input" placeholder="Tên đăng nhập">
                 </div>
                 <div class="form-group">
-                    <i class="far fa-user"></i>
+                    <i class="fa-solid fa-envelope"></i>
                     <input type="text" name="email" class="form-input" placeholder="Email">
                 </div>
                 <div class="form-group">

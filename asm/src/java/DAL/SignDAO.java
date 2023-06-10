@@ -41,11 +41,6 @@ public class SignDAO extends DBContext {
         if(email.matches("^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$")) {
                         return true;
         }
-//        Pattern p = Pattern.compile("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
-//        Matcher m = p.matcher(email);
-//        if (m.find()) {
-//            return true;
-//        }
         return false;
     }
 

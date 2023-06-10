@@ -1,44 +1,63 @@
 body{
-    background: url('https://images.pexels.com/photos/373892/pexels-photo-373892.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb');
-    background-size: cover;
-    background-position-y: -80px;
-    font-size: 16px;
+  background: url('https://img.freepik.com/free-vector/watercolor-sugar-cotton-clouds-background_52683-80661.jpg?w=2000');
+  background-size: cover;
+  /* background-color: rgb(250, 166, 245); */
+  font-size: 16px;
+  overflow: hidden;
   }
   
   
   .headwrapper{
     width: 100%;  
     display: inline-flex;
-    justify-content: right;
-    font-size: 20px;
-    color: #fff;
+    justify-content: right;    
+    font-size: 15px;
+    margin-top: 2px;
   }
+
+  .myheadwrapper__btn__sign{
+    margin-right: 5px;
+  }
+ 
   
-  .headwrapper__btn{
-    color: #fff;
-    font-size: 20px;
+  .myheadwrapper__btn a{    
+    font-size: 12px;
     text-decoration: none;
+    font-weight: 500;   
+    padding-bottom: 3px;
+  }
+
+ .myheadwrapper__btn a:hover{
+  color: rgb(165, 165, 165);
+ }
+  
+  .myheadwrapper__btn__sign a{
+    color: #fff;
+    background-color: rgba(0, 0, 0 , 0.5);
+    border: 2px solid white; 
+    padding: 0px 7px 3px 7px; 
   }
   
-  .auth{
-    position: relative;
-    align-items: center;
-    justify-content: center;
+  .myheadwrapper__btn__log a{
+    color: black;
+    background-color: rgba(255, 255, 255,0.5);
+    border: 2px solid black;
   }
   
-  #wrapper{
-    position: absolute;
+  .auth{    
     width: 100%;
-    min-height: 100vh;
+    height: 96vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
   
-  #wrapper.sign_in{
-    opacity: 0;
-    visibility: hidden;
+  #wrapper{    
+    min-width: 400px;  
+    margin-top: -50px;
   }
+  
+  
   
   #form-login{
   

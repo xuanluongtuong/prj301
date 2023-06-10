@@ -7,5 +7,10 @@ $(document).ready(function(){
         }else{
             $(this).prev().attr('type', 'password');
         }
-    });
+    });    
 });
+// $( '.mylogout' ).on( 'click', function () {
+//     $( '.mylogout' ).find( 'li.active' ).removeClass( 'active' );
+//     $( this ).parent( 'li' ).addClass( 'active' );
+// });
+

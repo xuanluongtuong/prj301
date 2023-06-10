@@ -22,8 +22,12 @@
 </head>
 <body>
     <div class="headwrapper">
-        <a href="login.jsp" class="headwrapper__btn headwrapper__btn__log">Đăng nhập</a>|
-        <a href="sign.jsp" class="headwrapper__btn headwrapper__btn__sign">Đăng ký</a>
+        <div class="myheadwrapper__btn myheadwrapper__btn__log">
+            <a href="login.jsp" >Đăng nhập</a>
+        </div>
+        <div class="myheadwrapper__btn myheadwrapper__btn__sign">
+            <a href="sign.jsp" >Đăng ký</a>
+        </div>
     </div>
 
     <div class="auth">        

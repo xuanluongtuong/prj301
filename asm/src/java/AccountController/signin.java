@@ -62,7 +62,7 @@ public class signin extends HttpServlet {
                 } else {
                     Account acc = new Account(user, email, pass);
                     sg.insertAccount(acc);
-                    response.sendRedirect("home.html");
+                    response.sendRedirect("home.jsp");
                 }
             }
 

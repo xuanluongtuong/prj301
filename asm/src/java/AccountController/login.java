@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package AccountController;
 
 import DAL.LoginDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,40 +19,52 @@ import model.Account;
  * @author admin
  */
 public class login extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("username");
-            String pass = request.getParameter("password");
-            LoginDAO lg = new LoginDAO();
-            Account ac = lg.checkLogin(user, pass);
-            if (user.equals("")) {
-                request.setAttribute("error", "Tên đăng nhập không thể để trống!");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            } else if (pass.equals("")) {
-                request.setAttribute("error", "Mật khẩu không thể để trống!");
+        String pass = request.getParameter("password");
+        LoginDAO lg = new LoginDAO();
+        Account ac = lg.checkLogin(user, pass);
+
+        if (user.equals("")) {
+            request.setAttribute("error", "Tên đăng nhập không thể để trống!");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else if (pass.equals("")) {
+            request.setAttribute("error", "Mật khẩu không thể để trống!");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else {
+            if (ac == null) {
+                request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu.");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             } else {
-                if (ac == null) {
-                    request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu.");
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                } else {                    
-                    response.sendRedirect("home.html");
-                }
+                Cookie cookie = new Cookie("admin", user);
+
+                // Đặt thời gian tồn tại của cookie (tính theo giây), ví dụ: 1 tuần
+                cookie.setMaxAge(7 * 24 * 60 * 60);
+
+                // Thêm cookie vào response
+                response.addCookie(cookie);
+                
+                response.sendRedirect("home.jsp");
             }
-    } 
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -60,12 +72,13 @@ public class login extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -73,12 +86,13 @@ public class login extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override
