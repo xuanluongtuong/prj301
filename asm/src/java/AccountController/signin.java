@@ -9,6 +9,7 @@ import DAL.SignDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -60,6 +61,13 @@ public class signin extends HttpServlet {
                     request.setAttribute("error", "Mật khẩu không trùng khớp!");
                     request.getRequestDispatcher("sign.jsp").forward(request, response);
                 } else {
+                    Cookie cookie = new Cookie("admin", user);
+
+                    // Đặt thời gian tồn tại của cookie (tính theo giây), ví dụ: 1 tuần
+                    cookie.setMaxAge(7 * 24 * 60 * 60);
+
+                    // Thêm cookie vào response
+                    response.addCookie(cookie);
                     Account acc = new Account(user, email, pass);
                     sg.insertAccount(acc);
                     response.sendRedirect("home.jsp");

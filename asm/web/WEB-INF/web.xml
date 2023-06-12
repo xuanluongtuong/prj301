@@ -9,12 +9,12 @@
         <servlet-class>AccountController.signin</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>NhanVienServlet</servlet-name>
-        <servlet-class>NhanVienController.NhanVienServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>logout</servlet-name>
         <servlet-class>AccountController.logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeeServlet</servlet-name>
+        <servlet-class>NhanVienController.EmployeeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>login</servlet-name>
@@ -23,14 +23,14 @@
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NhanVienServlet</servlet-name>
-        <url-pattern>/nhanvien</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>   
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/out</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeServlet</servlet-name>
+        <url-pattern>/employ</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

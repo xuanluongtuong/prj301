@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <head>
         <title>Kien Truc HAPPY HOME</title>        
         <meta charset="utf-8"> 
-        <link rel="stylesheet" href="css/styleindex.css">
+        <link rel="stylesheet" href="css/stylehome.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="fontawesome-free-6.4.0/fontawesome-free-6.4.0-web/css/all.min.css">
@@ -63,9 +63,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <a href="home.jsp">Home</a>
             </div>
             <ul>              
-                <li><a href="#">Danh m?c 1</a></li>
-                <li><a href="#">Danh m?c 2</a></li>
-                <li><a href="#">Danh m?c 3</a></li>
+                <li><a href="#">Danh muc 1</a></li>
+                <li><a href="#">Danh muc 2</a></li>
+                <li><a href="#">Danh muc 3</a></li>
             </ul>
         </nav>
 
@@ -76,67 +76,55 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <!-- menu -->
         <div class="mymenu">
 
-
             <ul class="mymenu_ul">
+                <a href="employee.jsp">
+                    <li class="mysub_menu">
+                        <div class="mysub_menu_title">Employee</div>
+                        <div class="mysub_menu_logo">
+                            <img src="img/nhansu.png" alt="">
+                        </div>                
+                    </li> 
+                </a>
+                
+                <a href="#">
+                    <li class="mysub_menu">
+                        <div class="mysub_menu_title">Project</div>
+                        <div class="mysub_menu_logo">
+                            <img src="img/duan.png" alt="">
+                        </div>
+                        
+                    </li>
+                </a>
 
-                <li class="mysub_menu">
-                    <div class="mysub_menu_title">Employee</div>
-                    <div class="mysub_menu_logo">
-                        <img src="img/nhansu.png" alt="">
-                    </div>
-                    <ul class="mynavbar ">
-                        <li><a href="#">Search<li>
-                        <li><a href="nhanvien">Employee List</a></li>                                                                                                        
-                    </ul>
-                </li> 
-                <li class="mysub_menu">
-                    <div class="mysub_menu_title">Project</div>
-                    <div class="mysub_menu_logo">
-                        <img src="img/duan.png" alt="">
-                    </div>
-                    <ul class="mynavbar ">
-                        <li><a href="#">Nh� ? d�n d?ng</a></li>
-                        <li><a href="#">V?n ph�ng-c?n h?</a></li>
-                        <li><a href="#">Nh� cao t?ng</a></li>
-                        <li><a href="#">C�ng tr�nh c�ng c?ng</a></li>
-                    </ul>
-                </li>
+                <a href="#">
+                    <li class="mysub_menu">
+                        <div class="mysub_menu_title">Finance</div>
+                        <div class="mysub_menu_logo">
+                            <img src="img/taichinh.png" alt="">
+                        </div>
+                        
+                    </li> 
+                </a>
 
-                <li class="mysub_menu">
-                    <div class="mysub_menu_title">T�i ch�nh</div>
-                    <div class="mysub_menu_logo">
-                        <img src="img/taichinh.png" alt="">
-                    </div>
-                    <ul class="mynavbar ">
-                        <li><a href="#">Ng�n qu?</a></li>
-                        <li><a href="#">C�c kho?n thu</a></li>
-                        <li><a href="#">C�c kho?n chi</a></li>
-                        <li><a href="#">Qu?n l� n?</a></li>
-                    </ul>
-                </li> 
+                <a href="#">
+                    <li class="mysub_menu sub_menu_tn">
+                        <div class="mysub_menu_title">Resource</div>
+                        <div class="mysub_menu_logo">
+                            <img src="img/tainguyen1.png" alt="">
+                        </div>
+                        
+                    </li> 
+                </a>
 
-                <li class="mysub_menu sub_menu_tn">
-                    <div class="mysub_menu_title">T�i nguy�n</div>
-                    <div class="mysub_menu_logo">
-                        <img src="img/tainguyen1.png" alt="">
-                    </div>
-                    <ul class="mynavbar">                                    
-                        <li><a href="#">B?n v? ki?n tr�c</a></li>
-                        <li><a href="#">B?n thi?t k?</a></li>
-                        <li><a href="#">Nguy�n v?t li?u</a></li>
-                        <li><a href="#">?? n?i th?t</a></li>
-                    </ul>
-                </li> 
-
-                <li class="mysub_menu">
-                    <div class="mysub_menu_title">Kh�ch h�ng</div>
-                    <div class="mysub_menu_logo">
-                        <img src="img/khachhang2.png" alt="">
-                    </div>
-                    <ul class="mynavbar ">                                    
-                        <li><a href="#">Th�ng tin</a></li>
-                    </ul>
-                </li>
+                <a href="#">
+                    <li class="mysub_menu">
+                        <div class="mysub_menu_title">Customer</div>
+                        <div class="mysub_menu_logo">
+                            <img src="img/khachhang2.png" alt="">
+                        </div>
+                        
+                    </li>
+                </a>
             </ul>
 
         </div>

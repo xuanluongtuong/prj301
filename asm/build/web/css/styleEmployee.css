@@ -1,0 +1,184 @@
+body{
+    position: relative;
+}
+.myheader{    
+    width: 100%;
+    height: 12rem;
+    position: relative;
+    /* display: flex; */
+    align-items: center;
+    background-image: url(https://media.zicxa.com/5852926);
+    background-size: cover;
+    color: white;
+    font-size: 36px;    
+}
+
+.mylogo img{    
+    background-color: black;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    z-index: 1;    
+    border: 4px solid #dec56c ;
+}
+
+.myslogan{
+    width: 100%;       
+    position: relative;        
+    text-align: center; 
+    vertical-align: middle;
+}
+
+
+.myshadow {    
+    font-size: 55px;
+    text-align: center;
+    color: white;    
+    font-family: 'Dancing Script', cursive;
+    margin: 15px 0px 0px 0px;
+    font-weight: 700;
+    text-shadow: 1px 1px 0px #eb452b, 
+            2px 2px 0px #efa032, 
+            3px 3px 0px #46b59b, 
+            4px 4px 0px #017e7f, 
+            5px 5px 0px #052939, 
+            6px 6px 0px #c11a2b; 
+}
+
+.mylogout{    
+    position: absolute; 
+    padding: 5px;
+    background: linear-gradient(135deg, #30CFD0 0%, #330867 100%);
+    right: 2px;  
+    top: 1px;     
+}
+
+.mylogout button{    
+    width: 80px;    
+    padding: 0;
+}
+
+.mylogout a{
+    color: black;
+    text-decoration: none;
+    font-size: 14px; 
+    font-weight: 500; 
+    
+}
+
+
+
+
+.myhome{    
+    display: flex;    
+    background: linear-gradient(135deg, #1e57b3, #3573b0, #390867);
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 5px 5px 5px 5px;
+    margin-left: -5px;    
+}
+
+.myhome a{
+    color: white;
+    text-decoration: none;
+}
+
+.myhome img{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+
+nav {
+    display: flex;
+    background-color: #000000;    
+    padding: 5px;
+    align-items: center;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    color: #fbf7f7;
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+    /* background-color: #333; */
+    color: #f1e871;
+  }
+
+  .mymenu{    
+    
+    background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);
+    overflow: hidden; 
+    border-bottom: #000000 3px solid;   
+}
+
+.mymenu_ul{ 
+    background-color: white; 
+    margin: 15px 30px 30px 30px;    
+    position: relative;    
+    padding: 10px 0px 20px 0px;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+    box-shadow: 2px 2px 2px 2px #1a1c1e;
+    border-radius: 10px;
+}
+
+.mymenu_ul a{
+    color: #25214a;
+    text-decoration: none;
+}
+
+.mymenu_ul li{
+    margin: 10px 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    list-style: none;
+}
+
+.mymenu_ul li a{
+    color: rgb(87, 0, 128);
+    text-decoration: none;
+}
+
+.mysub_menu{
+    display: flex;
+    width: 350px;
+    height: 200px;
+    background: linear-gradient(135deg, #59ffff 0%, #cc7aff 100%);    
+    box-shadow: 4px 4px 3px ;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+}
+
+
+.mysub_menu_title{
+    width: 100%;
+    color: #600c8e;
+    font-size: 30px;    
+    text-align: left;    
+}
+
+
+.mysub_menu_logo i{   
+    width: 100px;
+    height: 100px;    
+}
