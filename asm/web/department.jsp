@@ -78,86 +78,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
 
 
-        
+
         <!-- menu -->
         <div class="mymenu">
-            
+
             <%ArrayList<Department> departments = (ArrayList<Department>)request.getAttribute("data");
             %>
-            
+
             <ul class="mymenu_ul">
-                <form action="employ" >
-                    <% for (Department dp : departments) {
-                        %>
-                    <button>
-                        <li class="mysub_menu">
-                            
-                            <div class="mysub_menu_logo">
-                                <img src="img/nhansu.png" alt="">
-                            </div> 
-                            
-                            <div class="mysub_menu_title"><%=dp.getTenPB()%></div>               
-                        </li> 
-                    </button>
-                    <%}%>
-                </form>
-                
-                
-                <!-- <a href="#">
-                    <li class="mysub_menu">
-                        
-                        <div class="mysub_menu_logo">
-                            <img src="img/nhansu.png" alt="">
-                        </div> 
-                        
-                        <div class="mysub_menu_title">Design Department</div>
-                    </li>
-                </a>
 
-                <a href="#">
-                    <li class="mysub_menu">
-                        
-                        <div class="mysub_menu_logo">
-                            <img src="img/nhansu.png" alt="">
-                        </div> 
-                        
-                        <div class="mysub_menu_title">Technical Department</div>
-                    </li> 
-                </a>
+                <% for (Department dp : departments) {
+                %>
+                <li>
+                    <form action="employ" >
+                    <button class="mysub_menu">
 
-                <a href="#">
-                    <li class="mysub_menu sub_menu_tn">
-                        
                         <div class="mysub_menu_logo">
                             <img src="img/nhansu.png" alt="">
                         </div> 
-                        
-                        <div class="mysub_menu_title">Finance Department</div>
-                    </li> 
-                </a>
 
-                <a href="#">
-                    <li class="mysub_menu">
-                        
-                        <div class="mysub_menu_logo">
-                            <img src="img/nhansu.png" alt="">
-                        </div> 
-                        
-                        <div class="mysub_menu_title">Sales Department</div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="mysub_menu">
-                        
-                        <div class="mysub_menu_logo">
-                            <img src="img/nhansu.png" alt="">
-                        </div> 
-                        
-                        <div class="mysub_menu_title">Administrative Department</div>
-                    </li>
-                </a>
-            </ul> -->
-
+                        <div class="mysub_menu_title"><%=dp.getTenPB()%></div>               
+                    </button> 
+                    </form>
+                </li>
+                <%}%>
         </div>
         <!-- menu -->
 

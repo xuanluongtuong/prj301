@@ -129,8 +129,7 @@ nav {
 
 .mymenu_ul{ 
     background-color: white; 
-    margin: 15px 30px 30px 30px;    
-    position: relative;    
+    margin: 15px 30px 30px 30px;
     padding: 10px 0px 20px 0px;
     padding-left: 0;
     display: flex;
@@ -170,6 +169,10 @@ nav {
     padding: 10px;
 }
 
+
+.mysub_menu button {
+    border-radius: 10px;
+}
 
 .mysub_menu_title{   
     color: #600c8e;
