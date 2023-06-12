@@ -10,7 +10,7 @@ import java.sql.Date;
  *
  * @author admin
  */
-public class DuAn {
+public class Project {
     String maDA;
     String tenDA;
     String diaDiem;
@@ -21,10 +21,10 @@ public class DuAn {
     String theLoai;
     String maKH;
 
-    public DuAn() {
+    public Project() {
     }
 
-    public DuAn(String maDA, String tenDA, String diaDiem, float nganSach, float loiNhuan, Date ngayThiCong, Date ngayKetThuc, String theLoai, String maKH) {
+    public Project(String maDA, String tenDA, String diaDiem, float nganSach, float loiNhuan, Date ngayThiCong, Date ngayKetThuc, String theLoai, String maKH) {
         this.maDA = maDA;
         this.tenDA = tenDA;
         this.diaDiem = diaDiem;

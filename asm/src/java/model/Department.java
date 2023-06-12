@@ -8,16 +8,16 @@ package model;
  *
  * @author admin
  */
-public class PhongBan {
+public class Department {
     int maPB;
     String tenPB;
     String maQL;
     String diaDiem;
 
-    public PhongBan() {
+    public Department() {
     }
 
-    public PhongBan(int maPB, String tenPB, String maQL, String diaDiem) {
+    public Department(int maPB, String tenPB, String maQL, String diaDiem) {
         this.maPB = maPB;
         this.tenPB = tenPB;
         this.maQL = maQL;

@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package NhanVienController;
+package DepartmentController;
 
-import DAL.EmployeeDAO;
+import DAL.DepartmentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,13 +13,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.Employee;
+import model.Department;
+
 
 /**
  *
  * @author admin
  */
-public class EmployeeServlet extends HttpServlet {
+public class DepartmentServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,10 +32,10 @@ public class EmployeeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        EmployeeDAO nv = new EmployeeDAO();
-        List<Employee> list = nv.getList();
-        request.setAttribute("dataNV", list);
-        request.getRequestDispatcher("EmList.jsp").forward(request, response);
+        DepartmentDAO dp = new DepartmentDAO();
+        List<Department> departments = dp.getList();
+        request.setAttribute("data", departments);
+        request.getRequestDispatcher("department.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

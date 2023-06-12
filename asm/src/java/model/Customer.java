@@ -10,7 +10,7 @@ import java.sql.Date;
  *
  * @author admin
  */
-public class KhachHang {
+public class Customer {
     String maKH;
     String tenKH;
     Date ngaySinh;
@@ -19,10 +19,10 @@ public class KhachHang {
     String SDTKH;
     String EmailKH;
 
-    public KhachHang() {
+    public Customer() {
     }
 
-    public KhachHang(String maKH, String tenKH, Date ngaySinh, int phai, String DCKH, String SDTKH, String EmailKH) {
+    public Customer(String maKH, String tenKH, Date ngaySinh, int phai, String DCKH, String SDTKH, String EmailKH) {
         this.maKH = maKH;
         this.tenKH = tenKH;
         this.ngaySinh = ngaySinh;

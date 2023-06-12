@@ -77,7 +77,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <div class="mymenu">
 
             <ul class="mymenu_ul">
-                <a href="employee.jsp">
+                <a href="depart">
                     <li class="mysub_menu">
                         <div class="mysub_menu_title">Employee</div>
                         <div class="mysub_menu_logo">

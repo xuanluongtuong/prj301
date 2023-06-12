@@ -56,7 +56,7 @@
                 <a href="home.jsp">Home</a>
             </div>
             <ul>              
-                <li><a href="employee.jsp">Employee</a></li>
+                <li><a href="depart">Employee</a></li>
                 <li><a href="#">Project</a></li>
                 <li><a href="#">Finance</a></li>
                 <li><a href="#">Resource</a></li>
@@ -68,9 +68,9 @@
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
-                <%ArrayList<Employee> list = (ArrayList<Employee>)request.getAttribute("dataNV");
+                <%ArrayList<Employee> list = (ArrayList<Employee>)request.getAttribute("dataNV");                    
                 %>
-                <h4> Employee List </h4><br/>
+                <h4> Project Management Department </h4><br/>
 
                 <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

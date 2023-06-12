@@ -14,7 +14,11 @@
     </servlet>
     <servlet>
         <servlet-name>EmployeeServlet</servlet-name>
-        <servlet-class>NhanVienController.EmployeeServlet</servlet-class>
+        <servlet-class>EmployeeController.EmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DepartmentServlet</servlet-name>
+        <servlet-class>DepartmentController.DepartmentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>login</servlet-name>
@@ -23,7 +27,7 @@
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
-    </servlet-mapping>   
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/out</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>EmployeeServlet</servlet-name>
         <url-pattern>/employ</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DepartmentServlet</servlet-name>
+        <url-pattern>/depart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

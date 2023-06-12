@@ -3,12 +3,16 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
 -->
+
+<%@page import="model.Department"%>
+<%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <!--comment-->
     <head>
         <title>Kien Truc HAPPY HOME</title>        
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/styleEmployee.css">
+        <link rel="stylesheet" href="css/styleDepartment.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="fontawesome-free-6.4.0/fontawesome-free-6.4.0-web/css/all.min.css">
@@ -63,7 +67,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <a href="home.jsp">Home</a>
             </div>
             <ul>              
-                <li><a href="employee.jsp">Employee</a></li>
+                <li><a href="depart">Employee</a></li>
                 <li><a href="#">Project</a></li>
                 <li><a href="#">Finance</a></li>
                 <li><a href="#">Resource</a></li>
@@ -74,28 +78,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
 
 
-
+        
         <!-- menu -->
         <div class="mymenu">
-
+            
+            <%ArrayList<Department> departments = (ArrayList<Department>)request.getAttribute("data");
+            %>
+            
             <ul class="mymenu_ul">
-                <a href="employ">
-                    <li class="mysub_menu">
-                        
-                        <!-- <div class="mysub_menu_logo">
-                            <img src="img/nhansu.png" alt="">
-                        </div>  -->
-                        <i class="fa-solid fa-house-building"></i>
-                        <div class="mysub_menu_title">Project Management Department</div>               
-                    </li> 
-                </a>
+                <form action="employ" >
+                    <% for (Department dp : departments) {
+                        %>
+                    <button>
+                        <li class="mysub_menu">
+                            
+                            <div class="mysub_menu_logo">
+                                <img src="img/nhansu.png" alt="">
+                            </div> 
+                            
+                            <div class="mysub_menu_title"><%=dp.getTenPB()%></div>               
+                        </li> 
+                    </button>
+                    <%}%>
+                </form>
                 
-                <a href="#">
+                
+                <!-- <a href="#">
                     <li class="mysub_menu">
                         
-                        <!-- <div class="mysub_menu_logo">
-                            <img src="img/duan.png" alt="">
-                        </div> -->
+                        <div class="mysub_menu_logo">
+                            <img src="img/nhansu.png" alt="">
+                        </div> 
+                        
                         <div class="mysub_menu_title">Design Department</div>
                     </li>
                 </a>
@@ -103,9 +117,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <a href="#">
                     <li class="mysub_menu">
                         
-                        <!-- <div class="mysub_menu_logo">
-                            <img src="img/taichinh.png" alt="">
-                        </div> -->
+                        <div class="mysub_menu_logo">
+                            <img src="img/nhansu.png" alt="">
+                        </div> 
+                        
                         <div class="mysub_menu_title">Technical Department</div>
                     </li> 
                 </a>
@@ -113,9 +128,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <a href="#">
                     <li class="mysub_menu sub_menu_tn">
                         
-                        <!-- <div class="mysub_menu_logo">
-                            <img src="img/tainguyen1.png" alt="">
-                        </div> -->
+                        <div class="mysub_menu_logo">
+                            <img src="img/nhansu.png" alt="">
+                        </div> 
+                        
                         <div class="mysub_menu_title">Finance Department</div>
                     </li> 
                 </a>
@@ -123,22 +139,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <a href="#">
                     <li class="mysub_menu">
                         
-                        <!-- <div class="mysub_menu_logo">
-                            <img src="img/khachhang2.png" alt="">
-                        </div> -->
+                        <div class="mysub_menu_logo">
+                            <img src="img/nhansu.png" alt="">
+                        </div> 
+                        
                         <div class="mysub_menu_title">Sales Department</div>
                     </li>
                 </a>
                 <a href="#">
                     <li class="mysub_menu">
                         
-                        <!-- <div class="mysub_menu_logo">
-                            <img src="img/khachhang2.png" alt="">
-                        </div> -->
+                        <div class="mysub_menu_logo">
+                            <img src="img/nhansu.png" alt="">
+                        </div> 
+                        
                         <div class="mysub_menu_title">Administrative Department</div>
                     </li>
                 </a>
-            </ul>
+            </ul> -->
 
         </div>
         <!-- menu -->
@@ -257,7 +275,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
             <!-- Copyright -->
             <div class="text-center p-4" style="background-color: rgb(0, 0, 0);">
-                � 2021 Copyright:
+                ï¿½ 2021 Copyright:
                 <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
             </div>
             <!-- Copyright -->
