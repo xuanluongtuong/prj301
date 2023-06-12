@@ -91,8 +91,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 %>
                 <li>
                     <form action="employ" >
-                    <button class="mysub_menu">
 
+                    <input type="hidden" name="maPB" value="<%= dp.getMaPB() %>"> 
+                    <input type="hidden" name="tenPB" value="<%= dp.getTenPB() %>"> 
+                    <button class="mysub_menu">                        
                         <div class="mysub_menu_logo">
                             <img src="img/nhansu.png" alt="">
                         </div> 

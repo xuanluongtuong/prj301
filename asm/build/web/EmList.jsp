@@ -70,7 +70,7 @@
             <div class="mylist">
                 <%ArrayList<Employee> list = (ArrayList<Employee>)request.getAttribute("dataNV");                    
                 %>
-                <h4> Project Management Department </h4><br/>
+                <h4> ${tenPB} </h4><br/>
 
                 <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -107,12 +107,9 @@
                                     Manager ID
                                 </th>
                                 <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                    Department
-                                </th>
-                                <th scope="col" class="px-6 py-3">
                                     Salary<br>
                                     (milions Dong)
-                                </th>
+                                </th>                                
                                 
                             </tr>
                         </thead>
@@ -151,11 +148,8 @@
                                     <%=nv.getMaQL()%>
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    <%=nv.getPhongBan()%>
-                                </td>
-                                <td class="px-6 py-4">
                                     <%=nv.getLuong()%>
-                                </td>                                
+                                </td>                                                              
                             </tr>  
                             <%}%>                          
                         </tbody>

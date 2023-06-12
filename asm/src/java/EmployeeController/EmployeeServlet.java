@@ -31,9 +31,12 @@ public class EmployeeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String departID = request.getParameter("maPB");
+        String departName = request.getParameter("tenPB");
         EmployeeDAO nv = new EmployeeDAO();
-        List<Employee> list = nv.getList();
+        List<Employee> list = nv.getList(Integer.parseInt(departID));
         request.setAttribute("dataNV", list);
+        request.setAttribute("tenPB", departName);
         request.getRequestDispatcher("EmList.jsp").forward(request, response);
     } 
 

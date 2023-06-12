@@ -15,11 +15,12 @@ import model.Employee;
  * @author admin
  */
 public class EmployeeDAO extends DBContext{
-    public List<Employee> getList() {
+    public List<Employee> getList(int departID) {
         List<Employee> list = new ArrayList<>();
-        String sql="select * from dbo.NHANVIEN where MAPB=1";
+        String sql="select * from dbo.NHANVIEN where MAPB=?";
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = connection.prepareStatement(sql);            
+            st.setInt(1,departID);
             ResultSet rs=st.executeQuery();
             while(rs.next()){
                 Employee nv = new Employee();
@@ -32,9 +33,7 @@ public class EmployeeDAO extends DBContext{
                 nv.setSDT(rs.getString("SDT"));
                 nv.setEmail(rs.getString("EMAIL"));
                 nv.setViTri(rs.getString("VITRI"));
-                nv.setMaQL(rs.getString("MAQL"));
-                nv.setPhongBan(rs.getString("PHONGBAN"));
-                nv.setMaPB(rs.getInt("MAPB"));
+                nv.setMaQL(rs.getString("MAQL"));                                
                 nv.setLuong(rs.getFloat("LUONG"));
                 list.add(nv);                
             }
@@ -42,5 +41,11 @@ public class EmployeeDAO extends DBContext{
             System.out.println(e);
         }
         return list;
+    }
+    
+    public static void main(String[] args) {
+        EmployeeDAO e = new EmployeeDAO();
+        List<Employee> list = e.getList(1);
+        System.out.println(list.get(0).getHoVaTen());
     }
 }
