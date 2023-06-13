@@ -70,7 +70,11 @@
             <div class="mylist">
                 <%ArrayList<Employee> list = (ArrayList<Employee>)request.getAttribute("dataNV");                    
                 %>
-                <h4> ${tenPB} </h4><br/>
+
+                <div class="myhead_title_table">
+                    <h4> ${tenPB} </h4><br/>
+                    <a href="addem">Create</a>
+                </div>
 
                 <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -110,13 +114,13 @@
                                     Salary<br>
                                     (milions Dong)
                                 </th>                                
-                                
+
                             </tr>
                         </thead>
                         <tbody>
                             <% for (Employee nv : list) {
                             %>
-                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                            <tr class="border-b border-gray-50 dark:border-gray-800">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                     <%=nv.getMaNV()%>
                                 </th>
@@ -149,7 +153,11 @@
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%=nv.getLuong()%>
-                                </td>                                                              
+                                </td> 
+                                <td class="px-6 py-4 bg-green-100 dark:bg-green-800">   
+                                    <a href="edit?id=<%=nv.getMaNV()%>">Edit</a>
+                                    <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')">Delete</a>
+                                </td>
                             </tr>  
                             <%}%>                          
                         </tbody>

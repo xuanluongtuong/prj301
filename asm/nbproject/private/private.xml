@@ -4,19 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/PRJ301/Assignment/asm/web/sign.jsp</file>
-            <file>file:/D:/PRJ301/Assignment/asm/src/java/DAL/NhanVienDAO.java</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/AccountController/login.java</file>
-            <file>file:/D:/PRJ301/Assignment/asm/web/NVList.jsp</file>
+            <file>file:/D:/PRJ301/Assignment/asm/src/java/DAL/LoginDAO.java</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/AccountController/logout.java</file>
             <file>file:/D:/PRJ301/Assignment/asm/web/login.jsp</file>
-            <file>file:/D:/PRJ301/Assignment/asm/web/home.jsp</file>
-            <file>file:/D:/PRJ301/Assignment/asm/web/css/styleindex.css</file>
-            <file>file:/D:/PRJ301/Assignment/asm/src/java/DAL/LoginDAO.java</file>
-            <file>file:/D:/PRJ301/Assignment/asm/src/java/model/NhanVien.java</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/DAL/SignDAO.java</file>
-            <file>file:/D:/PRJ301/Assignment/asm/src/java/NhanVienController/NhanVienServlet.java</file>
-            <file>file:/D:/PRJ301/Assignment/asm/src/java/model/KhachHang.java</file>
-            <file>file:/D:/PRJ301/Assignment/asm/src/java/model/DuAn.java</file>
+            <file>file:/D:/PRJ301/Assignment/asm/web/home.jsp</file>
             <file>file:/D:/PRJ301/Assignment/asm/web/css/stylelogin.css</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/AccountController/signin.java</file>
         </group>

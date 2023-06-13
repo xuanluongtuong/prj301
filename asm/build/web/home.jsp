@@ -6,7 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <html>
     <!--comment-->
     <head>
-        <title>Kien Truc HAPPY HOME</title>        
+        <title>HAPPY HOME</title>        
         <meta charset="utf-8"> 
         <link rel="stylesheet" href="css/stylehome.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -138,6 +138,21 @@ nav {
     border-bottom: #000000 3px solid;   
 }
 
+.myhead_title_table h4{
+    max-width: 50%;
+    margin-left: 20px;
+}
+
+.myhead_title_table a{
+    margin-right: 30px;
+    text-decoration: none;
+}
+
+.myhead_title_table{
+    display: flex;
+    justify-content: space-between;
+}
+
 #mytable{
     max-width: 100%;
     margin: 0px 10px;

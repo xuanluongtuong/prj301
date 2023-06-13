@@ -18,17 +18,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    <title>Happy Home</title>
+    <title>HAPPY HOME</title>
 </head>
-<body>
-    <div class="headwrapper">
-        <div class="myheadwrapper__btn myheadwrapper__btn__log">
-            <a href="login.jsp" >Đăng nhập</a>
-        </div>
-        <div class="myheadwrapper__btn myheadwrapper__btn__sign">
-            <a href="sign.jsp" >Đăng ký</a>
-        </div>
-    </div>
+<body>    
 
     <div class="auth">        
         <div id="wrapper" class="log_in">
@@ -49,7 +41,11 @@
                 </div>
                 <input type="submit" value="Đăng nhập" class="form-submit">
                 <h6 style="color: red;text-align: center;margin-top: 15px;">${error}</h6>
+                <div class="myheadwrapper__btn myheadwrapper__btn__sign">
+                    <a href="sign.jsp" >Đăng ký</a>
+                </div>
             </form>
+            
         </div>
         
     </div>
