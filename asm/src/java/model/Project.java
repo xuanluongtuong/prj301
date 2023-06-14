@@ -11,7 +11,7 @@ import java.sql.Date;
  * @author admin
  */
 public class Project {
-    String maDA;
+    int maDA;
     String tenDA;
     String diaDiem;
     float nganSach;
@@ -24,25 +24,15 @@ public class Project {
     public Project() {
     }
 
-    public Project(String maDA, String tenDA, String diaDiem, float nganSach, float loiNhuan, Date ngayThiCong, Date ngayKetThuc, String theLoai, String maKH) {
-        this.maDA = maDA;
-        this.tenDA = tenDA;
-        this.diaDiem = diaDiem;
-        this.nganSach = nganSach;
-        this.loiNhuan = loiNhuan;
-        this.ngayThiCong = ngayThiCong;
-        this.ngayKetThuc = ngayKetThuc;
-        this.theLoai = theLoai;
-        this.maKH = maKH;
-    }
-
-    public String getMaDA() {
+    public int getMaDA() {
         return maDA;
     }
 
-    public void setMaDA(String maDA) {
+    public void setMaDA(int maDA) {
         this.maDA = maDA;
     }
+
+    
 
     public String getTenDA() {
         return tenDA;

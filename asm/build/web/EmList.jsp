@@ -6,6 +6,9 @@
 
 <%@page import="model.Employee"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,17 +18,35 @@
         <link rel="stylesheet" href="css/stylelist.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="fontawesome/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <title>Danh Sách Nhân Viên</title>        
-
+        <title>HAPPY HOME</title>        
+        <%
+            List<Employee> list = new ArrayList<>();
+                if(session.getAttribute("list") != null){
+                    list = (ArrayList<Employee>) session.getAttribute("list");  
+                }
+                                      
+        %>
         <script>
             function doDelete(id) {
-                if (confirm("Are you sure to delete student with id = " + id + "?")) {
+                if (confirm("Are you sure to delete?")) {
                     window.location = "delete?id=" + id;
                 }
             }
         </script>
+        <style>
+            <% if(list.size() > 1){ %>
+            #myactionmn{
+                visibility: hidden;
+            }
+            <% } else { %>
+            #myactionmn{
+                visibility: visible;
+            }
+            <% } %>
+        </style>
     </head>
     <body>
         <!--start header-->
@@ -68,62 +89,160 @@
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
-                <%ArrayList<Employee> list = (ArrayList<Employee>)request.getAttribute("dataNV");                    
-                %>
+                <div class="mycontent">
+                    <div class="myhead_title_table">
+                        <h4> ${tenPB} </h4><br/>
+                        <a href="add"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Create</a>
+                    </div>
 
-                <div class="myhead_title_table">
-                    <h4> ${tenPB} </h4><br/>
-                    <a href="addem">Create</a>
-                </div>
+                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 20px 0 50px 0;">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" >
+                            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Full name
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Name
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Gender
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Date of birth
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Address
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Phone Number
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Email
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Position
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Manager ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Salary<br>
+                                        (milions Dong)
+                                    </th>                                
 
-                <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                    ID
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Full name
-                                </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                    Name
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Gender
-                                </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                    Date of birth
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Address
-                                </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                    Phone Number
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Email
-                                </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                    Position
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Manager ID
-                                </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                    Salary<br>
-                                    (milions Dong)
-                                </th>                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-50 dark:border-gray-800">
+                                    <%
+                                        Employee e = new Employee();
+                                        if(session.getAttribute("emql") != null){
+                                            e = (Employee) session.getAttribute("emql");  
+                                        }                                      
+                                    %>
+                                <tr class="border-b border-gray-50 dark:border-gray-800">
+                                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                        <%=e.getMaNV()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%=e.getHoVaTen()%>
+                                    </td>
+                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                        <%=e.getTen()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%if(e.getGt()==1){
+                                        %>
+                                        Nam
+                                        <%}else{%>Nữ
+                                        <%}%>
+                                    </td>
+                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                        <%=e.getNgaySinh()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%=e.getDiaChi()%>
+                                    </td>
+                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                        <%=e.getSDT()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%=e.getEmail()%>
+                                    </td>
+                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                        <%=e.getViTri()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%=e.getMaQL()%>
+                                    </td>
+                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                        <%=e.getLuong()%>
+                                    </td> 
+                                    <td class="px-6 py-4 bg-green-100 dark:bg-green-800" id="myactionmn">   
+                                        &nbsp;&nbsp;&nbsp;<a href="edit?id=<%=e.getMaNV()%>" class="myedit">Edit</a>&nbsp;&nbsp;&nbsp;                                    
+                                    </td>
+                                    <td class="px-6 py-4 bg-pink-100 dark:bg-pink-800" id="myactionmn">
+                                        <a href="#" onclick="doDelete('<%=e.getMaNV()%>')" class="mydelete">Delete</a>
+                                    </td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                    </div>
 
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+                        <% if(list.size() > 1){ %>
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Full name
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Name
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Gender
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Date of birth
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Address
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Phone Number
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Email
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Position
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Manager ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Salary<br>
+                                        (milions Dong)
+                                    </th>                                
+
+                                </tr>
+                            </thead>
                             <% for (Employee nv : list) {
+                                if(nv.getMaNV() != e.getMaNV()){
                             %>
                             <tr class="border-b border-gray-50 dark:border-gray-800">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                     <%=nv.getMaNV()%>
-                                </th>
+                                </td>
                                 <td class="px-6 py-4">
                                     <%=nv.getHoVaTen()%>
                                 </td>
@@ -131,7 +250,11 @@
                                     <%=nv.getTen()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%=nv.getGt()%>
+                                    <%if(nv.getGt()==1){
+                                    %>
+                                    Nam
+                                    <%}else{%>Nữ
+                                    <%}%>
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%=nv.getNgaySinh()%>
@@ -154,15 +277,19 @@
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%=nv.getLuong()%>
                                 </td> 
-                                <td class="px-6 py-4 bg-green-100 dark:bg-green-800">   
-                                    <a href="edit?id=<%=nv.getMaNV()%>">Edit</a>
-                                    <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')">Delete</a>
+                                <td class="px-6 py-4 bg-green-100 dark:bg-green-800" id="myaction">   
+                                    &nbsp;&nbsp;&nbsp;<a href="edit?id=<%=nv.getMaNV()%>" class="myedit">Edit</a>&nbsp;&nbsp;&nbsp;                                    
+                                </td>
+                                <td class="px-6 py-4 bg-pink-100 dark:bg-pink-800" id="myaction">
+                                    <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')" class="mydelete">Delete</a>
                                 </td>
                             </tr>  
-                            <%}%>                          
-                        </tbody>
-                    </table>
-                </div>     
+                            <%} }%>                          
+                            </tbody>
+                        </table>
+                        <% } %>
+                    </div>     
+                </div>
             </div>
         </div>
         <!-- menu -->

@@ -120,7 +120,11 @@ nav {
     color: #f1e871;
   }
 
-  .mymenu{    
+.mylogout input{
+    background-color: white;
+}
+
+.mymenu{    
     
     background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);
     overflow: hidden; 

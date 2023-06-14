@@ -21,8 +21,12 @@
         <servlet-class>DepartmentController.DepartmentServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddEmployee</servlet-name>
-        <servlet-class>EmployeeController.AddEmployee</servlet-class>
+        <servlet-name>EditEmployee</servlet-name>
+        <servlet-class>EmployeeController.EditEmployee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteEmployee</servlet-name>
+        <servlet-class>EmployeeController.DeleteEmployee</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>login</servlet-name>
@@ -45,8 +49,8 @@
         <url-pattern>/depart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddEmployee</servlet-name>
-        <url-pattern>/addem</url-pattern>
+        <servlet-name>DeleteEmployee</servlet-name>
+        <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -54,6 +58,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

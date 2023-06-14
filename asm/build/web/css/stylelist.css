@@ -1,11 +1,9 @@
 body{
     position: relative;
 }
-
-
 .myheader{    
     width: 100%;
-    height: 15rem;
+    height: 12rem;
     position: relative;
     /* display: flex; */
     align-items: center;
@@ -36,8 +34,7 @@ body{
 .myshadow {    
     font-size: 55px;
     text-align: center;
-    color: white;
-    /* background: #d52e3f; */
+    color: white;    
     font-family: 'Dancing Script', cursive;
     margin: 15px 0px 0px 0px;
     font-weight: 700;
@@ -47,9 +44,6 @@ body{
             4px 4px 0px #017e7f, 
             5px 5px 0px #052939, 
             6px 6px 0px #c11a2b; 
-            /* 7px 7px 0px #c11a2b, 
-            8px 8px 0px #c11a2b;  */
-            /* 9px 9px 0px #c11a2b; */
 }
 
 .mylogout{    
@@ -76,17 +70,13 @@ body{
 
 
 
-.myhome{
-    /* position: absolute; */
-    display: flex;
-    /* left: 20px;
-    top: -25px; */
+.myhome{    
+    display: flex;    
     background: linear-gradient(135deg, #1e57b3, #3573b0, #390867);
     align-items: center;
     padding: 2px 10px;
     border-radius: 5px 5px 5px 5px;
-    margin-left: -5px;
-    /* justify-content: space-between; */
+    margin-left: -5px;    
 }
 
 .myhome a{
@@ -138,7 +128,18 @@ nav {
     border-bottom: #000000 3px solid;   
 }
 
+
+.myhead_title_table{
+    background-color: #ffffff;
+    padding: 10px 0px 5px 0 ;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .myhead_title_table h4{
+    color: rgb(0, 0, 0);
     max-width: 50%;
     margin-left: 20px;
 }
@@ -148,22 +149,24 @@ nav {
     text-decoration: none;
 }
 
-.myhead_title_table{
-    display: flex;
-    justify-content: space-between;
-}
 
 #mytable{
+    border-top: #30CFD0 3px solid;
     max-width: 100%;
-    margin: 0px 10px;
+    
 }
 
 #mytable table tr{
     max-width: 100%;
+    border-bottom: #000000 1px solid;
+}
+
+#mytable table tr th, #mytable table tr td{
+    border-right: #938f8f 2px solid;
 }
 
 .mylist{
-    background-color: white; 
+    background-color: rgb(248, 248, 248); 
     margin: 15px 30px 30px 30px;    
     position: relative;    
     padding: 10px 0px 20px 0px;
@@ -171,7 +174,29 @@ nav {
     align-items: center;    
     box-shadow: 2px 2px 2px 2px #1a1c1e;
     border-radius: 10px;
+    overflow: hidden;
 }
 
+.mycontent{
+    background-color: white;
+    margin: 0 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: #30CFD0 3px solid;
+}
+
+#myaction a{
+ text-decoration: none;
+ font-size: 15px;
+ font-weight: 500;
+}
+
+#myaction .myedit{
+    color : rgb(0, 131, 91);    
+}
+
+#myaction .mydelete{
+    color: #ff0084;
+}
 
 /* -------------------------------------------------------------------------------------------------------------------------------- */

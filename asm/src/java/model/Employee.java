@@ -11,7 +11,7 @@ import java.sql.Date;
  * @author admin
  */
 public class Employee {
-    String maNV;
+    int maNV;
     String hoVaTen;
     String ten;
     int gt;
@@ -20,7 +20,7 @@ public class Employee {
     String SDT;
     String Email;
     String viTri;
-    String maQL;
+    int maQL;
     String phongBan;
     int maPB;
     float luong;
@@ -28,7 +28,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String maNV, String hoVaTen, String ten, int gt, Date ngaySinh, String diaChi, String SDT, String Email, String viTri, String maQL, String phongBan, int maPB, float luong) {
+    public Employee(int maNV, String hoVaTen, String ten, int gt, Date ngaySinh, String diaChi, String SDT, String Email, String viTri, int maQL, String phongBan, int maPB, float luong) {
         this.maNV = maNV;
         this.hoVaTen = hoVaTen;
         this.ten = ten;
@@ -43,17 +43,18 @@ public class Employee {
         this.maPB = maPB;
         this.luong = luong;
     }
+    
+    
 
-   
-    
-    
-    public String getMaNV() {
+    public int getMaNV() {
         return maNV;
     }
 
-    public void setMaNV(String maNV) {
+    public void setMaNV(int maNV) {
         this.maNV = maNV;
     }
+
+   
 
     public String getHoVaTen() {
         return hoVaTen;
@@ -119,11 +120,11 @@ public class Employee {
         this.viTri = viTri;
     }
 
-    public String getMaQL() {
+    public int getMaQL() {
         return maQL;
     }
 
-    public void setMaQL(String maQL) {
+    public void setMaQL(int maQL) {
         this.maQL = maQL;
     }
 

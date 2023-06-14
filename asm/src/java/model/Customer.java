@@ -11,7 +11,7 @@ import java.sql.Date;
  * @author admin
  */
 public class Customer {
-    String maKH;
+    int maKH;
     String tenKH;
     Date ngaySinh;
     int phai;
@@ -22,24 +22,16 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String maKH, String tenKH, Date ngaySinh, int phai, String DCKH, String SDTKH, String EmailKH) {
-        this.maKH = maKH;
-        this.tenKH = tenKH;
-        this.ngaySinh = ngaySinh;
-        this.phai = phai;
-        this.DCKH = DCKH;
-        this.SDTKH = SDTKH;
-        this.EmailKH = EmailKH;
-    }
-
-    public String getMaKH() {
+    public int getMaKH() {
         return maKH;
     }
 
-    public void setMaKH(String maKH) {
+    public void setMaKH(int maKH) {
         this.maKH = maKH;
     }
 
+    
+    
     public String getTenKH() {
         return tenKH;
     }

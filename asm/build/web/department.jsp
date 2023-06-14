@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <link rel="stylesheet" href="css/styleDepartment.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="fontawesome-free-6.4.0/fontawesome-free-6.4.0-web/css/all.min.css">
+        <link rel="stylesheet" href="fontawesome/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
@@ -90,10 +90,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <% for (Department dp : departments) {
                 %>
                 <li>
-                    <form action="employ" >
-
+                    <form action="employ" >                   
                     <input type="hidden" name="maPB" value="<%= dp.getMaPB() %>"> 
                     <input type="hidden" name="tenPB" value="<%= dp.getTenPB() %>"> 
+                    <input type="hidden" name="maQL" value="<%= dp.getMaQL() %>">
                     <button class="mysub_menu">                        
                         <div class="mysub_menu_logo">
                             <img src="img/nhansu.png" alt="">
