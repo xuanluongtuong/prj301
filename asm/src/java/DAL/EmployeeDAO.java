@@ -54,6 +54,7 @@ public class EmployeeDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 Employee em = new Employee();
+                em.setMaNV(manv);
                 em.setHoVaTen(rs.getString("HO_VA_TEN"));
                 em.setTen(rs.getString("TEN"));
                 em.setGt(rs.getInt("PHAI"));
@@ -127,6 +128,7 @@ public class EmployeeDAO extends DBContext {
             st.setString(10, em.getPhongBan());
             st.setInt(11, em.getMaPB());
             st.setFloat(12, em.getLuong());
+            st.setInt(13, em.getMaNV());
             st.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
@@ -145,9 +147,10 @@ public class EmployeeDAO extends DBContext {
         }
     }
 
-//    public static void main(String[] args) {
-//        EmployeeDAO e = new EmployeeDAO();
-//        List<Employee> list = e.getEmList(1);
-//        System.out.println(list.get(0).getHoVaTen());
-//    }
+    public static void main(String[] args) {
+        EmployeeDAO e = new EmployeeDAO();
+        List<Employee> list = e.getEmList(1);
+        Employee em = e.getEmployeeByID(7);
+        System.out.println(em.getNgaySinh());
+    }
 }

@@ -23,6 +23,7 @@
             <file>file:/D:/PRJ301/Assignment/asm/web/css/stylelist.css</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/AccountController/login.java</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/DepartmentController/DepartmentServlet.java</file>
+            <file>file:/D:/PRJ301/Assignment/asm/src/java/EmployeeController/AddEmployee.java</file>
             <file>file:/D:/PRJ301/Assignment/asm/web/home.jsp</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/DAL/DepartmentDAO.java</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/EmployeeController/EmployeeServlet.java</file>
@@ -30,6 +31,7 @@
             <file>file:/D:/PRJ301/Assignment/asm/web/EmList.jsp</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/DAL/SignDAO.java</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/DAL/EmployeeDAO.java</file>
+            <file>file:/D:/PRJ301/Assignment/asm/web/addEm.jsp</file>
             <file>file:/D:/PRJ301/Assignment/asm/src/java/AccountController/signin.java</file>
         </group>
     </open-files>

@@ -32,7 +32,7 @@
         <script>
             function doDelete(id) {
                 if (confirm("Are you sure to delete?")) {
-                    window.location = "delete?id=" + id;
+                    window.location = "deleteem?id=" + id;
                 }
             }
         </script>
@@ -91,11 +91,11 @@
             <div class="mylist">
                 <div class="mycontent">
                     <div class="myhead_title_table">
-                        <h4> ${tenPB} </h4><br/>
-                        <a href="add"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Create</a>
+                        <h4> <%=session.getAttribute("tenPb")%> </h4><br/>
+                        <a href="addem"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Create</a>
                     </div>
 
-                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 20px 0 50px 0;">
+                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 20px 10px 50px 10px;">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" >
                             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
@@ -132,7 +132,10 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Salary<br>
                                         (milions Dong)
-                                    </th>                                
+                                    </th>  
+                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
+                                        <a href="#" style="text-decoration: none;">Change Manager</a>
+                                    </th>  
 
                                 </tr>
                             </thead>
@@ -183,11 +186,12 @@
                                         <%=e.getLuong()%>
                                     </td> 
                                     <td class="px-6 py-4 bg-green-100 dark:bg-green-800" id="myactionmn">   
-                                        &nbsp;&nbsp;&nbsp;<a href="edit?id=<%=e.getMaNV()%>" class="myedit">Edit</a>&nbsp;&nbsp;&nbsp;                                    
+                                        &nbsp;&nbsp;&nbsp;<a href="editem?id=<%=e.getMaNV()%>" class="myedit">Edit</a>&nbsp;&nbsp;&nbsp;
+                                        <td class="px-6 py-4 bg-pink-100 dark:bg-pink-800" id="myactionmn">
+                                            <a href="#" onclick="doDelete('<%=e.getMaNV()%>')" class="mydelete">Delete</a>
+                                        </td>                                    
                                     </td>
-                                    <td class="px-6 py-4 bg-pink-100 dark:bg-pink-800" id="myactionmn">
-                                        <a href="#" onclick="doDelete('<%=e.getMaNV()%>')" class="mydelete">Delete</a>
-                                    </td>
+                                    
                                 </tr> 
                             </tbody>
                         </table>
@@ -232,7 +236,8 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Salary<br>
                                         (milions Dong)
-                                    </th>                                
+                                    </th> 
+                                                                  
 
                                 </tr>
                             </thead>
@@ -278,11 +283,14 @@
                                     <%=nv.getLuong()%>
                                 </td> 
                                 <td class="px-6 py-4 bg-green-100 dark:bg-green-800" id="myaction">   
-                                    &nbsp;&nbsp;&nbsp;<a href="edit?id=<%=nv.getMaNV()%>" class="myedit">Edit</a>&nbsp;&nbsp;&nbsp;                                    
+                                      
+                                        &nbsp;&nbsp;&nbsp;<a href="editem?id=<%=nv.getMaNV()%>" class="myedit">Edit</a>&nbsp;&nbsp;&nbsp;                                    
+                                    
+                                    <td class="px-6 py-4 bg-pink-100 dark:bg-pink-800" id="myaction">
+                                        <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')" class="mydelete">Delete</a>
+                                    </td>                                    
                                 </td>
-                                <td class="px-6 py-4 bg-pink-100 dark:bg-pink-800" id="myaction">
-                                    <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')" class="mydelete">Delete</a>
-                                </td>
+                                
                             </tr>  
                             <%} }%>                          
                             </tbody>

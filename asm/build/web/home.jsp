@@ -63,9 +63,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <a href="home.jsp">Home</a>
             </div>
             <ul>              
-                <li><a href="#">Danh muc 1</a></li>
-                <li><a href="#">Danh muc 2</a></li>
-                <li><a href="#">Danh muc 3</a></li>
+                <li><a href="depart">Employee</a></li>
+                <li><a href="#">Project</a></li>
+                <li><a href="#">Finance</a></li>
+                <li><a href="#">Resource</a></li>
+                <li><a href="#">Customer</a></li>
             </ul>
         </nav>
 

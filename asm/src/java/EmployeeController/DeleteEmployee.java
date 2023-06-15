@@ -59,12 +59,12 @@ public class DeleteEmployee extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         int manv = Integer.parseInt(request.getParameter("id"));
         System.err.println(manv);
         EmployeeDAO em = new EmployeeDAO();
         DepartmentDAO dd = new DepartmentDAO();
-        
+
         try {
             Employee e = new Employee();
             if (em.getEmployeeByID(manv) != null) {

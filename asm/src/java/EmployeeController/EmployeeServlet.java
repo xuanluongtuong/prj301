@@ -43,8 +43,9 @@ public class EmployeeServlet extends HttpServlet {
         List<Employee> list = nv.getEmList(Integer.parseInt(mapb));
         HttpSession session = request.getSession();
         session.setAttribute("list", list);
+        session.setAttribute("mapb", mapb);
         session.setAttribute("tenPb", depart);
-
+        session.setAttribute("maql", maql);
         DepartmentDAO dp = new DepartmentDAO();
         Employee mn = dp.getManager(Integer.parseInt(mapb));
 
