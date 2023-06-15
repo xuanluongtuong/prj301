@@ -110,6 +110,7 @@ public class EditEmployee extends HttpServlet {
             em.setPhongBan(phongban);
             em.setMaPB(Integer.parseInt(mapb));
             em.setLuong(Float.parseFloat(luong));
+            
             employ.editEmployee(em);
             List<Employee> list = employ.getEmList(Integer.parseInt(mapb));
             HttpSession session = request.getSession();

@@ -96,7 +96,7 @@
             <div class="mylist">
                 <% Employee em = (Employee)request.getAttribute("employee");
                 %>
-                <form action="addem" method="post">
+                <form action="editem" method="post">
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
