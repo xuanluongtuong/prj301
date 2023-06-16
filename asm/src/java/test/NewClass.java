@@ -4,7 +4,10 @@
  */
 package test;
 
-import DAL.LoginDAO;
+import DAL.*;
+import java.util.List;
+import model.Project;
+
 
 /**
  *
@@ -12,7 +15,8 @@ import DAL.LoginDAO;
  */
 public class NewClass {
     public static void main(String[] args) {
-        LoginDAO d = new LoginDAO();
-        System.out.println(d.checkLogin("admin", "123").getUser());
+        ProjectDAO d = new ProjectDAO();
+        List<Project> list = d.getPJList();
+        System.out.println(list.get(0).getMaDA());
     }
 }

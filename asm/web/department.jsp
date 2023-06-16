@@ -68,10 +68,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             </div>
             <ul>              
                 <li><a href="depart">Employee</a></li>
-                <li><a href="#">Project</a></li>
-                <li><a href="#">Finance</a></li>
-                <li><a href="#">Resource</a></li>
-                <li><a href="#">Customer</a></li>
+                <li><a href="project">Project</a></li>
+                <li><a href="finance">Finance</a></li>
+                <li><a href="resource">Resource</a></li>
+                <li><a href="customer">Customer</a></li>
             </ul>
         </nav>
 
@@ -81,6 +81,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
         <!-- menu -->
         <div class="mymenu">
+            
+            <div class="mycreate_action" style="display: flex;justify-content: right;">
+                <a href="departmentadd" style="text-decoration: none;margin: 5px 40px -5px 0;font-size: 20px;color: rgb(133, 0, 159);">
+                    <i class="fa-solid fa-square-plus" style="margin-right: 5px;"></i>
+                    Create Department
+                </a>
+            </div>
 
             <%ArrayList<Department> departments = (ArrayList<Department>)request.getAttribute("data");
             %>

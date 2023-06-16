@@ -4,7 +4,7 @@
     Author     : admin
 --%>
 
-<%@page import="model.Employee"%>
+<%@page import="model.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 
@@ -22,36 +22,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <title>HAPPY HOME</title>  
+
         <style>
             .form-group {
                 display: grid;
             }
-        </style>      
-        <%
-            List<Employee> list = new ArrayList<>();
-                if(session.getAttribute("list") != null){
-                    list = (ArrayList<Employee>) session.getAttribute("list");  
-                }
-                                      
-        %>
-        <script>
-            function doDelete(id) {
-                if (confirm("Are you sure to delete?")) {
-                    window.location = "delete?id=" + id;
-                }
-            }
-        </script>
-        <style>
-            <% if(list.size() > 1){ %>
-            #myactionmn{
-                visibility: hidden;
-            }
-            <% } else { %>
-            #myactionmn{
-                visibility: visible;
-            }
-            <% } %>
         </style>
+
     </head>
     <body>
         <!--start header-->
@@ -66,8 +43,9 @@
             </div>
 
         </div>
-        <div class="mylogout"> 
-            <form action="out" method="post">
+        <div class="mylogout">           
+
+            <form action="out" method="post" style="background: white;">
                 <input type="submit" value="Log out"/>
             </form>
 
@@ -83,10 +61,10 @@
             </div>
             <ul>              
                 <li><a href="depart">Employee</a></li>
-                <li><a href="#">Project</a></li>
-                <li><a href="#">Finance</a></li>
-                <li><a href="#">Resource</a></li>
-                <li><a href="#">Customer</a></li>
+                <li><a href="project">Project</a></li>
+                <li><a href="finance">Finance</a></li>
+                <li><a href="resource">Resource</a></li>
+                <li><a href="customer">Customer</a></li>
             </ul>
         </nav>
 
@@ -94,64 +72,35 @@
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
-                <form action="addem" method="post">
+                <form action="customeredit" method="post" style="display: inline; justify-content: center;">
+                    <% Customer cus = (Customer)request.getAttribute("custom");
+                    %>
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
-                                <label class="form-label" for="HO_VA_TEN">Họ và tên</label>
-                                <input class="form-input" type="text" id="HOVATEN" name="HOVATEN" required />
+                                <label class="form-label" for="TENKH">Customer Name</label>
+                                <input class="form-input" type="text" id="TENKH" name="TENKH" value="<%=cus.getTenKH()%>" required />
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="TEN">Tên</label>
-                                <input class="form-input" type="text" id="TEN" name="TEN" required />
+                                <label class="form-label" for="DCKH">Address</label>
+                                <input class="form-input" type="text" id="DCKH" name="DCKH" value="<%=cus.getDCKH()%>" required />
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Giới tính</label>
-                                <div class="radio-group">
-                                    <label>
-                                        <input type="radio" name="PHAI" value="1" required checked />
-                                        Nam
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="PHAI" value="0" required />
-                                        Nữ
-                                    </label>
-                                </div>
+                                <label class="form-label" for="SDTKH">Phone Number</label>
+                                <input class="form-input" type="tel" id="SDTKH" name="SDTKH" value="<%=cus.getSDTKH()%>" required />
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="NGAYSINH">Ngày sinh</label>
-                                <input class="form-input" type="date" id="NGAYSINH" name="NGAYSINH" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="DIACHI">Địa chỉ</label>
-                                <input class="form-input" type="text" id="DIACHI" name="DIACHI" required />
+                                <label class="form-label" for="EMAILKH">Email</label>
+                                <input class="form-input" type="email" id="EMAILKH" name="EMAILKH" value="<%=cus.getEmailKH()%>" required />
                             </div>
                         </div>
                         <div class="form-right">
-                            <div class="form-group">
-                                <label class="form-label" for="SDT">Số điện thoại</label>
-                                <input class="form-input" type="text" id="SDT" name="SDT" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="EMAIL">Email</label>
-                                <input class="form-input" type="email" id="EMAIL" name="EMAIL" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="VITRI">Vị trí</label>
-                                <input class="form-input" type="text" id="VITRI" name="VITRI" required />
-                            </div>
-                            <input  type="hidden"  name="MAQL"  value="<%=session.getAttribute("maql")%>"/>
-                            <input  type="hidden"  name="PHONGBAN"  value="<%=session.getAttribute("tenPb")%>"/>
-                            <input  type="hidden"  name="MAPB"  value="<%=session.getAttribute("mapb")%>"/>
-                            <div class="form-group">
-                                <label class="form-label" for="LUONG">Tiền lương</label>
-                                <input class="form-input" type="number" id="LUONG" name="LUONG" required />
-                            </div>
-                            <div class="form-button">
-                                <button class="btn-submit" type="submit">Submit</button>
+                            <div class="form-button" style="display: flex; justify-content: left">
+                                <button class="btn-submit" type="submit" style="margin: 30px 0 0 0;">Submit</button>
                             </div>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>

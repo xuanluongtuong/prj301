@@ -28,17 +28,17 @@ public class DepartmentDAO extends DBContext {
                 Department dp = new Department();
                 dp.setMaPB(rs.getInt("MAPB"));
                 dp.setTenPB(rs.getString("TENPB"));
-                dp.setMaQL(rs.getString("MAQL"));
+                dp.setMaQL(rs.getInt("MAQL"));
                 dp.setDiaDiem(rs.getString("DIADIEM"));
                 list.add(dp);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return list;
     }
 
-    public String getDepartByID(int mapb) {
+    public String getDepartID(int mapb) {
         String sql = "select * from dbo.PHONGBAN where MAPB = ?";
         String str;
         try {
@@ -49,10 +49,33 @@ public class DepartmentDAO extends DBContext {
                 str = rs.getString("TENPB");
                 return str;
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return "";
+    }
+
+    public Department getDepartByID(int mapb) {
+        String sql = "select * from dbo.PHONGBAN where MAPB = ?";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, mapb);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                Department dp = new Department();
+                dp.setMaPB(mapb);
+                dp.setTenPB(rs.getString("TENPB"));
+                dp.setMaQL(rs.getInt("MAQL"));
+                dp.setDiaDiem(rs.getString("DIADIEM"));
+                return dp;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     public Employee getManager(int mapb) {
@@ -85,10 +108,23 @@ public class DepartmentDAO extends DBContext {
         }
         return null;
     }
-    
+
+    public void insertDepartment(Department dp) {
+        String sql = "INSERT INTO dbo.PHONGBAN(TENPB, MAQL, DIADIEM) VALUES (?, ?, ?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, dp.getTenPB());
+            st.setInt(2, dp.getMaQL());
+            st.setString(3, dp.getDiaDiem());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
     public static void main(String[] args) {
         DepartmentDAO dp = new DepartmentDAO();
-        Employee e = dp.getManager(1);
-        System.out.println(e.getMaNV());
+        Department d = dp.getDepartByID(4);
+        System.out.println(d.getDiaDiem());
     }
 }

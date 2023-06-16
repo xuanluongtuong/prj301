@@ -11,17 +11,23 @@ import java.sql.Date;
  * @author admin
  */
 public class Project {
+    String tenKH;
     int maDA;
     String tenDA;
     String diaDiem;
-    float nganSach;
-    float loiNhuan;
+    float nganSach;    
     Date ngayThiCong;
-    Date ngayKetThuc;
-    String theLoai;
-    String maKH;
-
+    int trangThai;
+    
     public Project() {
+    }
+
+    public String getTenKH() {
+        return tenKH;
+    }
+
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
     }
 
     public int getMaDA() {
@@ -31,8 +37,6 @@ public class Project {
     public void setMaDA(int maDA) {
         this.maDA = maDA;
     }
-
-    
 
     public String getTenDA() {
         return tenDA;
@@ -58,14 +62,6 @@ public class Project {
         this.nganSach = nganSach;
     }
 
-    public float getLoiNhuan() {
-        return loiNhuan;
-    }
-
-    public void setLoiNhuan(float loiNhuan) {
-        this.loiNhuan = loiNhuan;
-    }
-
     public Date getNgayThiCong() {
         return ngayThiCong;
     }
@@ -74,29 +70,12 @@ public class Project {
         this.ngayThiCong = ngayThiCong;
     }
 
-    public Date getNgayKetThuc() {
-        return ngayKetThuc;
+    public int getTrangThai() {
+        return trangThai;
     }
 
-    public void setNgayKetThuc(Date ngayKetThuc) {
-        this.ngayKetThuc = ngayKetThuc;
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
     }
-
-    public String getTheLoai() {
-        return theLoai;
-    }
-
-    public void setTheLoai(String theLoai) {
-        this.theLoai = theLoai;
-    }
-
-    public String getMaKH() {
-        return maKH;
-    }
-
-    public void setMaKH(String maKH) {
-        this.maKH = maKH;
-    }
-
        
 }

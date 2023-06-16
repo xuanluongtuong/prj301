@@ -39,7 +39,7 @@ public class EmployeeDAO extends DBContext {
                 e.setLuong(rs.getFloat("LUONG"));
                 list.add(e);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return list;
@@ -130,7 +130,7 @@ public class EmployeeDAO extends DBContext {
             st.setFloat(12, em.getLuong());
             st.setInt(13, em.getMaNV());
             st.executeUpdate();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -142,15 +142,15 @@ public class EmployeeDAO extends DBContext {
             PreparedStatement st=connection.prepareStatement(sql);
             st.setInt(1, manv);
             st.executeUpdate();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
-    public static void main(String[] args) {
-        EmployeeDAO e = new EmployeeDAO();
-        List<Employee> list = e.getEmList(1);
-        Employee em = e.getEmployeeByID(7);
-        System.out.println(em.getNgaySinh());
-    }
+//    public static void main(String[] args) {
+//        EmployeeDAO e = new EmployeeDAO();
+//        List<Employee> list = e.getEmList(1);
+//        Employee em = e.getEmployeeByID(7);
+//        System.out.println(em.getNgaySinh());
+//    }
 }

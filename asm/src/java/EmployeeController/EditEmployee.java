@@ -64,7 +64,7 @@ public class EditEmployee extends HttpServlet {
         EmployeeDAO employ = new EmployeeDAO();
         Employee em = employ.getEmployeeByID(manv);
         request.setAttribute("employee", em);
-        request.getRequestDispatcher("editEm.jsp").forward(request, response);
+        request.getRequestDispatcher("EmEdit.jsp").forward(request, response);
 
     }
 

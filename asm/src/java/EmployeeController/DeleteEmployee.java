@@ -61,7 +61,7 @@ public class DeleteEmployee extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         int manv = Integer.parseInt(request.getParameter("id"));
-        System.err.println(manv);
+//        System.err.println(manv);
         EmployeeDAO em = new EmployeeDAO();
         DepartmentDAO dd = new DepartmentDAO();
 
@@ -70,7 +70,7 @@ public class DeleteEmployee extends HttpServlet {
             if (em.getEmployeeByID(manv) != null) {
                 e = em.getEmployeeByID(manv);
                 int mapb = e.getMaPB();
-                String tenPb = dd.getDepartByID(mapb);
+                String tenPb = dd.getDepartID(mapb);
                 em.deleteEmployee(manv);
                 List<Employee> list = em.getEmList(mapb);
                 HttpSession session = request.getSession();

@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.Department;
 import model.Employee;
 
 /**
@@ -41,17 +42,19 @@ public class EmployeeServlet extends HttpServlet {
 
         EmployeeDAO nv = new EmployeeDAO();
         List<Employee> list = nv.getEmList(Integer.parseInt(mapb));
+        
         HttpSession session = request.getSession();
         session.setAttribute("list", list);
         session.setAttribute("mapb", mapb);
         session.setAttribute("tenPb", depart);
         session.setAttribute("maql", maql);
-        DepartmentDAO dp = new DepartmentDAO();
-        Employee mn = dp.getManager(Integer.parseInt(mapb));
-
+        
+        DepartmentDAO department = new DepartmentDAO();
+        Employee mn = department.getManager(Integer.parseInt(mapb));
+        Department dp = department.getDepartByID(Integer.parseInt(mapb));        
+        session.setAttribute("department", dp);        
         session.setAttribute("emql", mn);
-//        request.setAttribute("tenPB", phong);
-//        request.getRequestDispatcher("EmList.jsp").forward(request, response);
+
         response.sendRedirect("EmList.jsp");
     }
 

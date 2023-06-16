@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="model.Employee"%>
+<%@page import="model.Department"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 
@@ -61,8 +62,9 @@
             </div>
 
         </div>
-        <div class="mylogout"> 
-            <form action="out" method="post">
+        <div class="mylogout">           
+
+            <form action="out" method="post" style="background: white;">
                 <input type="submit" value="Log out"/>
             </form>
 
@@ -78,24 +80,38 @@
             </div>
             <ul>              
                 <li><a href="depart">Employee</a></li>
-                <li><a href="#">Project</a></li>
-                <li><a href="#">Finance</a></li>
-                <li><a href="#">Resource</a></li>
-                <li><a href="#">Customer</a></li>
+                <li><a href="project">Project</a></li>
+                <li><a href="finance">Finance</a></li>
+                <li><a href="resource">Resource</a></li>
+                <li><a href="customer">Customer</a></li>
             </ul>
         </nav>
 
 
         <!-- menu -->
         <div class="mymenu">
-            <div class="mylist">
-                <div class="mycontent">
-                    <div class="myhead_title_table">
-                        <h4> <%=session.getAttribute("tenPb")%> </h4><br/>
-                        <a href="addem"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Create</a>
-                    </div>
 
-                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 20px 10px 50px 10px;">
+            <div style="display: flex;justify-content: right;">
+                <a href="addem" style="text-decoration: none;margin: 5px 40px -5px 0;font-size: 20px;color: rgb(133, 0, 159);">
+                    <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
+                    Create Employee
+                </a>
+            </div>
+
+            <div class="mylist">  
+                
+                <div class="myhead_title_table" style="margin-bottom: 10px;">
+                    <div style="color: rgb(0, 148, 156);"><h3 style="margin-left: 30px;">Department:</h3>
+                        <div style="margin-left: 70px;">
+                            <% Department depart = (Department)session.getAttribute("department"); %>
+                            Department Name: <%=session.getAttribute("tenPb")%></br>                            
+                            Address: <%=depart.getDiaDiem()%></br>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="mycontent">
+                    <h5 style="color: rgb(0, 148, 156);margin-left: 20px;">Manager Employee: </h5>
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 20px 10px 50px 10px;">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" >
                             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
@@ -144,7 +160,7 @@
                                     <%
                                         Employee e = new Employee();
                                         if(session.getAttribute("emql") != null){
-                                            e = (Employee) session.getAttribute("emql");  
+                                            e = (Employee)session.getAttribute("emql");  
                                         }                                      
                                     %>
                                 <tr class="border-b border-gray-50 dark:border-gray-800">
@@ -185,18 +201,22 @@
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=e.getLuong()%>
                                     </td> 
-                                    <td class="px-6 py-4 bg-green-100 dark:bg-green-800" id="myactionmn">   
-                                        &nbsp;&nbsp;&nbsp;<a href="editem?id=<%=e.getMaNV()%>" class="myedit">Edit</a>&nbsp;&nbsp;&nbsp;
-                                        <td class="px-6 py-4 bg-pink-100 dark:bg-pink-800" id="myactionmn">
-                                            <a href="#" onclick="doDelete('<%=e.getMaNV()%>')" class="mydelete">Delete</a>
-                                        </td>                                    
+                                    <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myactionmn">   
+                                        <a href="editem?id=<%=e.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
+                                            <i class="fa-solid fa-pen-to-square"></i>Edit
+                                        </a>
+                                            
+                                        <a href="#" onclick="doDelete('<%=e.getMaNV()%>')" class="mydelete" style="display: flex;align-items: center;">
+                                            <i class="fa-solid fa-trash"></i>Delete
+                                        </a>                                                                       
                                     </td>
-                                    
+
                                 </tr> 
                             </tbody>
                         </table>
                     </div>
 
+                    <h5 style="color: rgb(0, 148, 156);margin-left: 20px;">Employee: </h5>
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
                         <% if(list.size() > 1){ %>
@@ -237,7 +257,9 @@
                                         Salary<br>
                                         (milions Dong)
                                     </th> 
-                                                                  
+                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
+                                        Action
+                                    </th>
 
                                 </tr>
                             </thead>
@@ -282,15 +304,18 @@
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%=nv.getLuong()%>
                                 </td> 
-                                <td class="px-6 py-4 bg-green-100 dark:bg-green-800" id="myaction">   
-                                      
-                                        &nbsp;&nbsp;&nbsp;<a href="editem?id=<%=nv.getMaNV()%>" class="myedit">Edit</a>&nbsp;&nbsp;&nbsp;                                    
-                                    
-                                    <td class="px-6 py-4 bg-pink-100 dark:bg-pink-800" id="myaction">
-                                        <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')" class="mydelete">Delete</a>
-                                    </td>                                    
-                                </td>
+                                <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+
+                                    <a href="editem?id=<%=nv.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        Edit</a>
                                 
+                                    <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')" class="mydelete" style="display: flex;align-items: center;">
+                                        <i class="fa-solid fa-trash"></i>
+                                        Delete</a>
+                                                                   
+                                </td>
+
                             </tr>  
                             <%} }%>                          
                             </tbody>

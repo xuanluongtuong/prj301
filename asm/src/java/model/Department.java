@@ -11,18 +11,20 @@ package model;
 public class Department {
     int maPB;
     String tenPB;
-    String maQL;
+    int maQL;
     String diaDiem;
 
     public Department() {
     }
 
-    public Department(int maPB, String tenPB, String maQL, String diaDiem) {
+    public Department(int maPB, String tenPB, int maQL, String diaDiem) {
         this.maPB = maPB;
         this.tenPB = tenPB;
         this.maQL = maQL;
         this.diaDiem = diaDiem;
     }
+
+   
 
     public int getMaPB() {
         return maPB;
@@ -40,13 +42,13 @@ public class Department {
         this.tenPB = tenPB;
     }
 
-    public String getMaQL() {
+    public int getMaQL() {
         return maQL;
     }
 
-    public void setMaQL(String maQL) {
+    public void setMaQL(int maQL) {
         this.maQL = maQL;
-    }
+    }  
 
     public String getDiaDiem() {
         return diaDiem;
