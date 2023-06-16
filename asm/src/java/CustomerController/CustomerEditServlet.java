@@ -58,9 +58,9 @@ public class CustomerEditServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int ma = Integer.parseInt(request.getParameter("id"));
-        CustomerDAO project = new CustomerDAO();
-        Customer obj = project.getCustomerByID(ma);
-        request.setAttribute("custom", obj);
+        CustomerDAO customer = new CustomerDAO();
+        Customer obj = customer.getCustomerByID(ma);
+        request.setAttribute("customer", obj);
         request.getRequestDispatcher("AdminCustomerEdit.jsp").forward(request, response);
     }
 
@@ -75,6 +75,7 @@ public class CustomerEditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String makh = request.getParameter("MAKH");
         String tenkh = request.getParameter("TENKH");
         String dckh = request.getParameter("DCKH");
         String sdtKH = request.getParameter("SDTKH");
@@ -83,6 +84,7 @@ public class CustomerEditServlet extends HttpServlet {
         try {
             CustomerDAO customerDAO = new CustomerDAO();
             Customer customer = new Customer();
+            customer.setMaKH(Integer.parseInt(makh));
             customer.setTenKH(tenkh);
             customer.setDCKH(dckh);
             customer.setSDTKH(sdtKH);

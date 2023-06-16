@@ -76,7 +76,7 @@ public class CustomerDAO extends DBContext{
 
     //sua 
     public void editCustomer(Customer cus) {
-        String sql = "UPDATE dbo.KHACHHANGSET TENKH = ?, DCKH = ?, SDTKH = ?, EMAILKH = ?' WHERE MAKH = ?";
+        String sql = "UPDATE dbo.KHACHHANG SET TENKH = ?, DCKH = ?, SDTKH = ?, EMAILKH = ? WHERE MAKH = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, cus.getTenKH());

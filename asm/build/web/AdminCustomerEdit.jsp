@@ -73,12 +73,13 @@
         <div class="mymenu">
             <div class="mylist">
                 <form action="customeredit" method="post" style="display: inline; justify-content: center;">
-                    <% Customer cus = (Customer)request.getAttribute("custom");
+                    <% Customer cus = (Customer)request.getAttribute("customer");
                     %>
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
                                 <label class="form-label" for="TENKH">Customer Name</label>
+                                <input type="hidden" name="MAKH" value="<%=cus.getMaKH()%>"/>
                                 <input class="form-input" type="text" id="TENKH" name="TENKH" value="<%=cus.getTenKH()%>" required />
                             </div>
                             <div class="form-group">
