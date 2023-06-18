@@ -44,6 +44,10 @@
                         <i class="far fa-eye"></i>
                     </div>
                 </div>
+                 <div class="form-group">
+                    <i class="far fa-user"></i>
+                    <input type="text" name="sdt" class="form-input" placeholder="điện thoại">
+                </div>
                 <div class="form-group">
                     <i class="fas fa-key"></i>
                     <input type="password" name="repassword" class="form-input" placeholder="Nhập lại mật khẩu">

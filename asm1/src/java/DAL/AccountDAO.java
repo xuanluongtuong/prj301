@@ -15,7 +15,7 @@ import model.Account;
  */
 public class AccountDAO extends DBContext{
      public Account checkAccount(String email, String password) {
-        String sql = "SELECT * FROM Account WHERE email = ? AND password = ?";
+        String sql = "SELECT * FROM ACCOUNT WHERE email = ? AND password = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, email);
@@ -26,7 +26,7 @@ public class AccountDAO extends DBContext{
                 account.setAccountID(rs.getInt("accountID"));
                 account.setEmail(rs.getString("email"));
                 account.setPassword(rs.getString("password"));
-                account.setName(rs.getString("name"));
+                account.setName(rs.getString("username"));
                 account.setPhone(rs.getString("phone"));                
                 account.setRole(rs.getInt("role"));
                 return account;
@@ -47,7 +47,7 @@ public class AccountDAO extends DBContext{
                 Account account = new Account();
                 account.setAccountID(rs.getInt("accountID"));
                 account.setEmail(rs.getString("email"));
-                account.setName(rs.getString("name"));
+                account.setName(rs.getString("username"));
                 account.setPhone(rs.getString("phone"));                
                 return account;
             }
@@ -67,7 +67,7 @@ public class AccountDAO extends DBContext{
                 Account account = new Account();
                 account.setAccountID(rs.getInt("accountID"));
                 account.setEmail(rs.getString("email"));
-                account.setName(rs.getString("name"));
+                account.setName(rs.getString("username"));
                 account.setPhone(rs.getString("phone"));                
                 return account;
             }
@@ -78,7 +78,7 @@ public class AccountDAO extends DBContext{
     }
 
     public int getAccountIDByEmail(String email) {
-        String sql = "SELECT accountID FROM Account WHERE email = ?";
+        String sql = "SELECT accountID FROM ACCOUNT WHERE email = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, email);
@@ -93,7 +93,7 @@ public class AccountDAO extends DBContext{
     }
 
     public Account createAccount(Account account) {
-        String sql = "INSERT INTO Account(email, password, name, phone, address, role) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO ACCOUNT(email, password, username, phone, address, role) VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, account.getEmail());
@@ -110,7 +110,7 @@ public class AccountDAO extends DBContext{
     }
 
     public boolean changePassword(String email, String newPassword) {
-        String sql = "UPDATE Account SET password = ? WHERE email = ? ";
+        String sql = "UPDATE ACCOUNT SET password = ? WHERE email = ? ";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, newPassword);
@@ -124,7 +124,7 @@ public class AccountDAO extends DBContext{
     }
 
     public boolean updateInfo(String email, String name, String phone, String address) {
-        String sql = "UPDATE Account SET name = ?, phone = ?, address = ? WHERE email = ?";
+        String sql = "UPDATE ACCOUNT SET username = ?, phone = ?, address = ? WHERE email = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, name);

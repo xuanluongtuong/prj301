@@ -115,12 +115,12 @@ public class login extends HttpServlet {
             if (account.getRole() == UserRole.USER.getValue()) {
                 session.setAttribute("role", "user");
             }
-            response.sendRedirect(url);
+            response.sendRedirect("home.jsp");
         } else {
             session.setAttribute("loginmessage", "Login failed");
             request.setAttribute("error", "Username or password is incorrect");
             // request.getRequestDispatcher("/home.jsp").forward(request, response);
-            response.sendRedirect("home?page=1");
+            response.sendRedirect("login");
         }
     }
 

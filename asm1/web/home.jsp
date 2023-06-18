@@ -3,6 +3,9 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
 -->
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
     <!--comment-->
     <head>
@@ -17,7 +20,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     </head>
 
     <body>
-        
+        <c:if test="${param.logout != null }">
+            <c:remove var="role" scope="session"/>
+        </c:if>
 
         <!--start header-->
         <div class="myheader">
@@ -45,14 +50,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <nav>
             <div class="myhome">
                 <img src="img/home1.png" alt="">
-                <a href="home.jsp">Home</a>
+                <a href="home.jsp">Trang chủ</a>
             </div>
             <ul>              
-                <li><a href="depart">Employee</a></li>
-                <li><a href="project">Project</a></li>
-                <li><a href="finance">Finance</a></li>
-                <li><a href="resource">Resource</a></li>
-                <li><a href="customer">Customer</a></li>
+                <li><a href="depart">Nhân viên</a></li>
+                <li><a href="project">Dự án</a></li>
+                <li><a href="finance">Tài chính</a></li>
+                <li><a href="resource">Tài nguyên</a></li>
+                <li><a href="customer">Khách hàng</a></li>
             </ul>
         </nav>
 
@@ -66,50 +71,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <ul class="mymenu_ul">
                 <a href="depart">
                     <li class="mysub_menu">
-                        <div class="mysub_menu_title">Employee</div>
+                        <div class="mysub_menu_title">Nhân viên</div>
                         <div class="mysub_menu_logo">
                             <img src="img/nhansu.png" alt="">
                         </div>                
                     </li> 
                 </a>
-                
+
                 <a href="project">
                     <li class="mysub_menu">
-                        <div class="mysub_menu_title">Project</div>
+                        <div class="mysub_menu_title">Dự án</div>
                         <div class="mysub_menu_logo">
                             <img src="img/duan.png" alt="">
                         </div>
-                        
+
                     </li>
                 </a>
 
                 <a href="finance">
                     <li class="mysub_menu">
-                        <div class="mysub_menu_title">Finance</div>
+                        <div class="mysub_menu_title">Tài chính</div>
                         <div class="mysub_menu_logo">
                             <img src="img/taichinh.png" alt="">
                         </div>
-                        
+
                     </li> 
                 </a>
 
                 <a href="resource">
                     <li class="mysub_menu sub_menu_tn">
-                        <div class="mysub_menu_title">Resource</div>
+                        <div class="mysub_menu_title">Tài nguyên</div>
                         <div class="mysub_menu_logo">
                             <img src="img/tainguyen1.png" alt="">
                         </div>
-                        
+
                     </li> 
                 </a>
 
                 <a href="customer">
                     <li class="mysub_menu">
-                        <div class="mysub_menu_title">Customer</div>
+                        <div class="mysub_menu_title">Khách hàng</div>
                         <div class="mysub_menu_logo">
                             <img src="img/khachhang2.png" alt="">
                         </div>
-                        
+
                     </li>
                 </a>
             </ul>
@@ -231,7 +236,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
             <!-- Copyright -->
             <div class="text-center p-4" style="background-color: rgb(0, 0, 0);">
-                � 2021 Copyright:
+                ï¿½ 2021 Copyright:
                 <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
             </div>
             <!-- Copyright -->

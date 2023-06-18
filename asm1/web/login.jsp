@@ -1,60 +1,105 @@
 <%-- 
-    Document   : login
-    Created on : Jun 5, 2023, 1:24:55 AM
-    Author     : admin
+    Document   : loginModal
+    Created on : Jun 2, 2023, 2:52:42 PM
+    Author     : ASUS PC
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/stylelogin.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="fontawesome/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-        <title>HAPPY HOME</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/fonts/icomoon/style.css">
+       
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/owl.carousel.min.css">
+        <!-- Style -->
+        <link
+        rel="stylesheet"
+        type="text/css"
+        href="${pageContext.request.contextPath}/styles/loginModal.css"
+        />
+        <title>JSP Page</title>
     </head>
-    <body>    
+    <body>
+  
 
-        <div class="auth">        
-            <div id="wrapper" class="log_in">
-                <c:set var="cookie" value="${pageContext.request.cookies}" />
-                <form action="login" id="form-login">
-                    <h1 class="form-heading">Đăng nhập</h1>
-
-                    <div class="form-group">
-                        <i class="far fa-user"></i>
-                        <input type="text" name="username" class="form-input" placeholder="Tên đăng nhập">
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-key"></i>
-                        <input type="password" name="password" class="form-input" placeholder="Mật khẩu">
-                        <div id="eye">
-                            <i class="far fa-eye"></i>
+  
+        <!-- <div class="content"> -->
+          <!-- <div class="container"> -->
+            <!-- <div class="row justify-content-center"> -->
+              <div class="col-md-6 contents">
+                <div class="row justify-content-center">
+                  <div class="col-md-12" style="padding: 0px;">
+                    <div class="form-block"  style="padding: 30px; width:538px;">
+                      <c:set var="cookie" value="${pageContext.request.cookies}" />
+                        <div class="mb-4">
+                        <h3>Sign In to <strong>NMD - SHOP</strong></h3>
+                        <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+                      </div>
+                      <form action="login" method="post">
+                        <div class="form-group first">
+                          <label for="username">Email</label>
+                          <input type="text" name="email" class="form-control" id="username" value="${cookie.email.value}">
+      
                         </div>
+                        <div class="form-group last mb-4">
+                          <label for="password">Password</label>
+                          <input type="password" name="Password" class="form-control" id="password" value="${cookie.password.value}">
+                          
+                        </div>
+                        
+                        <div class="d-flex mb-5 align-items-center">
+                          <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                            <input type="checkbox" name="remember" ${(cookie.email != null ? "checked" : "")}></input>
+                            <div class="control__indicator"></div>
+                          </label>
+                          <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+                        </div>
+                        <c:if test="${loginmessage != null}">
+                            <p style="color: red">${loginmessage}</p>
+                        </c:if>
+                        <input hidden value="url" name="url">
+                        <input style="background-color: #ff5b6a; border: #ff5b6a;" type="submit" value="Log In" onclick="btnSubmit();" class="btn btn-pill text-white btn-block btn-primary">
+                        <span class="d-block text-center my-4 text-muted"> or sign in with</span>
+                        
+                        <div class="social-login text-center">
+                          <a onclick="btnSubmit();"  href="#" class="facebook">
+                            <span class="icon-facebook mr-3"></span> 
+                          </a>
+                          <a href="#" class="twitter">
+                            <span class="icon-twitter mr-3"></span> 
+                          </a>
+                          <a href="#" class="google">
+                            <span class="icon-google mr-3"></span> 
+                          </a>
+                        </div>
+                      </form>
                     </div>
-                    <input type="submit" value="Đăng nhập" class="form-submit">
-                    <c:if test="${loginmessage != null}">
-                        <p style="color: red">${loginmessage}</p>
-                    </c:if>
-                    <div class="myheadwrapper__btn myheadwrapper__btn__sign">
-                        <a href="sign.jsp" >Đăng ký</a>
-                    </div>
-                </form>
+                  </div>
+                </div>
+                
+              </div>
+              
+            <!-- </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      
+        
+          <script src="js/jquery-3.3.1.min.js"></script>
+          <script src="js/popper.min.js"></script>
+          <script src="js/bootstrap.min.js"></script>
+          <script src="js/main.js"></script>
 
-            </div>
-
-        </div>
-
-    </body>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="js/mycode.js"></script>
+          <script>
+            function btnSubmit() {
+              const href = window.location.href;
+              const url = href.split("/")
+              document.getElementsByName("url")[0].value = url[url.length - 1];
+            }
+          </script>
+        </body>
 </html>
