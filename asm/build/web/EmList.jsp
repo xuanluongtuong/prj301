@@ -26,7 +26,8 @@
         <%
             List<Employee> list = new ArrayList<>();
                 if(session.getAttribute("list") != null){
-                    list = (ArrayList<Employee>) session.getAttribute("list");  
+                    list = (ArrayList<Employee>) session.getAttribute("list");
+                    
                 }
                                       
         %>
@@ -90,17 +91,17 @@
 
         <!-- menu -->
         <div class="mymenu">
-
+            <% if(list.size() >= 1){ %>
             <div style="display: flex;justify-content: right;">
                 <a href="addem" style="text-decoration: none;margin: 5px 40px -5px 0;font-size: 20px;color: rgb(133, 0, 159);">
                     <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
                     Create Employee
                 </a>
             </div>
-
+            <%}%>
             <div class="mylist">  
-                
-                <div class="myhead_title_table" style="margin-bottom: 10px;">
+
+                <div class="myhead_title_table" style="margin-bottom: 0px;">
                     <div style="color: rgb(0, 148, 156);"><h3 style="margin-left: 30px;">Department:</h3>
                         <div style="margin-left: 70px;">
                             <% Department depart = (Department)session.getAttribute("department"); %>
@@ -109,10 +110,24 @@
                         </div>
                     </div>                    
                 </div>
+
                 <div class="mycontent">
+                    <%
+                    Employee e = new Employee();
+                    if(session.getAttribute("emql") != null){
+                        e = (Employee)session.getAttribute("emql");  
+                    }
+                    %>
+
+                    <% if(list.size() >= 1){ %>
+                    <%if(e!=null){%>
                     <h5 style="color: rgb(0, 148, 156);margin-left: 20px;">Manager Employee: </h5>
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 20px 10px 50px 10px;">
+
+
+
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" >
+
                             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
@@ -155,14 +170,11 @@
 
                                 </tr>
                             </thead>
+
                             <tbody>
+
                                 <tr class="border-b border-gray-50 dark:border-gray-800">
-                                    <%
-                                        Employee e = new Employee();
-                                        if(session.getAttribute("emql") != null){
-                                            e = (Employee)session.getAttribute("emql");  
-                                        }                                      
-                                    %>
+
                                 <tr class="border-b border-gray-50 dark:border-gray-800">
                                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                         <%=e.getMaNV()%>
@@ -201,25 +213,28 @@
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=e.getLuong()%>
                                     </td> 
-                                    <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myactionmn">   
+                                    <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+
                                         <a href="editem?id=<%=e.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-pen-to-square"></i>Edit
-                                        </a>
-                                            
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            Edit</a>
+
                                         <a href="#" onclick="doDelete('<%=e.getMaNV()%>')" class="mydelete" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-trash"></i>Delete
-                                        </a>                                                                       
+                                            <i class="fa-solid fa-trash"></i>
+                                            Delete</a>
                                     </td>
 
                                 </tr> 
                             </tbody>
+
                         </table>
                     </div>
-
+                    <%}%>
+                    <% if(list.size() >1){%>
                     <h5 style="color: rgb(0, 148, 156);margin-left: 20px;">Employee: </h5>
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
-                        <% if(list.size() > 1){ %>
+
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
@@ -309,19 +324,35 @@
                                     <a href="editem?id=<%=nv.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                         Edit</a>
-                                
+
                                     <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')" class="mydelete" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-trash"></i>
                                         Delete</a>
-                                                                   
+
                                 </td>
 
                             </tr>  
                             <%} }%>                          
                             </tbody>
                         </table>
-                        <% } %>
-                    </div>     
+                        
+                    </div> 
+                    <%}%>
+                    <% }else{ %>
+                    <input type="hidden" name="TENPB" value="<%=session.getAttribute("tenPb")%>">
+
+                    <div style="display: flex;align-items: center;justify-content: space-between;">
+                        <div>
+                            <h4 style="color: red; padding: 20px;">This department does not have any Employee.</h4>
+                        </div>
+
+                        <div style="padding-right: 40px;">
+                            <button type="submit" style="width: 160px; height: 40px; border-radius: 10px; border: rgb(0, 135, 202) 3px solid; background: linear-gradient(135deg, #30CFD0 0%, #330867 100%);">
+                                <a href="addem?id=<%=session.getAttribute("mapb")%>" style="text-align: center;color: white;text-decoration: none;">Add Manager</a>
+                            </button>
+                        </div>
+                    </div>
+                    <%}%>
                 </div>
             </div>
         </div>

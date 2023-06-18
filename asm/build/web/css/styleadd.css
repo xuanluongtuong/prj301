@@ -305,7 +305,7 @@ nav {
     justify-content: space-evenly;
 }
 
-.form-left,.form-right{
+.form-left,.form-right, .form-middle{
     width: 400px;
     margin: 0 15px;
 }
@@ -317,22 +317,23 @@ nav {
 }
 
 .form-left,
-.form-right {
+.form-right{
     flex-basis: 50%;
 }
 
-.form-group {
-      
+.form-group {   
+    width: 400px;
     margin-bottom: 20px;
 }
 
 .form-label {
+    width: 100%;
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.form-input1 {
+.form-input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;

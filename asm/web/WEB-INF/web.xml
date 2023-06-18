@@ -49,10 +49,6 @@
         <servlet-class>ProjectController.ProjectDeleteServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DepartmentAddServlet</servlet-name>
-        <servlet-class>DepartmentController.DepartmentAddServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CustomerServlet</servlet-name>
         <servlet-class>CustomerController.CustomerServlet</servlet-class>
     </servlet>
@@ -117,10 +113,6 @@
         <url-pattern>/projectdelete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DepartmentAddServlet</servlet-name>
-        <url-pattern>/departmentadd</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>CustomerServlet</servlet-name>
         <url-pattern>/customer</url-pattern>
     </servlet-mapping>
@@ -142,6 +134,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
+        <welcome-file>login</welcome-file>
     </welcome-file-list>
 </web-app>

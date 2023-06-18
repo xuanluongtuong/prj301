@@ -82,12 +82,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <!-- menu -->
         <div class="mymenu">
             
-            <div class="mycreate_action" style="display: flex;justify-content: right;">
+<!--            <div class="mycreate_action" style="display: flex;justify-content: right;">
                 <a href="departmentadd" style="text-decoration: none;margin: 5px 40px -5px 0;font-size: 20px;color: rgb(133, 0, 159);">
                     <i class="fa-solid fa-square-plus" style="margin-right: 5px;"></i>
                     Create Department
                 </a>
-            </div>
+            </div>-->
 
             <%ArrayList<Department> departments = (ArrayList<Department>)request.getAttribute("data");
             %>

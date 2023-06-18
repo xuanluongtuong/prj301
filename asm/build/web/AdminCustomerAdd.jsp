@@ -27,6 +27,24 @@
             .form-group {
                 display: grid;
             }
+             .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+
+
+            @media (min-width: 900px) {
+                .form-container {
+                    flex-direction: row;
+                }
+                .form-left,
+                .form-right {
+                    align-items: flex-start;
+                }
+            }
         </style>
 
     </head>
@@ -94,8 +112,8 @@
                             </div>
                         </div>
                         <div class="form-right">
-                            <div class="form-button" style="display: flex; justify-content: left">
-                                <button class="btn-submit" type="submit" style="margin: 30px 0 0 0;">Submit</button>
+                            <div class="form-button" style="display: flex; justify-content: left;">
+                                <button class="btn-submit" type="submit">Submit</button>
                             </div>
 
                         </div>

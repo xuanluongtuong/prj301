@@ -17,22 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     </head>
 
     <body>
-        <%  
-            String username = null;
-            Cookie[] cookies = request.getCookies();
-            if(cookies!=null){
-                for(Cookie cookie : cookies){
-                    if(cookie.getName().equals("admin")){
-                        username = cookie.getValue();                                
-                    }
-                }
-            }
-            if(username==null){
-                response.sendRedirect("login.jsp");
-            }
-        %>
-
-<!-- <<h1>hello user<%=username%></h1> -->
+        
 
         <!--start header-->
         <div class="myheader">

@@ -26,6 +26,25 @@
             .form-group {
                 display: grid;
             }
+            
+             .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+
+
+            @media (min-width: 900px) {
+                .form-container {
+                    flex-direction: row;
+                }
+                .form-left,
+                .form-right {
+                    align-items: flex-start;
+                }
+            }
         </style>      
         
     </head>
@@ -75,15 +94,15 @@
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
-                                <label class="form-label" for="HO_VA_TEN">Họ và tên</label>
+                                <label class="form-label" for="HO_VA_TEN">Full name</label>
                                 <input class="form-input" type="text" id="HOVATEN" name="HOVATEN" required />
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="TEN">Tên</label>
+                                <label class="form-label" for="TEN">Name</label>
                                 <input class="form-input" type="text" id="TEN" name="TEN" required />
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Giới tính</label>
+                                <label class="form-label">Gender</label>
                                 <div class="radio-group">
                                     <label>
                                         <input type="radio" name="PHAI" value="1" required checked />
@@ -96,17 +115,17 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="NGAYSINH">Ngày sinh</label>
+                                <label class="form-label" for="NGAYSINH">Date of birth</label>
                                 <input class="form-input" type="date" id="NGAYSINH" name="NGAYSINH" required />
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="DIACHI">Địa chỉ</label>
+                                <label class="form-label" for="DIACHI">Address</label>
                                 <input class="form-input" type="text" id="DIACHI" name="DIACHI" required />
                             </div>
                         </div>
                         <div class="form-right">
                             <div class="form-group">
-                                <label class="form-label" for="SDT">Số điện thoại</label>
+                                <label class="form-label" for="SDT">Phone Number</label>
                                 <input class="form-input" type="text" id="SDT" name="SDT" required />
                             </div>
                             <div class="form-group">
@@ -114,14 +133,14 @@
                                 <input class="form-input" type="email" id="EMAIL" name="EMAIL" required />
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="VITRI">Vị trí</label>
+                                <label class="form-label" for="VITRI">Position</label>
                                 <input class="form-input" type="text" id="VITRI" name="VITRI" required />
                             </div>
                             <input  type="hidden"  name="MAQL"  value="<%=session.getAttribute("maql")%>"/>
                             <input  type="hidden"  name="PHONGBAN"  value="<%=session.getAttribute("tenPb")%>"/>
                             <input  type="hidden"  name="MAPB"  value="<%=session.getAttribute("mapb")%>"/>
                             <div class="form-group">
-                                <label class="form-label" for="LUONG">Tiền lương</label>
+                                <label class="form-label" for="LUONG">Salary</label>
                                 <input class="form-input" type="number" id="LUONG" name="LUONG" required />
                             </div>
                             <div class="form-button">

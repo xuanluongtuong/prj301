@@ -25,6 +25,24 @@
             .form-group {
                 display: grid;
             }
+             .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+
+
+            @media (min-width: 900px) {
+                .form-container {
+                    flex-direction: row;
+                }
+                .form-left,
+                .form-right {
+                    align-items: flex-start;
+                }
+            }
         </style>
     </head>
     <body>
