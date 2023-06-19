@@ -8,7 +8,7 @@
 <%@page import="model.Department"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-
+<%@page import="jakarta.servlet.http.HttpSession"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -51,6 +51,15 @@
         </style>
     </head>
     <body>
+        <%String s=(String)session.getAttribute("role");
+            if(s!=null){
+                if(!s.equals("admin") && !s.equals("user")){
+                    response.sendRedirect("login.jsp");
+                }
+            }else{
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <!--start header-->
         <div class="myheader">
 
@@ -65,7 +74,7 @@
         </div>
         <div class="mylogout">           
 
-            <form action="out" method="post" style="background: white;">
+            <form action="logout" style="background: white;">
                 <input type="submit" value="Log out"/>
             </form>
 

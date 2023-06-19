@@ -43,6 +43,10 @@ public class Account {
         
     }
 
+    public Account(String email, String password, String name, String phone, String address, int value) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getAccountID() {
         return accountID;
     }

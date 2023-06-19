@@ -6,6 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="jakarta.servlet.http.HttpSession"%>
 <html>
     <!--comment-->
     <head>
@@ -20,9 +21,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     </head>
 
     <body>
-        <c:if test="${param.logout != null }">
-            <c:remove var="role" scope="session"/>
-        </c:if>
+        <%String s=(String)session.getAttribute("role");
+            if(s!=null){
+                if(!s.equals("admin") && !s.equals("user")){
+                    response.sendRedirect("login.jsp");
+                }
+            }else{
+                response.sendRedirect("login.jsp");
+            }
+        %>
+        
 
         <!--start header-->
         <div class="myheader">
@@ -38,7 +46,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </div>
         <div class="mylogout">           
 
-            <form action="out" method="post">
+            <form action="logout" >
                 <input type="submit" value="Log out"/>
             </form>
 
@@ -50,14 +58,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <nav>
             <div class="myhome">
                 <img src="img/home1.png" alt="">
-                <a href="home.jsp">Trang chủ</a>
+                <a href="home.jsp">Home</a>
             </div>
             <ul>              
-                <li><a href="depart">Nhân viên</a></li>
-                <li><a href="project">Dự án</a></li>
-                <li><a href="finance">Tài chính</a></li>
-                <li><a href="resource">Tài nguyên</a></li>
-                <li><a href="customer">Khách hàng</a></li>
+                <li><a href="depart">Employee</a></li>
+                <li><a href="project">Project</a></li>
+                <li><a href="finance">Finance</a></li>
+                <li><a href="resource">Resource</a></li>
+                <li><a href="customer">Customer</a></li>
             </ul>
         </nav>
 
@@ -71,7 +79,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <ul class="mymenu_ul">
                 <a href="depart">
                     <li class="mysub_menu">
-                        <div class="mysub_menu_title">Nhân viên</div>
+                        <div class="mysub_menu_title">Employee</div>
                         <div class="mysub_menu_logo">
                             <img src="img/nhansu.png" alt="">
                         </div>                
@@ -80,7 +88,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                 <a href="project">
                     <li class="mysub_menu">
-                        <div class="mysub_menu_title">Dự án</div>
+                        <div class="mysub_menu_title">Project</div>
                         <div class="mysub_menu_logo">
                             <img src="img/duan.png" alt="">
                         </div>
@@ -90,7 +98,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                 <a href="finance">
                     <li class="mysub_menu">
-                        <div class="mysub_menu_title">Tài chính</div>
+                        <div class="mysub_menu_title">Finance</div>
                         <div class="mysub_menu_logo">
                             <img src="img/taichinh.png" alt="">
                         </div>
@@ -100,7 +108,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                 <a href="resource">
                     <li class="mysub_menu sub_menu_tn">
-                        <div class="mysub_menu_title">Tài nguyên</div>
+                        <div class="mysub_menu_title">Resource</div>
                         <div class="mysub_menu_logo">
                             <img src="img/tainguyen1.png" alt="">
                         </div>
@@ -110,7 +118,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                 <a href="customer">
                     <li class="mysub_menu">
-                        <div class="mysub_menu_title">Khách hàng</div>
+                        <div class="mysub_menu_title">Customer</div>
                         <div class="mysub_menu_logo">
                             <img src="img/khachhang2.png" alt="">
                         </div>

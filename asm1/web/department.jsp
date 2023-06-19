@@ -7,6 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <%@page import="model.Department"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="jakarta.servlet.http.HttpSession"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
     <!--comment-->
@@ -22,22 +23,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     </head>
 
     <body>
-        <%  
-            String username = null;
-            Cookie[] cookies = request.getCookies();
-            if(cookies!=null){
-                for(Cookie cookie : cookies){
-                    if(cookie.getName().equals("admin")){
-                        username = cookie.getValue();                                
-                    }
+        <%String s=(String)session.getAttribute("role");
+            if(s!=null){
+                if(!s.equals("admin") && !s.equals("user")){
+                    response.sendRedirect("login.jsp");
                 }
-            }
-            if(username==null){
+            }else{
                 response.sendRedirect("login.jsp");
             }
         %>
-
-<!-- <<h1>hello user<%=username%></h1> -->
 
         <!--start header-->
         <div class="myheader">
@@ -53,7 +47,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </div>
         <div class="mylogout">           
 
-            <form action="out" method="post">
+            <form action="logout" >
                 <input type="submit" value="Log out"/>
             </form>
 
