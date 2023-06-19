@@ -19,11 +19,11 @@
                     <h1 class="form-heading">Log in</h1>
                     <div class="form-group">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="text" class="form-input" name="email" placeholder="Email">
+                        <input type="text" class="form-input" name="email" value="${cookie.email.value}" placeholder="Email">
                     </div>
                     <div class="form-group">
                         <i class="fas fa-key"></i>
-                        <input type="password" class="form-input" name="Password" placeholder="Password">
+                        <input type="password" class="form-input" name="Password" value="${cookie.password.value}" placeholder="Password">
                         <div id="eye">
                             <i class="far fa-eye"></i>
                         </div>

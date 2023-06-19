@@ -81,14 +81,14 @@
         <nav>
             <div class="myhome">
                 <img src="img/home1.png" alt="">
-                <a href="home.jsp">Trang chủ</a>
+                <a href="home.jsp">Home</a>
             </div>
             <ul>              
-                <li><a href="depart">Nhân viên</a></li>
-                <li><a href="project">Dự án</a></li>
-                <li><a href="finance">Tài chính</a></li>
-                <li><a href="resource">Tài nguyên</a></li>
-                <li><a href="customer">Khách hàng</a></li>
+                <li><a href="depart">Employee</a></li>
+                <li><a href="project">Project</a></li>
+                <li><a href="finance">Finance</a></li>
+                <li><a href="resource">Resource</a></li>
+                <li><a href="customer">Customer</a></li>
             </ul>
         </nav>
 

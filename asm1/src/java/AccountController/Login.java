@@ -104,10 +104,9 @@ public class Login extends HttpServlet {
             }
             response.sendRedirect("home.jsp");
         } else {
-            session.setAttribute("loginmessage", "Login failed");
+//            session.setAttribute("loginmessage", "Login failed");
             request.setAttribute("error", "Email or password is incorrect");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            
+            request.getRequestDispatcher("login.jsp").forward(request, response);            
         }
     }
 

@@ -93,14 +93,14 @@ public class AccountDAO extends DBContext{
     }
 
     public Account createAccount(Account account) {
-        String sql = "INSERT INTO ACCOUNT(email, password, username, phone, address, role) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO ACCOUNT(email, password, username, phone, role) VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, account.getEmail());
             ps.setString(2, account.getPassword());
             ps.setString(3, account.getName());
             ps.setString(4, account.getPhone());            
-            ps.setInt(6, account.getRole());
+            ps.setInt(5, account.getRole());
             ps.executeUpdate();
             return account;
         } catch (SQLException ex) {
@@ -124,13 +124,12 @@ public class AccountDAO extends DBContext{
     }
 
     public boolean updateInfo(String email, String name, String phone, String address) {
-        String sql = "UPDATE ACCOUNT SET username = ?, phone = ?, address = ? WHERE email = ?";
+        String sql = "UPDATE ACCOUNT SET username = ?, phone = ? WHERE email = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, name);
-            ps.setString(2, phone);
-            ps.setString(3, address);
-            ps.setString(4, email);
+            ps.setString(2, phone);            
+            ps.setString(3, email);
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {

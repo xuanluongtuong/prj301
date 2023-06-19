@@ -30,7 +30,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 response.sendRedirect("login.jsp");
             }
         %>
-        
 
         <!--start header-->
         <div class="myheader">

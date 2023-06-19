@@ -76,37 +76,48 @@ public class SignUp extends HttpServlet {
         // get data from form
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");        
         String password = request.getParameter("password");
         String repassword = request.getParameter("repassword");
         String checkbox = request.getParameter("checkbox");
-
+        
+        if(checkbox==null){
+            checkbox="0";
+        }
+        
         // validate data
-        if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty() || repassword.isEmpty()
-                || address.isEmpty()) {
-            request.setAttribute("error", "Please fill all the fields");
-            request.getRequestDispatcher("/signup.jsp").forward(request, response);
-        } else if (!password.equals(repassword)) {
-            request.setAttribute("error", "Password and Re-Password must be same");
-            request.getRequestDispatcher("/signup.jsp").forward(request, response);
-        } else {
-            Account account = new Account(email, password, name, phone, address, UserRole.USER.getValue());
+        if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty() || repassword.isEmpty()) {
+            request.setAttribute("error", "Please fill all the fields.");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        }
+        else if(!checkbox.equals("1")){
+            request.setAttribute("error", "You have to accept the Terms of service.");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        }
+        else if (!password.equals(repassword)) {
+            request.setAttribute("error", "Password and Re-Password must be same.");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        } 
+        else {
+            Account account = new Account(email, password, name, phone, UserRole.USER.getValue());
             AccountDAO accountDAO = new AccountDAO();
             if (accountDAO.createAccount(account) == null) {
-                request.setAttribute("error", "Email already exists");
-                request.getRequestDispatcher("/signup.jsp").forward(request, response);
-            } else if (session.getAttribute("loginmessage") != null) {
-                Cookie cookie = new Cookie("email", email);
-                cookie.setMaxAge(60 * 60 * 24);
-                response.addCookie(cookie);
-
-                session.removeAttribute("loginmessage");
+                request.setAttribute("error", "Email already exists!");
+                request.getRequestDispatcher("signup.jsp").forward(request, response);
+            }
+            
+//            else if (session.getAttribute("loginmessage") != null) {
+//                Cookie cookie = new Cookie("email", email);
+//                cookie.setMaxAge(60 * 60 * 24);
+//                response.addCookie(cookie);
+//
+//                session.removeAttribute("loginmessage");
+//                session.setAttribute("role", "user");
+//                response.sendRedirect("checkout");
+//            } 
+            else {
                 session.setAttribute("role", "user");
-                response.sendRedirect("checkout");
-            } else {
-                session.setAttribute("role", "user");
-                request.getRequestDispatcher("/home").forward(request, response);
+                request.getRequestDispatcher("home.jsp").forward(request, response);
             }
 
         }
