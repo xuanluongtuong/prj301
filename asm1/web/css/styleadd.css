@@ -1,11 +1,9 @@
 body{
     position: relative;
 }
-
-
 .myheader{    
     width: 100%;
-    height: 15rem;
+    height: 12rem;
     position: relative;
     /* display: flex; */
     align-items: center;
@@ -36,8 +34,7 @@ body{
 .myshadow {    
     font-size: 55px;
     text-align: center;
-    color: white;
-    /* background: #d52e3f; */
+    color: white;    
     font-family: 'Dancing Script', cursive;
     margin: 15px 0px 0px 0px;
     font-weight: 700;
@@ -47,9 +44,6 @@ body{
             4px 4px 0px #017e7f, 
             5px 5px 0px #052939, 
             6px 6px 0px #c11a2b; 
-            /* 7px 7px 0px #c11a2b, 
-            8px 8px 0px #c11a2b;  */
-            /* 9px 9px 0px #c11a2b; */
 }
 
 .mylogout{    
@@ -72,6 +66,7 @@ body{
     font-weight: 500; 
     
 }
+
 
 
 .myhome{    

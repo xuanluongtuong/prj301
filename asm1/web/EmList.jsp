@@ -172,11 +172,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Salary<br>
                                         (milions Dong)
-                                    </th>  
-                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
-                                        <a href="#" style="text-decoration: none;">Change Manager</a>
-                                    </th>  
-
+                                    </th>
                                 </tr>
                             </thead>
 
@@ -222,6 +218,7 @@
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=e.getLuong()%>
                                     </td> 
+                                    <% if(list.size() == 1){%>
                                     <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
                                         <a href="editem?id=<%=e.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
@@ -232,7 +229,7 @@
                                             <i class="fa-solid fa-trash"></i>
                                             Delete</a>
                                     </td>
-
+                                    <%}%>
                                 </tr> 
                             </tbody>
 
