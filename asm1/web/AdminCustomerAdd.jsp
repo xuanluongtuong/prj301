@@ -59,7 +59,7 @@
             }
         %>
         <!--start header-->
-        <div class="myheader">
+        <div class="myheader" style="height: 12rem">
 
             <div class="mylogo">
                 <img src="https://mshgroup.vn/wp-content/uploads/2022/06/logo-happy-home-7.png" alt="">
@@ -70,29 +70,30 @@
             </div>
 
         </div>
-        <div class="mylogout">           
-
-            <form action="logout" style="background: white;">
-                <input type="submit" value="Log out"/>
-            </form>
-
-        </div>
+       
         <!--end header-->
 
 
 
-        <nav>
-            <div class="myhome">
-                <img src="img/home1.png" alt="">
-                <a href="home.jsp">Home</a>
+        <nav style="display: flex;justify-content: space-between;align-items: center;">
+            <div style="display: flex;align-items: center;">
+                <div class="myhome">
+                    <img src="img/home1.png" alt="">
+                    <a href="home.jsp">Home</a>
+                </div>
+                <ul>              
+                    <li><a href="depart">Employee</a></li>
+                    <li><a href="project">Project</a></li>
+                    <li><a href="finance">Finance</a></li>
+                    <li><a href="resource">Resource</a></li>
+                    <li><a href="customer">Customer</a></li>
+                </ul>
             </div>
-            <ul>              
-                <li><a href="depart">Employee</a></li>
-                <li><a href="project">Project</a></li>
-                <li><a href="finance">Finance</a></li>
-                <li><a href="resource">Resource</a></li>
-                <li><a href="customer">Customer</a></li>
-            </ul>
+
+            <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
+                <div style="padding-bottom: 5px;margin-right: 5px;">Log out</div><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 10px;"></i>                
+            </a>
+
         </nav>
 
 
@@ -249,9 +250,8 @@
             <!-- Section: Links  -->
 
             <!-- Copyright -->
-            <div class="text-center p-4" style="background-color: rgb(0, 0, 0);">
-                © 2021 Copyright:
-                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            <div class="text-center p-4" style="background-color: rgb(0, 0, 0);">                
+                <a class="text-reset fw-bold" href="#">Create by Tuong Xuan Luong</a>
             </div>
             <!-- Copyright -->
         </footer>
