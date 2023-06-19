@@ -64,7 +64,7 @@ public class signin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/signup.jsp").forward(request, response);
+        request.getRequestDispatcher("/sign.jsp").forward(request, response);
     }
 
     /**
@@ -81,7 +81,7 @@ public class signin extends HttpServlet {
         HttpSession session = request.getSession();
 
         // get data from form
-        String name = request.getParameter("name");
+        String name = request.getParameter("username");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");

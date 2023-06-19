@@ -1,11 +1,8 @@
 body{
-  background-image: url('https://gotrangtri.vn/wp-content/uploads/2019/03/xu-huong-trang-tri-ban-lam-viec.jpg');
-  background-color: rgba(0, 0, 0 , 0.8);
-  background-size: cover;  
-
-  /* background-color: rgb(250, 166, 245); */
+  background-image: url('https://gotrangtri.vn/wp-content/uploads/2019/03/xu-huong-trang-tri-ban-lam-viec.jpg'); 
+  background-size: cover;
   font-size: 16px;
-  overflow: hidden;
+  position: relative;
 }
 
 .myheadwrapper__btn{
@@ -30,11 +27,14 @@ body{
 }
 
 .auth{
-    width: 100%;
-    height: 96vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,0.6) ;
+    width: 100%;    
+    height: 99vh;
+    display: flex;    
+    /*align-items: center;*/
+    justify-content: center;    
 }
 
 #wrapper{  
