@@ -81,17 +81,22 @@
 
 
         <!-- menu -->
-        <div class="mymenu">
+        <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
+            <div style="width: 100%; display: flex;justify-content: right;margin-top: 10px;">
+                <%if(s!=null){
+                    if(s.equals("admin")){%>
+                <a href="projectadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 40px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
+                <%}}%>
+            </div>
             <div class="mylist">
-                <div class="mycontent">
-                    <%if(s!=null){
-                        if(s.equals("admin")){%>
+                
+                <div class="mycontent">                    
+                    
                     <div class="myhead_title_table">
                         <h4> Project </h4><br/>
-                        <a href="projectadd"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
+                        
                     </div>
-                    <%}}%>
-
+                    
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
 

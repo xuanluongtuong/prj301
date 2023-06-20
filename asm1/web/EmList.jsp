@@ -91,19 +91,22 @@
 
         <!-- menu -->
         <div class="mymenu">
-            <%if(s!=null){
-                if(s.equals("admin")){%>
-            
-            <div style="display: flex;justify-content: right;">
-                <a href="addem" style="text-decoration: none;margin: 5px 40px -5px 0;font-size: 20px;color: rgb(133, 0, 159);">
-                    <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
-                    Create Employee
-                </a>
+            <div style="width: 100%; display: flex;justify-content: right;margin-top: 10px;">                
+                
+                <div style="display: flex;justify-content: right;">
+                    <%if(s!=null){
+                    if(s.equals("admin")){%>
+                    <a href="addem" style="text-decoration: none;margin: 0px 45px 0px 0;font-size: 20px;color: rgb(133, 0, 159);">
+                        <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
+                        Create Employee
+                    </a>
+                    <%}}%>
+                </div>
+                
             </div>
-            <%}}%>
             <div class="mylist">  
 
-                <div class="myhead_title_table" style="margin-bottom: 0px;">
+                <div class="myhead_title_table" style="margin-bottom: 25px;">
                     <div style="color: rgb(0, 148, 156);"><h3 style="margin-left: 30px;">Department:</h3>
                         <div style="margin-left: 70px;">
                             <% Department depart = (Department)session.getAttribute("department"); %>

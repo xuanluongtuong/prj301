@@ -81,14 +81,21 @@
 
 
         <!-- menu -->
-        <div class="mymenu">
+        <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
+            
+            <div style="width: 100%; display: flex;justify-content: right;margin-top: 10px;">
+                <%if(s!=null){
+                    if(s.equals("admin")){%>
+                <a href="customeradd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 45px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Customer</a>
+                <%}}%>
+            </div>
             <div class="mylist">
-                <div class="mycontent">
+                
+                <div class="mycontent">                    
+                    
                     <div class="myhead_title_table">
-                        <h4> Customer </h4><br/>
-                        <a href="customeradd"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Customer</a>
+                        <h4> Customer List </h4><br/>                        
                     </div>
-
 
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 

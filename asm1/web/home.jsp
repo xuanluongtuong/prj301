@@ -75,7 +75,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <!-- menu -->
         <div class="mymenu">
 
-            <ul class="mymenu_ul">
+            <ul class="mymenu_ul" style="margin-top: 25px;margin-bottom: 35px;">
                 <a href="depart">
                     <li class="mysub_menu">
                         <div class="mysub_menu_title">Employee</div>

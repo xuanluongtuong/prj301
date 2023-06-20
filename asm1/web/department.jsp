@@ -87,7 +87,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <%ArrayList<Department> departments = (ArrayList<Department>)request.getAttribute("data");
             %>
 
-            <ul class="mymenu_ul">
+            <ul class="mymenu_ul" >
 
                 <% for (Department dp : departments) {
                 %>
