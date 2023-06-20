@@ -76,6 +76,10 @@
         <servlet-name>ResourceServlet</servlet-name>
         <servlet-class>ResourceController.ResourceServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProjectInfoServlet</servlet-name>
+        <servlet-class>ProjectController.ProjectInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>ResourceServlet</servlet-name>
         <url-pattern>/resource</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProjectInfoServlet</servlet-name>
+        <url-pattern>/projectinfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

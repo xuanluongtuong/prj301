@@ -34,6 +34,7 @@ public class ProjectDAO extends DBContext{
                 p.setNganSach(rs.getFloat("NGANSACH"));
                 p.setNgayThiCong(rs.getDate("NGAYTHICONG"));
                 p.setTrangThai(rs.getInt("TRANGTHAI"));
+                p.setUrlImg(rs.getString("IMG"));
                 list.add(p);
             }
         } catch (SQLException e) {
@@ -42,29 +43,54 @@ public class ProjectDAO extends DBContext{
         return list;
     }
     
-    public Project getProjectByID(int mada) {
-
+    public Project getPJByID(int mada) {
+        
+        String sql = "select * from dbo.DU_AN where MADA=?";
         try {
-            String sql = "select * from dbo.DU_AN where MADA=?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, mada);
             ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-                Project pro = new Project();
-                pro.setTenKH(rs.getString("TENKH"));                
-                pro.setMaDA(mada);
-                pro.setTenDA(rs.getString("TENDA"));
-                pro.setDiaDiem(rs.getString("DIADIEM"));
-                pro.setNganSach(rs.getFloat("NGANSACH"));
-                pro.setNgayThiCong(rs.getDate("NGAYTHICONG"));
-                pro.setTrangThai(rs.getInt("TRANGTHAI"));
-                return pro;
+            while (rs.next()) {
+                Project p = new Project();
+                p.setTenKH(rs.getString("TENKH"));
+                p.setMaDA(rs.getInt("MADA"));
+                p.setTenDA(rs.getString("TENDA"));
+                p.setDiaDiem(rs.getString("DIADIEM"));
+                p.setNganSach(rs.getFloat("NGANSACH"));
+                p.setNgayThiCong(rs.getDate("NGAYTHICONG"));
+                p.setTrangThai(rs.getInt("TRANGTHAI"));
+                p.setUrlImg(rs.getString("IMG"));
+                return p;
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
         return null;
     }
+    
+//    public Project getProjectByID(int mada) {
+//
+//        try {
+//            String sql = "select * from dbo.DU_AN where MADA=?";
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setInt(1, mada);
+//            ResultSet rs = st.executeQuery();
+//            if (rs.next()) {
+//                Project pro = new Project();
+//                pro.setTenKH(rs.getString("TENKH"));                
+//                pro.setMaDA(mada);
+//                pro.setTenDA(rs.getString("TENDA"));
+//                pro.setDiaDiem(rs.getString("DIADIEM"));
+//                pro.setNganSach(rs.getFloat("NGANSACH"));
+//                pro.setNgayThiCong(rs.getDate("NGAYTHICONG"));
+//                pro.setTrangThai(rs.getInt("TRANGTHAI"));
+//                return pro;
+//            }
+//        } catch (SQLException e) {
+//            System.out.println(e);
+//        }
+//        return null;
+//    }
 
     //thpro 
     public void insertProject(Project pro) {

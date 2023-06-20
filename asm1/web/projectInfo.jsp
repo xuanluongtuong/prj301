@@ -54,7 +54,7 @@
             </div>
 
         </div>
-
+        
         <!--end header-->
 
 
@@ -81,38 +81,108 @@
 
 
         <!-- menu -->
-        <div class="mymenu" style=" background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
-            <div style="display: flex; justify-content: space-between; margin-bottom: -10px">
-                <div class="myhead_title_table" style="margin-left: 10px;">
-                    <h4 style="width: 500px;color: #4e00d5;font-size: 30px;"> Project List </h4><br/>
-                </div>
-                <div style="display: flex;justify-content: right;margin-top: 10px;">
-                    <%if(s!=null){
+        <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
+            <div style="width: 100%; display: flex;justify-content: right;margin-top: 10px;">
+                <%if(s!=null){
                     if(s.equals("admin")){%>
-                    <a href="projectadd" style="text-decoration: none;color: rgb(129, 0, 185);margin-right: 40px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
-                    <%}}%>
-                </div>
+                <a href="projectadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 40px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
+                <%}}%>
             </div>
-
             <div class="mylist">
-
+                
                 <div class="mycontent">                    
-
-
-                    <div style="display: flex; justify-content: center;margin: 10px 0;">
-                        <ul style="display: flex;flex-wrap: wrap;list-style: none;margin: 0;padding: 0;justify-content: space-evenly;">
-                            <%  List<Project> list = (ArrayList<Project>)request.getAttribute("pro");
-                                for (Project p : list) {                                
-                            %>
-                            <li style="width: 320px;margin: 20px 0; box-shadow: 2px 2px 2px 0.5px #66696b;border-radius: 4px;overflow: hidden;">
-                                <img src="<%=p.getUrlImg()%>" alt="Project does not have image" style="width: 100%;height: 200px;">
-                                <a href="projectinfo?mada=<%=p.getMaDA()%>" style="color: black; text-decoration: none;font-size: 17px;"><div style="height: 50px;padding: 0px 5px;"><%=p.getTenDA()%></div></a>
-                            </li>
-                            <%}%>
-                        </ul>
+                    
+                    <div class="myhead_title_table">
+                        <h4> Project </h4><br/>
+                        
                     </div>
+                    
+                    <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
 
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Customer Name
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Project ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Project Name
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Address
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Budget
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Start Date
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Status
+                                    </th>                                    
+                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
+                                        Action
+                                    </th>
+                                    
+                                </tr>
+                            </thead>
+                            <%  Project p = (Project)request.getAttribute("project");
+                                if(p==null){
+                                    p = (Project)session.getAttribute("projectinfo");
+                                }
+                            %>
+                            <tr class="border-b border-gray-50 dark:border-gray-800">
+                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                    <%=p.getTenKH()%>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <%=p.getMaDA()%>
+                                </td>
+                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                    <%=p.getTenDA()%>
+                                </td>                                
+
+                                <td class="px-6 py-4">
+                                    <%=p.getDiaDiem()%>
+                                </td>
+                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                    <%=p.getNganSach()%>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <%=p.getNgayThiCong()%>
+                                </td>                                
+
+                                <td class="px-6 py-4">
+                                    <%if(p.getTrangThai()==1){
+                                    %>
+                                    Hoàn thành
+                                    <%}else if(p.getTrangThai()==0){%> Đã hủy
+                                    <%} else{%> Đang thi công <%}%>
+                                </td>
+                                
+                                <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+
+                                    <a href="projectedit?id=<%=p.getMaDA()%>" class="myedit" style="display: flex;align-items: center;">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        Edit</a>
+                                    <%if(s!=null){
+                                        if(s.equals("admin")){%>
+                                    <a href="#" onclick="doDelete('<%=p.getMaDA()%>')" class="mydelete" style="display: flex;align-items: center;">
+                                        <i class="fa-solid fa-trash"></i>
+                                        Delete</a>
+                                    <%}}%>
+                                </td>  
+                                
+                            </tr>
+                                                      
+                            </tbody>
+                        </table>
+
+                    </div>   
                 </div>
             </div>
         </div>

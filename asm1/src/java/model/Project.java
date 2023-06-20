@@ -18,6 +18,7 @@ public class Project {
     float nganSach;    
     Date ngayThiCong;
     int trangThai;
+    String urlImg;
     
     public Project() {
     }
@@ -77,5 +78,15 @@ public class Project {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+
+    public String getUrlImg() {
+        return urlImg;
+    }
+
+    public void setUrlImg(String urlImg) {
+        this.urlImg = urlImg;
+    }
+    
+    
        
 }

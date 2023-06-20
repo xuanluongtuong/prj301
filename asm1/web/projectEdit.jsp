@@ -25,7 +25,7 @@
             .form-group {
                 display: grid;
             }
-             .form-container {
+            .form-container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -67,7 +67,7 @@
             </div>
 
         </div>
-       
+
         <!--end header-->
 
 
@@ -81,7 +81,7 @@
                 <ul>              
                     <li><a href="depart">Employee</a></li>
                     <li><a href="project">Project</a></li>
-                    
+
                     <li><a href="resource">Resource</a></li>
                     <li><a href="customer">Customer</a></li>
                 </ul>
@@ -97,12 +97,12 @@
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
-                <% Project pro = (Project)request.getAttribute("project");
+                <% Project pro = (Project)session.getAttribute("projectinfo");
                 %>
                 <form action="projectedit" method="post" style="display: inline; justify-content: center;">
-                    
+
                     <input type="hidden" name="MADA" value="<%=pro.getMaDA()%>" />
-                    
+
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
@@ -118,13 +118,14 @@
                                 <label class="form-label" for="DIADIEM">Address</label>
                                 <input class="form-input" type="text" id="DIADIEM" name="DIADIEM" value="<%=pro.getDiaDiem()%>" required />
                             </div>
-                        </div>
-
-                        <div class="form-right">
                             <div class="form-group">
                                 <label class="form-label" for="NGANSACH">Budget(Milions Dong)</label>
                                 <input class="form-input" type="number" id="NGANSACH" name="NGANSACH" value="<%=pro.getNganSach()%>" required />
                             </div>
+                        </div>
+
+                        <div class="form-right">
+
                             <div class="form-group">
                                 <label class="form-label" for="NGAYTHICONG">Start Date</label>
                                 <input class="form-input" type="date" id="NGAYTHICONG" name="NGAYTHICONG" value="<%=pro.getNgayThiCong()%>" required />
@@ -136,6 +137,10 @@
                                     <option value="1" <%=pro.getTrangThai() == 1 ? "selected" : ""%>>Hoàn thành</option>
                                     <option value="0" <%=pro.getTrangThai() == 0 ? "selected" : ""%>>Đã hủy</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="IMG">Image url</label>
+                                <input class="form-input" type="text" id="IMG" name="IMG" value="<%=pro.getUrlImg()%>" />
                             </div>
                         </div>                        
                     </div>
