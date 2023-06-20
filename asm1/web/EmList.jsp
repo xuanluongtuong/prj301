@@ -169,6 +169,13 @@
                                         Salary<br>
                                         (milions Dong)
                                     </th>
+                                    <%if(s!=null){
+                                        if(s.equals("admin")){
+                                        if(list.size() == 1){%>
+                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
+                                        Action
+                                    </th>
+                                    <%}}}%>
                                 </tr>
                             </thead>
 
@@ -215,7 +222,8 @@
                                         <%=e.getLuong()%>
                                     </td> 
                                     <%if(s!=null){
-                                        if(s.equals("admin")){%>
+                                        if(s.equals("admin")){
+                                        if(list.size() == 1){%>
                                     <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
                                         <a href="editem?id=<%=e.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
@@ -226,7 +234,7 @@
                                             <i class="fa-solid fa-trash"></i>
                                             Delete</a>
                                     </td>
-                                    <%}}%>
+                                    <%}}}%>
                                 </tr> 
                             </tbody>
 

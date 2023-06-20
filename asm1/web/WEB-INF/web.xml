@@ -72,6 +72,10 @@
         <servlet-name>LogOut</servlet-name>
         <servlet-class>AccountController.LogOut</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResourceServlet</servlet-name>
+        <servlet-class>ResourceController.ResourceServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>LogOut</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResourceServlet</servlet-name>
+        <url-pattern>/resource</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
