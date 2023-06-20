@@ -56,8 +56,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </div>
                 <ul>              
                     <li><a href="depart">Employee</a></li>
-                    <li><a href="project">Project</a></li>
-                    <li><a href="finance">Finance</a></li>
+                    <li><a href="project">Project</a></li>                    
                     <li><a href="resource">Resource</a></li>
                     <li><a href="customer">Customer</a></li>
                 </ul>
@@ -95,16 +94,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                     </li>
                 </a>
-
-                <a href="finance">
-                    <li class="mysub_menu">
-                        <div class="mysub_menu_title">Finance</div>
-                        <div class="mysub_menu_logo">
-                            <img src="img/taichinh.png" alt="">
-                        </div>
-
-                    </li> 
-                </a>
+                
 
                 <a href="resource">
                     <li class="mysub_menu sub_menu_tn">

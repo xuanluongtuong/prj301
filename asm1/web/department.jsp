@@ -59,7 +59,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <ul>              
                     <li><a href="depart">Employee</a></li>
                     <li><a href="project">Project</a></li>
-                    <li><a href="finance">Finance</a></li>
+                    
                     <li><a href="resource">Resource</a></li>
                     <li><a href="customer">Customer</a></li>
                 </ul>
