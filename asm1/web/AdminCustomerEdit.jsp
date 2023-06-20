@@ -91,7 +91,10 @@
             </div>
 
             <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
-                <div style="padding-bottom: 5px;margin-right: 5px;">Log out</div><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 10px;"></i>                
+                <div style="padding-bottom: 5px;margin-right: 5px;"><i class="fa-solid fa-user" style="margin-right: 5px;">
+                    </i><%=session.getAttribute("name")%> | Log out
+                </div>
+                <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 10px;"></i>                
             </a>
 
         </nav>

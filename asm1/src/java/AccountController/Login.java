@@ -82,6 +82,7 @@ public class Login extends HttpServlet {
         Cookie cookie1 = new Cookie("email", email);
         cookie1.setMaxAge(60 * 60 * 24);
         Cookie cookie2 = new Cookie("password", password);
+        
         if (remember != null) {
             cookie2.setMaxAge(60 * 60 * 24);
         } else {
@@ -92,8 +93,7 @@ public class Login extends HttpServlet {
 
         // check account
         AccountDAO accountDAO = new AccountDAO();
-        Account account = accountDAO.checkAccount(email, password);
-
+        Account account = accountDAO.checkAccount(email, password);        
         // set session
         if (account != null) {
             if (account.getRole() == UserRole.ADMIN.getValue()) {
@@ -102,8 +102,10 @@ public class Login extends HttpServlet {
             if (account.getRole() == UserRole.USER.getValue()) {
                 session.setAttribute("role", "user");
             }
+            session.setAttribute("name", account.getName());
             response.sendRedirect("home.jsp");
         } else {
+            
 //            session.setAttribute("loginmessage", "Login failed");
             request.setAttribute("error", "Email or password is incorrect");
             request.getRequestDispatcher("login.jsp").forward(request, response);            

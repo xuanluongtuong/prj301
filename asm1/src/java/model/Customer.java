@@ -16,6 +16,7 @@ public class Customer {
     String DCKH;
     String SDTKH;
     String EmailKH;
+    String tenDA;
 
     public Customer() {
     }
@@ -59,6 +60,13 @@ public class Customer {
     public void setEmailKH(String EmailKH) {
         this.EmailKH = EmailKH;
     }
-    
+
+    public String getTenDA() {
+        return tenDA;
+    }
+
+    public void setTenDA(String tenDA) {
+        this.tenDA = tenDA;
+    }
     
 }
