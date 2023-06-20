@@ -38,17 +38,7 @@
                 }
             }
         </script>
-        <style>
-            <% if(list.size() > 1){ %>
-            #myactionmn{
-                visibility: hidden;
-            }
-            <% } else { %>
-            #myactionmn{
-                visibility: visible;
-            }
-            <% } %>
-        </style>
+        
     </head>
     <body>
         <%String s=(String)session.getAttribute("role");
@@ -101,14 +91,16 @@
 
         <!-- menu -->
         <div class="mymenu">
-            <% if(list.size() >= 1){ %>
+            <%if(s!=null){
+                if(s.equals("admin")){%>
+            
             <div style="display: flex;justify-content: right;">
                 <a href="addem" style="text-decoration: none;margin: 5px 40px -5px 0;font-size: 20px;color: rgb(133, 0, 159);">
                     <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
                     Create Employee
                 </a>
             </div>
-            <%}%>
+            <%}}%>
             <div class="mylist">  
 
                 <div class="myhead_title_table" style="margin-bottom: 0px;">
@@ -219,7 +211,8 @@
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=e.getLuong()%>
                                     </td> 
-                                    <% if(list.size() == 1){%>
+                                    <%if(s!=null){
+                                        if(s.equals("admin")){%>
                                     <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
                                         <a href="editem?id=<%=e.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
@@ -230,7 +223,7 @@
                                             <i class="fa-solid fa-trash"></i>
                                             Delete</a>
                                     </td>
-                                    <%}%>
+                                    <%}}%>
                                 </tr> 
                             </tbody>
 
@@ -278,11 +271,13 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Salary<br>
                                         (milions Dong)
-                                    </th> 
+                                    </th>
+                                    <%if(s!=null){
+                                        if(s.equals("admin")){%>
                                     <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
                                         Action
                                     </th>
-
+                                    <%}}%>
                                 </tr>
                             </thead>
                             <% for (Employee nv : list) {
@@ -325,7 +320,9 @@
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%=nv.getLuong()%>
-                                </td> 
+                                </td>
+                                <%if(s!=null){
+                                    if(s.equals("admin")){%>
                                 <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
                                     <a href="editem?id=<%=nv.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
@@ -337,7 +334,7 @@
                                         Delete</a>
 
                                 </td>
-
+                                <%}}%>
                             </tr>  
                             <%} }%>                          
                             </tbody>

@@ -67,8 +67,7 @@
                 </div>
                 <ul>              
                     <li><a href="depart">Employee</a></li>
-                    <li><a href="project">Project</a></li>
-                    
+                    <li><a href="project">Project</a></li>                    
                     <li><a href="resource">Resource</a></li>
                     <li><a href="customer">Customer</a></li>
                 </ul>
@@ -142,10 +141,12 @@
                                         <a href="customeredit?id=<%=c.getMaKH()%>" class="myedit" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                             Edit</a>
-
+                                        <%if(s!=null){
+                                            if(s.equals("admin")){%>
                                         <a href="#" onclick="doDelete('<%=c.getMaKH()%>')" class="mydelete" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-trash"></i>
                                             Delete</a>
+                                        <%}}%>
                                     </td>      
                                 </tr>
                                 <%} %>

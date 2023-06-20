@@ -67,8 +67,7 @@
                 </div>
                 <ul>              
                     <li><a href="depart">Employee</a></li>
-                    <li><a href="project">Project</a></li>
-                    
+                    <li><a href="project">Project</a></li>                    
                     <li><a href="resource">Resource</a></li>
                     <li><a href="customer">Customer</a></li>
                 </ul>
@@ -85,11 +84,13 @@
         <div class="mymenu">
             <div class="mylist">
                 <div class="mycontent">
+                    <%if(s!=null){
+                        if(s.equals("admin")){%>
                     <div class="myhead_title_table">
                         <h4> Project </h4><br/>
                         <a href="projectadd"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
                     </div>
-
+                    <%}}%>
 
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
@@ -117,10 +118,11 @@
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Status
-                                    </th>
+                                    </th>                                    
                                     <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
                                         Action
                                     </th>
+                                    
                                 </tr>
                             </thead>
                             <%  List<Project> list = (ArrayList<Project>)request.getAttribute("pro");
@@ -154,17 +156,20 @@
                                     <%}else if(p.getTrangThai()==0){%> Đã hủy
                                     <%} else{%> Đang thi công <%}%>
                                 </td>
+                                
                                 <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
                                     <a href="projectedit?id=<%=p.getMaDA()%>" class="myedit" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                         Edit</a>
-
+                                    <%if(s!=null){
+                                        if(s.equals("admin")){%>
                                     <a href="#" onclick="doDelete('<%=p.getMaDA()%>')" class="mydelete" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-trash"></i>
                                         Delete</a>
-
-                                </td>                                
+                                    <%}}%>
+                                </td>  
+                                
                             </tr>  
                             <%} %>                          
                             </tbody>
