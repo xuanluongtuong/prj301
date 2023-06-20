@@ -81,16 +81,14 @@ public class SignUp extends HttpServlet {
         String repassword = request.getParameter("repassword");
         String checkbox = request.getParameter("checkbox");
         
-        if(checkbox==null){
-            checkbox="0";
-        }
+        
         
         // validate data
         if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty() || repassword.isEmpty()) {
             request.setAttribute("error", "Please fill all the fields.");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         }
-        else if(!checkbox.equals("1")){
+        else if(checkbox==null){
             request.setAttribute("error", "You have to accept the Terms of service.");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         }
@@ -101,7 +99,7 @@ public class SignUp extends HttpServlet {
         else {
             Account account = new Account(email, password, name, phone, UserRole.USER.getValue());
             AccountDAO accountDAO = new AccountDAO();
-            if (accountDAO.createAccount(account) == null) {
+            if (accountDAO.getAccountIDByEmail(email) != 0) {
                 request.setAttribute("error", "Email already exists!");
                 request.getRequestDispatcher("signup.jsp").forward(request, response);
             }
@@ -116,6 +114,7 @@ public class SignUp extends HttpServlet {
 //                response.sendRedirect("checkout");
 //            } 
             else {
+                accountDAO.createAccount(account);                
                 session.setAttribute("role", "user");
                 request.getRequestDispatcher("home.jsp").forward(request, response);
             }

@@ -13,8 +13,9 @@ import model.Account;
  *
  * @author admin
  */
-public class AccountDAO extends DBContext{
-     public Account checkAccount(String email, String password) {
+public class AccountDAO extends DBContext {
+
+    public Account checkAccount(String email, String password) {
         String sql = "SELECT * FROM ACCOUNT WHERE email = ? AND password = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -27,7 +28,7 @@ public class AccountDAO extends DBContext{
                 account.setEmail(rs.getString("email"));
                 account.setPassword(rs.getString("password"));
                 account.setName(rs.getString("username"));
-                account.setPhone(rs.getString("phone"));                
+                account.setPhone(rs.getString("phone"));
                 account.setRole(rs.getInt("role"));
                 return account;
             }
@@ -48,7 +49,7 @@ public class AccountDAO extends DBContext{
                 account.setAccountID(rs.getInt("accountID"));
                 account.setEmail(rs.getString("email"));
                 account.setName(rs.getString("username"));
-                account.setPhone(rs.getString("phone"));                
+                account.setPhone(rs.getString("phone"));
                 return account;
             }
         } catch (SQLException ex) {
@@ -68,7 +69,7 @@ public class AccountDAO extends DBContext{
                 account.setAccountID(rs.getInt("accountID"));
                 account.setEmail(rs.getString("email"));
                 account.setName(rs.getString("username"));
-                account.setPhone(rs.getString("phone"));                
+                account.setPhone(rs.getString("phone"));
                 return account;
             }
         } catch (SQLException ex) {
@@ -92,21 +93,37 @@ public class AccountDAO extends DBContext{
         return 0;
     }
 
-    public Account createAccount(Account account) {
+//    public Account createAccount(Account account) {
+//        String sql = "INSERT INTO ACCOUNT(email, password, username, phone, role) VALUES(?,?,?,?,?)";
+//        try {
+//            PreparedStatement ps = connection.prepareStatement(sql);
+//            ps.setString(1, account.getEmail());
+//            ps.setString(2, account.getPassword());
+//            ps.setString(3, account.getName());
+//            ps.setString(4, account.getPhone());            
+//            ps.setInt(5, account.getRole());
+//            ps.executeUpdate();
+//            return account;
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//        }
+//        return null;
+//    }
+    public void createAccount(Account account) {
         String sql = "INSERT INTO ACCOUNT(email, password, username, phone, role) VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, account.getEmail());
             ps.setString(2, account.getPassword());
             ps.setString(3, account.getName());
-            ps.setString(4, account.getPhone());            
+            ps.setString(4, account.getPhone());
             ps.setInt(5, account.getRole());
             ps.executeUpdate();
-            return account;
+
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        return null;
+
     }
 
     public boolean changePassword(String email, String newPassword) {
@@ -128,7 +145,7 @@ public class AccountDAO extends DBContext{
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, name);
-            ps.setString(2, phone);            
+            ps.setString(2, phone);
             ps.setString(3, email);
             ps.executeUpdate();
             return true;
