@@ -102,7 +102,7 @@ public class ProjectDAO extends DBContext {
 //    }
     //thpro 
     public void insertProject(Project pro) {
-        String sql = "INSERT INTO dbo.DU_AN (TENKH, TENDA, DIADIEM, NGANSACH, NGAYTHICONG, TRANGTHAI)VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO dbo.DU_AN (TENKH, TENDA, DIADIEM, NGANSACH, NGAYTHICONG, TRANGTHAI,IMG)VALUES (?, ?, ?, ?, ?, ?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, pro.getTenKH());
@@ -111,6 +111,7 @@ public class ProjectDAO extends DBContext {
             st.setFloat(4, pro.getNganSach());
             st.setDate(5, pro.getNgayThiCong());
             st.setInt(6, pro.getTrangThai());
+            st.setString(7,pro.getUrlImg());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -119,7 +120,7 @@ public class ProjectDAO extends DBContext {
 
     //sua 
     public void editProject(Project pro) {
-        String sql = "UPDATE dbo.DU_AN SET TENKH = ?, TENDA = ?, DIADIEM = ?, NGANSACH = ? , NGAYTHICONG = ?, TRANGTHAI = ? WHERE MADA = ?";
+        String sql = "UPDATE dbo.DU_AN SET TENKH = ?, TENDA = ?, DIADIEM = ?, NGANSACH = ? , NGAYTHICONG = ?, TRANGTHAI = ?, IMG=? WHERE MADA = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, pro.getTenKH());
@@ -128,7 +129,9 @@ public class ProjectDAO extends DBContext {
             st.setFloat(4, pro.getNganSach());
             st.setDate(5, pro.getNgayThiCong());
             st.setInt(6, pro.getTrangThai());
-            st.setInt(7, pro.getMaDA());
+            st.setString(7, pro.getUrlImg());
+            st.setInt(8, pro.getMaDA());
+
             st.executeUpdate();
 
         } catch (SQLException e) {

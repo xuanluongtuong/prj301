@@ -15,7 +15,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
-        <link rel="stylesheet" href="css/stylelist.css">
+        <link rel="stylesheet" href="css/stylelist.css?v=51">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="fontawesome/css/all.min.css">
@@ -54,7 +54,7 @@
             </div>
 
         </div>
-        
+
         <!--end header-->
 
 
@@ -89,234 +89,220 @@
 
         <!-- menu -->
         <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
-            <div style="width: 100%; display: flex;justify-content: right;margin-top: 10px;">
+            <div style="width: 100%; display: flex;justify-content: space-between;margin:10px 30px;">
                 <%if(s!=null){
                     if(s.equals("admin")){%>
+                <div><h4>Project</h4></div>
                 <a href="projectadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 40px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
                 <%}}%>
             </div>
             <div class="mylist">
-                
+
                 <div class="mycontent">                    
-                    
-                    <div class="myhead_title_table">
-                        <h4> Project </h4><br/>
-                        
-                    </div>
-                    
+
+
+
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
+                        <%  Project p = (Project)request.getAttribute("project");
+                            if(p==null){
+                                p = (Project)session.getAttribute("projectinfo");
+                            }
+                        %>
 
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Customer Name
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Project ID
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Project Name
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Address
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Budget
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Start Date
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Status
-                                    </th>                                    
-                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
-                                        Action
-                                    </th>
-                                    
-                                </tr>
-                            </thead>
-                            <%  Project p = (Project)request.getAttribute("project");
-                                if(p==null){
-                                    p = (Project)session.getAttribute("projectinfo");
-                                }
-                            %>
-                            <tr class="border-b border-gray-50 dark:border-gray-800">
-                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    <%=p.getTenKH()%>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <%=p.getMaDA()%>
-                                </td>
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    <%=p.getTenDA()%>
-                                </td>                                
+                        <div class="project_img">
+                            <img src="<%=p.getUrlImg()%>" alt="alt" />
+                        </div>
+                        <div class="project_content">
+                            <div class="project_content_title">
+                                <h3>
+                                    Project Information(Thông tin dự án)
+                                </h3>
+                            </div>
+                            <div>
+                                Khách hàng: <%=p.getTenKH()%>
+                            </div>
 
-                                <td class="px-6 py-4">
-                                    <%=p.getDiaDiem()%>
-                                </td>
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    <%=p.getNganSach()%>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <%=p.getNgayThiCong()%>
-                                </td>                                
+                            <div>
+                                Mã dự án: <%=p.getMaDA()%>
+                            </div>
 
-                                <td class="px-6 py-4">
-                                    <%if(p.getTrangThai()==1){
-                                    %>
-                                    Hoàn thành
-                                    <%}else if(p.getTrangThai()==0){%> Đã hủy
-                                    <%} else{%> Đang thi công <%}%>
-                                </td>
-                                
-                                <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+                            <div>
+                                Tên dự án: <%=p.getTenDA()%>
+                            </div>
 
-                                    <a href="projectedit?id=<%=p.getMaDA()%>" class="myedit" style="display: flex;align-items: center;">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                        Edit</a>
+                            <div>
+                                Địa điểm: <%=p.getDiaDiem()%>
+                            </div>
+
+                            <div>
+                                Ngân sách: <%=p.getNganSach()%>
+                            </div>
+
+                            <div>
+                                Ngày thi công: <%=p.getNgayThiCong()%>
+                            </div>
+
+                            <div class="edit_form">
+                                <a href="projectedit?id=<%=p.getMaDA()%>" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    Edit</a>
                                     <%if(s!=null){
                                         if(s.equals("admin")){%>
-                                    <a href="#" onclick="doDelete('<%=p.getMaDA()%>')" class="mydelete" style="display: flex;align-items: center;">
-                                        <i class="fa-solid fa-trash"></i>
-                                        Delete</a>
-                                    <%}}%>
-                                </td>  
-                                
-                            </tr>
-                                                      
-                            </tbody>
-                        </table>
+                                <a href="#" onclick="doDelete('<%=p.getMaDA()%>')" class="mydelete" style="color: #ff0084;display: flex;align-items: center;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete</a>
+                            </div>
 
-                    </div>   
-                </div>
+                        </div>
+
+
+                        <%if(p.getTrangThai()==1){
+                        %>
+
+                        <%}else if(p.getTrangThai()==0){%> Đã hủy
+                        <%} else{%> Đang thi công <%}%>
+
+
+
+
+
+                        <%}}%>
+
+
+
+
+
+                    </div>
+
+                </div>   
             </div>
         </div>
-        <!-- menu -->
+    </div>
+    <!-- menu -->
 
-        <!-- Footer -->
-        <footer class="text-center text-lg-start bg-light text-muted">
-            <!-- Section: Social media -->
-            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="background-color: rgb(203, 203, 203);color: black;">
-                <!-- Left -->
-                <div class="d-flex me-5 d-none d-lg-block">
-                    <span>Get connected with us on social networks:</span>
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="background-color: rgb(203, 203, 203);color: black;">
+            <!-- Left -->
+            <div class="d-flex me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
 
-                </div>
-                <!-- Left -->
-
-                <!-- Right -->
-                <div>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-                <!-- Right -->
-            </section>
-            <!-- Section: Social media -->
-
-            <!-- Section: Links  -->
-            <section class="">
-                <div class=" container text-center text-md-start mt-5">
-                    <!-- Grid row -->
-                    <div class="row mt-3">
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <!-- Content -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                <i class="fas fa-gem me-3"></i>Company name
-                            </h6>
-                            <p>
-                                Here you can use rows and columns to organize your footer content. Lorem ipsum
-                                dolor sit amet, consectetur adipisicing elit.
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                Products
-                            </h6>
-                            <p>
-                                <a href="#!" class="text-reset">Angular</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">React</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Vue</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Laravel</a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                Useful links
-                            </h6>
-                            <p>
-                                <a href="#!" class="text-reset">Pricing</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Settings</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Orders</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Help</a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                            <p>
-                                <i class="fas fa-envelope me-3"></i>
-                                info@example.com
-                            </p>
-                            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <!-- Grid row -->
-                </div>
-            </section>
-            <!-- Section: Links  -->
-
-            <!-- Copyright -->
-            <div class="text-center p-4" style="background-color: rgb(0, 0, 0);">
-                <a class="text-reset fw-bold" href="#">Create by Tuong Xuan Luong</a>
             </div>
-            <!-- Copyright -->
-        </footer>
-        <!-- Footer -->
+            <!-- Left -->
 
-    </body>
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class=" container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Products
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Angular</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">React</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Vue</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Laravel</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgb(0, 0, 0);">
+            <a class="text-reset fw-bold" href="#">Create by Tuong Xuan Luong</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+</body>
 </html>
