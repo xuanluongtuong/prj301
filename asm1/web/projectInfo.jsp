@@ -73,12 +73,16 @@
                 </ul>
             </div>
 
-            <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
-                <div style="padding-bottom: 5px;margin-right: 5px;"><i class="fa-solid fa-user" style="margin-right: 5px;">
-                    </i><%=session.getAttribute("name")%> | Log out
-                </div>
-                <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 10px;"></i>                
-            </a>
+            <div style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">
+                <i class="fa-solid fa-user" style="margin-right: 5px;color: white;">
+                </i>
+                <div style="color: white;"><%=session.getAttribute("name")%></div>
+                <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
+                    <div style="margin-right: 5px;">&nbsp;| Log out
+                    </div>
+                    <i class="fa-solid fa-arrow-right-from-bracket" style="margin: 5px 10px 0px 0;"></i>                
+                </a>
+            </div>
 
         </nav>
 
