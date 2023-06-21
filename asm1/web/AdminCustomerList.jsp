@@ -15,7 +15,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
-        <link rel="stylesheet" href="css/stylelist.css">
+        <link rel="stylesheet" href="css/stylelist.css?v=51">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="fontawesome/css/all.min.css">
@@ -54,7 +54,7 @@
             </div>
 
         </div>
-        
+
         <!--end header-->
 
 
@@ -89,20 +89,23 @@
 
         <!-- menu -->
         <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
-            
-            <div style="width: 100%; display: flex;justify-content: right;margin-top: 10px;">
-                <%if(s!=null){
+            <div>
+                <div class="myhead_title_table">
+                    <h4 style="margin-left: 30px; color: purple;"> Customer List </h4><br/>                        
+                </div>
+                <div style="width: 100%; display: flex;justify-content: right;margin-top: 10px;">
+                    <%if(s!=null){
                     if(s.equals("admin")){%>
-                <a href="customeradd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 45px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Customer</a>
-                <%}}%>
+                    <a href="customeradd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 45px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Customer</a>
+                    <%}}%>
+                </div>
             </div>
+
             <div class="mylist">
-                
+
                 <div class="mycontent">                    
-                    
-                    <div class="myhead_title_table">
-                        <h4> Customer List </h4><br/>                        
-                    </div>
+
+
 
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
@@ -155,12 +158,12 @@
                                         <a href="customeredit?id=<%=c.getMaKH()%>" class="myedit" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                             Edit</a>
-                                        <%if(s!=null){
+                                            <%if(s!=null){
                                             if(s.equals("admin")){%>
                                         <a href="#" onclick="doDelete('<%=c.getMaKH()%>')" class="mydelete" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-trash"></i>
                                             Delete</a>
-                                        <%}}%>
+                                            <%}}%>
                                     </td>      
                                 </tr>
                                 <%} %>
