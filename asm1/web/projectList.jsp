@@ -96,7 +96,8 @@
                 <div style="display: flex;justify-content: right;margin-top: 10px;">
                     <%if(s!=null){
                     if(s.equals("admin")){%>
-                    <a href="projectadd" style="text-decoration: none;color: rgb(129, 0, 185);margin-right: 40px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
+                    <a href="projectadd" style="display:flex;align-items: center; text-decoration: none;color: rgb(129, 0, 185);margin: 0 40px 10px 0;font-size: 20px;">
+                        <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
                     <%}}%>
                 </div>
             </div>
