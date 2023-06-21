@@ -18,12 +18,13 @@ import model.Project;
  *
  * @author admin
  */
-public class ProjectDAO extends DBContext{
+public class ProjectDAO extends DBContext {
+
     public List<Project> getPJList() {
         List<Project> list = new ArrayList<>();
         String sql = "select * from dbo.DU_AN";
         try {
-            PreparedStatement st = connection.prepareStatement(sql);            
+            PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Project p = new Project();
@@ -42,9 +43,17 @@ public class ProjectDAO extends DBContext{
         }
         return list;
     }
-    
+
+    public List<Project> getlistbypage(List<Project> list, int start, int end) {
+        ArrayList<Project> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
+
     public Project getPJByID(int mada) {
-        
+
         String sql = "select * from dbo.DU_AN where MADA=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -67,7 +76,7 @@ public class ProjectDAO extends DBContext{
         }
         return null;
     }
-    
+
 //    public Project getProjectByID(int mada) {
 //
 //        try {
@@ -91,12 +100,11 @@ public class ProjectDAO extends DBContext{
 //        }
 //        return null;
 //    }
-
     //thpro 
     public void insertProject(Project pro) {
         String sql = "INSERT INTO dbo.DU_AN (TENKH, TENDA, DIADIEM, NGANSACH, NGAYTHICONG, TRANGTHAI)VALUES (?, ?, ?, ?, ?, ?)";
         try {
-            PreparedStatement st = connection.prepareStatement(sql);            
+            PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, pro.getTenKH());
             st.setString(2, pro.getTenDA());
             st.setString(3, pro.getDiaDiem());
@@ -122,17 +130,17 @@ public class ProjectDAO extends DBContext{
             st.setInt(6, pro.getTrangThai());
             st.setInt(7, pro.getMaDA());
             st.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
+
     //xoa 
-    public void deleteProject(int mada){
-        String sql="delete from dbo.DU_AN where MADA=?";
+    public void deleteProject(int mada) {
+        String sql = "delete from dbo.DU_AN where MADA=?";
         try {
-            PreparedStatement st=connection.prepareStatement(sql);
+            PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, mada);
             st.executeUpdate();
         } catch (SQLException e) {
@@ -146,5 +154,4 @@ public class ProjectDAO extends DBContext{
 //        Project pro = project.getProjectByID(7);
 //        System.out.println(pro.getNgaySinh());
 //    }
-
 }

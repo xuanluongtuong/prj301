@@ -45,6 +45,14 @@ public class EmployeeDAO extends DBContext {
         return list;
     }
     
+    public List<Employee> getlistbypage(List<Employee> list, int start, int end) {
+        ArrayList<Employee> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
+    
     public List<Employee> getEmList() {
         List<Employee> list = new ArrayList<>();
         String sql = "select * from dbo.NHANVIEN";

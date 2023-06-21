@@ -33,8 +33,22 @@ public class ProjectServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ProjectDAO project = new ProjectDAO();
         List<Project> list = project.getPJList();
-        
-        request.setAttribute("pro", list);        
+        int page, numperpage = 8;
+        int size = list.size();
+        int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
+        String pages = request.getParameter("page");
+        if (pages == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(pages);
+        }
+        int start, end;
+        start = (page - 1) * numperpage;
+        end = Math.min(page * numperpage, size);
+        List<Project> listperpage =  project.getlistbypage(list, start, end);
+        request.setAttribute("prolist", listperpage);
+        request.setAttribute("num", num);
+        request.setAttribute("page", page);                
         request.getRequestDispatcher("projectList.jsp").forward(request, response);
         
     } 
