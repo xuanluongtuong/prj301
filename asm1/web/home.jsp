@@ -12,7 +12,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <head>
         <title>HAPPY HOME</title>        
         <meta charset="utf-8"> 
-        <link rel="stylesheet" href="css/stylehome.css">
+        <link rel="stylesheet" href="css/stylehome.css?v=51">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>        
         <link rel="stylesheet" href="fontawesome/css/all.min.css">

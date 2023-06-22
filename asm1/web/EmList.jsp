@@ -16,7 +16,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
-        <link rel="stylesheet" href="css/stylelist.css">
+        <link rel="stylesheet" href="css/stylelist.css?v=51">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="fontawesome/css/all.min.css">
@@ -133,8 +133,8 @@
 
                     <% if(list.size() >= 1){ %>
                     <%if(e!=null){%>
-                    <h5 style="color: rgb(0, 148, 156);margin-left: 20px;">Manager Employee: </h5>
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 20px 10px 50px 10px;">
+                    <h5 style="color: rgb(0, 148, 156);margin:10px 0 0 20px;">Manager Employee: </h5>
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 5px;">
 
 
 
@@ -250,7 +250,7 @@
                     <%}%>
                     <% if(list.size() >1){%>
                     <h5 style="color: rgb(0, 148, 156);margin-left: 20px;">Employee: </h5>
-                    <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 5px;">
 
 
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
