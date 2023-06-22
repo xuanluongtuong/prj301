@@ -103,19 +103,11 @@ public class SignUp extends HttpServlet {
                 request.setAttribute("error", "Email already exists!");
                 request.getRequestDispatcher("signup.jsp").forward(request, response);
             }
-            
-//            else if (session.getAttribute("loginmessage") != null) {
-//                Cookie cookie = new Cookie("email", email);
-//                cookie.setMaxAge(60 * 60 * 24);
-//                response.addCookie(cookie);
-//
-//                session.removeAttribute("loginmessage");
-//                session.setAttribute("role", "user");
-//                response.sendRedirect("checkout");
-//            } 
+             
             else {
                 accountDAO.createAccount(account);                
                 session.setAttribute("role", "user");
+                session.setAttribute("name", name);
                 request.getRequestDispatcher("home.jsp").forward(request, response);
             }
 
