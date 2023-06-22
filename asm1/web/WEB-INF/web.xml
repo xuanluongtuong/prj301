@@ -88,6 +88,38 @@
         <servlet-name>DraftServlet</servlet-name>
         <servlet-class>DraftController.DraftServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DesignAddServlet</servlet-name>
+        <servlet-class>DesignController.DesignAddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DesignDeleteServlet</servlet-name>
+        <servlet-class>DesignController.DesignDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DesignEditServlet</servlet-name>
+        <servlet-class>DesignController.DesignEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DraftAddServlet</servlet-name>
+        <servlet-class>DraftController.DraftAddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DraftDeleteServlet</servlet-name>
+        <servlet-class>DraftController.DraftDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DraftEditServlet</servlet-name>
+        <servlet-class>DraftController.DraftEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DesignInfoServlet</servlet-name>
+        <servlet-class>DesignController.DesignInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DraftInfoServlet</servlet-name>
+        <servlet-class>DraftController.DraftInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -175,6 +207,38 @@
     <servlet-mapping>
         <servlet-name>DraftServlet</servlet-name>
         <url-pattern>/draft</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DesignAddServlet</servlet-name>
+        <url-pattern>/designadd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DesignDeleteServlet</servlet-name>
+        <url-pattern>/designdelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DesignEditServlet</servlet-name>
+        <url-pattern>/designedit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DraftAddServlet</servlet-name>
+        <url-pattern>/draftadd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DraftDeleteServlet</servlet-name>
+        <url-pattern>/draftdelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DraftEditServlet</servlet-name>
+        <url-pattern>/draftedit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DesignInfoServlet</servlet-name>
+        <url-pattern>/designinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DraftInfoServlet</servlet-name>
+        <url-pattern>/draftinfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

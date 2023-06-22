@@ -5,21 +5,18 @@
 
 package DraftController;
 
-import DAL.DraftDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.Draft;
 
 /**
  *
  * @author admin
  */
-public class DraftServlet extends HttpServlet {
+public class DraftAddServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,25 +28,18 @@ public class DraftServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DraftDAO project = new DraftDAO();
-        List<Draft> list = project.getDRList();
-        int page, numperpage = 8;
-        int size = list.size();
-        int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
-        String pages = request.getParameter("page");
-        if (pages == null) {
-            page = 1;
-        } else {
-            page = Integer.parseInt(pages);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet DraftAddServlet</title>");  
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet DraftAddServlet at " + request.getContextPath () + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        int start, end;
-        start = (page - 1) * numperpage;
-        end = Math.min(page * numperpage, size);
-        List<Draft> listperpage =  project.getlistbypage(list, start, end);
-        request.setAttribute("draftlist", listperpage);
-        request.setAttribute("num", num);
-        request.setAttribute("page", page);                
-        request.getRequestDispatcher("draft.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

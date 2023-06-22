@@ -18,7 +18,7 @@ import model.Draft;
 public class DraftDAO extends DBContext{
     public List<Draft> getDRList() {
         List<Draft> list = new ArrayList<>();
-        String sql = "select * from dbo.THIETKE";
+        String sql = "select * from dbo.BANVE";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -45,7 +45,7 @@ public class DraftDAO extends DBContext{
 
     public Draft getDRByID(int ma) {
 
-        String sql = "select * from dbo.THIETKE where MA=?";
+        String sql = "select * from dbo.BANVE where MA=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, ma);
@@ -65,7 +65,7 @@ public class DraftDAO extends DBContext{
 
     //thpro 
     public void insertDraft(Draft d) {
-        String sql = "INSERT INTO dbo.THIETKE (TEN, ANH)VALUES (?, ?)";
+        String sql = "INSERT INTO dbo.BANVE (TEN, ANH)VALUES (?, ?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, d.getName());
@@ -78,7 +78,7 @@ public class DraftDAO extends DBContext{
 
     //sua 
     public void editDraft(Draft d) {
-        String sql = "UPDATE dbo.THIETKE SET TEN = ?, ANH = ? WHERE MA = ?";
+        String sql = "UPDATE dbo.BANVE SET TEN = ?, ANH = ? WHERE MA = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, d.getName());
@@ -94,7 +94,7 @@ public class DraftDAO extends DBContext{
 
     //xoa 
     public void deleteDraft(int ma) {
-        String sql = "delete from dbo.THIETKE where MA=?";
+        String sql = "delete from dbo.BANVE where MA=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, ma);
