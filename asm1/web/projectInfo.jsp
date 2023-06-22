@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="fontawesome/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <title>HAPPY HOME</title>        
+        <title>LXT Manager</title>        
 
         <script>
             function doDelete(id) {
