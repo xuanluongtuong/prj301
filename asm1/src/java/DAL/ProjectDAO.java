@@ -77,29 +77,6 @@ public class ProjectDAO extends DBContext {
         return null;
     }
 
-//    public Project getProjectByID(int mada) {
-//
-//        try {
-//            String sql = "select * from dbo.DU_AN where MADA=?";
-//            PreparedStatement st = connection.prepareStatement(sql);
-//            st.setInt(1, mada);
-//            ResultSet rs = st.executeQuery();
-//            if (rs.next()) {
-//                Project pro = new Project();
-//                pro.setTenKH(rs.getString("TENKH"));                
-//                pro.setMaDA(mada);
-//                pro.setTenDA(rs.getString("TENDA"));
-//                pro.setDiaDiem(rs.getString("DIADIEM"));
-//                pro.setNganSach(rs.getFloat("NGANSACH"));
-//                pro.setNgayThiCong(rs.getDate("NGAYTHICONG"));
-//                pro.setTrangThai(rs.getInt("TRANGTHAI"));
-//                return pro;
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(e);
-//        }
-//        return null;
-//    }
     //thpro 
     public void insertProject(Project pro) {
         String sql = "INSERT INTO dbo.DU_AN (TENKH, TENDA, DIADIEM, NGANSACH, NGAYTHICONG, TRANGTHAI,IMG)VALUES (?, ?, ?, ?, ?, ?,?)";
