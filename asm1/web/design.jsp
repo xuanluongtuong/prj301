@@ -106,7 +106,7 @@
 
             <%if(s!=null){
                     if(s.equals("admin")){%>
-            <a href="projectadd" style="display:flex;align-items: center; text-decoration: none;color: rgb(129, 0, 185);margin: 0 35px 0px 0;font-size: 20px;">
+            <a href="designadd" style="display:flex;align-items: center; text-decoration: none;color: rgb(129, 0, 185);margin: 0 35px 0px 0;font-size: 20px;">
                 <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Design</a>
                 <%}}%>
 
