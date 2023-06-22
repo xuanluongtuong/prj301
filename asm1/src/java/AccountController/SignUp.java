@@ -107,6 +107,7 @@ public class SignUp extends HttpServlet {
             else {
                 accountDAO.createAccount(account);                
                 session.setAttribute("role", "user");
+                session.setMaxInactiveInterval(60*60*2);
                 session.setAttribute("name", name);
                 request.getRequestDispatcher("home.jsp").forward(request, response);
             }
