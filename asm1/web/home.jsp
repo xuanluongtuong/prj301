@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <html>
     <!--comment-->
     <head>
-        <title>LXT Manager</title>        
+        <title>LTX Manager</title>        
         <meta charset="utf-8"> 
         <link rel="stylesheet" href="css/stylehome.css?v=51">
         <link rel="preconnect" href="https://fonts.googleapis.com">
