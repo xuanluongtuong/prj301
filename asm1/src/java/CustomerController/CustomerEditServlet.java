@@ -61,7 +61,7 @@ public class CustomerEditServlet extends HttpServlet {
         CustomerDAO customer = new CustomerDAO();
         Customer obj = customer.getCustomerByID(ma);
         request.setAttribute("customer", obj);
-        request.getRequestDispatcher("AdminCustomerEdit.jsp").forward(request, response);
+        request.getRequestDispatcher("CustomerEdit.jsp").forward(request, response);
     }
 
     /**

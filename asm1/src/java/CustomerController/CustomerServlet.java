@@ -49,7 +49,7 @@ public class CustomerServlet extends HttpServlet {
         request.setAttribute("customer", listperpage);
         request.setAttribute("num", num);
         request.setAttribute("page", page);                
-        request.getRequestDispatcher("AdminCustomerList.jsp").forward(request, response);
+        request.getRequestDispatcher("CustomerList.jsp").forward(request, response);
         
     } 
 

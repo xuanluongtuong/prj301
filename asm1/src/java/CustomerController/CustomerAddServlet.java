@@ -59,7 +59,7 @@ public class CustomerAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("AdminCustomerAdd.jsp").forward(request, response);
+        request.getRequestDispatcher("CustomerAdd.jsp").forward(request, response);
     }
 
     /**
