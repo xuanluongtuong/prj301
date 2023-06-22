@@ -8,7 +8,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="jakarta.servlet.http.HttpSession"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,21 @@
                 }
             }
         </script>
+        <style>
 
+            .pagination {
+                justify-content: center;
+            }
+
+            .page-link {
+                color: blue; /* Màu mặc định cho các trang chưa được chọn */
+            }
+
+            .page-link.active {
+                color: white; /* Màu cho trang đang được chọn */
+                background: rgb(39, 122, 255);
+            }
+        </style>
     </head>
     <body>
         <%String s=(String)session.getAttribute("role");
@@ -88,17 +102,17 @@
 
 
         <!-- menu -->
-        <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
-            <div>
-                <div class="myhead_title_table">
-                    <h4 style="margin-left: 30px; color: purple;"> Customer List </h4><br/>                        
-                </div>
-                <div style="width: 100%; display: flex;justify-content: right;margin-top: 10px;">
-                    <%if(s!=null){
+        <div class="mymenu">
+            <div style="display: flex;justify-content: space-between; align-items: center; padding: 10px;">
+
+                <h4 style="min-width: 300px;margin: 0 0 0 30px; color: purple;"> Customer List </h4><br/>                        
+
+
+                <%if(s!=null){
                     if(s.equals("admin")){%>
-                    <a href="customeradd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 45px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Customer</a>
-                    <%}}%>
-                </div>
+                <a href="customeradd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Customer</a>
+                <%}}%>
+
             </div>
 
             <div class="mylist">
@@ -137,7 +151,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <%  List<Customer> list = (ArrayList<Customer>) request.getAttribute("cus");
+                                <%  List<Customer> list = (ArrayList<Customer>) request.getAttribute("customer");
                                     for (Customer c : list) {                                
                                 %>
                                 <tr class="border-b border-gray-50 dark:border-gray-800">
@@ -175,7 +189,16 @@
                             </tbody>
                         </table>
 
-                    </div>     
+                    </div>
+
+                </div>
+                <div style="margin-bottom:20px">
+                    <c:set var="page" value="${requestScope.page}"/>
+                    <div class="pagination" style="justify-content: center;">
+                        <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                            <a id="page-${i}" class="page-link" href="customer?page=${i}">${i}</a>
+                        </c:forEach>
+                    </div>
                 </div>
             </div>
         </div>
@@ -305,4 +328,36 @@
         <!-- Footer -->
 
     </body>
+    <script>
+        function showdropdown() {
+            var a = document.getElementById('dropdown');
+            if (a.style.display !== 'block') {
+                a.style.display = 'block';
+
+            } else {
+                a.style.display = 'none';
+            }
+        }
+        function menudown(id) {
+            var b = document.getElementById(id);
+            if (b.style.display !== 'block') {
+                b.style.display = 'block';
+            } else {
+                b.style.display = 'none';
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            var currentPage = "${requestScope.page}";
+            var pageLinks = document.getElementsByClassName("page-link");
+
+            for (var i = 0; i < pageLinks.length; i++) {
+                var pageLink = pageLinks[i];
+                var pageNumber = pageLink.innerHTML;
+
+                if (pageNumber === currentPage) {
+                    pageLink.classList.add("active");
+                }
+            }
+        });
+    </script>
 </html>

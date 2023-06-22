@@ -45,7 +45,7 @@ public class ProjectDAO extends DBContext {
     }
 
     public List<Project> getlistbypage(List<Project> list, int start, int end) {
-        ArrayList<Project> arr = new ArrayList<>();
+        List<Project> arr = new ArrayList<>();
         for (int i = start; i < end; i++) {
             arr.add(list.get(i));
         }

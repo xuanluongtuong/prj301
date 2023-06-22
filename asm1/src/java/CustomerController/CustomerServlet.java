@@ -30,11 +30,25 @@ public class CustomerServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         CustomerDAO customer = new CustomerDAO();
         List<Customer> list = customer.getCustomerList();
-        
-        request.setAttribute("cus", list);        
+        int page, numperpage = 6;
+        int size = list.size();
+        int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
+        String pages = request.getParameter("page");
+        if (pages == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(pages);
+        }
+        int start, end;
+        start = (page - 1) * numperpage;
+        end = Math.min(page * numperpage, size);
+        List<Customer> listperpage =  customer.getlistbypage(list, start, end);
+        request.setAttribute("customer", listperpage);
+        request.setAttribute("num", num);
+        request.setAttribute("page", page);                
         request.getRequestDispatcher("AdminCustomerList.jsp").forward(request, response);
         
     } 

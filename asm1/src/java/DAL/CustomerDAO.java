@@ -37,6 +37,14 @@ public class CustomerDAO extends DBContext{
         return list;
     }
     
+    public List<Customer> getlistbypage(List<Customer> list, int start, int end) {
+        List<Customer> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
+    
     public Customer getCustomerByID(int makh) {
 
         try {

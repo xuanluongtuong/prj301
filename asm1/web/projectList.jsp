@@ -39,13 +39,7 @@
             }
         </style>
     </style>
-    <script>
-        function doDelete(id) {
-            if (confirm("Are you sure to delete this Project?")) {
-                window.location = "projectdelete?id=" + id;
-            }
-        }
-    </script>
+    
 
 </head>
 <body>
