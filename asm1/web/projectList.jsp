@@ -105,14 +105,14 @@
 
     <!-- menu -->
     <div class="mymenu" style=" background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
-        <div style="display: flex; justify-content: space-between; margin-bottom: -10px">
-            <div class="myhead_title_table" style="margin-left: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="myhead_title_table" style="margin: 0px 0 0 10px;">
                 <h4 style="width: 500px;color: #4e00d5;font-size: 30px;"> Project List </h4><br/>
             </div>
             <div style="display: flex;justify-content: right;margin-top: 10px;">
                 <%if(s!=null){
                     if(s.equals("admin")){%>
-                <a href="projectadd" style="display:flex;align-items: center; text-decoration: none;color: rgb(129, 0, 185);margin: 0 40px 10px 0;font-size: 20px;">
+                <a href="projectadd" style="display:flex;align-items: center; text-decoration: none;color: rgb(129, 0, 185);margin: 0 35px 0px 0;font-size: 20px;">
                     <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
                     <%}}%>
             </div>

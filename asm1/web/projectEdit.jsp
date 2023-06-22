@@ -48,7 +48,7 @@
     <body>
         <%String s=(String)session.getAttribute("role");
             if(s!=null){
-                if(!s.equals("admin") && !s.equals("user")){
+                if(!s.equals("admin")){
                     response.sendRedirect("login.jsp");
                 }
             }else{
@@ -125,13 +125,15 @@
                                 <label class="form-label" for="DIADIEM">Address</label>
                                 <input class="form-input" type="text" id="DIADIEM" name="DIADIEM" value="<%=pro.getDiaDiem()%>" required />
                             </div>
+                            
+                        </div>
+
+                        <div class="form-right">
+                            
                             <div class="form-group">
                                 <label class="form-label" for="NGANSACH">Budget(Milions Dong)</label>
                                 <input class="form-input" type="number" id="NGANSACH" name="NGANSACH" value="<%=pro.getNganSach()%>" required />
                             </div>
-                        </div>
-
-                        <div class="form-right">
 
                             <div class="form-group">
                                 <label class="form-label" for="NGAYTHICONG">Start Date</label>
@@ -145,10 +147,10 @@
                                     <option value="0" <%=pro.getTrangThai() == 0 ? "selected" : ""%>>Đã hủy</option>
                                 </select>
                             </div>
-                            <div class="form-group">
+<!--                            <div class="form-group">
                                 <label class="form-label" for="IMG">Image url</label>
                                 <input class="form-input" type="text" id="IMG" name="IMG" value="<%=pro.getUrlImg()%>" />
-                            </div>
+                            </div>-->
                         </div>                        
                     </div>
 

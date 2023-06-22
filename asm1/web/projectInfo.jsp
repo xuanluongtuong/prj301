@@ -120,56 +120,52 @@
                                 </h3>
                             </div>
                             <div>
-                                Khách hàng: <%=p.getTenKH()%>
+                                Customer: <%=p.getTenKH()%>
                             </div>
 
                             <div>
-                                Mã dự án: <%=p.getMaDA()%>
+                                Project ID: <%=p.getMaDA()%>
                             </div>
 
                             <div>
-                                Tên dự án: <%=p.getTenDA()%>
+                                Project name: <%=p.getTenDA()%>
                             </div>
 
                             <div>
-                                Địa điểm: <%=p.getDiaDiem()%>
+                                Address: <%=p.getDiaDiem()%>
                             </div>
 
                             <div>
-                                Ngân sách: <%=p.getNganSach()%>
+                                Budget: <%=p.getNganSach()%>
                             </div>
 
                             <div>
-                                Ngày thi công: <%=p.getNgayThiCong()%>
+                                Start Date: <%=p.getNgayThiCong()%>
                             </div>
 
+                            <div>
+                                Status: 
+                                <%if(p.getTrangThai()==1){
+                                %>Hoàn thành
+
+                                <%}else if(p.getTrangThai()==0){%> Đã hủy
+                                <%} else{%> Đang thi công <%}%>
+                            </div>
+
+                        <%if(s!=null){
+                            if(s.equals("admin")){%>
                             <div class="edit_form">
                                 <a href="projectedit?id=<%=p.getMaDA()%>" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     Edit</a>
-                                    <%if(s!=null){
-                                        if(s.equals("admin")){%>
+
                                 <a href="#" onclick="doDelete('<%=p.getMaDA()%>')" class="mydelete" style="color: #ff0084;display: flex;align-items: center;">
                                     <i class="fa-solid fa-trash"></i>
                                     Delete</a>
                             </div>
-
-                        </div>
-
-
-                        <%if(p.getTrangThai()==1){
-                        %>
-
-                        <%}else if(p.getTrangThai()==0){%> Đã hủy
-                        <%} else{%> Đang thi công <%}%>
-
-
-
-
-
                         <%}}%>
 
-
+                        </div>
 
 
 
