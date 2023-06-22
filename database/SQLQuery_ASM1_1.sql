@@ -326,23 +326,23 @@ VALUES
 	( N'Nguyễn Thị Vân', N'Vân', 0, '1995-07-10', N'Nam Định',N'2108313503', N'vannt@gmail.com', N'Nhân viên hỗ trợ khách hàng',6, N'Phòng hành chính',6, 10);
 
 Insert into dbo.THIETKE (TEN, ANH)
-Values (N'Thiết kế phòng khách',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg'),
-(N'Thiết kế phòng khách 1',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg'),
-(N'Thiết kế phòng khách 2',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg'),
-(N'Thiết kế phòng khách 3',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg'),
-(N'Thiết kế phòng khách 4',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg'),
-(N'Thiết kế phòng khách 5',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg'),
-(N'Thiết kế phòng khách 6',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg'),
-(N'Thiết kế phòng khách 7',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg'),
-(N'Thiết kế phòng khách 8',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg'),
-(N'Thiết kế phòng khách 9',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg'),
-(N'Thiết kế phòng khách 10',  N'https://kientrucauchau.vn/wp-content/uploads/2021/12/ban-ve-thiet-ke-nha-1-tang-don-gian.jpeg');
+Values (N'Thiết kế phòng khách',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+(N'Thiết kế phòng khách 1',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+(N'Thiết kế phòng khách 2',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+(N'Thiết kế phòng khách 3',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+(N'Thiết kế phòng khách 4',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+(N'Thiết kế phòng khách 5',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+(N'Thiết kế phòng khách 6',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+(N'Thiết kế phòng khách 7',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+(N'Thiết kế phòng khách 8',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+(N'Thiết kế phòng khách 9',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+(N'Thiết kế phòng khách 10',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg');
 
 Insert into dbo.BANVE (TEN,  ANH)
 Values (N'Bản vẽ chi tiết thiết kế phòng khách',  N'https://xaydungvietbac.com/wp-content/uploads/2021/01/mau-ho-so-thiet-ke-kien-truc5-scaled.jpg'),
-(N'Bản vẽ chi tiết thiết kế phòng khách 1',  N'https://xaydungvietbac.com/wp-content/uploads/2021/01/mau-ho-so-thiet-ke-kien-truc5-scaled.jpg'),
+(N'Bản vẽ chi tiết thiết kế phòng khách 1',  N'https://kientrucdoorway.com.vn/wp-content/uploads/2019/03/Thiet-ke-noi-that-phong-khach-hien-dai-dep-2.jpg'),
 (N'Bản vẽ chi tiết thiết kế phòng khách 2',  N'https://xaydungvietbac.com/wp-content/uploads/2021/01/mau-ho-so-thiet-ke-kien-truc5-scaled.jpg'),
-(N'Bản vẽ chi tiết thiết kế phòng khách 3',  N'https://xaydungvietbac.com/wp-content/uploads/2021/01/mau-ho-so-thiet-ke-kien-truc5-scaled.jpg'),
+(N'Bản vẽ chi tiết thiết kế phòng khách 3',  N'https://kientrucdoorway.com.vn/wp-content/uploads/2019/03/Thiet-ke-noi-that-phong-khach-hien-dai-dep-2.jpg'),
 (N'Bản vẽ chi tiết thiết kế phòng khách 4',  N'https://xaydungvietbac.com/wp-content/uploads/2021/01/mau-ho-so-thiet-ke-kien-truc5-scaled.jpg'),
 (N'Bản vẽ chi tiết thiết kế phòng khách 5',  N'https://xaydungvietbac.com/wp-content/uploads/2021/01/mau-ho-so-thiet-ke-kien-truc5-scaled.jpg'),
 (N'Bản vẽ chi tiết thiết kế phòng khách 6', N'https://xaydungvietbac.com/wp-content/uploads/2021/01/mau-ho-so-thiet-ke-kien-truc5-scaled.jpg'),
