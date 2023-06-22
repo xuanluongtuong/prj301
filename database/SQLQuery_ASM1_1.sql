@@ -32,7 +32,7 @@ CREATE TABLE dbo.KHACHHANG
 	MAKH INT PRIMARY KEY identity(1,1) NOT NULL,
 	TENKH NVARCHAR(50),	
 	DCKH NVARCHAR(1000),
-	SDTKH NVARCHAR(11),
+	SDTKH NVARCHAR(50),
 	EMAILKH NVARCHAR(30)	
 );
 
@@ -274,7 +274,7 @@ VALUES
 	( N'Xí nghiệp Xây dựng Tư nhân số 1 Lai Châu', N'Khu CC2, Bắc Linh Đàm, Đại Kim, Hoàng Mai, Hà Nội ',N'2684045079', N'5l8np8odn0w@gmail.com'),
 	( N'Phan Thanh Tùng', N'Ngách 3 Ng. 131 P. Thái Hà, Trung Liệt, Đống Đa, Hà Nội',N'4507968960', N'gjx3n0q@hotmail.com'),
 	( N'Phòng khám da liễu S-Beauty', N'81 P. Trung Kính, P, Cầu Giấy, Hà Nội',N'6896036867', N'xdvmv8l@gmail.com'),
-	( N'Hội đồng pháp thuật tối cao', N'tài liệu mật', N'tài liệu mật', N'tài liệu mật'),	
+	( N'Hội đồng pháp thuật tối cao', N'tài liệu mật', N'tài liệu mật', N'tài liệu mật')	
 
 INSERT INTO 
 	dbo.NHANVIEN(HO_VA_TEN,TEN,PHAI,NGAYSINH,DIACHI,SDT,EMAIL,VITRI,MAQL,PHONGBAN,MAPB,LUONG)

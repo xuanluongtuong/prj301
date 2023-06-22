@@ -80,6 +80,14 @@
         <servlet-name>ProjectInfoServlet</servlet-name>
         <servlet-class>ProjectController.ProjectInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DesignServlet</servlet-name>
+        <servlet-class>DesignController.DesignServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DraftServlet</servlet-name>
+        <servlet-class>DraftController.DraftServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -159,6 +167,14 @@
     <servlet-mapping>
         <servlet-name>ProjectInfoServlet</servlet-name>
         <url-pattern>/projectinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DesignServlet</servlet-name>
+        <url-pattern>/design</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DraftServlet</servlet-name>
+        <url-pattern>/draft</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
