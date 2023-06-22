@@ -98,10 +98,10 @@
 
 
     <!-- menu -->
-    <div class="mymenu" style=" background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="mymenu">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
 
-            <h4 style="width: 500px;color: #4e00d5;font-size: 30px;"> Project List </h4><br/>
+            <h4 style="width: 300px;margin: 0 0px 0 30px; color: #8b00a3;"> Project List </h4><br/>
 
 
             <%if(s!=null){
