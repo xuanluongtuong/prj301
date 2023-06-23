@@ -101,13 +101,13 @@
     <div class="mymenu">
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
 
-            <h4 style="width: 300px;margin: 0 0px 0 30px; color: #8b00a3;"> Project List </h4><br/>
+            <h4 style="width: 300px;margin: 0 0px 0 30px; color: #8b00a3;"> Design List </h4><br/>
 
 
             <%if(s!=null){
                     if(s.equals("admin")){%>
-            <a href="projectadd" style="display:flex;align-items: center; text-decoration: none;color: rgb(129, 0, 185);margin: 0 35px 0px 0;font-size: 20px;">
-                <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
+            <a href="designadd" style="display:flex;align-items: center; text-decoration: none;color: rgb(129, 0, 185);margin: 0 35px 0px 0;font-size: 20px;">
+                <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Design</a>
                 <%}}%>
 
         </div>
@@ -123,8 +123,8 @@
                             for (Design d : list) {                                
                         %>
                         <li style="width: 320px;margin: 20px 0; box-shadow: 2px 2px 2px 0.5px #66696b;border-radius: 4px;overflow: hidden;">
-                            <img src="<%=d.getImg()%>" alt="Project still not have image" style="width: 100%;height: 200px;">
-                            <a href="designinfo?mads=<%=d.getId()%>" style="color: black; text-decoration: none;font-size: 17px;">
+                            <img src="<%=d.getImg()%>" alt="Design have not had image yet" style="width: 100%;height: 200px;">
+                            <a href="designinfo?ma=<%=d.getId()%>" style="color: black; text-decoration: none;font-size: 17px;">
                                 <div style="height: 50px;padding: 0px 5px;"><%=d.getName()%></div>
                             </a>
                         </li>

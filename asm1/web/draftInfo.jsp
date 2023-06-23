@@ -26,7 +26,7 @@
         <script>
             function doDelete(id) {
                 if (confirm("Are you sure to delete this Draft?")) {
-                    window.location = "designdelete?id=" + id;
+                    window.location = "draftdelete?id=" + id;
                 }
             }
         </script>
@@ -109,16 +109,17 @@
                                 d = (Draft)session.getAttribute("info");
                             }
                         %>
-                        
-                        <div class="draft_img">
+
+                        <div class="project_img">
                             <img src="<%=d.getImg()%>" alt="alt" />
                         </div>
-                        <div class="draft_content">
-                            <div class="draft_content_title">
+                        <div class="project_content">
+                            <div class="project_content_title">
                                 <h3>
-                                    Draft Information(Thông tin bản vẽ kỹ thuật)
+                                    Draft Information
                                 </h3>
-                            </div>                            
+                            </div>
+                            
 
                             <div>
                                 Draft ID: <%=d.getId()%>
@@ -133,7 +134,7 @@
                         <%if(s!=null){
                             if(s.equals("admin")){%>
                             <div class="edit_form">
-                                <a href="designedit?id=<%=d.getId()%>" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;">
+                                <a href="draftedit?id=<%=d.getId()%>" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     Edit</a>
 
@@ -144,7 +145,7 @@
                         <%}}%>
 
                         </div>
-                        
+
 
 
                     </div>

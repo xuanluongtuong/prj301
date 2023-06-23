@@ -44,7 +44,7 @@ public class DesignInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String ma = request.getParameter("mads");
+        String ma = request.getParameter("ma");
         DesignDAO designDAO = new DesignDAO();
         Design d = designDAO.getDSByID(Integer.parseInt(ma));
         request.setAttribute("info", d);        
