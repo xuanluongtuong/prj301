@@ -5,12 +5,15 @@
 
 package DesignController;
 
+import DAL.DesignDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.Design;
 
 /**
  *
@@ -53,7 +56,11 @@ public class DesignEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        int ma = Integer.parseInt(request.getParameter("id"));
+        DesignDAO project = new DesignDAO();
+        Design pro = project.getDSByID(ma);
+        request.setAttribute("design", pro);        
+        request.getRequestDispatcher("designEdit.jsp").forward(request, response);
     } 
 
     /** 
@@ -66,7 +73,25 @@ public class DesignEditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String ma = request.getParameter("ma");
+        String ten = request.getParameter("ten");
+        String anh = request.getParameter("anh");
+        
+        try {
+            DesignDAO design = new DesignDAO();
+            Design d = new Design();
+            d.setId(Integer.parseInt(ma));
+            d.setName(ten);
+            d.setImg(anh);
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("designinfo", d);
+            
+            design.editDesign(d);
+            response.sendRedirect("designInfo.jsp");
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     /** 

@@ -106,7 +106,7 @@
 
                         <%  Draft d = (Draft)request.getAttribute("info");
                             if(d==null){
-                                d = (Draft)session.getAttribute("info");
+                                d = (Draft)session.getAttribute("draftinfo");
                             }
                         %>
 

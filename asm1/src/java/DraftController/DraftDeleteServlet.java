@@ -5,6 +5,7 @@
 
 package DraftController;
 
+import DAL.DraftDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -53,7 +54,15 @@ public class DraftDeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        int ma = Integer.parseInt(request.getParameter("id"));
+        
+        try {
+            DraftDAO project = new DraftDAO(); 
+            project.deleteDraft(ma);
+            request.getRequestDispatcher("draft").forward(request, response);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     } 
 
     /** 

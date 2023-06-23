@@ -5,6 +5,7 @@
 
 package DesignController;
 
+import DAL.DesignDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -53,7 +54,15 @@ public class DesignDeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        int ma = Integer.parseInt(request.getParameter("id"));
+        
+        try {
+            DesignDAO project = new DesignDAO(); 
+            project.deleteDesign(ma);
+            request.getRequestDispatcher("design").forward(request, response);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     } 
 
     /** 

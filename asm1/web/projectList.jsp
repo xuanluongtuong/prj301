@@ -122,7 +122,7 @@
                         <%  List<Project> list = (ArrayList<Project>)request.getAttribute("prolist");
                             for (Project p : list) {                                
                         %>
-                        <li style="width: 320px;margin: 20px 0; box-shadow: 2px 2px 2px 0.5px #66696b;border-radius: 4px;overflow: hidden;">
+                        <li style="width: 320px;margin: 20px 15px; box-shadow: 2px 2px 2px 0.5px #66696b;border-radius: 4px;overflow: hidden;">
                             <img src="<%=p.getUrlImg()%>" alt="Project still not have image" style="width: 100%;height: 200px;">
                             <a href="projectinfo?mada=<%=p.getMaDA()%>" style="color: black; text-decoration: none;font-size: 17px;"><div style="height: 50px;padding: 0px 5px;"><%=p.getTenDA()%></div></a>
                         </li>

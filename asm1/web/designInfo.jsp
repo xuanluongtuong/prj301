@@ -108,7 +108,7 @@
 
                         <%  Design d = (Design)request.getAttribute("info");
                             if(d==null){
-                                d = (Design)session.getAttribute("info");
+                                d = (Design)session.getAttribute("designinfo");
                             }
                         %>
 

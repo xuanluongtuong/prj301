@@ -5,12 +5,14 @@
 
 package DraftController;
 
+import DAL.DraftDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Draft;
 
 /**
  *
@@ -53,7 +55,7 @@ public class DraftAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("draftAdd.jsp").forward(request, response);
     } 
 
     /** 
@@ -66,7 +68,19 @@ public class DraftAddServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String ten = request.getParameter("ten");
+        String anh = request.getParameter("anh");
+        
+        try {
+            DraftDAO design = new DraftDAO();
+            Draft d = new Draft();
+            d.setName(ten);
+            d.setImg(anh);
+            design.insertDraft(d);
+            response.sendRedirect("draft");
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     /** 

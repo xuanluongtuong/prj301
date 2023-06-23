@@ -5,12 +5,14 @@
 
 package DesignController;
 
+import DAL.DesignDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Design;
 
 /**
  *
@@ -53,7 +55,7 @@ public class DesignAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("designAdd.jsp").forward(request, response);
     } 
 
     /** 
@@ -66,7 +68,20 @@ public class DesignAddServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String ten = request.getParameter("ten");
+        String anh = request.getParameter("anh");
+        
+        try {
+            DesignDAO design = new DesignDAO();
+            Design d = new Design();
+            d.setName(ten);
+            d.setImg(anh);
+            design.insertDesign(d);
+            response.sendRedirect("design");
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     /** 

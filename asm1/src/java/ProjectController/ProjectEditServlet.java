@@ -59,9 +59,9 @@ public class ProjectEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int manv = Integer.parseInt(request.getParameter("id"));
+        int mada = Integer.parseInt(request.getParameter("id"));
         ProjectDAO project = new ProjectDAO();
-        Project pro = project.getPJByID(manv);
+        Project pro = project.getPJByID(mada);
         request.setAttribute("project", pro);        
         request.getRequestDispatcher("projectEdit.jsp").forward(request, response);
     }
@@ -99,7 +99,7 @@ public class ProjectEditServlet extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("projectinfo", pro);
-
+            
             project.editProject(pro);
 //            request.getRequestDispatcher("projectInfo.jsp").forward(request, response);
             response.sendRedirect("projectInfo.jsp");

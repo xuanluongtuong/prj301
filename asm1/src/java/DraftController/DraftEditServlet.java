@@ -5,12 +5,15 @@
 
 package DraftController;
 
+import DAL.DraftDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.Draft;
 
 /**
  *
@@ -53,7 +56,11 @@ public class DraftEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        int ma = Integer.parseInt(request.getParameter("id"));
+        DraftDAO project = new DraftDAO();
+        Draft d = project.getDRByID(ma);
+        request.setAttribute("draft", d);        
+        request.getRequestDispatcher("draftEdit.jsp").forward(request, response);
     } 
 
     /** 
@@ -66,7 +73,23 @@ public class DraftEditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String ma = request.getParameter("ma");
+        String ten = request.getParameter("ten");
+        String anh = request.getParameter("anh");
+        
+        try {
+            DraftDAO design = new DraftDAO();
+            Draft d = new Draft();
+            d.setId(Integer.parseInt(ma));
+            d.setName(ten);
+            d.setImg(anh);            
+            HttpSession session = request.getSession();
+            session.setAttribute("draftinfo", d);
+            design.editDraft(d);
+            response.sendRedirect("draftInfo.jsp");
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     /** 

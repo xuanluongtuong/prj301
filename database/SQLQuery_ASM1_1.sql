@@ -326,7 +326,7 @@ VALUES
 	( N'Nguyễn Thị Vân', N'Vân', 0, '1995-07-10', N'Nam Định',N'2108313503', N'vannt@gmail.com', N'Nhân viên hỗ trợ khách hàng',6, N'Phòng hành chính',6, 10);
 
 Insert into dbo.THIETKE (TEN, ANH)
-Values (N'Thiết kế phòng khách',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
+Values 
 (N'Thiết kế phòng khách 1',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
 (N'Thiết kế phòng khách 2',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
 (N'Thiết kế phòng khách 3',  N'https://file.hstatic.net/200000044142/article/thiet-ke-noi-that-phong-khach_38d1bcb014b64e2aa3fa4bd5e9c3cba7.jpg'),
@@ -340,7 +340,7 @@ Values (N'Thiết kế phòng khách',  N'https://file.hstatic.net/200000044142/
 
 Insert into dbo.BANVE (TEN,  ANH)
 
-Values (N'Bản vẽ chi tiết thiết kế phòng khách',  N'https://abig.vn/wp-content/uploads/2022/03/ban-ve-bai-tri-noi-that-can-ho-3-phong-ngu.jpg'),
+Values 
 (N'Bản vẽ chi tiết thiết kế phòng khách 1',  N'https://kientrucdoorway.com.vn/wp-content/uploads/2019/03/Thiet-ke-noi-that-phong-khach-hien-dai-dep-2.jpg'),
 (N'Bản vẽ chi tiết thiết kế phòng khách 2',  N'https://abig.vn/wp-content/uploads/2022/03/ban-ve-bai-tri-noi-that-can-ho-3-phong-ngu.jpg'),
 (N'Bản vẽ chi tiết thiết kế phòng khách 3',  N'https://kientrucdoorway.com.vn/wp-content/uploads/2019/03/Thiet-ke-noi-that-phong-khach-hien-dai-dep-2.jpg'),
