@@ -45,15 +45,15 @@ public class DesignDAO extends DBContext{
 
     public Design getDSByID(int ma) {
 
-        String sql = "select * from dbo.THIETKE where MA=?";
+        String sql = "select * from dbo.THIETKE where MA = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, ma);
             ResultSet rs = st.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 Design d = new Design();
-                d.setId(rs.getInt(ma));
-                d.setName(rs.getNString("TEN"));
+                d.setId(rs.getInt("MA"));
+                d.setName(rs.getString("TEN"));
                 d.setImg(rs.getString("ANH"));
                 return d;
             }
@@ -102,5 +102,12 @@ public class DesignDAO extends DBContext{
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+    
+    public static void main(String[] args) {
+        DesignDAO d = new DesignDAO();
+        Design ds = d.getDSByID(5);
+        System.out.println(ds.getId());
+        System.out.println(ds.getName());
     }
 }

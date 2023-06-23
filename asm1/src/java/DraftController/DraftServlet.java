@@ -31,8 +31,8 @@ public class DraftServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DraftDAO project = new DraftDAO();
-        List<Draft> list = project.getDRList();
+        DraftDAO draft = new DraftDAO();
+        List<Draft> list = draft.getDRList();
         int page, numperpage = 8;
         int size = list.size();
         int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
@@ -45,7 +45,7 @@ public class DraftServlet extends HttpServlet {
         int start, end;
         start = (page - 1) * numperpage;
         end = Math.min(page * numperpage, size);
-        List<Draft> listperpage =  project.getlistbypage(list, start, end);
+        List<Draft> listperpage =  draft.getlistbypage(list, start, end);
         request.setAttribute("draftlist", listperpage);
         request.setAttribute("num", num);
         request.setAttribute("page", page);                

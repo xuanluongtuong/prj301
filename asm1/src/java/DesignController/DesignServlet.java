@@ -31,8 +31,8 @@ public class DesignServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DesignDAO project = new DesignDAO();
-        List<Design> list = project.getDSList();
+        DesignDAO design = new DesignDAO();
+        List<Design> list = design.getDSList();
         int page, numperpage = 8;
         int size = list.size();
         int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
@@ -45,7 +45,7 @@ public class DesignServlet extends HttpServlet {
         int start, end;
         start = (page - 1) * numperpage;
         end = Math.min(page * numperpage, size);
-        List<Design> listperpage =  project.getlistbypage(list, start, end);
+        List<Design> listperpage =  design.getlistbypage(list, start, end);
         request.setAttribute("designlist", listperpage);
         request.setAttribute("num", num);
         request.setAttribute("page", page);                

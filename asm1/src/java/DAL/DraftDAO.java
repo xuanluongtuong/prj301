@@ -45,15 +45,15 @@ public class DraftDAO extends DBContext{
 
     public Draft getDRByID(int ma) {
 
-        String sql = "select * from dbo.BANVE where MA=?";
+        String sql = "select * from dbo.BANVE where MA = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, ma);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Draft d = new Draft();
-                d.setId(rs.getInt(ma));
-                d.setName(rs.getNString("TEN"));
+                d.setId(rs.getInt("MA"));
+                d.setName(rs.getString("TEN"));
                 d.setImg(rs.getString("ANH"));
                 return d;
             }

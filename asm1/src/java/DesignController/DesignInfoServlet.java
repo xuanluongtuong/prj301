@@ -29,12 +29,7 @@ public class DesignInfoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String ma = request.getParameter("ma");
-        DesignDAO projectDAO = new DesignDAO();
-        Design d = projectDAO.getDSByID(Integer.parseInt(ma));
-        request.setAttribute("info", d);        
-        request.getRequestDispatcher("designInfo.jsp").forward(request, response);
+        
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,7 +43,12 @@ public class DesignInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        String ma = request.getParameter("mads");
+        DesignDAO designDAO = new DesignDAO();
+        Design d = designDAO.getDSByID(Integer.parseInt(ma));
+        request.setAttribute("info", d);        
+        request.getRequestDispatcher("designInfo.jsp").forward(request, response);
     } 
 
     /** 

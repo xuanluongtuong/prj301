@@ -93,7 +93,7 @@
                 <%if(s!=null){
                     if(s.equals("admin")){%>
                 <div><h4>Draft</h4></div>
-                <a href="projectadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 40px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Draft</a>
+                <a href="draftadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 40px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Draft</a>
                 <%}}%>
             </div>
             <div class="mylist">
@@ -109,14 +109,14 @@
                                 d = (Draft)session.getAttribute("info");
                             }
                         %>
-
-                        <div class="project_img">
+                        
+                        <div class="draft_img">
                             <img src="<%=d.getImg()%>" alt="alt" />
                         </div>
-                        <div class="project_content">
-                            <div class="project_content_title">
+                        <div class="draft_content">
+                            <div class="draft_content_title">
                                 <h3>
-                                    Draft Information(Thông tin bản thiết kế)
+                                    Draft Information(Thông tin bản vẽ kỹ thuật)
                                 </h3>
                             </div>                            
 
@@ -144,7 +144,7 @@
                         <%}}%>
 
                         </div>
-
+                        
 
 
                     </div>

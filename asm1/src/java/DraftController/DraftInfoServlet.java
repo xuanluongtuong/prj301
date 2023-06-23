@@ -29,12 +29,7 @@ public class DraftInfoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String ma = request.getParameter("ma");
-        DraftDAO projectDAO = new DraftDAO();
-        Draft d = projectDAO.getDRByID(Integer.parseInt(ma));
-        request.setAttribute("info", d);        
-        request.getRequestDispatcher("draftInfo.jsp").forward(request, response);
+       
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,8 +43,13 @@ public class DraftInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
-    } 
+        response.setContentType("text/html;charset=UTF-8");
+        String ma = request.getParameter("ma");
+        DraftDAO draftDAO = new DraftDAO();
+        Draft d = draftDAO.getDRByID(Integer.parseInt(ma));
+        request.setAttribute("info", d);        
+        request.getRequestDispatcher("draftInfo.jsp").forward(request, response);
+    }
 
     /** 
      * Handles the HTTP <code>POST</code> method.
