@@ -77,7 +77,7 @@
             </div>
             <ul>              
                 <li><a href="depart">Employee</a></li>
-                <li><a href="project">Draft</a></li>                    
+                <li><a href="project">Project</a></li>                    
                 <li><a href="resource">Resource</a></li>
                 <li><a href="customer">Customer</a></li>
             </ul>
