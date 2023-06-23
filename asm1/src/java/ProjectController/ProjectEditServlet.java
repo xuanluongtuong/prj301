@@ -103,7 +103,7 @@ public class ProjectEditServlet extends HttpServlet {
             project.editProject(pro);
 //            request.getRequestDispatcher("projectInfo.jsp").forward(request, response);
             response.sendRedirect("projectInfo.jsp");
-        } catch (Exception e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println(e);
         }
     }
