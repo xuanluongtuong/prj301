@@ -111,7 +111,14 @@
                         %>
 
                         <div class="project_img">
-                            <img src="<%=p.getUrlImg()%>" alt="alt" />
+                            <%
+                                String str = (String) session.getAttribute("proimg");
+                                if (str == null) {
+                            %>
+                            <img src="<%= p.getUrlImg() %>" alt="alt" />
+                            <% } else { %>
+                            <img src="<%= session.getAttribute("proimg") %>" alt="alt" />
+                            <% } %>
                         </div>
                         <div class="project_content">
                             <div class="project_content_title">
@@ -152,7 +159,7 @@
                                 <%} else{%> Đang thi công <%}%>
                             </div>
 
-                        <%if(s!=null){
+                            <%if(s!=null){
                             if(s.equals("admin")){%>
                             <div class="edit_form">
                                 <a href="projectedit?id=<%=p.getMaDA()%>" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;">
@@ -163,7 +170,7 @@
                                     <i class="fa-solid fa-trash"></i>
                                     Delete</a>
                             </div>
-                        <%}}%>
+                            <%}}%>
 
                         </div>
 

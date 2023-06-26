@@ -245,8 +245,7 @@ VALUES
     (N'Hội đồng pháp thuật tối cao', N'Trụ sở Hội đồng phép thuật tại Việt Nam', N'Hà Nội', 10000, '2009-12-12', 1,N'https://cdn.tcdulichtphcm.vn/upload/2-2021/images/2021-06-18/1624007850-scotland3_lq.jpg'),
     (N'Hội đồng pháp thuật tối cao', N'Đại Học Hogwarts Việt Nam (Vietnamese Hogwarts University)', N'Hà Nội', 9000, '2011-03-19', 1,N'https://cdn3.dhht.vn/wp-content/uploads/2022/11/kham-pha-hogwarts-tu-a-z-va-4-nha-trong-harry-potter-1.jpg');
 	
-INSERT INTO 
-	dbo.KHACHHANG(TENKH, DCKH, SDTKH, EMAILKH)
+INSERT INTO dbo.KHACHHANG(TENKH, DCKH, SDTKH, EMAILKH)
 VALUES 
 	( N'Bùi Đức Thịnh', N'167 Trương Định, Hai Bà Trưng, Hà Nội.', N'5844051785', N'b6bbx4icb9y@gmail.com'),
 	( N'Lê Văn Phụng', N'179 Đường Trương Định, Hai Bà Trưng, Hà Nội.', N'5178547384', N'5esb4@hotmail.com'),
@@ -276,8 +275,7 @@ VALUES
 	( N'Phòng khám da liễu S-Beauty', N'81 P. Trung Kính, P, Cầu Giấy, Hà Nội',N'6896036867', N'xdvmv8l@gmail.com'),
 	( N'Hội đồng pháp thuật tối cao', N'tài liệu mật', N'tài liệu mật', N'tài liệu mật')	
 
-INSERT INTO 
-	dbo.NHANVIEN(HO_VA_TEN,TEN,PHAI,NGAYSINH,DIACHI,SDT,EMAIL,VITRI,MAQL,PHONGBAN,MAPB,LUONG)
+INSERT INTO dbo.NHANVIEN(HO_VA_TEN,TEN,PHAI,NGAYSINH,DIACHI,SDT,EMAIL,VITRI,MAQL,PHONGBAN,MAPB,LUONG)
 VALUES
 	( N'Đào Quý Nhân', N'Nhân', 1, '1989-09-09', N'Đà Nẵng',N'4739439038',N'nhandq@gmail.com',N'Giám đốc dự án',1, N'Phòng quản lý dự án', 1, 20),
 	( N'Nguyễn Minh Bách', N'Bách', 1, '1990-10-27',N'Hà Nội',N'3903859190',N'bachnm@gmail.com',N'Giám đốc thiết kế',2,N'Phòng thiết kế', 2, 20),
@@ -353,7 +351,15 @@ Values
 (N'Bản vẽ chi tiết thiết kế phòng khách 10',  N'https://xaydungvietbac.com/wp-content/uploads/2021/01/mau-ho-so-thiet-ke-kien-truc5-scaled.jpg');
 
 
+INSERT INTO dbo.NHANVIEN (HO_VA_TEN, TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, PHONGBAN, MAPB, LUONG)
+VALUES ('Nguyen Van A', 'A', 1, '1990-01-01', '123 Street, City', '0123456789', 'abc@example.com', 'Nhan vien', 'Phong A', 1, 1000.0);
 
+DECLARE @NewMaNV INT;
+SET @NewMaNV = SCOPE_IDENTITY();
+
+UPDATE dbo.NHANVIEN
+SET MAQL = @NewMaNV
+WHERE MANV = @NewMaNV;
 
 
 	
