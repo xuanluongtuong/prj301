@@ -102,6 +102,7 @@ public class ProjectEditServlet extends HttpServlet {
         if (filePart!=null) {
             // Tạo tên file mới
             String newFileName = mada.trim() + tenda.trim() + ".png";
+            newFileName=replaceWhitespace(newFileName);
             String filePath = uploadDirectory + File.separator + newFileName;
             File file = new File(filePath);
 
@@ -157,11 +158,12 @@ public class ProjectEditServlet extends HttpServlet {
 
             HttpSession session = request.getSession(); 
             session.setAttribute("proimg", imgUrl);
+            
             session.setAttribute("projectinfo", pro);
 
             project.editProject(pro);
-//            request.getRequestDispatcher("projectInfo.jsp").forward(request, response);
-            response.sendRedirect("projectInfo.jsp");
+            request.getRequestDispatcher("projectInfo.jsp").forward(request, response);
+//            response.sendRedirect("projectInfo.jsp");
         } catch (IOException | NumberFormatException e) {
             System.out.println(e);
         }
@@ -175,6 +177,10 @@ public class ProjectEditServlet extends HttpServlet {
             }
         }
         return null;
+    }
+    
+    public static String replaceWhitespace(String input) {
+        return input.replace(" ", "_");
     }
 
     /**
