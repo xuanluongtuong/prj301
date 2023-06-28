@@ -87,6 +87,7 @@ public class ProjectEditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String mada = request.getParameter("MADA");
         String tenkh = request.getParameter("TENKH");
         String tenda = request.getParameter("TENDA");
@@ -96,6 +97,7 @@ public class ProjectEditServlet extends HttpServlet {
         String trangThai = request.getParameter("TRANGTHAI");
         String imgUrl = request.getParameter("IMG");
 
+//        String uploadDirectory = getServletContext().getRealPath("/img");
         String uploadDirectory = "D:\\PRJ301\\Assignment\\asm1\\web\\img";
         Part filePart = request.getPart("file");
         String originalFileName = getFileName(filePart);
@@ -122,7 +124,7 @@ public class ProjectEditServlet extends HttpServlet {
                 OutputStream out = null;
                 InputStream fileContent = null;
                 final PrintWriter writer = response.getWriter();
-                
+
                 try {
                     out = new FileOutputStream(file);
                     fileContent = filePart.getInputStream();
@@ -133,8 +135,8 @@ public class ProjectEditServlet extends HttpServlet {
                     while ((read = fileContent.read(bytes)) != -1) {
                         out.write(bytes, 0, read);
                     }
-                    
-                    imgUrl = "img/"+newFileName;
+
+                    imgUrl = "img/" + newFileName;
 
                 } catch (FileNotFoundException fne) {
                     request.setAttribute("mes", "Upload fail!");
@@ -146,7 +148,7 @@ public class ProjectEditServlet extends HttpServlet {
                     if (fileContent != null) {
                         fileContent.close();
                     }
-                    
+
                 }
             }
         }
@@ -157,7 +159,7 @@ public class ProjectEditServlet extends HttpServlet {
             pro.setDiaDiem(diaDiem);
             pro.setNganSach(Float.parseFloat(nganSach));
             pro.setNgayThiCong(Date.valueOf(ngayThiCong));
-            pro.setTrangThai(Integer.parseInt(trangThai));            
+            pro.setTrangThai(Integer.parseInt(trangThai));
             pro.setUrlImg(imgUrl);
             HttpSession session = request.getSession();
             session.setAttribute("projectinfo", pro);
