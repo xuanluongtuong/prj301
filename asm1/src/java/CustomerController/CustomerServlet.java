@@ -33,7 +33,7 @@ public class CustomerServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         CustomerDAO customer = new CustomerDAO();
         List<Customer> list = customer.getCustomerList();
-        int page, numperpage = 6;
+        int page, numperpage = 5;
         int size = list.size();
         int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
         String pages = request.getParameter("page");
