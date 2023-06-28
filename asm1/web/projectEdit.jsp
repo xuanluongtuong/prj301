@@ -147,19 +147,21 @@
                                     <option value="0" <%=pro.getTrangThai() == 0 ? "selected" : ""%>>Đã hủy</option>
                                 </select>
                             </div>
-
                             <div class="form-group">
-                                <label class="form-label" for="IMG">Upload new image</label>
+                                <label class="form-label" >Image link</label>
+                                <input class="form-input" type="text" name="IMG" value="<%=pro.getUrlImg()%>" required />
+                            </div>
+                            <div class="form-group">                                
+                                <label class="form-label" >Upload new image</label>                                
+                                <input type="file" name="file" >
+                            </div>
 
-                                <input type="file" name="file">
-                            </div>
-                            <div class="form-button">
-                                <button class="btn-submit" type="submit">Submit</button>
-                            </div>
                         </div>                        
                     </div>
 
-
+                    <div class="form-button">
+                        <button class="btn-submit" type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>

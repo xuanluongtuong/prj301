@@ -26,8 +26,8 @@
             .form-group {
                 display: grid;
             }
-            
-             .form-container {
+
+            .form-container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -46,7 +46,7 @@
                 }
             }
         </style>      
-        
+
     </head>
     <body>
         <%String s=(String)session.getAttribute("role");
@@ -70,7 +70,7 @@
             </div>
 
         </div>
-        
+
         <!--end header-->
 
 
@@ -84,7 +84,7 @@
                 <ul>              
                     <li><a href="depart">Employee</a></li>
                     <li><a href="project">Project</a></li>
-                    
+
                     <li><a href="resource">Resource</a></li>
                     <li><a href="customer">Customer</a></li>
                 </ul>
@@ -113,12 +113,8 @@
                             <div class="form-group">
                                 <label class="form-label" for="HO_VA_TEN">Full name</label>
                                 <input class="form-input" type="text" id="HOVATEN" name="HOVATEN" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="TEN">Name</label>
-                                <input class="form-input" type="text" id="TEN" name="TEN" required />
-                            </div>
-                            <div class="form-group">
+                            </div>                            
+                            <div class="form-group" style="margin: 21px 0;">
                                 <label class="form-label">Gender</label>
                                 <div class="radio-group">
                                     <label>
@@ -160,10 +156,11 @@
                                 <label class="form-label" for="LUONG">Salary</label>
                                 <input class="form-input" type="number" id="LUONG" name="LUONG" required />
                             </div>
-                            <div class="form-button">
-                                <button class="btn-submit" type="submit">Submit</button>
-                            </div>
+
                         </div>
+                    </div>
+                    <div class="form-button">
+                        <button class="btn-submit" type="submit">Submit</button>
                     </div>
                 </form>
             </div>

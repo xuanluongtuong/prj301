@@ -294,7 +294,11 @@ nav {
 
 .form-group {   
     width: 400px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+.form-upload {   
+    width: 400px;
+    margin-bottom: 102px;
 }
 
 .form-label {
@@ -312,8 +316,7 @@ nav {
 }
 
 .form-button {
-    text-align: center;
-    margin-bottom: 59px;
+    text-align: center;    
 }
 
 .btn-submit {

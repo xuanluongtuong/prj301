@@ -133,7 +133,7 @@
 
                     <% if(list.size() >= 1){ %>
                     <%if(e!=null){%>
-                    <h5 style="color: rgb(0, 148, 156);margin:10px 0 0 20px;">Manager Employee: </h5>
+                    <h5 style="color: rgb(0, 148, 156);margin:10px 0 0 20px;">Manager: </h5>
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 5px;">
 
 
@@ -148,9 +148,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Full name
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Name
-                                    </th>
+                                    
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Gender
                                     </th>
@@ -169,9 +167,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Position
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Manager ID
-                                    </th>
+                                   
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Salary<br>
                                         (milions Dong)
@@ -197,34 +193,30 @@
                                     <td class="px-6 py-4">
                                         <%=e.getHoVaTen()%>
                                     </td>
+                                    
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        <%=e.getTen()%>
-                                    </td>
-                                    <td class="px-6 py-4">
                                         <%if(e.getGt()==1){
                                         %>
                                         Nam
                                         <%}else{%>Nữ
                                         <%}%>
                                     </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                    <td  class="px-6 py-4">
                                         <%=e.getNgaySinh()%>
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=e.getDiaChi()%>
                                     </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                    <td class="px-6 py-4">
                                         <%=e.getSDT()%>
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=e.getEmail()%>
                                     </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                    <td class="px-6 py-4">
                                         <%=e.getViTri()%>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <%=e.getMaQL()%>
-                                    </td>
+                                    
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=e.getLuong()%>
                                     </td> 
@@ -262,9 +254,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Full name
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Name
-                                    </th>
+                                    
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Gender
                                     </th>
@@ -283,9 +273,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Position
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Manager ID
-                                    </th>
+                                   
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Salary<br>
                                         (milions Dong)
@@ -308,34 +296,30 @@
                                 <td class="px-6 py-4">
                                     <%=nv.getHoVaTen()%>
                                 </td>
+                                
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    <%=nv.getTen()%>
-                                </td>
-                                <td class="px-6 py-4">
                                     <%if(nv.getGt()==1){
                                     %>
                                     Nam
                                     <%}else{%>Nữ
                                     <%}%>
                                 </td>
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                <td class="px-6 py-4">
                                     <%=nv.getNgaySinh()%>
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%=nv.getDiaChi()%>
                                 </td>
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                <td class="px-6 py-4">
                                     <%=nv.getSDT()%>
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%=nv.getEmail()%>
                                 </td>
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                <td class="px-6 py-4">
                                     <%=nv.getViTri()%>
                                 </td>
-                                <td class="px-6 py-4">
-                                    <%=nv.getMaQL()%>
-                                </td>
+                                
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%=nv.getLuong()%>
                                 </td>

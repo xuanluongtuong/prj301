@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.Department;
 import model.Employee;
 
 /**
@@ -61,21 +62,19 @@ public class DeleteEmployee extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         int manv = Integer.parseInt(request.getParameter("id"));
-//        System.err.println(manv);
+        
         EmployeeDAO em = new EmployeeDAO();
         DepartmentDAO dd = new DepartmentDAO();
-
+        Department d = dd.getDepartByID(manv);
         try {
             Employee e = new Employee();
             if (em.getEmployeeByID(manv) != null) {
                 e = em.getEmployeeByID(manv);
-                int mapb = e.getMaPB();
-                String tenPb = dd.getDepartID(mapb);
+                int mapb = d.getMaPB();                
                 em.deleteEmployee(manv);
                 List<Employee> list = em.getEmListByID(mapb);
                 HttpSession session = request.getSession();
-                session.setAttribute("list", list);
-                session.setAttribute("tenPb", tenPb);
+                session.setAttribute("list", list);                
                 response.sendRedirect("EmList.jsp");
             } else {
                 response.sendRedirect("EmList.jsp");

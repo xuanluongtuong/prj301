@@ -99,19 +99,19 @@ public class EditEmployee extends HttpServlet {
 
             em.setMaNV(Integer.parseInt(manv));
             em.setHoVaTen(hoVaTen);
-            em.setTen(ten);
+            
             em.setGt(Integer.parseInt(phai));
             em.setNgaySinh(Date.valueOf(ngaySinh));
             em.setDiaChi(diaChi);
             em.setSDT(SDT);
             em.setEmail(Email);
             em.setViTri(viTri);
-            em.setMaQL(Integer.parseInt(maql));
+            em.setMaql(Integer.parseInt(maql));
             em.setPhongBan(phongban);
-            em.setMaPB(Integer.parseInt(mapb));
+            
             em.setLuong(Float.parseFloat(luong));
             
-            employ.editEmployee(em);
+            employ.editEmployee(em, Integer.parseInt(mapb));
             List<Employee> list = employ.getEmListByID(Integer.parseInt(mapb));
             HttpSession session = request.getSession();
             session.setAttribute("list", list);

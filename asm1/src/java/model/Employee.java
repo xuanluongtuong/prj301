@@ -12,49 +12,27 @@ import java.sql.Date;
  */
 public class Employee {
     int maNV;
-    String hoVaTen;
-    String ten;
+    String hoVaTen;    
     int gt;
     Date ngaySinh;
     String diaChi;
     String SDT;
     String Email;
-    String viTri;
-    int maQL;
-    String phongBan;
-    int maPB;
+    String viTri;    
+    String phongBan;    
     float luong;
+    int maql;
 
     public Employee() {
     }
-
-    public Employee(int maNV, String hoVaTen, String ten, int gt, Date ngaySinh, String diaChi, String SDT, String Email, String viTri, int maQL, String phongBan, int maPB, float luong) {
-        this.maNV = maNV;
-        this.hoVaTen = hoVaTen;
-        this.ten = ten;
-        this.gt = gt;
-        this.ngaySinh = ngaySinh;
-        this.diaChi = diaChi;
-        this.SDT = SDT;
-        this.Email = Email;
-        this.viTri = viTri;
-        this.maQL = maQL;
-        this.phongBan = phongBan;
-        this.maPB = maPB;
-        this.luong = luong;
-    }
     
-    
-
     public int getMaNV() {
         return maNV;
     }
 
     public void setMaNV(int maNV) {
         this.maNV = maNV;
-    }
-
-   
+    }   
 
     public String getHoVaTen() {
         return hoVaTen;
@@ -64,13 +42,7 @@ public class Employee {
         this.hoVaTen = hoVaTen;
     }
 
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
+   
 
     public int getGt() {
         return gt;
@@ -120,13 +92,7 @@ public class Employee {
         this.viTri = viTri;
     }
 
-    public int getMaQL() {
-        return maQL;
-    }
-
-    public void setMaQL(int maQL) {
-        this.maQL = maQL;
-    }
+    
 
     public String getPhongBan() {
         return phongBan;
@@ -136,13 +102,6 @@ public class Employee {
         this.phongBan = phongBan;
     }
 
-    public int getMaPB() {
-        return maPB;
-    }
-
-    public void setMaPB(int maPB) {
-        this.maPB = maPB;
-    }
 
     public float getLuong() {
         return luong;
@@ -151,6 +110,16 @@ public class Employee {
     public void setLuong(float luong) {
         this.luong = luong;
     }
+
+    public int getMaql() {
+        return maql;
+    }
+
+    public void setMaql(int maql) {
+        this.maql = maql;
+    }
+    
+    
     
     
 }

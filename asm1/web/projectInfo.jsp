@@ -111,14 +111,9 @@
                         %>
 
                         <div class="project_img">
-                            <%
-                                String str = (String) session.getAttribute("proimg");
-                                if (str == null) {
-                            %>
-                            <img src="<%= p.getUrlImg() %>" alt="alt" />
-                            <% } else { %>
-                            <img src="<%= session.getAttribute("proimg") %>" alt="alt" />
-                            <% } %>
+                            
+                            <img src="<%= p.getUrlImg() %>" alt="alt" />                           
+                            
                         </div>
                         <div class="project_content">
                             <div class="project_content_title">

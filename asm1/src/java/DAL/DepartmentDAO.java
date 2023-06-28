@@ -28,44 +28,29 @@ public class DepartmentDAO extends DBContext {
                 Department dp = new Department();
                 dp.setMaPB(rs.getInt("MAPB"));
                 dp.setTenPB(rs.getString("TENPB"));
-                dp.setMaQL(rs.getInt("MAQL"));
                 dp.setDiaDiem(rs.getString("DIADIEM"));
+                dp.setMaQL(rs.getInt("MAQL"));                
                 list.add(dp);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
         return list;
-    }
+    }    
 
-    public String getDepartID(int mapb) {
-        String sql = "select * from dbo.PHONGBAN where MAPB = ?";
-        String str;
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, mapb);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                str = rs.getString("TENPB");
-                return str;
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        return "";
-    }
-
-    public Department getDepartByID(int mapb) {
-        String sql = "select * from dbo.PHONGBAN where MAPB = ?";
+    public Department getDepartByID(int manv) {
+        String sql = "select dbo.PHONGBAN.MAPB, TENPB, DIADIEM, MAQL \n" +
+                    " from dbo.PHONGBAN inner join dbo.NHANVIEN \n" +
+                    " on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.NHANVIEN.MANV=?";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, mapb);
+            st.setInt(1, manv);
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
                 Department dp = new Department();
-                dp.setMaPB(mapb);
+                dp.setMaPB(rs.getInt("MAPB"));
                 dp.setTenPB(rs.getString("TENPB"));
                 dp.setMaQL(rs.getInt("MAQL"));
                 dp.setDiaDiem(rs.getString("DIADIEM"));
@@ -78,48 +63,33 @@ public class DepartmentDAO extends DBContext {
         return null;
     }
 
-    public Employee getManager(int mapb) {
-
-        try {
-            String sql = "select * from dbo.NHANVIEN \n"
-                    + "	where MANV=MAQL AND MAPB = ?";
+    public Employee getManager(int maql){
+         try {
+            String sql = " select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL \n" +
+                        "  from dbo.PHONGBAN inner join dbo.NHANVIEN \n" +
+                        "  on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where MANV=MAQL and MANV=?";
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, mapb);
+            st.setInt(1, maql);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 Employee em = new Employee();
                 em.setMaNV(rs.getInt("MANV"));
-                em.setHoVaTen(rs.getString("HO_VA_TEN"));
-                em.setTen(rs.getString("TEN"));
+                em.setHoVaTen(rs.getString("HO_VA_TEN"));                
                 em.setGt(rs.getInt("PHAI"));
                 em.setNgaySinh(rs.getDate("NGAYSINH"));
                 em.setDiaChi(rs.getString("DIACHI"));
                 em.setSDT(rs.getString("SDT"));
                 em.setEmail(rs.getString("EMAIL"));
-                em.setViTri(rs.getString("VITRI"));
-                em.setMaQL(rs.getInt("MAQL"));
-                em.setPhongBan(rs.getString("PHONGBAN"));
-                em.setMaPB(rs.getInt("MAPB"));
+                em.setViTri(rs.getString("VITRI"));                
+                em.setPhongBan(rs.getString("TENPB"));                
                 em.setLuong(rs.getFloat("LUONG"));
+                em.setMaql(rs.getInt("MAQL"));
                 return em;
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
         return null;
-    }
-
-    public void insertDepartment(Department dp) {
-        String sql = "INSERT INTO dbo.PHONGBAN(TENPB, MAQL, DIADIEM) VALUES (?, ?, ?)";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, dp.getTenPB());
-            st.setInt(2, dp.getMaQL());
-            st.setString(3, dp.getDiaDiem());
-            st.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
     }
 
     public static void main(String[] args) {

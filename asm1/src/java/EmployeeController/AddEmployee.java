@@ -72,8 +72,7 @@ public class AddEmployee extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String hoVaTen = request.getParameter("HOVATEN");
-        String ten = request.getParameter("TEN");
+        String hoVaTen = request.getParameter("HOVATEN");       
         String phai = request.getParameter("PHAI");
         String ngaySinh = request.getParameter("NGAYSINH");
         String diaChi = request.getParameter("DIACHI");
@@ -89,18 +88,17 @@ public class AddEmployee extends HttpServlet {
         Employee em = new Employee();
         
         em.setHoVaTen(hoVaTen);
-        em.setTen(ten);
+        
         em.setGt(Integer.parseInt(phai));
         em.setNgaySinh(Date.valueOf(ngaySinh));
         em.setDiaChi(diaChi);
         em.setSDT(SDT);
         em.setEmail(Email);
         em.setViTri(viTri);
-        em.setMaQL(Integer.parseInt(maql));
-        em.setPhongBan(phongban);
-        em.setMaPB(Integer.parseInt(mapb));
+        em.setMaql(Integer.parseInt(maql));
+        em.setPhongBan(phongban);        
         em.setLuong(Float.parseFloat(luong));
-        employ.insertEmployee(em);
+        employ.insertEmployee(em,Integer.parseInt(mapb));
         List<Employee> list = employ.getEmListByID(Integer.parseInt(mapb));
         HttpSession session = request.getSession();
         session.setAttribute("list", list);

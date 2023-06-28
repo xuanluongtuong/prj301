@@ -50,7 +50,7 @@ public class EmployeeServlet extends HttpServlet {
         session.setAttribute("maql", maql);
         
         DepartmentDAO department = new DepartmentDAO();
-        Employee mn = department.getManager(Integer.parseInt(mapb));
+        Employee mn = department.getManager(Integer.parseInt(maql));
         Department dp = department.getDepartByID(Integer.parseInt(mapb));        
         session.setAttribute("department", dp);        
         session.setAttribute("emql", mn);

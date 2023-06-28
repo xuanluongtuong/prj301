@@ -95,70 +95,71 @@ public class ProjectEditServlet extends HttpServlet {
         String ngayThiCong = request.getParameter("NGAYTHICONG");
         String trangThai = request.getParameter("TRANGTHAI");
         String imgUrl = request.getParameter("IMG");
+
         String uploadDirectory = "D:\\PRJ301\\Assignment\\asm1\\web\\img";
         Part filePart = request.getPart("file");
         String originalFileName = getFileName(filePart);
-        
-        if (filePart!=null) {
-            // Tạo tên file mới
-            String newFileName = mada.trim() + tenda.trim() + ".png";
-            newFileName=replaceWhitespace(newFileName);
-            String filePath = uploadDirectory + File.separator + newFileName;
-            File file = new File(filePath);
 
-// Kiểm tra nếu file đã tồn tại
-            if (file.exists()) {
-                // Xóa file cũ trước khi lưu file mới
-                file.delete();
-            }
+        ProjectDAO project = new ProjectDAO();
+        Project pro = new Project();
 
-// Lưu file mới lên server
-            OutputStream out = null;
-            InputStream fileContent = null;
-            final PrintWriter writer = response.getWriter();
+        // Tạo tên file mới
+        if (filePart != null) {
+            if (originalFileName != null && !originalFileName.equals("")) {
+                String newFileName = mada + ".png";
+                newFileName = replaceWhitespace(newFileName);
 
-            try {
-                out = new FileOutputStream(file);
-                fileContent = filePart.getInputStream();
+                String filePath = uploadDirectory + File.separator + newFileName;
+                File file = new File(filePath);
 
-                int read;
-                final byte[] bytes = new byte[1024];
-
-                while ((read = fileContent.read(bytes)) != -1) {
-                    out.write(bytes, 0, read);
+                // Kiểm tra nếu file đã tồn tại
+                if (file.exists()) {
+                    // Xóa file cũ trước khi lưu file mới
+                    file.delete();
                 }
-               
-                out.close();
-                
-                
-                fileContent.close();
-                
-                
-                imgUrl = "img/" + newFileName.trim();
-                
-            } catch (FileNotFoundException fne) {
-                writer.println("You either did not specify a file to upload or are trying to upload a file to a protected or nonexistent location.");
-                writer.println("<br/> ERROR: " + fne.getMessage());
-            }
-        }else{
-            imgUrl = request.getParameter("IMG");
-        }
 
+                // Lưu file mới lên server
+                OutputStream out = null;
+                InputStream fileContent = null;
+                final PrintWriter writer = response.getWriter();
+                
+                try {
+                    out = new FileOutputStream(file);
+                    fileContent = filePart.getInputStream();
+
+                    int read;
+                    final byte[] bytes = new byte[1024];
+
+                    while ((read = fileContent.read(bytes)) != -1) {
+                        out.write(bytes, 0, read);
+                    }
+                    
+                    imgUrl = "img/"+newFileName;
+
+                } catch (FileNotFoundException fne) {
+                    request.setAttribute("mes", "Upload fail!");
+                    response.sendRedirect("projectInfo.jsp");
+                } finally {
+                    if (out != null) {
+                        out.close();
+                    }
+                    if (fileContent != null) {
+                        fileContent.close();
+                    }
+                    
+                }
+            }
+        }
         try {
-            ProjectDAO project = new ProjectDAO();
-            Project pro = new Project();
             pro.setMaDA(Integer.parseInt(mada));
             pro.setTenKH(tenkh);
             pro.setTenDA(tenda);
             pro.setDiaDiem(diaDiem);
             pro.setNganSach(Float.parseFloat(nganSach));
             pro.setNgayThiCong(Date.valueOf(ngayThiCong));
-            pro.setTrangThai(Integer.parseInt(trangThai));
+            pro.setTrangThai(Integer.parseInt(trangThai));            
             pro.setUrlImg(imgUrl);
-
-            HttpSession session = request.getSession(); 
-            session.setAttribute("proimg", imgUrl);
-            
+            HttpSession session = request.getSession();
             session.setAttribute("projectinfo", pro);
 
             project.editProject(pro);
@@ -167,6 +168,7 @@ public class ProjectEditServlet extends HttpServlet {
         } catch (IOException | NumberFormatException e) {
             System.out.println(e);
         }
+
     }
 
     private String getFileName(final Part part) {
@@ -178,7 +180,7 @@ public class ProjectEditServlet extends HttpServlet {
         }
         return null;
     }
-    
+
     public static String replaceWhitespace(String input) {
         return input.replace(" ", "_");
     }

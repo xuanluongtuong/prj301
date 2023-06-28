@@ -17,15 +17,6 @@ public class Department {
     public Department() {
     }
 
-    public Department(int maPB, String tenPB, int maQL, String diaDiem) {
-        this.maPB = maPB;
-        this.tenPB = tenPB;
-        this.maQL = maQL;
-        this.diaDiem = diaDiem;
-    }
-
-   
-
     public int getMaPB() {
         return maPB;
     }
