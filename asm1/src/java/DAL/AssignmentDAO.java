@@ -9,40 +9,45 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.Assignment;
+import model.Department;
 import model.Employee;
 
 /**
  *
  * @author admin
  */
-public class AssignmentDAO extends DBContext{
-    public List<Employee> getEmListByID(int departID) {
-        List<Employee> list = new ArrayList<>();
-        String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL\n" +
-                    "  from dbo.PHONGBAN inner join dbo.NHANVIEN \n" +
-                    "  on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.PHONGBAN.MAPB=?";
+public class AssignmentDAO extends DBContext {
+
+    public List<Assignment> getAssignList() {
+        List<Assignment> list = new ArrayList<>();
+        String sql = "SELECT PC.MADA,TENDA,PC.MAPB, TENPB, TEN_HANG_MUC\n"
+                + "FROM dbo.PHANCONG AS PC\n"
+                + "INNER JOIN dbo.DU_AN AS DA ON DA.MADA = PC.MADA\n"
+                + "INNER JOIN dbo.PHONGBAN AS PB ON PB.MAPB = PC.MAPB;";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, departID);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Employee e = new Employee();
-                e.setMaNV(rs.getInt("MANV"));
-                e.setHoVaTen(rs.getString("HO_VA_TEN"));                
-                e.setGt(rs.getInt("PHAI"));
-                e.setNgaySinh(rs.getDate("NGAYSINH"));
-                e.setDiaChi(rs.getString("DIACHI"));
-                e.setSDT(rs.getString("SDT"));
-                e.setEmail(rs.getString("EMAIL"));
-                e.setViTri(rs.getString("VITRI"));
-                e.setPhongBan(rs.getString("TENPB"));
-                e.setLuong(rs.getFloat("LUONG"));
-                e.setMaql(rs.getInt("MAQL"));
-                list.add(e);
+                Assignment as = new Assignment();
+                as.setMada(rs.getInt("MADA"));
+                as.setTenda(rs.getString("TENDA"));
+                as.setMapb(rs.getInt("MAPB"));
+                as.setTenpb(rs.getString("TENPB"));
+                as.setTen(rs.getString("TEN_HANG_MUC"));
+                list.add(as);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
         return list;
     }
+    
+    public List<Assignment> getlistbypage(List<Assignment> list, int start, int end) {
+        List<Assignment> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
+    }    
 }

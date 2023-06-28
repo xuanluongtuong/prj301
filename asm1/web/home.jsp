@@ -37,7 +37,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     </li> 
                 </a>
                 
-                <a href="#">
+                <a href="assignment">
                     <li class="mysub_menu">
                         <div class="mysub_menu_title">Assignment</div>
                         <div class="mysub_menu_logo">
