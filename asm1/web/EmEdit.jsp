@@ -114,11 +114,8 @@
                                 <input type="hidden" name="MANV" value="<%=em.getMaNV()%>" required />
                                 <input class="form-input" type="text" id="HOVATEN" name="HOVATEN" value="<%=em.getHoVaTen()%>" required />
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="TEN">Name</label>
-                                <input class="form-input" type="text" id="TEN" name="TEN" value="<%=em.getTen()%>" required />
-                            </div>
-                            <div class="form-group">
+                            
+                            <div class="form-group" style="margin: 21px 0;">
                                 <label class="form-label">Gender</label>
                                 <div class="radio-group">
                                     
