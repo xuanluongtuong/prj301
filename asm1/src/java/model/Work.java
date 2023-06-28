@@ -8,12 +8,12 @@ package model;
  *
  * @author admin
  */
-public class Assignment {    
+public class Work {
     int mada;
-    int mapb;
+    int manv;
     String ten;
 
-    public Assignment() {
+    public Work() {
     }
 
     public int getMada() {
@@ -24,15 +24,13 @@ public class Assignment {
         this.mada = mada;
     }
 
-    public int getMapb() {
-        return mapb;
+    public int getManv() {
+        return manv;
     }
 
-    public void setMapb(int mapb) {
-        this.mapb = mapb;
+    public void setManv(int manv) {
+        this.manv = manv;
     }
-
-    
 
     public String getTen() {
         return ten;
