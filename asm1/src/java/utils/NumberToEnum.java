@@ -10,7 +10,7 @@ package utils;
  */
 public class NumberToEnum {
     public enum UserRole {
-        ADMIN(1), USER(2), STAFF(3);
+        ADMIN(1), USER(3), MANAGER(2);
  
         private final int value;
  

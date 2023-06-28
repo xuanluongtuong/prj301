@@ -104,6 +104,10 @@ public class Login extends HttpServlet {
                 session.setAttribute("role", "user");
                 session.setMaxInactiveInterval(60*60*2);
             }
+            if (account.getRole() == UserRole.MANAGER.getValue()) {
+                session.setAttribute("role", "manager");
+                session.setMaxInactiveInterval(60*60*2);
+            }
             session.setAttribute("name", account.getName());
             response.sendRedirect("home.jsp");
         } else {

@@ -14,7 +14,7 @@
     <body>
         <%String s=(String)session.getAttribute("role");
             if(s!=null){
-                if(!s.equals("admin") && !s.equals("user")){
+                if(!s.equals("admin") && !s.equals("user") && !s.equals("manager")){
                     response.sendRedirect("login.jsp");
                 }
             }else{
