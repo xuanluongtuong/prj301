@@ -38,7 +38,7 @@
                 }
             }
         </script>
-        
+
     </head>
     <body>
         <%String s=(String)session.getAttribute("role");
@@ -62,7 +62,7 @@
             </div>
 
         </div>
-       
+
         <!--end header-->
 
 
@@ -76,7 +76,7 @@
                 <ul>              
                     <li><a href="depart">Employee</a></li>
                     <li><a href="project">Project</a></li>
-                    
+
                     <li><a href="resource">Resource</a></li>
                     <li><a href="customer">Customer</a></li>
                 </ul>
@@ -99,7 +99,7 @@
         <!-- menu -->
         <div class="mymenu">
             <div style="width: 100%; display: flex;justify-content: right;margin-top: 10px;">                
-                
+
                 <div style="display: flex;justify-content: right;">
                     <%if(s!=null){
                     if(s.equals("admin")){%>
@@ -109,7 +109,7 @@
                     </a>
                     <%}}%>
                 </div>
-                
+
             </div>
             <div class="mylist">  
 
@@ -137,9 +137,7 @@
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 5px;">
 
 
-
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" >
-
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
@@ -148,7 +146,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Full name
                                     </th>
-                                    
+
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Gender
                                     </th>
@@ -167,18 +165,17 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Position
                                     </th>
-                                   
+
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Salary<br>
                                         (milions Dong)
                                     </th>
                                     <%if(s!=null){
-                                        if(s.equals("admin")){
-                                        if(list.size() == 1){%>
+                                        if(s.equals("admin")){%>
                                     <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
                                         Action
                                     </th>
-                                    <%}}}%>
+                                    <%}}%>
                                 </tr>
                             </thead>
 
@@ -193,7 +190,7 @@
                                     <td class="px-6 py-4">
                                         <%=e.getHoVaTen()%>
                                     </td>
-                                    
+
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%if(e.getGt()==1){
                                         %>
@@ -216,24 +213,25 @@
                                     <td class="px-6 py-4">
                                         <%=e.getViTri()%>
                                     </td>
-                                    
+
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=e.getLuong()%>
                                     </td> 
-                                    <%if(s!=null){
-                                        if(s.equals("admin")){
-                                        if(list.size() == 1){%>
+
                                     <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
                                         <a href="editem?id=<%=e.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                             Edit</a>
-
+                                    <%if(s!=null){
+                                        if(s.equals("admin")){
+                                        if(list.size() == 1){%>
                                         <a href="#" onclick="doDelete('<%=e.getMaNV()%>')" class="mydelete" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-trash"></i>
                                             Delete</a>
-                                    </td>
                                     <%}}}%>
+                                    </td>
+
                                 </tr> 
                             </tbody>
 
@@ -254,7 +252,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Full name
                                     </th>
-                                    
+
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Gender
                                     </th>
@@ -273,7 +271,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Position
                                     </th>
-                                   
+
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Salary<br>
                                         (milions Dong)
@@ -296,7 +294,7 @@
                                 <td class="px-6 py-4">
                                     <%=nv.getHoVaTen()%>
                                 </td>
-                                
+
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%if(nv.getGt()==1){
                                     %>
@@ -319,7 +317,7 @@
                                 <td class="px-6 py-4">
                                     <%=nv.getViTri()%>
                                 </td>
-                                
+
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%=nv.getLuong()%>
                                 </td>
@@ -341,7 +339,7 @@
                             <%} }%>                          
                             </tbody>
                         </table>
-                        
+
                     </div> 
                     <%}%>
                     <% }else{ %>

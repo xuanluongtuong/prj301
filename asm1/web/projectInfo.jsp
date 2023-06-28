@@ -97,23 +97,32 @@
                 <%}}%>
             </div>
             <div class="mylist">
+                <%  Project p = (Project)request.getAttribute("project");
+                    if(p==null){
+                        p = (Project)session.getAttribute("projectinfo");
+                    }
+                %>
 
                 <div class="mycontent">                    
+                    <script>
+                        var imageUrl = '<%= p.getUrlImg() %>'; // Lấy giá trị đường dẫn hình ảnh trong JavaScript
 
+                        // Lấy thẻ <img> theo id
+                        var imgElement = document.getElementById("projectImage");
+
+                        // Đặt giá trị của thuộc tính src của thẻ <img> bằng đường dẫn hình ảnh
+                        imgElement.src = imageUrl;
+                    </script>
 
 
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
-                        <%  Project p = (Project)request.getAttribute("project");
-                            if(p==null){
-                                p = (Project)session.getAttribute("projectinfo");
-                            }
-                        %>
+
 
                         <div class="project_img">
-                            
-                            <img src="<%= p.getUrlImg() %>" alt="alt" />                           
-                            
+
+                            <img id="projectImage" src="<%= p.getUrlImg() %>?v=<%= System.currentTimeMillis() %>" alt="alt" />                         
+
                         </div>
                         <div class="project_content">
                             <div class="project_content_title">
@@ -168,9 +177,7 @@
                             <%}}%>
 
                         </div>
-
-
-
+                        <<h1 style="color: red;">${mes}</h1>
                     </div>
 
                 </div>   

@@ -25,7 +25,7 @@
             .form-group {
                 display: grid;
             }
-             .form-container {
+            .form-container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -55,7 +55,7 @@
                 response.sendRedirect("login.jsp");
             }
         %>
-       <!--start header-->
+        <!--start header-->
         <div class="myheader" style="height: 12rem">
 
             <div class="mylogo">
@@ -67,7 +67,7 @@
             </div>
 
         </div>
-        
+
         <!--end header-->
 
 
@@ -81,7 +81,7 @@
                 <ul>              
                     <li><a href="depart">Employee</a></li>
                     <li><a href="project">Project</a></li>
-                    
+
                     <li><a href="resource">Resource</a></li>
                     <li><a href="customer">Customer</a></li>
                 </ul>
@@ -114,11 +114,11 @@
                                 <input type="hidden" name="MANV" value="<%=em.getMaNV()%>" required />
                                 <input class="form-input" type="text" id="HOVATEN" name="HOVATEN" value="<%=em.getHoVaTen()%>" required />
                             </div>
-                            
+
                             <div class="form-group" style="margin: 21px 0;">
                                 <label class="form-label">Gender</label>
                                 <div class="radio-group">
-                                    
+
                                     <label>
                                         <input type="radio" name="PHAI" value="1" required <%if(em.getGt()==1){%>checked<%}%>/>                                        
                                         Nam
@@ -158,10 +158,11 @@
                                 <label class="form-label" for="LUONG">Salary</label>
                                 <input class="form-input" type="number" id="LUONG" name="LUONG" value="<%=em.getLuong()%>" required />
                             </div>
-                            <div class="form-button">
-                                <button class="btn-submit" type="submit">Submit</button>
-                            </div>
+
                         </div>
+                    </div>
+                    <div class="form-button">
+                        <button class="btn-submit" type="submit">Submit</button>
                     </div>
                 </form>
             </div>
