@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Assignment;
+import model.Employee;
 import model.Project;
 import model.Work;
 
@@ -84,7 +85,7 @@ public class AssignmentDAO extends DBContext {
         }
     }
 
-    public List<Work> getWorkByID(int mada,int mapb) {
+    public List<Work> getWorkByID(int mada, int mapb) {
         List<Work> list = new ArrayList<>();
         String sql = "SELECT CV.MADA, TENDA, CV.MANV, HO_VA_TEN, TEN_CONG_VIEC, MAPB\n"
                 + "FROM dbo.CONGVIEC AS CV\n"
@@ -119,6 +120,68 @@ public class AssignmentDAO extends DBContext {
         }
         return arr;
     }
+
+    public List<String> checkWork(int id) {
+        List<String> list = new ArrayList<>();
+        String sql = "select TEN_CONG_VIEC from dbo.CONGVIEC where MANV=?";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String manv = rs.getString("TEN_CONG_VIEC");
+                list.add(manv);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return list;
+    }
+
+    public List<Employee> getEmListByWork(int departID) {
+        List<Employee> emList = new ArrayList<>();
+        String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL\n"
+                + "  from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
+                + "  on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.PHONGBAN.MAPB=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, departID);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Employee em = new Employee();
+                em.setMaNV(rs.getInt("MANV"));
+                em.setHoVaTen(rs.getString("HO_VA_TEN"));
+                em.setGt(rs.getInt("PHAI"));
+                em.setNgaySinh(rs.getDate("NGAYSINH"));
+                em.setDiaChi(rs.getString("DIACHI"));
+                em.setSDT(rs.getString("SDT"));
+                em.setEmail(rs.getString("EMAIL"));
+                em.setViTri(rs.getString("VITRI"));
+                em.setPhongBan(rs.getString("TENPB"));
+                em.setLuong(rs.getFloat("LUONG"));
+                em.setMaql(rs.getInt("MAQL"));
+                List<String> list = checkWork(em.getMaNV());
+                if (list == null) {
+                    em.setStatus("Doing no Task");
+                } else {
+                    if (list.size()==0) {
+                        em.setStatus("Doing no Task");
+                    } else {
+                        String s = "Doing" + list.size() + "Task";
+                        em.setStatus(s);
+                    }
+                }
+                emList.add(em);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return emList;
+    }
+
 //    public static void main(String[] args) {
 //        AssignmentDAO assDAO = new AssignmentDAO();
 //        List<Project> pro = assDAO.getPJ_Working_List();

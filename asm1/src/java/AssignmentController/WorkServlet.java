@@ -61,6 +61,8 @@ public class WorkServlet extends HttpServlet {
         String mada = request.getParameter("mada");
         String mapb = request.getParameter("mapb");
         
+        request.setAttribute("mapb", mapb);
+        
         DepartmentDAO departDAO = new DepartmentDAO();
         Department d = departDAO.getDepartByID(Integer.parseInt(mapb));
         request.setAttribute("depart", d);

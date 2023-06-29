@@ -59,7 +59,7 @@
 
                 <%if(s!=null){
                     if(s.equals("admin")){%>
-                <a href="workadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;">
+                <a href="workadd?mapb=<%=request.getAttribute("mapb")%>" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;">
                     <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Task</a>
                 <%}}%>
 

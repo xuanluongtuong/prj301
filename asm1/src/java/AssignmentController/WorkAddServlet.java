@@ -5,12 +5,19 @@
 
 package AssignmentController;
 
+import DAL.AssignmentDAO;
+import DAL.DepartmentDAO;
+import DAL.EmployeeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.Department;
+import model.Employee;
+import model.Project;
 
 /**
  *
@@ -53,7 +60,34 @@ public class WorkAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String mapb = request.getParameter("mapb");
+        AssignmentDAO asignDAO = new AssignmentDAO();
+        request.setAttribute("mapb", mapb);
+        List<Employee> list = asignDAO.getEmListByWork(Integer.parseInt(mapb));        
+        
+        int page, numperpage = 4;
+        int size = list.size();
+        int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
+        String pages = request.getParameter("page");
+        if (pages == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(pages);
+        }
+        int start, end;
+        start = (page - 1) * numperpage;
+        end = Math.min(page * numperpage, size);
+        EmployeeDAO employDAO = new EmployeeDAO();
+        List<Employee> listperpage =  employDAO.getlistbypage(list, start, end);
+        request.setAttribute("list", listperpage);
+        request.setAttribute("num", num);
+        request.setAttribute("page", page);
+        
+        DepartmentDAO departDAO = new DepartmentDAO();
+        Department d = departDAO.getDepartByID(Integer.parseInt(mapb));
+        request.setAttribute("tenpb", d.getTenPB());
+        
+        request.getRequestDispatcher("workAdd.jsp").forward(request, response);
     } 
 
     /** 

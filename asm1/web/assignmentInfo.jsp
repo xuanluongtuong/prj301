@@ -171,7 +171,7 @@
 
                                             <a href="work?mada=<%=a.getMada()%>&mapb=<%=a.getMapb()%>" class="mystatus" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-user"></i>
-                                                Watch Employee</a>
+                                                Watch Task</a>
                                         </td>  
                                         <%}}%>
                                         <%}%>

@@ -22,6 +22,7 @@ public class Employee {
     String phongBan;    
     float luong;
     int maql;
+    String status;
 
     public Employee() {
     }
@@ -118,8 +119,13 @@ public class Employee {
     public void setMaql(int maql) {
         this.maql = maql;
     }
-    
-    
-    
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }    
     
 }
