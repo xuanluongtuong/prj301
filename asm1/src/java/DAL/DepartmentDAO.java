@@ -29,19 +29,19 @@ public class DepartmentDAO extends DBContext {
                 dp.setMaPB(rs.getInt("MAPB"));
                 dp.setTenPB(rs.getString("TENPB"));
                 dp.setDiaDiem(rs.getString("DIADIEM"));
-                dp.setMaQL(rs.getInt("MAQL"));                
+                dp.setMaQL(rs.getInt("MAQL"));
                 list.add(dp);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
         return list;
-    }    
+    }
 
     public Department getDepartByID(int manv) {
-        String sql = "select dbo.PHONGBAN.MAPB, TENPB, DIADIEM, MAQL \n" +
-                    " from dbo.PHONGBAN inner join dbo.NHANVIEN \n" +
-                    " on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.NHANVIEN.MANV=?";
+        String sql = "select dbo.PHONGBAN.MAPB, TENPB, DIADIEM, MAQL \n"
+                + " from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
+                + " on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.NHANVIEN.MANV=?";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -63,25 +63,25 @@ public class DepartmentDAO extends DBContext {
         return null;
     }
 
-    public Employee getManager(int maql){
-         try {
-            String sql = " select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL \n" +
-                        "  from dbo.PHONGBAN inner join dbo.NHANVIEN \n" +
-                        "  on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where MANV=MAQL and MANV=?";
+    public Employee getManager(int maql) {
+        try {
+            String sql = " select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL \n"
+                    + "  from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
+                    + "  on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where MANV=MAQL and MANV=?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, maql);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 Employee em = new Employee();
                 em.setMaNV(rs.getInt("MANV"));
-                em.setHoVaTen(rs.getString("HO_VA_TEN"));                
+                em.setHoVaTen(rs.getString("HO_VA_TEN"));
                 em.setGt(rs.getInt("PHAI"));
                 em.setNgaySinh(rs.getDate("NGAYSINH"));
                 em.setDiaChi(rs.getString("DIACHI"));
                 em.setSDT(rs.getString("SDT"));
                 em.setEmail(rs.getString("EMAIL"));
-                em.setViTri(rs.getString("VITRI"));                
-                em.setPhongBan(rs.getString("TENPB"));                
+                em.setViTri(rs.getString("VITRI"));
+                em.setPhongBan(rs.getString("TENPB"));
                 em.setLuong(rs.getFloat("LUONG"));
                 em.setMaql(rs.getInt("MAQL"));
                 return em;

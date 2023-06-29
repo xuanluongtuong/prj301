@@ -88,7 +88,7 @@ public class ProjectDAO extends DBContext {
             st.setFloat(4, pro.getNganSach());
             st.setDate(5, pro.getNgayThiCong());
             st.setInt(6, pro.getTrangThai());
-            st.setString(7,pro.getUrlImg());
+            st.setString(7, pro.getUrlImg());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

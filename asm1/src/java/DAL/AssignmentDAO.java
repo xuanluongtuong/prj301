@@ -48,7 +48,7 @@ public class AssignmentDAO extends DBContext {
                 + "FROM dbo.PHONGBAN AS PB\n"
                 + "INNER JOIN dbo.PHANCONG AS PC ON PB.MAPB = PC.MAPB\n"
                 + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA WHERE PC.MADA=?";
-        
+
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, mada);
@@ -65,6 +65,20 @@ public class AssignmentDAO extends DBContext {
             System.out.println(e);
         }
         return list;
+    }
+
+    public void insertAssignment(Assignment a) {
+        String sql = "INSERT INTO dbo.PHANCONG (MADA, MAPB, TEN_HANG_MUC)\n"
+                + "VALUES (?, ?, ?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, a.getMada());
+            st.setInt(2, a.getMapb());
+            st.setString(3, a.getTen());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
 //    public static void main(String[] args) {
