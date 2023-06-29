@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Assignment;
 import model.Project;
+import model.Work;
 
 /**
  *
@@ -44,7 +45,7 @@ public class AssignmentDAO extends DBContext {
 
     public List<Assignment> getASByID(int mada) {
         List<Assignment> list = new ArrayList<>();
-        String sql = "SELECT PB.MAPB, TENPB, TEN_HANG_MUC \n"
+        String sql = "SELECT PC.MADA, PC.MAPB, TENPB, TEN_HANG_MUC \n"
                 + "FROM dbo.PHONGBAN AS PB\n"
                 + "INNER JOIN dbo.PHANCONG AS PC ON PB.MAPB = PC.MAPB\n"
                 + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA WHERE PC.MADA= ? \n"
@@ -57,6 +58,7 @@ public class AssignmentDAO extends DBContext {
             while (rs.next()) {
                 Assignment a = new Assignment();
                 a.setMada(mada);
+                a.setMada(rs.getInt("MADA"));
                 a.setMapb(rs.getInt("MAPB"));
                 a.setTenpb(rs.getString("TENPB"));
                 a.setTen(rs.getString("TEN_HANG_MUC"));
@@ -82,6 +84,41 @@ public class AssignmentDAO extends DBContext {
         }
     }
 
+    public List<Work> getWorkByID(int mada,int mapb) {
+        List<Work> list = new ArrayList<>();
+        String sql = "SELECT CV.MADA, TENDA, CV.MANV, HO_VA_TEN, TEN_CONG_VIEC, MAPB\n"
+                + "FROM dbo.CONGVIEC AS CV\n"
+                + "INNER JOIN dbo.NHANVIEN AS NV ON CV.MANV = NV.MANV\n"
+                + "INNER JOIN dbo.DU_AN AS DA ON CV.MADA = DA.MADA\n"
+                + "WHERE CV.MADA=? AND MAPB=?";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, mada);
+            st.setInt(2, mapb);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Work a = new Work();
+                a.setMada(mada);
+                a.setMada(rs.getInt("MADA"));
+                a.setManv(rs.getInt("MAPB"));
+                a.setTennv(rs.getString("HO_VA_TEN"));
+                a.setTen(rs.getString("TEN_CONG_VIEC"));
+                list.add(a);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<Work> getlistWorkbypage(List<Work> list, int start, int end) {
+        List<Work> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
 //    public static void main(String[] args) {
 //        AssignmentDAO assDAO = new AssignmentDAO();
 //        List<Project> pro = assDAO.getPJ_Working_List();

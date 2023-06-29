@@ -98,9 +98,7 @@ nav {
 .mymenu{    
     
     background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);
-    overflow: hidden; 
-    
-    
+    overflow: hidden;
     /*border-bottom: #000000 3px solid;*/   
 }
 
@@ -211,6 +209,10 @@ nav {
 
 #myaction .mydelete{
     color: #ff0084;
+}
+
+#myaction .mystatus{
+    color: #003fac;
 }
 
 .pagination{

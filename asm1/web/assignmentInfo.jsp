@@ -25,7 +25,7 @@
 
         <script>
             function doDelete(id) {
-                if (confirm("Are you sure to delete this Project?")) {
+                if (confirm("Are you sure to delete this Assignment?")) {
                     window.location = "assignmentdelete?id=" + id;
                 }
             }
@@ -169,6 +169,9 @@
                                                 <i class="fa-solid fa-trash"></i>
                                                 Delete</a>
 
+                                            <a href="work?mada=<%=a.getMada()%>&mapb=<%=a.getMapb()%>" class="mystatus" style="display: flex;align-items: center;">
+                                                <i class="fa-solid fa-user"></i>
+                                                Watch Employee</a>
                                         </td>  
                                         <%}}%>
                                         <%}%>

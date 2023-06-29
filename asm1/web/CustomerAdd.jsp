@@ -4,7 +4,7 @@
     Author     : admin
 --%>
 
-<%@page import="model.Project"%>
+<%@page import="model.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="jakarta.servlet.http.HttpSession"%>

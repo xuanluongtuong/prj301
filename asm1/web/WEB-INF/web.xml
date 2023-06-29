@@ -132,6 +132,30 @@
         <servlet-name>AssignmentAddServlet</servlet-name>
         <servlet-class>AssignmentController.AssignmentAddServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>WorkServlet</servlet-name>
+        <servlet-class>AssignmentController.WorkServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WorkAddServlet</servlet-name>
+        <servlet-class>AssignmentController.WorkAddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WorkEditServlet</servlet-name>
+        <servlet-class>AssignmentController.WorkEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WorkDeleteServlet</servlet-name>
+        <servlet-class>AssignmentController.WorkDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AsignmentEditServlet</servlet-name>
+        <servlet-class>AssignmentController.AsignmentEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AssignmentDeleteServlet</servlet-name>
+        <servlet-class>AssignmentController.AssignmentDeleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -263,6 +287,30 @@
     <servlet-mapping>
         <servlet-name>AssignmentAddServlet</servlet-name>
         <url-pattern>/assignmentadd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WorkServlet</servlet-name>
+        <url-pattern>/work</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WorkAddServlet</servlet-name>
+        <url-pattern>/workadd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WorkEditServlet</servlet-name>
+        <url-pattern>/workedit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WorkDeleteServlet</servlet-name>
+        <url-pattern>/workdelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AsignmentEditServlet</servlet-name>
+        <url-pattern>/assignmentedit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AssignmentDeleteServlet</servlet-name>
+        <url-pattern>/assignmentdelete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
