@@ -95,6 +95,10 @@
                                 <input class="form-input" type="text" id="TENKH" name="mada" value="<%=request.getAttribute("mada")%>" readonly/>
                             </div>
                             <div class="form-group">
+                                <label class="form-label" >Project Name</label>
+                                <input class="form-input" type="text" id="TENKH" name="tenda" value="<%=request.getAttribute("tenda")%>" readonly/>
+                            </div>
+                            <div class="form-group">
                                 <label class="form-label" >Department ID</label>
                                 <input class="form-input" type="text" id="DCKH" name="mapb" required />
                             </div>
@@ -102,14 +106,13 @@
                                 <label class="form-label" >Assignment Name</label>
                                 <input class="form-input" type="tel" id="SDTKH" name="ten" required />
                             </div>
-
-
+                            <div class="form-button" style="display: flex; justify-content: left;">
+                                <button class="btn-submit" type="submit">Submit</button>
+                            </div>
 
                         </div>
                     </div>
-                    <div class="form-button" style="display: flex; justify-content: left;">
-                        <button class="btn-submit" type="submit">Submit</button>
-                    </div>
+
                 </form>
             </div>
         </div>

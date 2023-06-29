@@ -109,7 +109,7 @@
                         </div>
 
                     </div>
-                    <div style="margin: 20px 0;">  
+                    <div style="margin: 20px 0 0 0;">  
                         <%  List<Assignment> list = (ArrayList<Assignment>) request.getAttribute("list");%>
                         <%if(list==null){                                    
                             list = (ArrayList<Assignment>) session.getAttribute("list");

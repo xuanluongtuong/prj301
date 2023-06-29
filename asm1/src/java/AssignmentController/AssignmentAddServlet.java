@@ -64,7 +64,10 @@ public class AssignmentAddServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String mada = request.getParameter("mada");
+        ProjectDAO projectDAO = new ProjectDAO();
+        Project p = projectDAO.getPJByID(Integer.parseInt(mada));
         request.setAttribute("mada", mada);
+        request.setAttribute("tenda", p.getTenDA());
         DepartmentDAO departDAO = new DepartmentDAO();
         List<Department> departments = departDAO.getDepartList();
         request.setAttribute("data", departments);
