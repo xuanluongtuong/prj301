@@ -10,8 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Assignment;
-import model.Department;
-import model.Employee;
 import model.Project;
 
 /**
@@ -43,17 +41,35 @@ public class AssignmentDAO extends DBContext {
         }
         return list;
     }
-    
-    public List<Assignment> getlistbypage(List<Assignment> list, int start, int end) {
-        List<Assignment> arr = new ArrayList<>();
-        for (int i = start; i < end; i++) {
-            arr.add(list.get(i));
+
+    public List<Assignment> getASByID(int mada) {
+        List<Assignment> list = new ArrayList<>();
+        String sql = "SELECT PB.MAPB, TENPB, TEN_HANG_MUC \n"
+                + "FROM dbo.PHONGBAN AS PB\n"
+                + "INNER JOIN dbo.PHANCONG AS PC ON PB.MAPB = PC.MAPB\n"
+                + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA WHERE PC.MADA=?";
+        
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, mada);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Assignment a = new Assignment();
+                a.setMada(mada);
+                a.setMapb(rs.getInt("MAPB"));
+                a.setTenpb(rs.getString("TENPB"));
+                a.setTen(rs.getString("TEN_HANG_MUC"));
+                list.add(a);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
         }
-        return arr;
-    }    
-    public static void main(String[] args) {
-        AssignmentDAO assDAO = new AssignmentDAO();
-        List<Project> pro = assDAO.getPJ_Working_List();
-        System.out.println(pro.get(3).getDiaDiem());
+        return list;
     }
+
+//    public static void main(String[] args) {
+//        AssignmentDAO assDAO = new AssignmentDAO();
+//        List<Project> pro = assDAO.getPJ_Working_List();
+//        System.out.println(pro.get(3).getDiaDiem());
+//    }
 }

@@ -64,6 +64,7 @@
 
                         </div>
                         <div class="project_content">
+                            
                             <div class="project_content_title">
                                 <h3>
                                     Project Information(Thông tin dự án)
@@ -116,7 +117,7 @@
                             <%}}%>
 
                         </div>
-                        <<h1 style="color: red;">${mes}</h1>
+                        <h1 style="color: red;">${mes}</h1>
                     </div>
 
                 </div>   

@@ -124,6 +124,14 @@
         <servlet-name>AssignmentController</servlet-name>
         <servlet-class>AssignmentController.AssignmentController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AssignmentInfoServlet</servlet-name>
+        <servlet-class>AssignmentController.AssignmentInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AssignmentAddServlet</servlet-name>
+        <servlet-class>AssignmentController.AssignmentAddServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -247,6 +255,14 @@
     <servlet-mapping>
         <servlet-name>AssignmentController</servlet-name>
         <url-pattern>/assignment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AssignmentInfoServlet</servlet-name>
+        <url-pattern>/assignmentinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AssignmentAddServlet</servlet-name>
+        <url-pattern>/assignmentadd</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

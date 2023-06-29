@@ -50,14 +50,7 @@
     <div class="mymenu">
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
 
-            <h4 style="width: 300px;margin: 0 0px 0 30px; color: #8b00a3;"> Project List </h4><br/>
-
-
-            <%if(s!=null){
-                    if(s.equals("admin")){%>
-            <a href="projectadd" style="display:flex;align-items: center; text-decoration: none;color: rgb(129, 0, 185);margin: 0 35px 0px 0;font-size: 20px;">
-                <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
-                <%}}%>
+            <h4 style="margin: 0 0px 0 30px; color: #8b00a3;"> Project Under Construction List </h4><br/>           
 
         </div>
 
@@ -72,8 +65,8 @@
                             for (Project p : list) {                                
                         %>
                         <li style="width: 320px;margin: 20px 15px; box-shadow: 2px 2px 2px 0.5px #66696b;border-radius: 4px;overflow: hidden;">
-                            <img src="<%=p.getUrlImg()%>" alt="Project still not have image" style="width: 100%;height: 200px;">
-                            <a href="projectinfo?mada=<%=p.getMaDA()%>" style="color: black; text-decoration: none;font-size: 17px;">
+                            <img src="<%=p.getUrlImg()%>" alt="Project still not have image" style="width: 100%;height: 200px;">                            
+                            <a href="assignmentinfo?mada=<%=p.getMaDA()%>" style="color: black; text-decoration: none;font-size: 17px;">
                                 <div style="padding: 0 5px;">
                                     <div >
                                         <%=p.getTenDA()%>
