@@ -12,6 +12,7 @@ import java.util.List;
 import model.Assignment;
 import model.Department;
 import model.Employee;
+import model.Project;
 
 /**
  *
@@ -19,23 +20,23 @@ import model.Employee;
  */
 public class AssignmentDAO extends DBContext {
 
-    public List<Assignment> getAssignList() {
-        List<Assignment> list = new ArrayList<>();
-        String sql = "SELECT PC.MADA,TENDA,PC.MAPB, TENPB, TEN_HANG_MUC\n"
-                + "FROM dbo.PHANCONG AS PC\n"
-                + "INNER JOIN dbo.DU_AN AS DA ON DA.MADA = PC.MADA\n"
-                + "INNER JOIN dbo.PHONGBAN AS PB ON PB.MAPB = PC.MAPB;";
+    public List<Project> getPJ_Working_List() {
+        List<Project> list = new ArrayList<>();
+        String sql = "select * from dbo.DU_AN where TRANGTHAI=2";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Assignment as = new Assignment();
-                as.setMada(rs.getInt("MADA"));
-                as.setTenda(rs.getString("TENDA"));
-                as.setMapb(rs.getInt("MAPB"));
-                as.setTenpb(rs.getString("TENPB"));
-                as.setTen(rs.getString("TEN_HANG_MUC"));
-                list.add(as);
+                Project p = new Project();
+                p.setTenKH(rs.getString("TENKH"));
+                p.setMaDA(rs.getInt("MADA"));
+                p.setTenDA(rs.getString("TENDA"));
+                p.setDiaDiem(rs.getString("DIADIEM"));
+                p.setNganSach(rs.getFloat("NGANSACH"));
+                p.setNgayThiCong(rs.getDate("NGAYTHICONG"));
+                p.setTrangThai(rs.getInt("TRANGTHAI"));
+                p.setUrlImg(rs.getString("IMG"));
+                list.add(p);
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -50,4 +51,9 @@ public class AssignmentDAO extends DBContext {
         }
         return arr;
     }    
+    public static void main(String[] args) {
+        AssignmentDAO assDAO = new AssignmentDAO();
+        List<Project> pro = assDAO.getPJ_Working_List();
+        System.out.println(pro.get(3).getDiaDiem());
+    }
 }

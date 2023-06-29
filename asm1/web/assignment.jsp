@@ -68,7 +68,7 @@
 
                 <div style="display: flex; justify-content: center;margin: 10px 0;">
                     <ul style="display: flex;flex-wrap: wrap;list-style: none;margin: 0;padding: 0;justify-content: space-evenly;">
-                        <%  List<Project> list = (ArrayList<Project>)request.getAttribute("prolist");
+                        <%  List<Project> list = (ArrayList<Project>)request.getAttribute("list");
                             for (Project p : list) {                                
                         %>
                         <li style="width: 320px;margin: 20px 15px; box-shadow: 2px 2px 2px 0.5px #66696b;border-radius: 4px;overflow: hidden;">
@@ -79,19 +79,10 @@
                                         <%=p.getTenDA()%>
                                     </div>
                                     <div>
-                                        <%if(p.getTrangThai()==1){%>
-                                            <div style="color: rgb(24, 202, 0);font-weight: 600;">
-                                                Hoàn thành
-                                            </div>
-                                        <%}else if(p.getTrangThai()==0){%>
-                                            <div style="color: rgb(174, 0, 81);font-weight: 600;">
-                                                Đã hủy
-                                            </div>
-                                        <%}else{%>
-                                            <div style="color: rgb(0, 145, 155);font-weight: 600;">
-                                                Đang thi công
-                                            </div>
-                                        <%}%>
+                                        <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                            Đang thi công
+                                        </div>
+
                                     </div>
                                 </div>
                             </a>
@@ -103,7 +94,7 @@
                     <c:set var="page" value="${requestScope.page}"/>
                     <div class="pagination" style="justify-content: center;">
                         <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                            <a id="page-${i}" class="page-link" href="project?page=${i}">${i}</a>
+                            <a id="page-${i}" class="page-link" href="assignment?page=${i}">${i}</a>
                         </c:forEach>
                     </div>
                 </div>

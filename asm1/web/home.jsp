@@ -28,14 +28,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
             <ul class="mymenu_ul" style="margin-top: 25px;margin-bottom: 35px;">
                 
-                <a href="depart">
-                    <li class="mysub_menu">
-                        <div class="mysub_menu_title">Employee</div>
-                        <div class="mysub_menu_logo">
-                            <img src="img/nhansu.png" alt="">
-                        </div>                
-                    </li> 
-                </a>
+                
                 
                 <a href="assignment">
                     <li class="mysub_menu">
@@ -76,6 +69,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                     </li>
                 </a>
+                <a href="depart">
+                    <li class="mysub_menu">
+                        <div class="mysub_menu_title">Employee</div>
+                        <div class="mysub_menu_logo">
+                            <img src="img/nhansu.png" alt="">
+                        </div>                
+                    </li> 
+                </a>
+                
             </ul>
 
         </div>

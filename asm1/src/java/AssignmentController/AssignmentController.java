@@ -33,9 +33,9 @@ public class AssignmentController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        AssignmentDAO project = new AssignmentDAO();
-        List<Assignment> list = project.getAssignList();
-        int page, numperpage = 5;
+        AssignmentDAO assignDAO = new AssignmentDAO();
+        List<Project> list = assignDAO.getPJ_Working_List();
+        int page, numperpage = 8;
         int size = list.size();
         int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
         String pages = request.getParameter("page");
@@ -47,11 +47,12 @@ public class AssignmentController extends HttpServlet {
         int start, end;
         start = (page - 1) * numperpage;
         end = Math.min(page * numperpage, size);
-        List<Assignment> listperpage =  project.getlistbypage(list, start, end);
+        ProjectDAO project = new ProjectDAO();
+        List<Project> listperpage =  project.getlistbypage(list, start, end);
         request.setAttribute("list", listperpage);
         request.setAttribute("num", num);
         request.setAttribute("page", page);                
-        request.getRequestDispatcher("assignmentList.jsp").forward(request, response);
+        request.getRequestDispatcher("assignment.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
