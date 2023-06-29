@@ -92,7 +92,7 @@
                         <div class="form-right">
                             <div class="form-group">
                                 <label class="form-label" >Project ID</label>
-                                <input class="form-input" type="text" id="TENKH" name="mada" required />
+                                <input class="form-input" type="text" id="TENKH" name="mada" value="<%=request.getAttribute("mada")%>" readonly/>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Department ID</label>

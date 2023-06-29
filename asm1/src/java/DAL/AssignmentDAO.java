@@ -47,7 +47,8 @@ public class AssignmentDAO extends DBContext {
         String sql = "SELECT PB.MAPB, TENPB, TEN_HANG_MUC \n"
                 + "FROM dbo.PHONGBAN AS PB\n"
                 + "INNER JOIN dbo.PHANCONG AS PC ON PB.MAPB = PC.MAPB\n"
-                + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA WHERE PC.MADA=?";
+                + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA WHERE PC.MADA= ? \n"
+                + "ORDER BY PC.MAPB";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);

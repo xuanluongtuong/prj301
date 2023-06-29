@@ -141,12 +141,12 @@ nav {
     border-radius: 10px;
     border: 1px solid black;
     overflow: hidden;
-    margin: 0px 40px;
+    margin: 0px 40px 20px 40px;
 }
 
 .project_img img{
     width: 100%;    
-    height: auto;        
+    height: auto;    
 }
 .project_content{
     width: calc((100%/12)*4);

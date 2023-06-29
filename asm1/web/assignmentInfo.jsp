@@ -42,7 +42,7 @@
                 <%if(s!=null){
                     if(s.equals("admin")){%>
 
-                <a href="assignmentadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 60px;font-size: 20px;">
+                <a href="assignmentadd?mada=<%=request.getAttribute("mada")%>" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 60px;font-size: 20px;">
                     <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Assignment
                 </a>
                 <%}}%>
@@ -50,9 +50,9 @@
             <div class="mylist">
 
                 <%  Project p = (Project)request.getAttribute("project");
-                    if(p==null){
-                        p = (Project)session.getAttribute("projectinfo");
-                    }
+                if(p==null){
+                    p = (Project)session.getAttribute("projectinfo");
+                }
                 %>
 
                 <div class="mycontent">
@@ -104,78 +104,82 @@
                                     <%} else{%> Đang thi công <%}%>
                                 </div>
                             </div>
-                            <div>  
-                                <%  List<Assignment> list = (ArrayList<Assignment>) request.getAttribute("list");%>
-                                <%if(list.size()==0){%>
-                                <div >
-                                    <h4 style="color: #ad00ad;">This project have been assigned by no Department yet</h4>                                    
-                                </div>
-                                <%}%>                                
-                                <%if(list.size()>0){%>
 
-                                <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
-
-                                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                                            <tr>
-                                                <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                                    Department ID
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                                    Department Name
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                                    Task Name
-                                                </th>
-
-                                                <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                                    Action
-                                                </th>
-
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            <%for (Assignment a : list) {                                
-                                            %>
-                                            <tr class="border-b border-gray-50 dark:border-gray-800">
-                                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                                    <%=a.getMapb()%>
-                                                </td>
-                                                <td class="px-6 py-4">
-                                                    <%=a.getTenpb()%>
-                                                </td>
-                                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                                    <%=a.getTen()%>
-                                                </td>
-                                                <%if(s!=null){
-                                                if(s.equals("admin")){%>
-                                                <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
-
-                                                    <a href="assignmentedit?id=<%=a.getMapb()%>" class="myedit" style="display: flex;align-items: center;">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                        Edit</a>
-
-                                                    <a href="#" onclick="doDelete('<%=a.getMapb()%>')" class="mydelete" style="display: flex;align-items: center;">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                        Delete</a>
-
-                                                </td>  
-                                                <%}}%>
-                                                <%}%>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                                <%}%>                                
-                            </div>
 
                         </div>
 
                     </div>
+                    <div style="margin: 20px 0;">  
+                        <%  List<Assignment> list = (ArrayList<Assignment>) request.getAttribute("list");%>
+                        <%if(list==null){                                    
+                            list = (ArrayList<Assignment>) session.getAttribute("list");
+                        }%>
+                        <%if(list.size()==0){%>
+                        <div >
+                            <h4 style="color: #ad00ad;">This project have been assigned by no Department yet</h4>                                    
+                        </div>
+                        <%}%>                                
+                        <%if(list.size()>0){%>
 
-                </div>   
+                        <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Department ID
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Department Name
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Task Name
+                                        </th>
+
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Action
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <%for (Assignment a : list) {                                
+                                    %>
+                                    <tr class="border-b border-gray-50 dark:border-gray-800">
+                                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                            <%=a.getMapb()%>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <%=a.getTenpb()%>
+                                        </td>
+                                        <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                            <%=a.getTen()%>
+                                        </td>
+                                        <%if(s!=null){
+                                        if(s.equals("admin")){%>
+                                        <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+
+                                            <a href="assignmentedit?id=<%=a.getMapb()%>" class="myedit" style="display: flex;align-items: center;">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                Edit</a>
+
+                                            <a href="#" onclick="doDelete('<%=a.getMapb()%>')" class="mydelete" style="display: flex;align-items: center;">
+                                                <i class="fa-solid fa-trash"></i>
+                                                Delete</a>
+
+                                        </td>  
+                                        <%}}%>
+                                        <%}%>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <%}%>                                
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

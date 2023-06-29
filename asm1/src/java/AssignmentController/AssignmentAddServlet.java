@@ -6,15 +6,18 @@ package AssignmentController;
 
 import DAL.AssignmentDAO;
 import DAL.DepartmentDAO;
+import DAL.ProjectDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.Assignment;
 import model.Department;
+import model.Project;
 
 /**
  *
@@ -60,6 +63,8 @@ public class AssignmentAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String mada = request.getParameter("mada");
+        request.setAttribute("mada", mada);
         DepartmentDAO departDAO = new DepartmentDAO();
         List<Department> departments = departDAO.getDepartList();
         request.setAttribute("data", departments);
@@ -88,8 +93,19 @@ public class AssignmentAddServlet extends HttpServlet {
             a.setMapb(Integer.parseInt(mapb));
             a.setTen(ten);
             assignDAO.insertAssignment(a);
+            List<Assignment> list = assignDAO.getASByID(Integer.parseInt(mada));           
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("list", list);
+            
+            ProjectDAO projectDAO = new ProjectDAO();
+            Project p = projectDAO.getPJByID(Integer.parseInt(mada));
+            
+            request.setAttribute("project", p);
+            
+            session.setAttribute("projectinfo", p);
 //            request.getRequestDispatcher("assignment").forward(request, response);
-            response.sendRedirect("assignment");
+            response.sendRedirect("assignmentInfo.jsp");
         } catch (IOException | NumberFormatException e) {
             System.out.println(e);
         }

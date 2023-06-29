@@ -66,6 +66,7 @@ public class AssignmentInfoServlet extends HttpServlet {
         AssignmentDAO assDAO = new AssignmentDAO();
         
         List<Assignment> list = assDAO.getASByID(Integer.parseInt(mada));
+        request.setAttribute("mada", mada);
         request.setAttribute("list", list);
         
         request.getRequestDispatcher("assignmentInfo.jsp").forward(request, response);
