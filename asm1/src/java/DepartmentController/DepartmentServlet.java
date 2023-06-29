@@ -33,7 +33,7 @@ public class DepartmentServlet extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DepartmentDAO dp = new DepartmentDAO();
-        List<Department> departments = dp.getList();
+        List<Department> departments = dp.getDepartList();
         request.setAttribute("data", departments);
         request.getRequestDispatcher("department.jsp").forward(request, response);
     } 

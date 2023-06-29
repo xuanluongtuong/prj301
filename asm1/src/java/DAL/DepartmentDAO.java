@@ -18,7 +18,7 @@ import model.Employee;
  */
 public class DepartmentDAO extends DBContext {
 
-    public List<Department> getList() {
+    public List<Department> getDepartList() {
         List<Department> list = new ArrayList<>();
         String sql = "select * from dbo.PHONGBAN";
         try {

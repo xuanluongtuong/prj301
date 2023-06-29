@@ -26,7 +26,7 @@
         <script>
             function doDelete(id) {
                 if (confirm("Are you sure to delete this Project?")) {
-                    window.location = "projectdelete?id=" + id;
+                    window.location = "assignmentdelete?id=" + id;
                 }
             }
         </script>
@@ -41,7 +41,7 @@
             <div style="width: 100%; display: flex;justify-content: right;margin:10px 30px;">
                 <%if(s!=null){
                     if(s.equals("admin")){%>
-                
+
                 <a href="assignmentadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 60px;font-size: 20px;">
                     <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Assignment
                 </a>
@@ -149,9 +149,20 @@
                                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                                     <%=a.getTen()%>
                                                 </td>
-                                                <td class="px-6 py-4">
-                                                    lmao
-                                                </td>
+                                                <%if(s!=null){
+                                                if(s.equals("admin")){%>
+                                                <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+
+                                                    <a href="assignmentedit?id=<%=a.getMapb()%>" class="myedit" style="display: flex;align-items: center;">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                        Edit</a>
+
+                                                    <a href="#" onclick="doDelete('<%=a.getMapb()%>')" class="mydelete" style="display: flex;align-items: center;">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                        Delete</a>
+
+                                                </td>  
+                                                <%}}%>
                                                 <%}%>
                                         </tbody>
                                     </table>
