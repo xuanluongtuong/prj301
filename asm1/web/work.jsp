@@ -59,7 +59,7 @@
 
                 <%if(s!=null){
                     if(s.equals("admin")){%>
-                <a href="workadd?mapb=<%=request.getAttribute("mapb")%>" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;">
+                <a href="workadd?mada=<%=request.getAttribute("mada")%>&mapb=<%=request.getAttribute("mapb")%>" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;">
                     <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Task</a>
                 <%}}%>
 
@@ -102,6 +102,9 @@
                             </thead>
                             <tbody>
                                 <%  List<Work> list = (ArrayList<Work>) request.getAttribute("list");
+                                    if(list==null){
+                                        list = (ArrayList<Work>) session.getAttribute("list");
+                                    }
                                     if(list!=null)
                                     for (Work w : list) {                                
                                 %>
@@ -110,7 +113,7 @@
                                         <%=w.getMada()%>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <%=w.getTenda()%>
+                                        <%=request.getAttribute("tenda")%>
                                     </td>
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=w.getManv()%>
@@ -147,7 +150,7 @@
                     <c:set var="page" value="${requestScope.page}"/>
                     <div class="pagination" style="justify-content: center;">
                         <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                            <a id="page-${i}" class="page-link" href="work?page=${i}">${i}</a>
+                            <a id="page-${i}" class="page-link" href="work?page=${i}&mada=${mada}&mapb=${mapb}">${i}</a>
                         </c:forEach>
                     </div>
                 </div>

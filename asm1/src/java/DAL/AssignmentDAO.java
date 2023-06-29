@@ -167,7 +167,7 @@ public class AssignmentDAO extends DBContext {
                 if (list == null) {
                     em.setStatus("Doing no Task");
                 } else {
-                    if (list.size()==0) {
+                    if (list.size() == 0) {
                         em.setStatus("Doing no Task");
                     } else {
                         String s = "Doing" + list.size() + "Task";
@@ -180,6 +180,20 @@ public class AssignmentDAO extends DBContext {
             System.out.println(e);
         }
         return emList;
+    }
+
+    public void insertWork(Work a) {
+        String sql = "INSERT INTO dbo.CONGVIEC ( MADA, MANV, TEN_CONG_VIEC)\n"
+                + "VALUES (?, ?, ?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, a.getMada());
+            st.setInt(2, a.getManv());
+            st.setString(3, a.getTen());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
 //    public static void main(String[] args) {

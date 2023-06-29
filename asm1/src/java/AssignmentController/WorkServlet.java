@@ -7,6 +7,8 @@ package AssignmentController;
 
 import DAL.AssignmentDAO;
 import DAL.DepartmentDAO;
+import DAL.ProjectDAO;
+import com.oracle.wls.shaded.org.apache.bcel.generic.AALOAD;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,6 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Department;
+import model.Project;
 import model.Work;
 
 /**
@@ -61,15 +64,21 @@ public class WorkServlet extends HttpServlet {
         String mada = request.getParameter("mada");
         String mapb = request.getParameter("mapb");
         
+        request.setAttribute("mada", mada);
         request.setAttribute("mapb", mapb);
         
         DepartmentDAO departDAO = new DepartmentDAO();
         Department d = departDAO.getDepartByID(Integer.parseInt(mapb));
         request.setAttribute("depart", d);
         request.setAttribute("tenpb", d.getTenPB());
+        
+        ProjectDAO projectDAO = new ProjectDAO();
+        Project p = projectDAO.getPJByID(Integer.parseInt(mada));
+        request.setAttribute("tenda", p.getTenDA());
+        
         AssignmentDAO assignDAO = new AssignmentDAO();
         List<Work> list = assignDAO.getWorkByID(Integer.parseInt(mada), Integer.parseInt(mapb));
-        int page, numperpage = 8;
+        int page, numperpage = 4;
         int size = list.size();
         int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
         String pages = request.getParameter("page");
