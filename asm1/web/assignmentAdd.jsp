@@ -59,21 +59,6 @@
 
                     <div class="form-container">
                         <div class="form-left">
-                            <div class="form-group">
-                                <label class="form-label" >Project ID</label>
-                                <input class="form-input" type="text" id="TENKH" name="mada" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" >Department ID</label>
-                                <input class="form-input" type="text" id="DCKH" name="mapb" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" >Assignment Name</label>
-                                <input class="form-input" type="tel" id="SDTKH" name="ten" required />
-                            </div>
-
-                        </div>
-                        <div class="form-right">
                             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                     <tr>
@@ -83,11 +68,11 @@
                                         <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                             Department Name
                                         </th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%  List<Department> list = (ArrayList<Department>) request.getAttribute("data");
+                                    <%  List<Department> list = (ArrayList<Department>)request.getAttribute("data");
                                         if(list!=null)
                                         for (Department d : list) {                                
                                     %>
@@ -102,6 +87,22 @@
                                     <%} %>
                                 </tbody>
                             </table>
+
+                        </div>
+                        <div class="form-right">
+                            <div class="form-group">
+                                <label class="form-label" >Project ID</label>
+                                <input class="form-input" type="text" id="TENKH" name="mada" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" >Department ID</label>
+                                <input class="form-input" type="text" id="DCKH" name="mapb" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" >Assignment Name</label>
+                                <input class="form-input" type="tel" id="SDTKH" name="ten" required />
+                            </div>
+
 
 
                         </div>

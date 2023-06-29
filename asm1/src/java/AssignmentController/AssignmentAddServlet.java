@@ -60,6 +60,9 @@ public class AssignmentAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        DepartmentDAO departDAO = new DepartmentDAO();
+        List<Department> departments = departDAO.getDepartList();
+        request.setAttribute("data", departments);
         request.getRequestDispatcher("assignmentAdd.jsp").forward(request, response);
     }
 
@@ -84,9 +87,6 @@ public class AssignmentAddServlet extends HttpServlet {
             a.setMada(Integer.parseInt(mada));
             a.setMapb(Integer.parseInt(mapb));
             a.setTen(ten);
-            DepartmentDAO departDAO = new DepartmentDAO();
-            List<Department> departments = departDAO.getDepartList();
-            request.setAttribute("data", departments);
             assignDAO.insertAssignment(a);
 //            request.getRequestDispatcher("assignment").forward(request, response);
             response.sendRedirect("assignment");
