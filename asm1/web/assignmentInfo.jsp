@@ -109,6 +109,7 @@
                         </div>
 
                     </div>
+                    <%if(p.getTrangThai()!=1 && p.getTrangThai()!=0){%>
                     <div style="margin: 20px 0 0 0;">  
                         <%  List<Assignment> list = (ArrayList<Assignment>) request.getAttribute("list");%>
                         <%if(list==null){                                    
@@ -181,6 +182,7 @@
                         </div>
                         <%}%>                                
                     </div>
+                    <%}%>
                 </div>
 
             </div>
