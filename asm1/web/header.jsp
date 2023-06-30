@@ -8,8 +8,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>LTX Manager</title>        
+        <meta charset="utf-8"> 
+        <link rel="stylesheet" href="css/stylehome.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>        
+        <link rel="stylesheet" href="fontawesome/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
     <body>
         <%String s=(String)session.getAttribute("role");
@@ -29,7 +35,7 @@
             </div>
 
             <div class="myslogan">
-                <h2 class="myshadow">Together we build a beautiful world</h2>
+                <h1 class="myshadow">Smart management, shaping the future</h1>
             </div>
 
         </div>
@@ -44,21 +50,21 @@
                     <img src="img/home1.png" alt="">
                     <a href="home.jsp">Home</a>
                 </div>
-                <ul>              
-                    <li><a href="depart">Employee</a></li>
-                    <li><a href="assignment">Assignment</a></li>
-                    <li><a href="project">Project</a></li>                    
-                    <li><a href="resource">Resource</a></li>
-                    <li><a href="customer">Customer</a></li>
+                <ul >              
+                    <li id="the_object"><a href="depart">Employee</a></li>
+                    <li id="the_object"><a href="assignment">Assignment</a></li>
+                    <li id="the_object"><a href="project">Project</a></li>                    
+                    <li id="the_object"><a href="resource">Resource</a></li>
+                    <li id="the_object"><a href="customer">Customer</a></li>
                     <li><a href="#"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>Search</a></li>
                 </ul>
             </div>
-            <div style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">
-                <i class="fa-solid fa-user" style="margin-right: 5px;color: white;">
+            <div  style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">
+                <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
                 </i>
-                <div style="color: white;"><%=session.getAttribute("name")%></div>
+                <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
                 <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
-                    <div style="margin-right: 5px;">&nbsp;| Log out
+                    <div id="the_logout" style="margin-right: 5px;">&nbsp;| Log out
                     </div>
                     <i class="fa-solid fa-arrow-right-from-bracket" style="margin: 5px 10px 0px 0;"></i>                
                 </a>

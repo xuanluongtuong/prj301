@@ -298,7 +298,7 @@ select * from dbo.PHANCONG where ID=4
 
 select * from dbo.CONGVIEC where ID=2
 	
-
+UPDATE dbo.PHANCONG SET MAPB = 3, TEN_HANG_MUC = N'abc' WHERE ID = 4
 	
 	
 
