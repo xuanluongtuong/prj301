@@ -24,9 +24,9 @@
         <title>LTX Manager</title>        
 
         <script>
-            function doDelete(id) {
+            function doDelete(id,mada) {
                 if (confirm("Are you sure to delete this Assignment?")) {
-                    window.location = "assignmentdelete?id=" + id;
+                    window.location = "assignmentdelete?id=" + id+"&mada="+mada;
                 }
             }
         </script>
@@ -165,7 +165,7 @@
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                                 Edit</a>
 
-                                            <a href="#" onclick="doDelete('<%=a.getMapb()%>')" class="mydelete" style="display: flex;align-items: center;">
+                                            <a href="#" onclick="doDelete('<%=a.getId()%>','<%=p.getMaDA()%>')" class="mydelete" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-trash"></i>
                                                 Delete</a>
 

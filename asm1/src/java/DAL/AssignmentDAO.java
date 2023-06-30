@@ -46,7 +46,7 @@ public class AssignmentDAO extends DBContext {
 
     public List<Assignment> getASByID(int mada) {
         List<Assignment> list = new ArrayList<>();
-        String sql = "SELECT PC.MADA, PC.MAPB, TENPB, TEN_HANG_MUC \n"
+        String sql = "SELECT PC.ID, PC.MADA, PC.MAPB, TENPB, TEN_HANG_MUC \n"
                 + "FROM dbo.PHONGBAN AS PB\n"
                 + "INNER JOIN dbo.PHANCONG AS PC ON PB.MAPB = PC.MAPB\n"
                 + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA WHERE PC.MADA= ? \n"
@@ -58,6 +58,7 @@ public class AssignmentDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Assignment a = new Assignment();
+                a.setId(rs.getInt("ID"));
                 a.setMada(mada);
                 a.setMada(rs.getInt("MADA"));
                 a.setMapb(rs.getInt("MAPB"));
@@ -85,9 +86,21 @@ public class AssignmentDAO extends DBContext {
         }
     }
 
+    public void deleteAssignment(int id) {
+        String sql = "DELETE FROM dbo.PHANCONG\n"
+                + "WHERE ID=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);            
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
     public List<Work> getWorkByID(int mada, int mapb) {
         List<Work> list = new ArrayList<>();
-        String sql = "SELECT CV.MADA, TENDA, CV.MANV, HO_VA_TEN, TEN_CONG_VIEC, MAPB\n"
+        String sql = "SELECT CV.ID, CV.MADA, TENDA, CV.MANV, HO_VA_TEN, TEN_CONG_VIEC, MAPB\n"
                 + "FROM dbo.CONGVIEC AS CV\n"
                 + "INNER JOIN dbo.NHANVIEN AS NV ON CV.MANV = NV.MANV\n"
                 + "INNER JOIN dbo.DU_AN AS DA ON CV.MADA = DA.MADA\n"
@@ -100,6 +113,7 @@ public class AssignmentDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Work a = new Work();
+                a.setId(rs.getInt("ID"));
                 a.setMada(mada);
                 a.setMada(rs.getInt("MADA"));
                 a.setManv(rs.getInt("MAPB"));
@@ -182,14 +196,26 @@ public class AssignmentDAO extends DBContext {
         return emList;
     }
 
-    public void insertWork(Work a) {
+    public void insertWork(Work w) {
         String sql = "INSERT INTO dbo.CONGVIEC ( MADA, MANV, TEN_CONG_VIEC)\n"
                 + "VALUES (?, ?, ?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, a.getMada());
-            st.setInt(2, a.getManv());
-            st.setString(3, a.getTen());
+            st.setInt(1, w.getMada());
+            st.setInt(2, w.getManv());
+            st.setString(3, w.getTen());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void deleteWork(int id) {
+        String sql = "DELETE FROM dbo.CONGVIEC\n"
+                + "WHERE ID=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

@@ -9,6 +9,7 @@ package model;
  * @author admin
  */
 public class Work {
+    int id;
     int mada;
     int manv;
     int mapb;
@@ -18,6 +19,16 @@ public class Work {
 
     public Work() {
     }    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
 
     public int getMada() {
         return mada;

@@ -108,7 +108,7 @@ public class AssignmentAddServlet extends HttpServlet {
             
             session.setAttribute("projectinfo", p);
 //            request.getRequestDispatcher("assignment").forward(request, response);
-            response.sendRedirect("assignmentInfo.jsp");
+            response.sendRedirect("assignmentinfo?mada="+mada);
         } catch (IOException | NumberFormatException e) {
             System.out.println(e);
         }

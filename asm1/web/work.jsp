@@ -24,9 +24,9 @@
         <title>LXT Manager</title>        
 
         <script>
-            function doDelete(id) {
+            function doDelete(id,mada,mapb) {
                 if (confirm("Are you sure to delete this Task?")) {
-                    window.location = "workdelete?id=" + id;
+                    window.location = "workdelete?id=" + id+"&mada="+mada+"&mapb="+mapb;
                 }
             }
         </script>
@@ -132,7 +132,7 @@
                                             <i class="fa-solid fa-pen-to-square"></i>
                                             Edit</a>
 
-                                        <a href="#" onclick="doDelete('<%=w.getMada()%>')" class="mydelete" style="display: flex;align-items: center;">
+                                        <a href="#" onclick="doDelete('<%=w.getId()%>',<%=w.getMada()%>,<%=request.getAttribute("mapb")%>)" class="mydelete" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-trash"></i>
                                             Delete</a>
 

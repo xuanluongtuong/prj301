@@ -5,12 +5,17 @@
 
 package AssignmentController;
 
+import DAL.DepartmentDAO;
+import DAL.ProjectDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.Department;
+import model.Project;
 
 /**
  *
@@ -53,7 +58,15 @@ public class AsignmentEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String mada = request.getParameter("mada");
+        ProjectDAO projectDAO = new ProjectDAO();
+        Project p = projectDAO.getPJByID(Integer.parseInt(mada));
+        request.setAttribute("mada", mada);
+        request.setAttribute("tenda", p.getTenDA());
+        DepartmentDAO departDAO = new DepartmentDAO();
+        List<Department> departments = departDAO.getDepartList();
+        request.setAttribute("data", departments);
+        request.getRequestDispatcher("assignmentEdit.jsp").forward(request, response);
     } 
 
     /** 

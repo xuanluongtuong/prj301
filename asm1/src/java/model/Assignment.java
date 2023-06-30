@@ -8,7 +8,8 @@ package model;
  *
  * @author admin
  */
-public class Assignment {    
+public class Assignment {  
+    int id;
     int mada;
     int mapb;
     String tenda;
@@ -17,6 +18,16 @@ public class Assignment {
 
     public Assignment() {
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
 
     public int getMada() {
         return mada;

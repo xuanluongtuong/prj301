@@ -5,12 +5,14 @@
 
 package AssignmentController;
 
+import DAL.AssignmentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -53,7 +55,22 @@ public class AssignmentDeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("id");
+        String mada = request.getParameter("mada");
+        request.setAttribute("mada", mada);
+//        int manv = Integer.parseInt(request.getParameter("manv"));
+//        String ten = request.getParameter("ten");
+//        int mapb = Integer.parseInt(request.getParameter("mapb"));
+        HttpSession session = request.getSession();
+        session.setAttribute("mada", mada);
+        try {
+            AssignmentDAO asDAO = new AssignmentDAO(); 
+            asDAO.deleteAssignment(Integer.parseInt(id));
+//            request.getRequestDispatcher("work?mada="+mada+"&mapb="+mapb).forward(request, response);
+            response.sendRedirect("assignmentinfo?mada="+mada);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     } 
 
     /** 
