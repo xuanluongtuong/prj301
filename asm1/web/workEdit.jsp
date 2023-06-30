@@ -70,7 +70,7 @@
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
-                <form action="workadd" method="post" style="display: inline; justify-content: center;">
+                <form action="workedit" method="post" style="display: inline; justify-content: center;">
                     <div>
                         <h4 style="min-width: 300px;margin: 20px 0 5px 20px; color: purple;"> <%=request.getAttribute("tenpb")%> </h4>
                     </div>
@@ -123,6 +123,7 @@
                             <div class="form-group">
                                 <label class="form-label" >Project ID</label>
                                 <input type="hidden" name="mapb" value="${mapb}"/>
+                                <input type="hidden" name="id" value="${id}"/>
                                 <input class="form-input" type="text" id="TENKH" name="mada" value="<%=request.getAttribute("mada")%>" readonly/>
                             </div>
                             <div class="form-group">
@@ -131,11 +132,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Employee ID</label>
-                                <input class="form-input" type="text" id="DCKH" name="manv" required />
+                                <input class="form-input" type="text" id="DCKH" name="manv" value="${manv}" required />
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Task Name</label>
-                                <input class="form-input" type="tel" id="SDTKH" name="ten" required />
+                                <input class="form-input" type="tel" id="SDTKH" name="ten" value="${ten}" required />
                             </div>
                             <div class="form-button" style="display: flex; justify-content: left;">
                                 <button class="btn-submit" type="submit">Submit</button>

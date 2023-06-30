@@ -96,7 +96,7 @@ public class AssignmentAddServlet extends HttpServlet {
             a.setMapb(Integer.parseInt(mapb));
             a.setTen(ten);
             assignDAO.insertAssignment(a);
-            List<Assignment> list = assignDAO.getASByID(Integer.parseInt(mada));           
+            List<Assignment> list = assignDAO.getASByMada(Integer.parseInt(mada));           
             
             HttpSession session = request.getSession();
             session.setAttribute("list", list);

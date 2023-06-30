@@ -5,12 +5,22 @@
 
 package AssignmentController;
 
+import DAL.AssignmentDAO;
+import DAL.DepartmentDAO;
+import DAL.EmployeeDAO;
+import DAL.ProjectDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import model.Department;
+import model.Employee;
+import model.Project;
+import model.Work;
 
 /**
  *
@@ -53,7 +63,52 @@ public class WorkEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String mada = request.getParameter("mada");
+        String mapb = request.getParameter("mapb");
+        String id = request.getParameter("id");
+
+        request.setAttribute("mada", mada);
+        request.setAttribute("mapb", mapb);
+
+        ProjectDAO projectDAO = new ProjectDAO();
+        Project p = projectDAO.getPJByID(Integer.parseInt(mada));
+
+        request.setAttribute("tenda", p.getTenDA());
+
+        AssignmentDAO asignDAO = new AssignmentDAO();
+        
+        Work w = asignDAO.getWorkByID(Integer.parseInt(id));
+        
+        request.setAttribute("id", id);
+        request.setAttribute("manv", w.getManv());
+        request.setAttribute("ten", w.getTen());
+        
+        request.setAttribute("mapb", mapb);
+        List<Employee> list = asignDAO.getEmListByWork(Integer.parseInt(mapb));
+
+        int page, numperpage = 4;
+        int size = list.size();
+        int num = (size % numperpage == 0 ? (size / numperpage) : ((size / numperpage) + 1));
+        String pages = request.getParameter("page");
+        if (pages == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(pages);
+        }
+        int start, end;
+        start = (page - 1) * numperpage;
+        end = Math.min(page * numperpage, size);
+        EmployeeDAO employDAO = new EmployeeDAO();
+        List<Employee> listperpage = employDAO.getlistbypage(list, start, end);
+        request.setAttribute("list", listperpage);
+        request.setAttribute("num", num);
+        request.setAttribute("page", page);
+
+        DepartmentDAO departDAO = new DepartmentDAO();
+        Department d = departDAO.getDepartByID(Integer.parseInt(mapb));
+        request.setAttribute("tenpb", d.getTenPB());
+
+        request.getRequestDispatcher("workEdit.jsp").forward(request, response);
     } 
 
     /** 
@@ -66,7 +121,30 @@ public class WorkEditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String mada = request.getParameter("mada");
+        String manv = request.getParameter("manv");
+        String ten = request.getParameter("ten");
+        String mapb = request.getParameter("mapb");
+        String id = request.getParameter("id");
+        
+        request.setAttribute("mada", mada);
+        request.setAttribute("mapb", mapb);        
+        
+        AssignmentDAO assignDAO = new AssignmentDAO();
+        
+        try {
+            
+            Work w = new Work();
+            w.setId(Integer.parseInt(id));
+            w.setMada(Integer.parseInt(mada));
+            w.setManv(Integer.parseInt(manv));
+            w.setTen(ten);
+            assignDAO.editWork(w);
+//            request.getRequestDispatcher("assignment").forward(request, response);
+            response.sendRedirect("work?mada=" + mada + "&mapb=" + mapb);
+        } catch (NumberFormatException e) {
+            System.out.println(e);
+        }
     }
 
     /** 

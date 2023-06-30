@@ -161,7 +161,7 @@
                                         if(s.equals("admin")){%>
                                         <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
-                                            <a href="assignmentedit?id=<%=a.getMapb()%>" class="myedit" style="display: flex;align-items: center;">
+                                            <a href="assignmentedit?id=<%=a.getId()%>&mada=<%=request.getAttribute("mada")%>"" class="myedit" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                                 Edit</a>
 

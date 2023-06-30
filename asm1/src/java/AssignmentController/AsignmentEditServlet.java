@@ -5,6 +5,7 @@
 
 package AssignmentController;
 
+import DAL.AssignmentDAO;
 import DAL.DepartmentDAO;
 import DAL.ProjectDAO;
 import java.io.IOException;
@@ -13,7 +14,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.Assignment;
 import model.Department;
 import model.Project;
 
@@ -59,6 +62,14 @@ public class AsignmentEditServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String mada = request.getParameter("mada");
+        String id = request.getParameter("id");
+        
+        AssignmentDAO asDAO = new AssignmentDAO();
+        Assignment a = asDAO.getASByID(Integer.parseInt(id));
+        request.setAttribute("mapb", a.getMapb());
+        request.setAttribute("ten", a.getTen());
+        request.setAttribute("id", id);
+        
         ProjectDAO projectDAO = new ProjectDAO();
         Project p = projectDAO.getPJByID(Integer.parseInt(mada));
         request.setAttribute("mada", mada);
@@ -79,7 +90,35 @@ public class AsignmentEditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String mada = request.getParameter("mada");
+        String mapb = request.getParameter("mapb");
+        String ten = request.getParameter("ten");
+        String id = request.getParameter("id");
+        
+        try {
+            AssignmentDAO assignDAO = new AssignmentDAO();
+            Assignment a = new Assignment();
+            a.setId(Integer.parseInt(id));
+            a.setMada(Integer.parseInt(mada));
+            a.setMapb(Integer.parseInt(mapb));
+            a.setTen(ten);
+            assignDAO.editAssignment(a);
+            List<Assignment> list = assignDAO.getASByMada(Integer.parseInt(mada));           
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("list", list);
+            
+            ProjectDAO projectDAO = new ProjectDAO();
+            Project p = projectDAO.getPJByID(Integer.parseInt(mada));
+            
+            request.setAttribute("project", p);
+            
+            session.setAttribute("projectinfo", p);
+//            request.getRequestDispatcher("assignment").forward(request, response);
+            response.sendRedirect("assignmentinfo?mada="+mada);
+        } catch (IOException | NumberFormatException e) {
+            System.out.println(e);
+        }
     }
 
     /** 

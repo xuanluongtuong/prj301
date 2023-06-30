@@ -293,6 +293,10 @@ INNER JOIN dbo.DU_AN AS DA ON DA.MADA = PC.MADA
 INNER JOIN dbo.PHONGBAN AS PB ON PB.MAPB = PC.MAPB;
 
 delete from dbo.PHANCONG where MADA=1
+
+select * from dbo.PHANCONG where ID=4
+
+select * from dbo.CONGVIEC where ID=2
 	
 
 	

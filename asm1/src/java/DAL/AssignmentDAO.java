@@ -44,7 +44,7 @@ public class AssignmentDAO extends DBContext {
         return list;
     }
 
-    public List<Assignment> getASByID(int mada) {
+    public List<Assignment> getASByMada(int mada) {
         List<Assignment> list = new ArrayList<>();
         String sql = "SELECT PC.ID, PC.MADA, PC.MAPB, TENPB, TEN_HANG_MUC \n"
                 + "FROM dbo.PHONGBAN AS PB\n"
@@ -91,14 +91,48 @@ public class AssignmentDAO extends DBContext {
                 + "WHERE ID=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, id);            
+            st.setInt(1, id);
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
-    public List<Work> getWorkByID(int mada, int mapb) {
+    public Assignment getASByID(int id) {
+        Assignment a = new Assignment();
+        String sql = "select * from dbo.PHANCONG where ID=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                a.setId(rs.getInt("ID"));
+                a.setMada(rs.getInt("MADA"));
+                a.setMapb(rs.getInt("MAPB"));
+                a.setTen(rs.getString("TEN_HANG_MUC"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return a;
+    }
+
+    //sua 
+    public void editAssignment(Assignment a) {
+        String sql = "UPDATE dbo.PHANCONG SET MAPB = ?, TEN_HANG_MUC = ? WHERE ID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, a.getMapb());
+            st.setString(2, a.getTen());
+            st.setInt(3, a.getId());
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public List<Work> getWorkByMada(int mada, int mapb) {
         List<Work> list = new ArrayList<>();
         String sql = "SELECT CV.ID, CV.MADA, TENDA, CV.MANV, HO_VA_TEN, TEN_CONG_VIEC, MAPB\n"
                 + "FROM dbo.CONGVIEC AS CV\n"
@@ -217,6 +251,40 @@ public class AssignmentDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public Work getWorkByID(int id) {
+        Work w = new Work();
+        String sql = "select * from dbo.CONGVIEC where ID=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                w.setId(rs.getInt("ID"));
+                w.setMada(rs.getInt("MADA"));
+                w.setManv(rs.getInt("MANV"));
+                w.setTen(rs.getString("TEN_CONG_VIEC"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return w;
+    }
+
+    //sua 
+    public void editWork(Work w) {
+        String sql = "UPDATE dbo.CONGVIEC SET MANV = ?, TEN_CONG_VIEC = ? WHERE ID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, w.getManv());
+            st.setString(2, w.getTen());
+            st.setInt(3, w.getId());
+            st.executeUpdate();
+
         } catch (SQLException e) {
             System.out.println(e);
         }

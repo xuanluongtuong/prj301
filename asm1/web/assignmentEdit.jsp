@@ -55,7 +55,7 @@
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
-                <form action="assignmentadd" method="post" style="display: inline; justify-content: center;">
+                <form action="assignmentedit" method="post" style="display: inline; justify-content: center;">
 
                     <div class="form-container">
                         <div class="form-left">
@@ -90,21 +90,22 @@
 
                         </div>
                         <div class="form-right">
+                            <input  type="hidden"  name="id" value="${id}" />
                             <div class="form-group">
                                 <label class="form-label" >Project ID</label>
-                                <input class="form-input" type="text" id="TENKH" name="mada" value="<%=request.getAttribute("mada")%>" readonly/>
+                                <input class="form-input" type="text"  name="mada" value="<%=request.getAttribute("mada")%>" readonly/>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Project Name</label>
-                                <input class="form-input" type="text" id="TENKH" name="tenda" value="<%=request.getAttribute("tenda")%>" readonly/>
+                                <input class="form-input" type="text"  name="tenda" value="<%=request.getAttribute("tenda")%>" readonly/>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Department ID</label>
-                                <input class="form-input" type="text" id="DCKH" name="mapb" required />
+                                <input class="form-input" type="text"  name="mapb" value="${mapb}" required />
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Assignment Name</label>
-                                <input class="form-input" type="tel" id="SDTKH" name="ten" required />
+                                <input class="form-input" type="tel"  name="ten" value="${ten}" required />
                             </div>
                             <div class="form-button" style="display: flex; justify-content: left;">
                                 <button class="btn-submit" type="submit">Submit</button>
