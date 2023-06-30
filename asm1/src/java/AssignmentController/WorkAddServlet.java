@@ -135,37 +135,11 @@ public class WorkAddServlet extends HttpServlet {
             w.setTen(ten);
             assignDAO.insertWork(w);
 //            request.getRequestDispatcher("assignment").forward(request, response);
-            
+            response.sendRedirect("work?mada=" + mada + "&mapb=" + mapb);
         } catch (NumberFormatException e) {
             System.out.println(e);
         }
-        DepartmentDAO departDAO = new DepartmentDAO();
-        Department d = departDAO.getDepartByID(Integer.parseInt(mapb));
         
-        request.setAttribute("tenpb", d.getTenPB());
-        
-        ProjectDAO projectDAO = new ProjectDAO();
-        Project p = projectDAO.getPJByID(Integer.parseInt(mada));
-        request.setAttribute("tenda", p.getTenDA());        
-        
-        List<Work> list = assignDAO.getWorkByID(Integer.parseInt(mada), Integer.parseInt(mapb));
-        int page, numperpage = 4;
-        int size = list.size();
-        int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
-        String pages = request.getParameter("page");
-        if (pages == null) {
-            page = 1;
-        } else {
-            page = Integer.parseInt(pages);
-        }
-        int start, end;
-        start = (page - 1) * numperpage;
-        end = Math.min(page * numperpage, size);
-        List<Work> listperpage =  assignDAO.getlistWorkbypage(list, start, end);
-        session.setAttribute("list", listperpage);
-        request.setAttribute("num", num);
-        request.setAttribute("page", page);
-        response.sendRedirect("work.jsp");
     }
 
     /**

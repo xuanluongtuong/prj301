@@ -170,7 +170,7 @@ public class AssignmentDAO extends DBContext {
                     if (list.size() == 0) {
                         em.setStatus("Doing no Task");
                     } else {
-                        String s = "Doing" + list.size() + "Task";
+                        String s = "Doing " + list.size() + " Task";
                         em.setStatus(s);
                     }
                 }
