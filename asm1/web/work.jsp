@@ -72,7 +72,7 @@
                     <h3 style="min-width: 300px;margin: 20px 0 5px 20px; color: purple;"> ${tenpb} </h3>
                     <h5 style="min-width: 300px;margin: 0px 0 0 20px; color: rgb(0, 102, 142);">Project ID: ${mada} </h5>
                     <h5 style="min-width: 300px;margin: 0px 0 0 20px; color: rgb(0, 102, 142);">Project Name: ${tenda} </h5>
-                    <h5 style="min-width: 300px;margin: 0px 0 20px 20px; color: rgb(0, 102, 142);">Assignment Name: ${tenpc}</h5>
+                    <h5 style="min-width: 300px;margin: 0px 0 20px 20px; color: rgb(114, 0, 142);">Assignment Name: ${tenpc}</h5>
 
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
