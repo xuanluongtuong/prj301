@@ -24,9 +24,9 @@
         <title>LTX Manager</title>        
 
         <script>
-            function doDelete(id,mada) {
+            function doDelete(id, mada) {
                 if (confirm("Are you sure to delete this Assignment?")) {
-                    window.location = "assignmentdelete?id=" + id+"&mada="+mada;
+                    window.location = "assignmentdelete?id=" + id + "&mada=" + mada;
                 }
             }
         </script>
@@ -136,7 +136,9 @@
                                         <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                             Task Name
                                         </th>
-
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Status
+                                        </th>
                                         <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                             Action
                                         </th>
@@ -158,6 +160,21 @@
                                         <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                             <%=a.getTen()%>
                                         </td>
+                                        <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                            <%if(a.getTrangThai()==1){%>
+                                            <div style="color: rgb(24, 202, 0);font-weight: 600;">
+                                                Hoàn thành
+                                            </div>
+                                            <%}else if(a.getTrangThai()==0){%>
+                                            <div style="color: rgb(174, 0, 81);font-weight: 600;">
+                                                Đã hủy
+                                            </div>
+                                            <%}else{%>
+                                            <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                                Chưa hoàn thành
+                                            </div>
+                                            <%}%>
+                                        </td>
                                         <%if(s!=null){
                                         if(s.equals("admin")){%>
                                         <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
@@ -166,11 +183,11 @@
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                                 Edit</a>
 
-                                            <a href="#" onclick="doDelete('<%=a.getId()%>','<%=p.getMaDA()%>')" class="mydelete" style="display: flex;align-items: center;">
+                                            <a href="#" onclick="doDelete('<%=a.getId()%>', '<%=p.getMaDA()%>')" class="mydelete" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-trash"></i>
                                                 Delete</a>
 
-                                            <a href="work?mada=<%=a.getMada()%>&mapb=<%=a.getMapb()%>" class="mystatus" style="display: flex;align-items: center;">
+                                            <a href="work?idpc=<%=a.getId()%>&mapb=<%=a.getMapb()%>&mada=<%=a.getMada()%>" class="mystatus" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-user"></i>
                                                 Watch Task</a>
                                         </td>  

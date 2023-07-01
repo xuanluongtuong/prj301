@@ -88,6 +88,7 @@ public class AssignmentAddServlet extends HttpServlet {
         String mada = request.getParameter("mada");
         String mapb = request.getParameter("mapb");
         String ten = request.getParameter("ten");
+        String status = request.getParameter("status");
 
         try {
             AssignmentDAO assignDAO = new AssignmentDAO();
@@ -95,6 +96,7 @@ public class AssignmentAddServlet extends HttpServlet {
             a.setMada(Integer.parseInt(mada));
             a.setMapb(Integer.parseInt(mapb));
             a.setTen(ten);
+            a.setTrangThai(Integer.parseInt(status));
             assignDAO.insertAssignment(a);
             List<Assignment> list = assignDAO.getASByMada(Integer.parseInt(mada));           
             

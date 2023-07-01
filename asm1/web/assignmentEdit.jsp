@@ -107,6 +107,15 @@
                                 <label class="form-label" >Assignment Name</label>
                                 <input class="form-input" type="tel"  name="ten" value="${ten}" required />
                             </div>
+                            <div class="form-group">
+                                <label class="form-label" >Status</label>
+
+                                <select class="form-input" name="status" required>
+                                    <option value="2" <%= request.getAttribute("status").equals(2) ? "selected" : "" %>>Chưa hoàn thành</option>
+                                    <option value="1" <%= request.getAttribute("status").equals(1) ? "selected" : "" %>>Hoàn thành</option>
+                                    <option value="0" <%= request.getAttribute("status").equals(0) ? "selected" : "" %>>Đã hủy</option>
+                                </select>
+                            </div>
                             <div class="form-button" style="display: flex; justify-content: left;">
                                 <button class="btn-submit" type="submit">Submit</button>
                             </div>

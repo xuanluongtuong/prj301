@@ -69,6 +69,7 @@ public class AsignmentEditServlet extends HttpServlet {
         request.setAttribute("mapb", a.getMapb());
         request.setAttribute("ten", a.getTen());
         request.setAttribute("id", id);
+        request.setAttribute("status", a.getTrangThai());
         
         ProjectDAO projectDAO = new ProjectDAO();
         Project p = projectDAO.getPJByID(Integer.parseInt(mada));
@@ -94,6 +95,7 @@ public class AsignmentEditServlet extends HttpServlet {
         String mapb = request.getParameter("mapb");
         String ten = request.getParameter("ten");
         String id = request.getParameter("id");
+        String status = request.getParameter("status");
         
         try {
             AssignmentDAO assignDAO = new AssignmentDAO();
@@ -102,6 +104,8 @@ public class AsignmentEditServlet extends HttpServlet {
             a.setMada(Integer.parseInt(mada));
             a.setMapb(Integer.parseInt(mapb));
             a.setTen(ten);
+            a.setTrangThai(Integer.parseInt(status));
+            
             assignDAO.editAssignment(a);
             List<Assignment> list = assignDAO.getASByMada(Integer.parseInt(mada));           
             

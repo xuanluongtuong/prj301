@@ -14,7 +14,8 @@ public class Assignment {
     int mapb;
     String tenda;
     String tenpb;
-    String ten;    
+    String ten;
+    int trangThai;
 
     public Assignment() {
     }
@@ -68,6 +69,13 @@ public class Assignment {
     public void setTen(String ten) {
         this.ten = ten;
     }
-    
+
+    public int getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }   
     
 }

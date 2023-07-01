@@ -10,12 +10,14 @@ package model;
  */
 public class Work {
     int id;
+    int idpc;
     int mada;
     int manv;
     int mapb;
     String tenda;
     String tennv;
     String ten;
+    int trangThai;
 
     public Work() {
     }    
@@ -26,6 +28,14 @@ public class Work {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdpc() {
+        return idpc;
+    }
+
+    public void setIdpc(int idpc) {
+        this.idpc = idpc;
     }
     
     
@@ -78,6 +88,14 @@ public class Work {
 
     public void setTen(String ten) {
         this.ten = ten;
+    }
+
+    public int getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
     }
     
     

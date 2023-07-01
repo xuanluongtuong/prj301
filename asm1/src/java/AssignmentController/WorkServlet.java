@@ -61,9 +61,11 @@ public class WorkServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        String idpc = request.getParameter("idpc");
         String mada = request.getParameter("mada");
         String mapb = request.getParameter("mapb");
         
+        request.setAttribute("idpc", idpc);
         request.setAttribute("mada", mada);
         request.setAttribute("mapb", mapb);
         
@@ -77,7 +79,7 @@ public class WorkServlet extends HttpServlet {
         request.setAttribute("tenda", p.getTenDA());
         
         AssignmentDAO assignDAO = new AssignmentDAO();
-        List<Work> list = assignDAO.getWorkByMada(Integer.parseInt(mada), Integer.parseInt(mapb));
+        List<Work> list = assignDAO.getWorkByMada(Integer.parseInt(idpc), Integer.parseInt(mapb));
         int page, numperpage = 4;
         int size = list.size();
         int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
