@@ -125,12 +125,12 @@ public class AssignmentDAO extends DBContext {
         String sql = "UPDATE dbo.PHANCONG SET MAPB = ?, TEN_HANG_MUC = ?, TRANGTHAI = ? WHERE ID = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            
+
             st.setInt(1, a.getMapb());
             st.setString(2, a.getTen());
-            st.setInt(3,a.getTrangThai());
-            st.setInt(4, a.getId());            
-            
+            st.setInt(3, a.getTrangThai());
+            st.setInt(4, a.getId());
+
             st.executeUpdate();
 
         } catch (SQLException e) {
@@ -138,9 +138,9 @@ public class AssignmentDAO extends DBContext {
         }
     }
 
-    public List<Work> getWorkByMada(int idpc, int mapb) {
+    public List<Work> getWorkByIdpcMapb(int idpc, int mapb) {
         List<Work> list = new ArrayList<>();
-        String sql = "SELECT CV.ID,CV.IDPC, MADA, PC.MAPB, HO_VA_TEN, CV.MANV, TEN_CONG_VIEC\n"
+        String sql = "SELECT CV.ID,CV.IDPC, MADA, PC.MAPB, HO_VA_TEN, CV.MANV, TEN_CONG_VIEC, CV.TRANGTHAI\n"
                 + "FROM dbo.PHANCONG AS PC\n"
                 + "INNER JOIN dbo.CONGVIEC AS CV ON PC.ID = CV.IDPC\n"
                 + "INNER JOIN dbo.NHANVIEN AS NV ON CV.MANV = NV.MANV\n"
@@ -152,14 +152,15 @@ public class AssignmentDAO extends DBContext {
             st.setInt(2, mapb);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Work a = new Work();
-                a.setId(rs.getInt("ID"));
-                a.setIdpc(rs.getInt("IDPC"));
-                a.setMada(rs.getInt("MADA"));
-                a.setManv(rs.getInt("MAPB"));
-                a.setTennv(rs.getString("HO_VA_TEN"));
-                a.setTen(rs.getString("TEN_CONG_VIEC"));
-                list.add(a);
+                Work w = new Work();
+                w.setId(rs.getInt("ID"));
+                w.setIdpc(rs.getInt("IDPC"));
+                w.setMada(rs.getInt("MADA"));
+                w.setManv(rs.getInt("MAPB"));
+                w.setTennv(rs.getString("HO_VA_TEN"));
+                w.setTen(rs.getString("TEN_CONG_VIEC"));
+                w.setTrangThai(rs.getInt("TRANGTHAI"));
+                list.add(w);
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -177,7 +178,7 @@ public class AssignmentDAO extends DBContext {
 
     public List<String> checkWork(int id) {
         List<String> list = new ArrayList<>();
-        String sql = "select TEN_CONG_VIEC from dbo.CONGVIEC where MANV=?";
+        String sql = "select TEN_CONG_VIEC from dbo.CONGVIEC where MANV=? and TRANGTHAI = 2";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -237,13 +238,14 @@ public class AssignmentDAO extends DBContext {
     }
 
     public void insertWork(Work w) {
-        String sql = "INSERT INTO dbo.CONGVIEC (IDPC, MANV, TEN_CONG_VIEC)\n"
-                + "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO dbo.CONGVIEC (IDPC, MANV, TEN_CONG_VIEC, TRANGTHAI)\n"
+                + "VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1,w.getIdpc());            
+            st.setInt(1, w.getIdpc());
             st.setInt(2, w.getManv());
             st.setString(3, w.getTen());
+            st.setInt(4, w.getTrangThai());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -274,6 +276,7 @@ public class AssignmentDAO extends DBContext {
                 w.setIdpc(rs.getInt("IDPC"));
                 w.setManv(rs.getInt("MANV"));
                 w.setTen(rs.getString("TEN_CONG_VIEC"));
+                w.setTrangThai(rs.getInt("TRANGTHAI"));
                 return w;
             }
         } catch (SQLException e) {
@@ -284,12 +287,13 @@ public class AssignmentDAO extends DBContext {
 
     //sua 
     public void editWork(Work w) {
-        String sql = "UPDATE dbo.CONGVIEC SET MANV = ?, TEN_CONG_VIEC = ? WHERE ID = ?";
+        String sql = "UPDATE dbo.CONGVIEC SET MANV = ?, TEN_CONG_VIEC = ?, TRANGTHAI = ? WHERE ID = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, w.getManv());
             st.setString(2, w.getTen());
-            st.setInt(3, w.getId());
+            st.setInt(3, w.getTrangThai());
+            st.setInt(4, w.getId());
             st.executeUpdate();
 
         } catch (SQLException e) {
@@ -297,9 +301,9 @@ public class AssignmentDAO extends DBContext {
         }
     }
 
-//    public static void main(String[] args) {
-//        AssignmentDAO assDAO = new AssignmentDAO();
-//        List<Project> pro = assDAO.getPJ_Working_List();
-//        System.out.println(pro.get(3).getDiaDiem());
-//    }
+    public static void main(String[] args) {
+        AssignmentDAO assDAO = new AssignmentDAO();
+        List<Work> pro = assDAO.getWorkByIdpcMapb(1, 2);
+        System.out.println(pro.get(0).getIdpc());
+    }
 }

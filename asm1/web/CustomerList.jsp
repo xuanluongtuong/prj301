@@ -141,7 +141,7 @@
                     </div>
 
                 </div>
-                <div style="margin-bottom:20px">
+                <div style="margin:20px">
                     <c:set var="page" value="${requestScope.page}"/>
                     <div class="pagination" style="justify-content: center;">
                         <c:forEach begin="${1}" end="${requestScope.num}" var="i">

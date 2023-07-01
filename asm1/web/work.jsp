@@ -59,7 +59,7 @@
 
                 <%if(s!=null){
                     if(s.equals("admin")){%>
-                <a href="workadd?mada=<%=request.getAttribute("mada")%>&mapb=<%=request.getAttribute("mapb")%>" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;">
+                <a href="workadd?mada=<%=request.getAttribute("mada")%>&mapb=<%=request.getAttribute("mapb")%>&idpc=<%=request.getAttribute("idpc")%>" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;">
                     <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Task</a>
                 <%}}%>
 
@@ -69,7 +69,10 @@
 
                 <div class="mycontent">                    
 
-                    <h4 style="min-width: 300px;margin: 20px 0 0 20px; color: purple;"> <%=request.getAttribute("tenpb")%> </h4><br/>
+                    <h3 style="min-width: 300px;margin: 20px 0 5px 20px; color: purple;"> ${tenpb} </h3>
+                    <h5 style="min-width: 300px;margin: 0px 0 0 20px; color: rgb(0, 102, 142);">Project ID: ${mada} </h5>
+                    <h5 style="min-width: 300px;margin: 0px 0 0 20px; color: rgb(0, 102, 142);">Project Name: ${tenda} </h5>
+                    <h5 style="min-width: 300px;margin: 0px 0 20px 20px; color: rgb(0, 102, 142);">Assignment Name: ${tenpc}</h5>
 
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
@@ -92,6 +95,9 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Task
                                     </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Status
+                                    </th>
                                     <%if(s!=null){
                                         if(s.equals("admin")){%>
                                     <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
@@ -102,9 +108,7 @@
                             </thead>
                             <tbody>
                                 <%  List<Work> list = (ArrayList<Work>) request.getAttribute("list");
-                                    if(list==null){
-                                        list = (ArrayList<Work>) session.getAttribute("list");
-                                    }
+                                    
                                     if(list!=null)
                                     for (Work w : list) {                                
                                 %>
@@ -124,11 +128,26 @@
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=w.getTen()%>
                                     </td>
+                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                            <%if(w.getTrangThai()==1){%>
+                                            <div style="color: rgb(24, 202, 0);font-weight: 600;">
+                                                Hoàn thành
+                                            </div>
+                                            <%}else if(w.getTrangThai()==0){%>
+                                            <div style="color: rgb(174, 0, 81);font-weight: 600;">
+                                                Đã hủy
+                                            </div>
+                                            <%}else{%>
+                                            <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                                Chưa hoàn thành
+                                            </div>
+                                            <%}%>
+                                        </td>
                                     <%if(s!=null){
                                         if(s.equals("admin")){%>
                                     <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
-                                        <a href="workedit?mada=<%=w.getMada()%>&id=<%=w.getId()%>&mapb=<%=request.getAttribute("mapb")%>" class="myedit" style="display: flex;align-items: center;">
+                                        <a href="workedit?mada=<%=w.getMada()%>&id=<%=w.getId()%>&mapb=<%=request.getAttribute("mapb")%>&idpc=<%=request.getAttribute("idpc")%>" class="myedit" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                             Edit</a>
 
@@ -146,7 +165,7 @@
                     </div>
 
                 </div>
-                <div style="margin-bottom:20px">
+                <div style="margin:20px">
                     <c:set var="page" value="${requestScope.page}"/>
                     <div class="pagination" style="justify-content: center;">
                         <c:forEach begin="${1}" end="${requestScope.num}" var="i">

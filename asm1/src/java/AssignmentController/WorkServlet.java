@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import model.Assignment;
 import model.Department;
 import model.Project;
 import model.Work;
@@ -79,7 +80,11 @@ public class WorkServlet extends HttpServlet {
         request.setAttribute("tenda", p.getTenDA());
         
         AssignmentDAO assignDAO = new AssignmentDAO();
-        List<Work> list = assignDAO.getWorkByMada(Integer.parseInt(idpc), Integer.parseInt(mapb));
+        Assignment a = assignDAO.getASByID(Integer.parseInt(idpc));
+        
+        request.setAttribute("tenpc", a.getTen());
+        
+        List<Work> list = assignDAO.getWorkByIdpcMapb(Integer.parseInt(idpc), Integer.parseInt(mapb));
         int page, numperpage = 4;
         int size = list.size();
         int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));

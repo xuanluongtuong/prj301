@@ -134,7 +134,7 @@
                                             Department Name
                                         </th>
                                         <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Task Name
+                                            Assignment Name
                                         </th>
                                         <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                             Status

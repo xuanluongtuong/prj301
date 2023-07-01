@@ -123,11 +123,16 @@
                             <div class="form-group">
                                 <label class="form-label" >Project ID</label>
                                 <input type="hidden" name="mapb" value="${mapb}"/>
+                                <input type="hidden" name="idpc" value="${idpc}"/>
                                 <input class="form-input" type="text" id="TENKH" name="mada" value="<%=request.getAttribute("mada")%>" readonly/>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Project Name</label>
                                 <input class="form-input" type="text" id="TENKH" name="tenda" value="<%=request.getAttribute("tenda")%>" readonly/>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" >Assignment Name</label>
+                                <input class="form-input" type="text" id="TENKH" name="tenda" value="${tenpc}" readonly/>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Employee ID</label>
@@ -136,6 +141,14 @@
                             <div class="form-group">
                                 <label class="form-label" >Task Name</label>
                                 <input class="form-input" type="tel" id="SDTKH" name="ten" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" >Status</label>
+                                <select class="form-input"  name="status" required>
+                                    <option value="2">Chưa hoàn thành</option>
+                                    <option value="1">Hoàn thành</option>
+                                    <option value="0">Đã hủy</option>
+                                </select>
                             </div>
                             <div class="form-button" style="display: flex; justify-content: left;">
                                 <button class="btn-submit" type="submit">Submit</button>

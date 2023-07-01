@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.Assignment;
 import model.Department;
 import model.Employee;
 import model.Project;
@@ -67,9 +68,13 @@ public class WorkAddServlet extends HttpServlet {
             throws ServletException, IOException {
         String mada = request.getParameter("mada");
         String mapb = request.getParameter("mapb");
-
+        String idpc = request.getParameter("idpc");
+        
+        
+        
         request.setAttribute("mada", mada);
         request.setAttribute("mapb", mapb);
+        request.setAttribute("idpc", idpc);
 
         ProjectDAO projectDAO = new ProjectDAO();
         Project p = projectDAO.getPJByID(Integer.parseInt(mada));
@@ -77,6 +82,10 @@ public class WorkAddServlet extends HttpServlet {
         request.setAttribute("tenda", p.getTenDA());
 
         AssignmentDAO asignDAO = new AssignmentDAO();
+        Assignment a = asignDAO.getASByID(Integer.parseInt(idpc));
+        
+        request.setAttribute("tenpc", a.getTen());
+        
         request.setAttribute("mapb", mapb);
         List<Employee> list = asignDAO.getEmListByWork(Integer.parseInt(mapb));
 
@@ -120,22 +129,25 @@ public class WorkAddServlet extends HttpServlet {
         String manv = request.getParameter("manv");
         String ten = request.getParameter("ten");
         String mapb = request.getParameter("mapb");
+        String status = request.getParameter("status");
+        String idpc = request.getParameter("idpc");
         
         request.setAttribute("mada", mada);
-        request.setAttribute("mapb", mapb);
+        request.setAttribute("mapb", mapb);        
         
-        HttpSession session = request.getSession();
         AssignmentDAO assignDAO = new AssignmentDAO();
         
         try {
             
             Work w = new Work();
+            w.setIdpc(Integer.parseInt(idpc));
             w.setMada(Integer.parseInt(mada));
             w.setManv(Integer.parseInt(manv));
             w.setTen(ten);
+            w.setTrangThai(Integer.parseInt(status));
             assignDAO.insertWork(w);
 //            request.getRequestDispatcher("assignment").forward(request, response);
-            response.sendRedirect("work?mada=" + mada + "&mapb=" + mapb);
+            response.sendRedirect("work?mada=" + mada + "&mapb=" + mapb+"&idpc=" + idpc);
         } catch (NumberFormatException e) {
             System.out.println(e);
         }

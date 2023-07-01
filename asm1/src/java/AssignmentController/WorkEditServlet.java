@@ -66,9 +66,11 @@ public class WorkEditServlet extends HttpServlet {
         String mada = request.getParameter("mada");
         String mapb = request.getParameter("mapb");
         String id = request.getParameter("id");
+        String idpc = request.getParameter("idpc");
 
         request.setAttribute("mada", mada);
         request.setAttribute("mapb", mapb);
+        request.setAttribute("idpc", idpc);
 
         ProjectDAO projectDAO = new ProjectDAO();
         Project p = projectDAO.getPJByID(Integer.parseInt(mada));
@@ -82,6 +84,7 @@ public class WorkEditServlet extends HttpServlet {
         request.setAttribute("id", id);
         request.setAttribute("manv", w.getManv());
         request.setAttribute("ten", w.getTen());
+        request.setAttribute("status", w.getTrangThai());
         
         request.setAttribute("mapb", mapb);
         List<Employee> list = asignDAO.getEmListByWork(Integer.parseInt(mapb));
@@ -126,6 +129,8 @@ public class WorkEditServlet extends HttpServlet {
         String ten = request.getParameter("ten");
         String mapb = request.getParameter("mapb");
         String id = request.getParameter("id");
+        String status = request.getParameter("status");
+        String idpc = request.getParameter("idpc");
         
         request.setAttribute("mada", mada);
         request.setAttribute("mapb", mapb);        
@@ -139,9 +144,10 @@ public class WorkEditServlet extends HttpServlet {
             w.setMada(Integer.parseInt(mada));
             w.setManv(Integer.parseInt(manv));
             w.setTen(ten);
+            w.setTrangThai(Integer.parseInt(status));
             assignDAO.editWork(w);
 //            request.getRequestDispatcher("assignment").forward(request, response);
-            response.sendRedirect("work?mada=" + mada + "&mapb=" + mapb);
+            response.sendRedirect("work?mada=" + mada + "&mapb=" + mapb+"&idpc=" + idpc);
         } catch (NumberFormatException e) {
             System.out.println(e);
         }
