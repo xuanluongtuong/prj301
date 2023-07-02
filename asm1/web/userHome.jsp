@@ -56,7 +56,7 @@
                     <%if(list.isEmpty()){%>
                     <h4 style="min-width: 300px;margin: 20px 0 10px 20px; color: purple;">You do not have any work now.</h4>
                     <%}else{%>
-                    <h4 style="min-width: 300px;margin: 20px 0 10px 20px; color: rgb(0, 102, 142);">Your work: </h4>
+                    <h4 style="min-width: 300px;margin: 20px 0 10px 20px; color: purple;">Your works list: </h4>
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
 
