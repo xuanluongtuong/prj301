@@ -67,7 +67,7 @@
                                         Project ID
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Project Name
+                                        Project Name (Click to see information of Project)
                                     </th>
                                     
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
@@ -90,7 +90,7 @@
                                         <%=w.getMada()%>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <%=w.getTenda()%>
+                                        <a href="projectinfo?mada=<%=w.getMada()%>"><%=w.getTenda()%></a>                                        
                                     </td>
                                     
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">

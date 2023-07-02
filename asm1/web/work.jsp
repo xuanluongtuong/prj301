@@ -115,8 +115,8 @@
                                 <tr class="border-b border-gray-50 dark:border-gray-800">
                                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                         <%=w.getMada()%>
-                                    </td>
-                                    <td class="px-6 py-4">
+                                    </td>                            
+                                    <td class="px-6 py-4">                                        
                                         <%=request.getAttribute("tenda")%>
                                     </td>
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
