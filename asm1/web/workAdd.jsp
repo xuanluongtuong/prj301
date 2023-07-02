@@ -113,7 +113,7 @@
                                 <c:set var="page" value="${requestScope.page}"/>
                                 <div class="pagination" style="justify-content: center;">
                                     <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                                        <a id="page-${i}" class="page-link" href="workadd?page=${i}&mapb=${mapb}">${i}</a>
+                                        <a id="page-${i}" class="page-link" href="workadd?page=${i}&mada=${mada}&mapb=${mapb}&idpc=${idpc}">${i}</a>
                                     </c:forEach>
                                 </div>
                             </div>

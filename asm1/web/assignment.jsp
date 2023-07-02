@@ -50,7 +50,7 @@
     <div class="mymenu">
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
 
-            <h4 style="margin: 0 0px 0 30px; color: #8b00a3;"> Project Under Construction List </h4><br/>           
+            <h4 style="margin: 0 0px 0 30px; color: #8b00a3;">Building Project List </h4><br/>           
 
         </div>
 

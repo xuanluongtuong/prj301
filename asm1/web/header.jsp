@@ -168,11 +168,22 @@
             <div style="display: flex;align-items: center;">
                 <div class="myhome">
                     <img src="img/home1.png" alt="">
+                    <%if(s!=null){
+                        if(s.equals("admin")){%>
                     <a href="home.jsp">Home</a>
+                    <%}else if(s.equals("manager")){%>
+                    <a href="assignmentmanager?email=${email}">Home</a>
+                    <%}else if(s.equals("user")){%>
+                    <a href="workemployee?email=${email}">Home</a>
+                    <%}}%>
                 </div>
-                <ul >              
-                    <li id="the_object"><a href="depart">Employee</a></li>
+                <ul >
+                    <%if(s!=null){
+                        if(s.equals("admin")){%>
+
                     <li id="the_object"><a href="assignment">Assignment</a></li>
+                        <%}}%>
+                    <li id="the_object"><a href="depart">Employee</a></li>
                     <li id="the_object"><a href="project">Project</a></li>                    
                     <li id="the_object"><a href="resource">Resource</a></li>
                     <li id="the_object"><a href="customer">Customer</a></li>

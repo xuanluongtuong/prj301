@@ -96,12 +96,19 @@
                                 </div>
 
                                 <div>
-                                    Status: 
-                                    <%if(p.getTrangThai()==1){
-                                    %>Hoàn thành
-
-                                    <%}else if(p.getTrangThai()==0){%> Đã hủy
-                                    <%} else{%> Đang thi công <%}%>
+                                    <%if(p.getTrangThai()==1){%>
+                                    <div style="color: rgb(24, 202, 0);font-weight: 600;">
+                                        Hoàn thành
+                                    </div>
+                                    <%}else if(p.getTrangThai()==0){%>
+                                    <div style="color: rgb(174, 0, 81);font-weight: 600;">
+                                        Đã hủy
+                                    </div>
+                                    <%}else{%>
+                                    <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                        Đang thi công
+                                    </div>
+                                    <%}%>
                                 </div>
                             </div>
 
@@ -183,7 +190,7 @@
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                                 Edit</a>
 
-                                            <a href="#" onclick="doDelete('<%=a.getId()%>', '<%=p.getMaDA()%>')" class="mydelete" style="display: flex;align-items: center;">
+                                            <a href="#" onclick="doDelete('<%=a.getId()%>', '<%=a.getMada()%>')" class="mydelete" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-trash"></i>
                                                 Delete</a>
 

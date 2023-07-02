@@ -3,25 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package AccountController;
+package AssignmentController;
 
 import DAL.AccountDAO;
+import DAL.AssignmentDAO;
+import DAL.DepartmentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Account;
-import utils.NumberToEnum.UserRole;
+import java.util.List;
+import model.Department;
+import model.Work;
 
 /**
  *
  * @author admin
  */
-public class Login extends HttpServlet {
+public class WorkEmployeeServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -38,10 +40,10 @@ public class Login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");  
+            out.println("<title>Servlet WorkEmployeeServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet WorkEmployeeServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +60,41 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.sendRedirect("login.jsp");
+        String email = request.getParameter("email");        
+        
+        AccountDAO accDAO = new AccountDAO();        
+        int manv = accDAO.getManvByEmail(email);
+        HttpSession session = request.getSession();        
+        AssignmentDAO assDAO = new AssignmentDAO();
+        
+        DepartmentDAO departDAO = new DepartmentDAO();
+        int mapb = departDAO.getDepartIDByEmail(email);
+        
+        Department d = departDAO.getDepartByID(mapb);
+        request.setAttribute("tenpb", d.getTenPB());
+        
+        List<Work> list = assDAO.getWorkByManv(manv);        
+        int page, numperpage = 4;
+        int size = list.size();
+        int num = (size%numperpage==0?(size/numperpage):((size/numperpage)+1));
+        String pages = request.getParameter("page");
+        if (pages == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(pages);
+        }
+        int start, end;
+        start = (page - 1) * numperpage;
+        end = Math.min(page * numperpage, size);
+        List<Work> listperpage =  assDAO.getlistWorkbypage(list, start, end);
+        request.setAttribute("list", listperpage);
+        request.setAttribute("num", num);
+        request.setAttribute("page", page);
+        
+        request.setAttribute("email", email);
+        session.setAttribute("email", email);
+        request.getRequestDispatcher("userHome.jsp").forward(request, response);
+//        response.sendRedirect("userHome.jsp");
     } 
 
     /** 
@@ -71,56 +107,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        HttpSession session = request.getSession();
-
-        // get parameter
-        String email = request.getParameter("email");
-        
-        
-        String password = request.getParameter("Password");
-        String remember = request.getParameter("remember");
-        
-        // set cookie for email and password
-        Cookie cookie1 = new Cookie("email", email);
-        cookie1.setMaxAge(60 * 60 * 24);
-        Cookie cookie2 = new Cookie("password", password);
-        
-        if (remember != null) {
-            cookie2.setMaxAge(60 * 60 * 24);
-        } else {
-            cookie2.setMaxAge(0);
-        }
-        response.addCookie(cookie1);
-        response.addCookie(cookie2);
-
-        // check account
-        AccountDAO accountDAO = new AccountDAO();
-        Account account = accountDAO.checkAccount(email, password);  
-        
-        
-        // set session
-        if (account != null) {
-            if (account.getRole() == UserRole.ADMIN.getValue()) {                
-                session.setAttribute("role", "admin");
-                session.setMaxInactiveInterval(60*60*2);
-            }
-            if (account.getRole() == UserRole.USER.getValue()) {
-                session.setAttribute("role", "user");
-                session.setMaxInactiveInterval(60*60*2);
-            }
-            if (account.getRole() == UserRole.MANAGER.getValue()) {
-                session.setAttribute("role", "manager");
-                session.setMaxInactiveInterval(60*60*2);
-            }
-            session.setAttribute("name", account.getName());
-//            response.sendRedirect("chekrole?email="+email);
-            request.getRequestDispatcher("checkrole?email="+email).forward(request, response);
-        } else {
-            
-//            session.setAttribute("loginmessage", "Login failed");
-            request.setAttribute("error", "Email or password is incorrect");
-            request.getRequestDispatcher("login.jsp").forward(request, response);            
-        }
+        processRequest(request, response);
     }
 
     /** 

@@ -38,6 +38,25 @@ public class DepartmentDAO extends DBContext {
         return list;
     }
 
+    public int getDepartIDByEmail(String email) {
+        int mapb=0;
+        String sql = "SELECT p.MAPB\n"
+                + "FROM dbo.NHANVIEN AS n\n"
+                + "INNER JOIN dbo.PHONGBAN AS p ON n.MAPB = p.MAPB\n"
+                + "WHERE EMAIL = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) {
+                mapb=rs.getInt("MAPB");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return mapb;
+    }
+
     public Department getDepartByID(int manv) {
         String sql = "select dbo.PHONGBAN.MAPB, TENPB, DIADIEM, MAQL \n"
                 + " from dbo.PHONGBAN inner join dbo.NHANVIEN \n"

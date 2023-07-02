@@ -59,8 +59,36 @@ public class AssignmentDAO extends DBContext {
             while (rs.next()) {
                 Assignment a = new Assignment();
                 a.setId(rs.getInt("ID"));
-                a.setMada(mada);
                 a.setMada(rs.getInt("MADA"));
+                a.setMapb(rs.getInt("MAPB"));
+                a.setTenpb(rs.getString("TENPB"));
+                a.setTen(rs.getString("TEN_HANG_MUC"));
+                a.setTrangThai(rs.getInt("TRANGTHAI"));
+                list.add(a);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<Assignment> getASByMapb(int mapb) {
+        List<Assignment> list = new ArrayList<>();
+        String sql = "SELECT PC.ID, PC.MADA,TENDA, PC.MAPB, TENPB, TEN_HANG_MUC, PC.TRANGTHAI \n"
+                + "FROM dbo.PHONGBAN AS PB\n"
+                + "INNER JOIN dbo.PHANCONG AS PC ON PB.MAPB = PC.MAPB\n"
+                + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA WHERE PC.MAPB = ? \n"
+                + "ORDER BY PC.MADA";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, mapb);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Assignment a = new Assignment();
+                a.setId(rs.getInt("ID"));
+                a.setMada(rs.getInt("MADA"));
+                a.setTenda(rs.getString("TENDA"));
                 a.setMapb(rs.getInt("MAPB"));
                 a.setTenpb(rs.getString("TENPB"));
                 a.setTen(rs.getString("TEN_HANG_MUC"));
@@ -156,6 +184,37 @@ public class AssignmentDAO extends DBContext {
                 w.setId(rs.getInt("ID"));
                 w.setIdpc(rs.getInt("IDPC"));
                 w.setMada(rs.getInt("MADA"));
+                w.setManv(rs.getInt("MAPB"));
+                w.setTennv(rs.getString("HO_VA_TEN"));
+                w.setTen(rs.getString("TEN_CONG_VIEC"));
+                w.setTrangThai(rs.getInt("TRANGTHAI"));
+                list.add(w);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<Work> getWorkByManv(int manv) {
+        List<Work> list = new ArrayList<>();
+        String sql = "SELECT CV.ID,CV.IDPC, PC.MADA,TENDA, PC.MAPB, HO_VA_TEN, CV.MANV, TEN_CONG_VIEC, CV.TRANGTHAI\n"
+                + "FROM dbo.PHANCONG AS PC\n"
+                + "INNER JOIN dbo.CONGVIEC AS CV ON PC.ID = CV.IDPC\n"
+                + "INNER JOIN dbo.NHANVIEN AS NV ON CV.MANV = NV.MANV\n"
+                + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA\n"
+                + "WHERE CV.MANV=?";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, manv);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Work w = new Work();
+                w.setId(rs.getInt("ID"));
+                w.setIdpc(rs.getInt("IDPC"));
+                w.setMada(rs.getInt("MADA"));
+                w.setTenda(rs.getString("TENDA"));
                 w.setManv(rs.getInt("MAPB"));
                 w.setTennv(rs.getString("HO_VA_TEN"));
                 w.setTen(rs.getString("TEN_CONG_VIEC"));
@@ -303,7 +362,10 @@ public class AssignmentDAO extends DBContext {
 
     public static void main(String[] args) {
         AssignmentDAO assDAO = new AssignmentDAO();
-        List<Work> pro = assDAO.getWorkByIdpcMapb(1, 2);
-        System.out.println(pro.get(0).getIdpc());
+//        List<Work> pro = assDAO.getWorkByIdpcMapb(1, 2);
+//        System.out.println(pro.get(0).getIdpc());
+
+        List<Assignment> pro = assDAO.getASByMapb(1);
+        System.out.println(pro.get(2).getMada());
     }
 }

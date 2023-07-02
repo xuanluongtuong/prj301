@@ -156,6 +156,18 @@
         <servlet-name>AssignmentDeleteServlet</servlet-name>
         <servlet-class>AssignmentController.AssignmentDeleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AssignmentManagerServlet</servlet-name>
+        <servlet-class>AssignmentController.AssignmentManagerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckRoleLogin</servlet-name>
+        <servlet-class>AccountController.CheckRoleLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WorkEmployeeServlet</servlet-name>
+        <servlet-class>AssignmentController.WorkEmployeeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -311,6 +323,18 @@
     <servlet-mapping>
         <servlet-name>AssignmentDeleteServlet</servlet-name>
         <url-pattern>/assignmentdelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AssignmentManagerServlet</servlet-name>
+        <url-pattern>/assignmentmanager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckRoleLogin</servlet-name>
+        <url-pattern>/checkrole</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WorkEmployeeServlet</servlet-name>
+        <url-pattern>/workemployee</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

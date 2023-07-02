@@ -33,7 +33,7 @@
 
     </head>
     <body>
-        
+
         <%@include file="header.jsp"%>
 
         <!-- menu -->
@@ -64,7 +64,7 @@
 
                         </div>
                         <div class="project_content">
-                            
+
                             <div class="project_content_title">
                                 <h3>
                                     Project Information(Thông tin dự án)
@@ -95,12 +95,19 @@
                             </div>
 
                             <div>
-                                Status: 
-                                <%if(p.getTrangThai()==1){
-                                %>Hoàn thành
-
-                                <%}else if(p.getTrangThai()==0){%> Đã hủy
-                                <%} else{%> Đang thi công <%}%>
+                                <%if(p.getTrangThai()==1){%>
+                                <div style="color: rgb(24, 202, 0);font-weight: 600;">
+                                    Hoàn thành
+                                </div>
+                                <%}else if(p.getTrangThai()==0){%>
+                                <div style="color: rgb(174, 0, 81);font-weight: 600;">
+                                    Đã hủy
+                                </div>
+                                <%}else{%>
+                                <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                    Đang thi công
+                                </div>
+                                <%}%>
                             </div>
 
                             <%if(s!=null){

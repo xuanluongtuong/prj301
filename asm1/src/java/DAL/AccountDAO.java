@@ -38,6 +38,46 @@ public class AccountDAO extends DBContext {
         return null;
     }
 
+    public int getMapbByEmail(String email) {
+        String sql = "SELECT p.MAPB\n"
+                + "FROM dbo.ACCOUNT AS a\n"
+                + "INNER JOIN dbo.NHANVIEN AS n ON a.email = n.EMAIL\n"
+                + "INNER JOIN dbo.PHONGBAN AS p ON n.MAPB = p.MAPB\n"
+                + "WHERE n.email = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int mapb = rs.getInt("MAPB");                
+                return mapb;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return 0;
+    }
+    
+    public int getManvByEmail(String email) {
+        String sql = "SELECT n.MANV\n"
+                + "FROM dbo.ACCOUNT AS a\n"
+                + "INNER JOIN dbo.NHANVIEN AS n ON a.email = n.EMAIL\n"
+                + "INNER JOIN dbo.PHONGBAN AS p ON n.MAPB = p.MAPB\n"
+                + "WHERE n.email = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int manv = rs.getInt("MANV");                
+                return manv;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return 0;
+    }
+
     public Account getAccountByEmail(String email) {
         String sql = "SELECT * FROM Account WHERE email = ?";
         try {
@@ -50,6 +90,7 @@ public class AccountDAO extends DBContext {
                 account.setEmail(rs.getString("email"));
                 account.setName(rs.getString("username"));
                 account.setPhone(rs.getString("phone"));
+                account.setRole(rs.getInt("role"));
                 return account;
             }
         } catch (SQLException ex) {
@@ -137,5 +178,11 @@ public class AccountDAO extends DBContext {
             System.out.println(ex);
         }
         return false;
+    }
+    
+    public static void main(String[] args) {
+        AccountDAO accDAO = new AccountDAO();
+        int a = accDAO.getManvByEmail("ducnm@gmail.com");
+        System.out.println(a);
     }
 }
