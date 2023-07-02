@@ -71,7 +71,7 @@ public class SignUp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        HttpSession session = request.getSession();
+//        HttpSession session = request.getSession();
 
         // get data from form
         String name = request.getParameter("name");
@@ -79,7 +79,7 @@ public class SignUp extends HttpServlet {
         String phone = request.getParameter("phone");        
         String password = request.getParameter("password");
         String repassword = request.getParameter("repassword");
-        String checkbox = request.getParameter("checkbox");
+//        String checkbox = request.getParameter("checkbox");
         
         
         
@@ -88,10 +88,10 @@ public class SignUp extends HttpServlet {
             request.setAttribute("error", "Please fill all the fields.");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         }
-        else if(checkbox==null){
-            request.setAttribute("error", "You have to accept the Terms of service.");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-        }
+//        else if(checkbox==null){
+//            request.setAttribute("error", "You have to accept the Terms of service.");
+//            request.getRequestDispatcher("signup.jsp").forward(request, response);
+//        }
         else if (!password.equals(repassword)) {
             request.setAttribute("error", "Password and Re-Password must be same.");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
@@ -106,9 +106,6 @@ public class SignUp extends HttpServlet {
              
             else {
                 accountDAO.createAccount(account);                
-                session.setAttribute("role", "user");
-                session.setMaxInactiveInterval(60*60*2);
-                session.setAttribute("name", name);
                 request.getRequestDispatcher("home.jsp").forward(request, response);
             }
 

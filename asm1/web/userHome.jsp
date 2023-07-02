@@ -90,7 +90,7 @@
                                         <%=w.getMada()%>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="projectinfo?mada=<%=w.getMada()%>"><%=w.getTenda()%></a>                                        
+                                        <a href="projectinfo?mada=<%=w.getMada()%>" style="text-decoration: none;"><%=w.getTenda()%></a>                                        
                                     </td>
                                     
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
@@ -123,7 +123,7 @@
                     <c:set var="page" value="${requestScope.page}"/>
                     <div class="pagination" style="justify-content: center;">
                         <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                            <a id="page-${i}" class="page-link" href="workemployee?email=${email}">${i}</a>
+                            <a id="page-${i}" class="page-link" href="workemployee?page=${i}&email=${email}">${i}</a>
                         </c:forEach>
                     </div>
                 </div>

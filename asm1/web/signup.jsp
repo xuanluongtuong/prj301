@@ -43,17 +43,9 @@
                             <i class="far fa-eye"></i>
                         </div>
                     </div>
-                    <div class="d-flex mb-5 align-items-center" style="color: white;">
-                        <label class="control control--checkbox mb-0">
-                            <span class="caption">I agree all statements in <a href="#!">Terms of service</a></span>
-                            <input type="checkbox" name="checkbox" value="1"></input>
-                            <div class="control__indicator"></div>
-                        </label>
-                    </div>
+                    
                     <input type="submit" value="Sign up" class="form-submit">
-                    <div style="width: 100%;display: flex;justify-content: right;align-items: center;">
-                        <a href="login" style="width: 60px;color: white;text-decoration: none;text-align: center;padding: 3px; border: white 1px solid;margin-top: 20px;">Log in</a>
-                    </div>
+                    
                     <h3 style="color: red; text-align: center;">${error}</h3>
                 </form>
 

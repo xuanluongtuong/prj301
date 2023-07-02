@@ -38,9 +38,7 @@
                         </div>
                     </div>
                     <input type="submit" value="Log in" class="form-submit">
-                    <div style="width: 100%;display: flex;justify-content: right;align-items: center;">
-                        <a href="signup" style="width: 60px;color: white;text-decoration: none;text-align: center;padding: 3px; border: white 1px solid;margin-top: 20px;">Sign up</a>
-                    </div>
+                    
                     <h3 style="color: red; text-align: center;">${error}</h3>
                 </form>
             </div>
