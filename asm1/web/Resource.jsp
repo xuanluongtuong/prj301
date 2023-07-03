@@ -46,7 +46,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     
                     <button class="mysub_menu">                        
                         <div class="mysub_menu_logo">
-                            <img src="https://cdn-icons-png.flaticon.com/512/74/74119.png" alt="">
+                            <img src="https://cdn-icons-png.flaticon.com/512/46/46064.png" alt="">
                         </div>
 
                         <div class="mysub_menu_title">Design</div>               
@@ -59,7 +59,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     
                     <button class="mysub_menu">                        
                         <div class="mysub_menu_logo">
-                            <img src="https://cdn-icons-png.flaticon.com/512/46/46064.png" alt="">
+                            <img src="https://cdn-icons-png.flaticon.com/512/74/74119.png" alt="">
+                            
                         </div>
 
                         <div class="mysub_menu_title">Draft</div>               
