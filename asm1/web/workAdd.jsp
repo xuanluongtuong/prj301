@@ -143,6 +143,14 @@
                                 <input class="form-input" type="tel" id="SDTKH" name="ten" required />
                             </div>
                             <div class="form-group">
+                                <label class="form-label" for="NGAYTHICONG">Start Date</label>
+                                <input class="form-input" type="date"  name="start" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="NGAYTHICONG">End Date</label>
+                                <input class="form-input" type="date"  name="end" required />
+                            </div>
+                            <div class="form-group">
                                 <label class="form-label" >Status</label>
                                 <select class="form-input"  name="status" required>
                                     <option value="2">Chưa hoàn thành</option>

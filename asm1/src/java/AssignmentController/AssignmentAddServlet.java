@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.sql.Date;
 import java.util.List;
 import model.Assignment;
 import model.Department;
@@ -88,15 +89,18 @@ public class AssignmentAddServlet extends HttpServlet {
         String mada = request.getParameter("mada");
         String mapb = request.getParameter("mapb");
         String ten = request.getParameter("ten");
-        String status = request.getParameter("status");
-//        int i = Integer.parseInt(mapb);
-//        if (i > 0 && i < 7) {
+        String start = request.getParameter("start");
+        String end = request.getParameter("end");
+        String status = request.getParameter("status");        
+
             try {
                 AssignmentDAO assignDAO = new AssignmentDAO();
                 Assignment a = new Assignment();
                 a.setMada(Integer.parseInt(mada));
                 a.setMapb(Integer.parseInt(mapb));
                 a.setTen(ten);
+                a.setStart(Date.valueOf(start));
+                a.setEnd(Date.valueOf(end));
                 a.setTrangThai(Integer.parseInt(status));
                 assignDAO.insertAssignment(a);
                 List<Assignment> list = assignDAO.getASByMada(Integer.parseInt(mada));
@@ -108,17 +112,16 @@ public class AssignmentAddServlet extends HttpServlet {
                 Project p = projectDAO.getPJByID(Integer.parseInt(mada));
 
                 request.setAttribute("project", p);
-
+                
                 session.setAttribute("projectinfo", p);
-//            request.getRequestDispatcher("assignment").forward(request, response);
+                
+//            request.getRequestDispatcher("assignmentinfo?mada=" + mada).forward(request, response);
                 response.sendRedirect("assignmentinfo?mada=" + mada);
-            } catch (IOException | NumberFormatException e) {
+                
+            } catch (Exception e) {
                 System.out.println(e);
             }
-//        }else{
-//            request.setAttribute("mes", "Invalid Department ID!");
-//            request.getRequestDispatcher("assignmentadd?mada="+mada).forward(request, response);
-//        }
+
     }
 
     /**

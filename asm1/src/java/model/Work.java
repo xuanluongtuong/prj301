@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author admin
@@ -17,6 +19,8 @@ public class Work {
     String tenda;
     String tennv;
     String ten;
+    Date start;
+    Date end;
     int trangThai;
 
     public Work() {
@@ -88,6 +92,22 @@ public class Work {
 
     public void setTen(String ten) {
         this.ten = ten;
+    }
+
+    public Date getStart() {
+        return start;
+    }
+
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
     }
 
     public int getTrangThai() {

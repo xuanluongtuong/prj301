@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.sql.Date;
 import java.util.List;
 import model.Assignment;
 import model.Department;
@@ -69,7 +70,10 @@ public class AsignmentEditServlet extends HttpServlet {
         request.setAttribute("mapb", a.getMapb());
         request.setAttribute("ten", a.getTen());
         request.setAttribute("id", id);
+        request.setAttribute("start", a.getStart());
+        request.setAttribute("end", a.getEnd());
         request.setAttribute("status", a.getTrangThai());
+        
         
         ProjectDAO projectDAO = new ProjectDAO();
         Project p = projectDAO.getPJByID(Integer.parseInt(mada));
@@ -95,6 +99,8 @@ public class AsignmentEditServlet extends HttpServlet {
         String mapb = request.getParameter("mapb");
         String ten = request.getParameter("ten");
         String id = request.getParameter("id");
+        String start = request.getParameter("start");
+        String end = request.getParameter("end");
         String status = request.getParameter("status");
         
         try {
@@ -104,6 +110,8 @@ public class AsignmentEditServlet extends HttpServlet {
             a.setMada(Integer.parseInt(mada));
             a.setMapb(Integer.parseInt(mapb));
             a.setTen(ten);
+            a.setStart(Date.valueOf(start));
+            a.setEnd(Date.valueOf(end));
             a.setTrangThai(Integer.parseInt(status));
             
             assignDAO.editAssignment(a);

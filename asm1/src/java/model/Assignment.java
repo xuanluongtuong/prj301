@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author admin
@@ -15,6 +17,8 @@ public class Assignment {
     String tenda;
     String tenpb;
     String ten;
+    Date start;
+    Date end;
     int trangThai;
 
     public Assignment() {
@@ -68,6 +72,22 @@ public class Assignment {
 
     public void setTen(String ten) {
         this.ten = ten;
+    }
+
+    public Date getStart() {
+        return start;
+    }
+
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
     }
 
     public int getTrangThai() {

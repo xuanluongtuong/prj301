@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.sql.Date;
 import java.util.List;
 import model.Department;
 import model.Employee;
@@ -84,6 +85,8 @@ public class WorkEditServlet extends HttpServlet {
         request.setAttribute("id", id);
         request.setAttribute("manv", w.getManv());
         request.setAttribute("ten", w.getTen());
+        request.setAttribute("start", w.getStart());
+        request.setAttribute("end", w.getEnd());
         request.setAttribute("status", w.getTrangThai());
         
         request.setAttribute("mapb", mapb);
@@ -129,6 +132,8 @@ public class WorkEditServlet extends HttpServlet {
         String ten = request.getParameter("ten");
         String mapb = request.getParameter("mapb");
         String id = request.getParameter("id");
+        String start = request.getParameter("start");
+        String end = request.getParameter("end");
         String status = request.getParameter("status");
         String idpc = request.getParameter("idpc");
         
@@ -144,6 +149,8 @@ public class WorkEditServlet extends HttpServlet {
             w.setMada(Integer.parseInt(mada));
             w.setManv(Integer.parseInt(manv));
             w.setTen(ten);
+            w.setStart(Date.valueOf(start));
+            w.setEnd(Date.valueOf(end));
             w.setTrangThai(Integer.parseInt(status));
             assignDAO.editWork(w);
 //            request.getRequestDispatcher("assignment").forward(request, response);

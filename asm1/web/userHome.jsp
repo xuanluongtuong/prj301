@@ -74,6 +74,12 @@
                                         Task
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Start Date
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        End Date
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Status
                                     </th>
 
@@ -96,7 +102,13 @@
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=w.getTen()%>
                                     </td>
+                                    <td class="px-6 py-4">
+                                        <%=w.getStart()%>
+                                    </td>
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                        <%=w.getEnd()%>
+                                    </td>
+                                    <td class="px-6 py-4">
                                         <%if(w.getTrangThai()==1){%>
                                         <div style="color: rgb(24, 202, 0);font-weight: 600;">
                                             Hoàn thành
@@ -110,7 +122,7 @@
                                             Chưa hoàn thành
                                         </div>
                                         <%}%>
-                                    </td>                                    
+                                    </td>                                  
                                 </tr>
                                 <%} %>
                             </tbody>

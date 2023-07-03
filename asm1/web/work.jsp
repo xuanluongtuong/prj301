@@ -24,9 +24,9 @@
         <title>LXT Manager</title>        
 
         <script>
-            function doDelete(id,mada,mapb) {
+            function doDelete(id, mada, mapb) {
                 if (confirm("Are you sure to delete this Task?")) {
-                    window.location = "workdelete?id=" + id+"&mada="+mada+"&mapb="+mapb;
+                    window.location = "workdelete?id=" + id + "&mada=" + mada + "&mapb=" + mapb;
                 }
             }
         </script>
@@ -47,21 +47,21 @@
         </style>
     </head>
     <body>
-        
+
         <%@include file="header.jsp"%>
 
         <!-- menu -->
         <div class="mymenu">
             <div style="display: flex;justify-content: right; align-items: center; padding: 10px;">
 
-                                        
+
 
 
                 <%if(s!=null){
                     if(s.equals("admin") || s.equals("manager")){%>
                 <a href="workadd?mada=<%=request.getAttribute("mada")%>&mapb=<%=request.getAttribute("mapb")%>&idpc=<%=request.getAttribute("idpc")%>" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;">
                     <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Task</a>
-                <%}}%>
+                    <%}}%>
 
             </div>
 
@@ -80,7 +80,7 @@
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
-                                    
+
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Employee ID
                                     </th>
@@ -89,6 +89,12 @@
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Task
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Start Date
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        End Date
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Status
@@ -108,7 +114,7 @@
                                     for (Work w : list) {                                
                                 %>
                                 <tr class="border-b border-gray-50 dark:border-gray-800">
-                                   
+
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=w.getManv()%>
                                     </td>
@@ -118,21 +124,27 @@
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=w.getTen()%>
                                     </td>
+                                    <td class="px-6 py-4">
+                                        <%=w.getStart()%>
+                                    </td>
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                            <%if(w.getTrangThai()==1){%>
-                                            <div style="color: rgb(24, 202, 0);font-weight: 600;">
-                                                Hoàn thành
-                                            </div>
-                                            <%}else if(w.getTrangThai()==0){%>
-                                            <div style="color: rgb(174, 0, 81);font-weight: 600;">
-                                                Đã hủy
-                                            </div>
-                                            <%}else{%>
-                                            <div style="color: rgb(0, 145, 155);font-weight: 600;">
-                                                Chưa hoàn thành
-                                            </div>
-                                            <%}%>
-                                        </td>
+                                        <%=w.getEnd()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%if(w.getTrangThai()==1){%>
+                                        <div style="color: rgb(24, 202, 0);font-weight: 600;">
+                                            Hoàn thành
+                                        </div>
+                                        <%}else if(w.getTrangThai()==0){%>
+                                        <div style="color: rgb(174, 0, 81);font-weight: 600;">
+                                            Đã hủy
+                                        </div>
+                                        <%}else{%>
+                                        <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                            Chưa hoàn thành
+                                        </div>
+                                        <%}%>
+                                    </td>
                                     <%if(s!=null){
                                         if(s.equals("admin") || s.equals("manager")){%>
                                     <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   

@@ -251,6 +251,12 @@
                                             Assignment Name
                                         </th>
                                         <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Start Date
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            End Date
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                             Status
                                         </th>
                                         <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
@@ -280,7 +286,13 @@
                                         <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                             <%=a.getTen()%>
                                         </td>
+                                        <td class="px-6 py-4">
+                                            <%=a.getStart()%>
+                                        </td>
                                         <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                            <%=a.getEnd()%>
+                                        </td>
+                                        <td class="px-6 py-4">
                                             <%if(a.getTrangThai()==1){%>
                                             <div style="color: rgb(24, 202, 0);font-weight: 600;">
                                                 Hoàn thành
