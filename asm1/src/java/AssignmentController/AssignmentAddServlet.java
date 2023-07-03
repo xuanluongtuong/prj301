@@ -89,31 +89,36 @@ public class AssignmentAddServlet extends HttpServlet {
         String mapb = request.getParameter("mapb");
         String ten = request.getParameter("ten");
         String status = request.getParameter("status");
+//        int i = Integer.parseInt(mapb);
+//        if (i > 0 && i < 7) {
+            try {
+                AssignmentDAO assignDAO = new AssignmentDAO();
+                Assignment a = new Assignment();
+                a.setMada(Integer.parseInt(mada));
+                a.setMapb(Integer.parseInt(mapb));
+                a.setTen(ten);
+                a.setTrangThai(Integer.parseInt(status));
+                assignDAO.insertAssignment(a);
+                List<Assignment> list = assignDAO.getASByMada(Integer.parseInt(mada));
 
-        try {
-            AssignmentDAO assignDAO = new AssignmentDAO();
-            Assignment a = new Assignment();
-            a.setMada(Integer.parseInt(mada));
-            a.setMapb(Integer.parseInt(mapb));
-            a.setTen(ten);
-            a.setTrangThai(Integer.parseInt(status));
-            assignDAO.insertAssignment(a);
-            List<Assignment> list = assignDAO.getASByMada(Integer.parseInt(mada));           
-            
-            HttpSession session = request.getSession();
-            session.setAttribute("list", list);
-            
-            ProjectDAO projectDAO = new ProjectDAO();
-            Project p = projectDAO.getPJByID(Integer.parseInt(mada));
-            
-            request.setAttribute("project", p);
-            
-            session.setAttribute("projectinfo", p);
+                HttpSession session = request.getSession();
+                session.setAttribute("list", list);
+
+                ProjectDAO projectDAO = new ProjectDAO();
+                Project p = projectDAO.getPJByID(Integer.parseInt(mada));
+
+                request.setAttribute("project", p);
+
+                session.setAttribute("projectinfo", p);
 //            request.getRequestDispatcher("assignment").forward(request, response);
-            response.sendRedirect("assignmentinfo?mada="+mada);
-        } catch (IOException | NumberFormatException e) {
-            System.out.println(e);
-        }
+                response.sendRedirect("assignmentinfo?mada=" + mada);
+            } catch (IOException | NumberFormatException e) {
+                System.out.println(e);
+            }
+//        }else{
+//            request.setAttribute("mes", "Invalid Department ID!");
+//            request.getRequestDispatcher("assignmentadd?mada="+mada).forward(request, response);
+//        }
     }
 
     /**

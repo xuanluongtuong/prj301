@@ -13,6 +13,15 @@
         <title>Sign up</title>
     </head>
     <body>
+        <%String s=(String)session.getAttribute("role");
+            if(s!=null){
+                if(!s.equals("admin")){
+                    response.sendRedirect("login.jsp");
+                }
+            }else{
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="mybackgound">
             <div id="wrapper">
                 <form action="signup" method="post" id="form-login">
@@ -45,7 +54,9 @@
                     </div>
                     
                     <input type="submit" value="Sign up" class="form-submit">
-                    
+                    <div style="width: 100%;display: flex;justify-content: right;align-items: center;">
+                        <a href="home.jsp" style="width: 100px;color: white;text-decoration: none;text-align: center;padding: 3px; border: white 1px solid;margin-top: 20px;">Back to Home</a>
+                    </div>
                     <h3 style="color: red; text-align: center;">${error}</h3>
                 </form>
 

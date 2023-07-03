@@ -80,12 +80,7 @@
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Project ID
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Project Name
-                                    </th>
+                                    
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Employee ID
                                     </th>
@@ -113,12 +108,7 @@
                                     for (Work w : list) {                                
                                 %>
                                 <tr class="border-b border-gray-50 dark:border-gray-800">
-                                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                        <%=w.getMada()%>
-                                    </td>                            
-                                    <td class="px-6 py-4">                                        
-                                        <%=request.getAttribute("tenda")%>
-                                    </td>
+                                   
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=w.getManv()%>
                                     </td>

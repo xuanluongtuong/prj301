@@ -186,11 +186,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                     <li id="the_object"><a href="assignment">Assignment</a></li>
                         <%}}%>
-                    <li id="the_object"><a href="depart">Employee</a></li>
+                    
                     <li id="the_object"><a href="project">Project</a></li>                    
                     <li id="the_object"><a href="resource">Resource</a></li>
                     <li id="the_object"><a href="customer">Customer</a></li>
+                    <li id="the_object"><a href="depart">Employee</a></li>
+                    <%if(s!=null){
+                        if(s.equals("admin")){%>
                     <li id="the_object"><a href="signup">Sign up new</a></li>
+                    <%}}%>
                     <li><a href="#"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>Search</a></li>
                 </ul>
             </div>

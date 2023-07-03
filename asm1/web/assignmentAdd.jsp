@@ -117,7 +117,7 @@
                             <div class="form-button" style="display: flex; justify-content: left;">
                                 <button class="btn-submit" type="submit">Submit</button>
                             </div>
-
+                            <h3 style="min-width: 300px;margin: 20px 0 5px 20px; color: purple;"> ${mes} </h3>
                         </div>
                     </div>
 
