@@ -22,7 +22,7 @@ public class ProjectDAO extends DBContext {
 
     public List<Project> getPJList() {
         List<Project> list = new ArrayList<>();
-        String sql = "select * from dbo.DU_AN";
+        String sql = "select * from dbo.DU_AN ORDER BY NGAYTHICONG DESC,TRANGTHAI DESC";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();

@@ -22,7 +22,7 @@ public class AssignmentDAO extends DBContext {
 
     public List<Project> getPJ_Working_List() {
         List<Project> list = new ArrayList<>();
-        String sql = "select * from dbo.DU_AN where TRANGTHAI=2";
+        String sql = "select * from dbo.DU_AN where TRANGTHAI=2 ORDER BY NGAYTHICONG DESC,TRANGTHAI DESC";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -123,16 +123,19 @@ public class AssignmentDAO extends DBContext {
     }
 
     public void deleteAssignment(int id) {
-        String sql = "DELETE FROM dbo.PHANCONG\n"
-                + "WHERE ID=?\n"
-                + "GO\n"
-                + "DELETE FROM dbo.CONGVIEC\n"
+        String sql = "DELETE FROM dbo.CONGVIEC\n"
                 + "WHERE IDPC=?";
+
+        String sql1 = "DELETE FROM dbo.PHANCONG\n"
+                + "WHERE ID=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
-            st.setInt(2, id);
             st.executeUpdate();
+
+            PreparedStatement st1 = connection.prepareStatement(sql1);
+            st1.setInt(1, id);
+            st1.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -198,8 +201,8 @@ public class AssignmentDAO extends DBContext {
                 w.setId(rs.getInt("ID"));
                 w.setIdpc(rs.getInt("IDPC"));
                 w.setMada(rs.getInt("MADA"));
-                w.setMapb(rs.getInt("MAPB"));                
-                w.setTennv(rs.getString("HO_VA_TEN")); 
+                w.setMapb(rs.getInt("MAPB"));
+                w.setTennv(rs.getString("HO_VA_TEN"));
                 w.setManv(rs.getInt("MANV"));
                 w.setTen(rs.getString("TEN_CONG_VIEC"));
                 w.setStart(rs.getDate("NGAYBATDAU"));
@@ -232,7 +235,7 @@ public class AssignmentDAO extends DBContext {
                 w.setIdpc(rs.getInt("IDPC"));
                 w.setMada(rs.getInt("MADA"));
                 w.setTenda(rs.getString("TENDA"));
-                w.setMapb(rs.getInt("MAPB"));                
+                w.setMapb(rs.getInt("MAPB"));
                 w.setTennv(rs.getString("HO_VA_TEN"));
                 w.setManv(rs.getInt("MANV"));
                 w.setTen(rs.getString("TEN_CONG_VIEC"));
@@ -316,10 +319,30 @@ public class AssignmentDAO extends DBContext {
         return emList;
     }
 
+    public boolean checkManvByMapb(int mapb, int manv) {
+
+        String sql = "SELECT N.MANV\n"
+                + "FROM PHONGBAN AS P\n"
+                + "INNER JOIN NHANVIEN AS N ON P.MAPB = N.MAPB\n"
+                + "WHERE P.MAPB = ? AND N.MANV=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, mapb);
+            st.setInt(2, manv);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) {                
+                return true;                
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
     public void insertWork(Work w) {
         String sql = "INSERT INTO dbo.CONGVIEC (IDPC, MANV, TEN_CONG_VIEC,NGAYBATDAU,NGAYKETTHUC, TRANGTHAI)\n"
                 + "VALUES (?, ?, ?, ?, ?, ?)";
-        try { 
+        try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, w.getIdpc());
             st.setInt(2, w.getManv());
@@ -377,7 +400,7 @@ public class AssignmentDAO extends DBContext {
             st.setString(2, w.getTen());
             st.setDate(3, w.getStart());
             st.setDate(4, w.getEnd());
-            st.setInt(5, w.getTrangThai());            
+            st.setInt(5, w.getTrangThai());
             st.setInt(6, w.getId());
             st.executeUpdate();
 

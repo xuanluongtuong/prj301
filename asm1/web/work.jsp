@@ -74,6 +74,12 @@
                     <h5 style="min-width: 300px;margin: 0px 0 0 20px; color: rgb(0, 102, 142);">Project Name: ${tenda} </h5>
                     <h5 style="min-width: 300px;margin: 0px 0 20px 20px; color: rgb(114, 0, 142);">Assignment Name: ${tenpc}</h5>
 
+                    <%List<Work> list = (ArrayList<Work>) request.getAttribute("list");%>
+
+                    <%if(list.isEmpty()){%>
+                    <h4 style="min-width: 300px;margin: 20px 0 10px 20px; color: purple;">This Department have no work.</h4>
+                    <%}else{%>
+
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
 
@@ -108,10 +114,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <%  List<Work> list = (ArrayList<Work>) request.getAttribute("list");
-                                    
-                                    if(list!=null)
-                                    for (Work w : list) {                                
+
+                                <%for (Work w : list) {                                
                                 %>
                                 <tr class="border-b border-gray-50 dark:border-gray-800">
 
@@ -165,7 +169,7 @@
                         </table>
 
                     </div>
-
+                    <%}%>
                 </div>
                 <div style="margin:20px">
                     <c:set var="page" value="${requestScope.page}"/>

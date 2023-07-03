@@ -118,7 +118,7 @@ public class AssignmentAddServlet extends HttpServlet {
 //            request.getRequestDispatcher("assignmentinfo?mada=" + mada).forward(request, response);
                 response.sendRedirect("assignmentinfo?mada=" + mada);
                 
-            } catch (Exception e) {
+            } catch (IOException | NumberFormatException e) {
                 System.out.println(e);
             }
 

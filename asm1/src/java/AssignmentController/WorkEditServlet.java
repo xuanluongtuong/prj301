@@ -92,7 +92,7 @@ public class WorkEditServlet extends HttpServlet {
         request.setAttribute("mapb", mapb);
         List<Employee> list = asignDAO.getEmListByWork(Integer.parseInt(mapb));
 
-        int page, numperpage = 4;
+        int page, numperpage = 5;
         int size = list.size();
         int num = (size % numperpage == 0 ? (size / numperpage) : ((size / numperpage) + 1));
         String pages = request.getParameter("page");

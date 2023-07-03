@@ -59,37 +59,6 @@
 
                     <div class="form-container">
                         <div class="form-left">
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Department ID
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Department Name
-                                        </th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <%  List<Department> list = (ArrayList<Department>)request.getAttribute("data");
-                                        if(list!=null)
-                                        for (Department d : list) {                                
-                                    %>
-                                    <tr class="border-b border-gray-50 dark:border-gray-800">
-                                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                            <%=d.getMaPB()%>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <%=d.getTenPB()%>
-                                        </td>                                        
-                                    </tr>
-                                    <%} %>
-                                </tbody>
-                            </table>
-
-                        </div>
-                        <div class="form-right">
                             <input  type="hidden"  name="id" value="${id}" />
                             <div class="form-group">
                                 <label class="form-label" >Project ID</label>
@@ -100,13 +69,18 @@
                                 <input class="form-input" type="text"  name="tenda" value="<%=request.getAttribute("tenda")%>" readonly/>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" >Department ID</label>
-                                <input class="form-input" type="text"  name="mapb" value="${mapb}" required />
+                                <label class="form-label" >Department</label>
+                                <input class="form-input" type="hidden"  name="mapb" value="${mapb}" />
+                                <input class="form-input" type="text"  name="mapb" value="${tenpb}" readonly />
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Assignment Name</label>
                                 <input class="form-input" type="tel"  name="ten" value="${ten}" required />
                             </div>
+
+                        </div>
+                        <div class="form-right">
+                            
                             <div class="form-group">
                                 <label class="form-label" for="NGAYTHICONG">Start Date</label>
                                 <input class="form-input" type="date"  name="start" value="${start}" required />
@@ -124,7 +98,7 @@
                                     <option value="0" <%= request.getAttribute("status").equals(0) ? "selected" : "" %>>Đã hủy</option>
                                 </select>
                             </div>
-                            <div class="form-button" style="display: flex; justify-content: left;">
+                            <div class="form-button" style="display: flex; justify-content: center;margin: 42px 0 13px 0">
                                 <button class="btn-submit" type="submit">Submit</button>
                             </div>
 

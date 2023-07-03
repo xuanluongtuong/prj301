@@ -99,8 +99,15 @@
                                 <input class="form-input" type="text" id="TENKH" name="tenda" value="<%=request.getAttribute("tenda")%>" readonly/>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" >Department ID</label>
-                                <input class="form-input" type="text" id="DCKH" name="mapb" required />
+                                <label class="form-label" >Department</label>
+                                <select class="form-input" name="mapb" required>
+                                    <option value="1">Phòng quản lý dự án</option>
+                                    <option value="2">Phòng thiết kế</option>
+                                    <option value="3">Phòng kỹ thuật</option>
+                                    <option value="4">Phòng tài chính</option>
+                                    <option value="5">Phòng kinh doanh</option>
+                                    <option value="6">Phòng hành chính</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Assignment Name</label>
@@ -125,7 +132,7 @@
                             <div class="form-button" style="display: flex; justify-content: left;">
                                 <button class="btn-submit" type="submit">Submit</button>
                             </div>
-                            <h3 style="min-width: 300px;margin: 20px 0 5px 20px; color: purple;"> ${mes} </h3>
+                            
                         </div>
                     </div>
 

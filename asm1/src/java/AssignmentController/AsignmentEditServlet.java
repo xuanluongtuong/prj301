@@ -72,16 +72,17 @@ public class AsignmentEditServlet extends HttpServlet {
         request.setAttribute("id", id);
         request.setAttribute("start", a.getStart());
         request.setAttribute("end", a.getEnd());
-        request.setAttribute("status", a.getTrangThai());
-        
+        request.setAttribute("status", a.getTrangThai());        
         
         ProjectDAO projectDAO = new ProjectDAO();
         Project p = projectDAO.getPJByID(Integer.parseInt(mada));
         request.setAttribute("mada", mada);
         request.setAttribute("tenda", p.getTenDA());
         DepartmentDAO departDAO = new DepartmentDAO();
-        List<Department> departments = departDAO.getDepartList();
-        request.setAttribute("data", departments);
+        
+        Department d = departDAO.getDepartByID(a.getMapb());
+        request.setAttribute("tenpb", d.getTenPB());        
+        
         request.getRequestDispatcher("assignmentEdit.jsp").forward(request, response);
     } 
 
@@ -102,6 +103,7 @@ public class AsignmentEditServlet extends HttpServlet {
         String start = request.getParameter("start");
         String end = request.getParameter("end");
         String status = request.getParameter("status");
+        
         
         try {
             AssignmentDAO assignDAO = new AssignmentDAO();

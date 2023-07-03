@@ -135,8 +135,14 @@
                                 <input class="form-input" type="text" id="TENKH" name="tenda" value="${tenpc}" readonly/>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" >Employee ID</label>
-                                <input class="form-input" type="text" id="DCKH" name="manv" required />
+                                <label class="form-label" >Employee</label>
+                                <select class="form-input"  name="manv" required>
+                                    <%for (Employee e : list) {                                
+                                    %>
+                                    <option value="<%=e.getMaNV()%>"><%=e.getHoVaTen()%></option> 
+                                    <%}%>
+                                </select>
+                                
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Task Name</label>
