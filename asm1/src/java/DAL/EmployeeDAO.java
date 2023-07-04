@@ -149,10 +149,106 @@ public class EmployeeDAO extends DBContext {
         }
     }
 
+    public void changeDepartmentAndManagerId(int mapb, int manv) {
+        String sql1 = "update dbo.NHANVIEN set MAPB=?  where MANV=?";
+        String sql2 = "update dbo.PHONGBAN set MAQL=? where MAPB=?";
+
+        try {
+            PreparedStatement st1 = connection.prepareStatement(sql1);
+            st1.setInt(1, mapb);
+            st1.setInt(2, manv);
+            st1.executeUpdate();
+            PreparedStatement st2 = connection.prepareStatement(sql2);
+            st2.setInt(1, manv);
+            st2.setInt(2, mapb);
+            st2.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void changeDepartmentID(int newMapb, int maql, int oldMapb, int manv) {
+        String sql1 = "update dbo.NHANVIEN set MAPB=? where MANV=?\n"
+                
+                + "update dbo.NHANVIEN set MAPB=? where MANV=?\n"
+                
+                + "update dbo.PHONGBAN set MAQL=? where MAPB=?\n"
+                ;
+
+        try {
+            PreparedStatement st1 = connection.prepareStatement(sql1);
+            st1.setInt(1, newMapb);
+            st1.setInt(2, maql);
+            st1.setInt(3, oldMapb);
+            st1.setInt(4, manv);
+            st1.setInt(5, manv);
+            st1.setInt(6, oldMapb);
+            st1.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void changeManagerID(int maql, int mapb) {
+
+        String sql3 = "update dbo.PHONGBAN set MAQL=? where MAPB=?";
+
+        try {
+            PreparedStatement st3 = connection.prepareStatement(sql3);
+            st3.setInt(1, maql);
+            st3.setInt(2, mapb);
+            st3.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void changePosition(int manv, String pos) {
+        String sql = "update dbo.NHANVIEN set VITRI=?  where MANV=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, pos);
+            st.setInt(2, manv);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public int getManagerIdByDepartmentId(int mapb) {
+        String sql = "select MAQL from dbo.PHONGBAN where MAPB=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, mapb);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                int i = rs.getInt("MAQL");
+                return i;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public void changeSalary(int manv, float salary) {
+        String sql = "update dbo.NHANVIEN set LUONG=?  where MANV=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setFloat(1, salary);
+            st.setInt(2, manv);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
     public static void main(String[] args) {
         EmployeeDAO e = new EmployeeDAO();
         List<Employee> list = e.getEmListByID(1);
         Employee em = e.getEmployeeByID(7);
-        System.out.println(em.getNgaySinh());
+        System.out.println(e.getManagerIdByDepartmentId(10));
     }
 }

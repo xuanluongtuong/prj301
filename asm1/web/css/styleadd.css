@@ -276,7 +276,7 @@ nav {
     justify-content: space-evenly;
 }
 
-.form-left,.form-right, .form-middle{
+.form-left,.form-right{
     width: 400px;
     margin: 0 15px;
 }

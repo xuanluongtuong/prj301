@@ -168,6 +168,10 @@
         <servlet-name>WorkEmployeeServlet</servlet-name>
         <servlet-class>AssignmentController.WorkEmployeeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeManagerServlet</servlet-name>
+        <servlet-class>EmployeeController.ChangeManagerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -335,6 +339,10 @@
     <servlet-mapping>
         <servlet-name>WorkEmployeeServlet</servlet-name>
         <url-pattern>/workemployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeManagerServlet</servlet-name>
+        <url-pattern>/changemanager</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

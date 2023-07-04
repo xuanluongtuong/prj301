@@ -110,6 +110,7 @@ public class DepartmentDAO extends DBContext {
         }
         return null;
     }
+    
 
     public static void main(String[] args) {
         DepartmentDAO dp = new DepartmentDAO();
