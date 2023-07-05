@@ -102,15 +102,15 @@ public class Login extends HttpServlet {
         if (account != null) {
             if (account.getRole() == UserRole.ADMIN.getValue()) {                
                 session.setAttribute("role", "admin");
-                session.setMaxInactiveInterval(60*60*2);
+                session.setMaxInactiveInterval(60*60*1);
             }
             if (account.getRole() == UserRole.USER.getValue()) {
                 session.setAttribute("role", "user");
-                session.setMaxInactiveInterval(60*60*2);
+                session.setMaxInactiveInterval(60*60*1);
             }
             if (account.getRole() == UserRole.MANAGER.getValue()) {
                 session.setAttribute("role", "manager");
-                session.setMaxInactiveInterval(60*60*2);
+                session.setMaxInactiveInterval(60*60*1);
             }
             session.setAttribute("name", account.getName());
 //            response.sendRedirect("chekrole?email="+email);
