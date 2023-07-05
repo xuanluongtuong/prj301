@@ -67,7 +67,30 @@ public class DepartmentDAO extends DBContext {
             st.setInt(1, manv);
             ResultSet rs = st.executeQuery();
 
-            while (rs.next()) {
+            if (rs.next()) {
+                Department dp = new Department();
+                dp.setMaPB(rs.getInt("MAPB"));
+                dp.setTenPB(rs.getString("TENPB"));
+                dp.setMaQL(rs.getInt("MAQL"));
+                dp.setDiaDiem(rs.getString("DIADIEM"));
+                return dp;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public Department getDepartByDPID(int mapb) {
+        String sql = "select * from dbo.PHONGBAN where MAPB=?";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, mapb);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
                 Department dp = new Department();
                 dp.setMaPB(rs.getInt("MAPB"));
                 dp.setTenPB(rs.getString("TENPB"));

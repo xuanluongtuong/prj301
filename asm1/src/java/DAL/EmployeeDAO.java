@@ -244,6 +244,18 @@ public class EmployeeDAO extends DBContext {
             System.out.println(e);
         }
     }
+    
+    public void changeDepartment(int manv, int mapb) {
+        String sql = "update dbo.NHANVIEN set MAPB=?  where MANV=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setFloat(1, mapb);
+            st.setInt(2, manv);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 
     public static void main(String[] args) {
         EmployeeDAO e = new EmployeeDAO();
