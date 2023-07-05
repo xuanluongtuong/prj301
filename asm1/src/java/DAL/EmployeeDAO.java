@@ -190,18 +190,6 @@ public class EmployeeDAO extends DBContext {
         }
     }
 
-    public void changeDepartment(int manv, int mapb) {
-        String sql = "update dbo.NHANVIEN set MAPB=?  where MANV=?";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setFloat(1, mapb);
-            st.setInt(2, manv);
-            st.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    }
-    
     public void changeManagerID(int maql, int mapb) {
 
         String sql3 = "update dbo.PHONGBAN set MAQL=? where MAPB=?";

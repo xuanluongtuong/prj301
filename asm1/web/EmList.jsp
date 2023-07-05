@@ -276,11 +276,7 @@
                                 </td>
                                 <%if(s!=null){
                                     if(s.equals("admin")){%>
-                                <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction"> 
-                                    
-                                    <a href="changeposanddepart?id=<%=nv.getMaNV()%>" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-arrows-rotate"></i>
-                                            Change</a>
+                                <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
                                     <a href="editem?id=<%=nv.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-pen-to-square"></i>

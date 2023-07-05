@@ -48,7 +48,7 @@
                     </div>
                     <input type="submit" value="Log in" class="form-submit" style="border-radius: 30px">
 
-                    <h5 style="color: purple; text-align: center;position: absolute;bottom: 120px;margin-left: -8px">${error}</h5>
+                    <h5 style="color: purple; text-align: center;position: absolute;top: 450px;margin-left: -8px">${error}</h5>
                 </form>
             </div>
         </div>

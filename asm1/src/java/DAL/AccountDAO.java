@@ -180,21 +180,6 @@ public class AccountDAO extends DBContext {
         return false;
     }
     
-    
-    public void changePwd(Account a, String newpwd) {
-        try {
-            String sql = "UPDATE [ACCOUNT]\n"
-                    + "SET [password] = ? WHERE [email] = ? AND [password] = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, newpwd);
-            statement.setString(2, a.getEmail());
-            statement.setString(3, a.getPassword());
-            statement.executeUpdate();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-    }
-    
     public static void main(String[] args) {
         AccountDAO accDAO = new AccountDAO();
         int a = accDAO.getManvByEmail("ducnm@gmail.com");

@@ -51,8 +51,9 @@ drop table dbo.KHACHHANG
 
 drop table dbo.PHANCONG
 drop table dbo.CONGVIEC
-drop table dbo.PHONGBAN
+
 drop table dbo.NHANVIEN
+drop table dbo.PHONGBAN
 
 CREATE TABLE dbo.PHONGBAN
 (

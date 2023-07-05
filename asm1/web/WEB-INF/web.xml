@@ -172,10 +172,6 @@
         <servlet-name>ChangeManagerServlet</servlet-name>
         <servlet-class>EmployeeController.ChangeManagerServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ChangePosAndDepartDervlet</servlet-name>
-        <servlet-class>EmployeeController.ChangePosAndDepartDervlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -347,10 +343,6 @@
     <servlet-mapping>
         <servlet-name>ChangeManagerServlet</servlet-name>
         <url-pattern>/changemanager</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ChangePosAndDepartDervlet</servlet-name>
-        <url-pattern>/changeposanddepart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

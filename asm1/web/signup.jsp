@@ -64,7 +64,7 @@
                 <div style="width: 100%;display: flex;justify-content: right;align-items: center;">
                     <a href="home.jsp" style="text-decoration: none;text-align: center;padding: 3px;margin-top: 20px;color: black;">Back to Home</a>
                 </div>
-                <h5 style="color: purple; text-align: center;position: absolute;bottom: 120px;margin-left: 10px">${error}</h5>
+                <h5 style="color: purple; text-align: center;position: absolute;top: 600px;margin-left: 10px">${error}</h5>
             </form>
 
         </div>

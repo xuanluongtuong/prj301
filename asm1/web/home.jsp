@@ -199,9 +199,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </ul>
             </div>
             <div  style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">
-                
-                <a href="#" id="the_logout" style="color: white;text-decoration: none;"><i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
-                </i><%=session.getAttribute("name")%></a>
+                <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
+                </i>
+                <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
                 <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
                     <div id="the_logout" style="margin-right: 5px;">&nbsp;| Log out
                     </div>
