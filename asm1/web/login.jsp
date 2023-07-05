@@ -43,7 +43,7 @@
                                 <input type="checkbox" name="remember" ${(cookie.email != null ? "checked" : "")}></input>
                                 <div class="control__indicator"></div>
                             </label>
-                            <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+                            
                         </div>
                     </div>
                     <input type="submit" value="Log in" class="form-submit" style="border-radius: 30px">
