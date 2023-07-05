@@ -57,17 +57,42 @@ public class DepartmentDAO extends DBContext {
         return mapb;
     }
 
-    public Department getDepartByID(int manv) {
+    public Department getDepartByID(int mapb) {
         String sql = "select dbo.PHONGBAN.MAPB, TENPB, DIADIEM, MAQL \n"
                 + " from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
-                + " on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.NHANVIEN.MANV=?";
+                + " on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.PHONGBAN.MAPB=?";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, manv);
+            st.setInt(1, mapb);
+            ResultSet rs = st.executeQuery();
+            
+            if (rs.next()) {
+                Department dp = new Department();
+                dp.setMaPB(rs.getInt("MAPB"));
+                dp.setTenPB(rs.getString("TENPB"));
+                dp.setMaQL(rs.getInt("MAQL"));
+                dp.setDiaDiem(rs.getString("DIADIEM"));
+                return dp;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public Department getDepartByDPID(int mapb) {
+        String sql = "select dbo.PHONGBAN.MAPB, TENPB, DIADIEM, MAQL \n"
+                + " from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
+                + " on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.PHONGBAN.MAPB=?";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, mapb);
             ResultSet rs = st.executeQuery();
 
-            while (rs.next()) {
+            if (rs.next()) {
                 Department dp = new Department();
                 dp.setMaPB(rs.getInt("MAPB"));
                 dp.setTenPB(rs.getString("TENPB"));
