@@ -191,7 +191,10 @@
                     <%if(s!=null){
                         if(s.equals("admin")){%>
                     <li id="the_object"><a href="signup">Sign up new</a></li>
-                    <%}}%>
+                        <%}else{%>
+                        
+                    <li id="the_object"><a href="changepwd">Change Password</a></li>
+                        <%}}%>
                     <li><a href="#"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>Search</a></li>
                 </ul>
             </div>

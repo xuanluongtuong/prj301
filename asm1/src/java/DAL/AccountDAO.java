@@ -150,6 +150,7 @@ public class AccountDAO extends DBContext {
         }
 
     }
+    
 
     public boolean changePassword(String email, String newPassword) {
         String sql = "UPDATE ACCOUNT SET password = ? WHERE email = ? ";

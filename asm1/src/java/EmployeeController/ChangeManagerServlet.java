@@ -116,6 +116,9 @@ public class ChangeManagerServlet extends HttpServlet {
             emDAO.changeSalary(Integer.parseInt(oldId), e2.getLuong());
             emDAO.changeSalary(Integer.parseInt(newId), e1.getLuong());
             
+            emDAO.changeRole(3, e1.getEmail());
+            emDAO.changeRole(2, e2.getEmail());
+            
             emDAO.changeDepartmentID(newMapb, Integer.parseInt(oldId), Integer.parseInt(mapb), Integer.parseInt(newId));
             
         }

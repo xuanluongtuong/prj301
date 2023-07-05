@@ -256,6 +256,20 @@ public class EmployeeDAO extends DBContext {
             System.out.println(e);
         }
     }
+    
+    public void changeRole(int role,String email){
+        String sql = "UPDATE ACCOUNT SET role = ? WHERE email = ? ";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);     
+            ps.setInt(1, role);
+            ps.setString(2, email);
+            ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+    }
 
     public static void main(String[] args) {
         EmployeeDAO e = new EmployeeDAO();
