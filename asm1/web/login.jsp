@@ -24,8 +24,8 @@
             </div>
             <div class="col-md-5" id="wrapper-content" style="position: relative">
                 <form action="login" method="post" id="form-login"> 
-                    <h1 class="form-heading-title" style="position: absolute; top: 80px; left: 98px">Log in</h1>
-                    <h2 class="form-heading-welcome">Nice to meet you</h2>
+                    <h1 class="form-heading-title" style="position: absolute;width: 240px; top: 80px; text-align: center;">Log in</h1>
+                    <h2 class="form-heading-welcome" style="color: rgb(82, 82, 82);">Nice to meet you</h2>
                     <div class="form-group">
                         <i class="fa-solid fa-envelope"></i>
                         <input type="text" class="form-input" name="email" value="${cookie.email.value}" placeholder="Email">
