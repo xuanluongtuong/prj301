@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-        <title>Sign up</title>
+        <title>Change Password</title>
     </head>
     <body style="background-color: #717674">
         <%String s=(String)session.getAttribute("role");
@@ -67,7 +67,7 @@
                 <div style="width: 100%;display: flex;justify-content: right;align-items: center;">
                     <a href="home.jsp" style="text-decoration: none;text-align: center;padding: 3px;margin-top: 20px;color: black;">Back to Home</a>
                 </div>
-                <h5 style="color: purple; text-align: center;position: absolute;top: 600px;margin-left: 10px">${error}</h5>
+                <h5 style="max-width: 300px; color: purple; text-align: center;position: absolute;top: 600px;margin-left: 10px">${error}</h5>
             </form>
 
         </div>

@@ -89,6 +89,7 @@ public class AccountDAO extends DBContext {
                 account.setAccountID(rs.getInt("accountID"));
                 account.setEmail(rs.getString("email"));
                 account.setName(rs.getString("username"));
+                account.setPassword(rs.getString("password"));
                 account.setPhone(rs.getString("phone"));
                 account.setRole(rs.getInt("role"));
                 return account;
@@ -183,7 +184,7 @@ public class AccountDAO extends DBContext {
     
     public static void main(String[] args) {
         AccountDAO accDAO = new AccountDAO();
-        int a = accDAO.getManvByEmail("ducnm@gmail.com");
-        System.out.println(a);
+        Account a = accDAO.getAccountByEmail("nhandq@gmail.com");
+        System.out.println(a.getPassword());
     }
 }
