@@ -176,6 +176,10 @@
         <servlet-name>ChangePosAndDepartServlet</servlet-name>
         <servlet-class>EmployeeController.ChangePosAndDepartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePwdServlet</servlet-name>
+        <servlet-class>AccountController.ChangePwdServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -351,6 +355,10 @@
     <servlet-mapping>
         <servlet-name>ChangePosAndDepartServlet</servlet-name>
         <url-pattern>/changeposanddepart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePwdServlet</servlet-name>
+        <url-pattern>/changepwd</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,0 +1,83 @@
+
+
+body{
+    margin: 0;
+    overflow-x: hidden;
+    
+}
+
+#wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    
+}
+
+#wrapper-img img{
+    width: auto;
+    height: 621px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+#wrapper-img{
+
+    padding: 0;
+}
+
+#wrapper-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: auto;
+    margin-right: 20px;
+}
+
+#form-login{
+    padding: 128px 30px 126.5px 30px;
+    background-color: #fbf7f7;
+}
+.form-heading-title{
+    /*font-family: 'Dancing Script', cursive;*/
+}
+.form-group{
+    border-bottom: 1px #787878 solid;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: flex;
+}
+.form-group i{
+    color: #000000;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+.form-input{
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: #000000;
+    flex-grow: 1;
+}
+.form-input::placeholder{
+    color: #000000;
+}
+#eye i{
+    padding-right: 0;
+    cursor: pointer;
+}
+
+.form-submit{
+    background: transparent;
+    background-color: #787878;
+    color: #ffffff;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    transition: 0.25s ease-in-out;
+    margin-top: 30px;
+    border: none;
+}
