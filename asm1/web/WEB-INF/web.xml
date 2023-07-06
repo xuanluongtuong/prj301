@@ -188,6 +188,18 @@
         <servlet-name>SearchEmployeeServlet</servlet-name>
         <servlet-class>EmployeeController.SearchEmployeeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchCustomerServlet</servlet-name>
+        <servlet-class>CustomerController.SearchCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchDesignServlet</servlet-name>
+        <servlet-class>DesignController.SearchDesignServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchDraftServlet</servlet-name>
+        <servlet-class>DraftController.SearchDraftServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -375,6 +387,18 @@
     <servlet-mapping>
         <servlet-name>SearchEmployeeServlet</servlet-name>
         <url-pattern>/searche</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchCustomerServlet</servlet-name>
+        <url-pattern>/searchc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchDesignServlet</servlet-name>
+        <url-pattern>/searchds</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchDraftServlet</servlet-name>
+        <url-pattern>/searchdr</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

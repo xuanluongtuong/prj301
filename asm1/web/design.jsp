@@ -43,7 +43,7 @@
 
 </head>
 <body>
-    
+
     <%@include file="header.jsp"%>
 
     <!-- menu -->
@@ -62,7 +62,20 @@
         </div>
 
         <div class="mylist">
+            <form action="searchds" method="get" style="width: 320px;margin: 20px;">
 
+                <div style="display: flex;">
+                    <c:if test="${requestScope.search != null}">
+                        <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="${requestScope.search}" />
+                    </c:if>
+                    <c:if test="${requestScope.search == null}">
+                        <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    </c:if>
+                    <button type="submit" class="btn btn-outline-primary">search</button>
+
+                </div>
+
+            </form>
             <div class="mycontent">                    
 
 

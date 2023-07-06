@@ -47,7 +47,7 @@
         </style>
     </head>
     <body>
-        
+
         <%@include file="header.jsp"%>
 
         <!-- menu -->
@@ -68,7 +68,20 @@
 
                 <div class="mycontent">                    
 
+                    <form action="searchc" method="get" style="width: 320px;margin: 20px;">
 
+                        <div style="display: flex;">
+                            <c:if test="${requestScope.search != null}">
+                                <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="${requestScope.search}" />
+                            </c:if>
+                            <c:if test="${requestScope.search == null}">
+                                <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            </c:if>
+                            <button type="submit" class="btn btn-outline-primary">search</button>
+
+                        </div>
+
+                    </form>
 
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
