@@ -32,9 +32,7 @@
                 <img src="img/258888-P4JKHD-261.png" alt="">
             </div>
             <form action="changepwd" method="post" id="form-login">
-                <h1 class="form-heading">Change Password</h1>
-                
-                
+                <h1 class="form-heading">Change Password</h1>                
                 
                 <div class="form-group">
                     <i class="fas fa-key"></i>

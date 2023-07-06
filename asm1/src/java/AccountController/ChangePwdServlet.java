@@ -73,8 +73,8 @@ public class ChangePwdServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String email = request.getParameter("email");
+        HttpSession session = request.getSession();
+        String email = (String) session.getAttribute("email");
         String oldpwd = request.getParameter("oldPassword");
         String newpwd = request.getParameter("newPassword");
         String renewpwd = request.getParameter("reNewPassword");
@@ -83,7 +83,7 @@ public class ChangePwdServlet extends HttpServlet {
         Account a = accountDAO.getAccountByEmail(email);
 
         // validate data
-        if (email.isEmpty() || oldpwd.isEmpty() || newpwd.isEmpty() || renewpwd.isEmpty()) {
+        if ( oldpwd.isEmpty() || newpwd.isEmpty() || renewpwd.isEmpty()) {
             request.setAttribute("error", "Please fill all the fields.");
             request.getRequestDispatcher("changePwd.jsp").forward(request, response);
         } 
@@ -100,8 +100,7 @@ public class ChangePwdServlet extends HttpServlet {
             request.getRequestDispatcher("changePwd.jsp").forward(request, response);
         } 
         else {
-            accountDAO.changePassword(email, newpwd);
-            HttpSession session = request.getSession();
+            accountDAO.changePassword(email, newpwd);            
             session.removeAttribute("role");
             session.removeAttribute("username");
             session.removeAttribute("password");
