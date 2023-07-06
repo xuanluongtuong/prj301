@@ -16,6 +16,7 @@ public class Customer {
     String DCKH;
     String SDTKH;
     String EmailKH;
+    int mada;
     String tenDA;
 
     public Customer() {
@@ -68,5 +69,13 @@ public class Customer {
     public void setTenDA(String tenDA) {
         this.tenDA = tenDA;
     }
+
+    public int getMada() {
+        return mada;
+    }
+
+    public void setMada(int mada) {
+        this.mada = mada;
+    }    
     
 }
