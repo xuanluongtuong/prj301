@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/stylechangepwd.css?v=51">
+        <link rel="stylesheet" href="css/stylechangepwd.css">
         <link rel="stylesheet" href="fontawesome/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,10 +34,7 @@
             <form action="changepwd" method="post" id="form-login">
                 <h1 class="form-heading">Change Password</h1>
                 
-                <div class="form-group">
-                    <i class="fa-solid fa-envelope"></i>
-                    <input type="text" class="form-input" name="email" value="<%=session.getAttribute("email")%>" readonly>
-                </div>
+                
                 
                 <div class="form-group">
                     <i class="fas fa-key"></i>
