@@ -61,7 +61,12 @@
             </div>
             <div class="mylist">  
 
-                
+                <%
+                    Employee e = new Employee();
+                    if(session.getAttribute("emql") != null){
+                        e = (Employee)session.getAttribute("emql");  
+                    }
+                %>
 
                 <div class="myhead_title_table" style="margin-bottom: 25px;">
                     <div style="color: rgb(0, 148, 156);"><h3 style="margin-left: 30px;">Department:</h3>
@@ -69,6 +74,8 @@
                             <% Department depart = (Department)session.getAttribute("department"); %>
                             Department Name: <%=session.getAttribute("tenPb")%></br>                            
                             Address: <%=depart.getDiaDiem()%></br>
+                            Manager ID: <%=e.getMaNV()%></br>
+                            Manager Name: <%=e.getHoVaTen()%>
                         </div>
                     </div>                    
                 </div>
@@ -90,126 +97,11 @@
                         </div>
 
                     </form>
-                    <%
-                    Employee e = new Employee();
-                    if(session.getAttribute("emql") != null){
-                        e = (Employee)session.getAttribute("emql");  
-                    }
-                    %>
-
-                    <% if(list.size() >= 1){ %>
-                    <%if(e!=null){%>
-                    <h5 style="color: rgb(0, 148, 156);margin:10px 0 0 20px;">Manager: </h5>
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 5px;">
 
 
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        ID
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Full name
-                                    </th>
+                    <% if(list.size() >0){ %>
 
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Gender
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Date of birth
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Address
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Phone Number
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Email
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Position
-                                    </th>
 
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Salary<br>
-                                        (milions Dong)
-                                    </th>
-                                    <%if(s!=null){
-                                        if(s.equals("admin")){%>
-                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
-                                        Action
-                                    </th>
-                                    <%}}%>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-
-                                <tr class="border-b border-gray-50 dark:border-gray-800">
-
-                                <tr class="border-b border-gray-50 dark:border-gray-800">
-                                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                        <%=e.getMaNV()%>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <%=e.getHoVaTen()%>
-                                    </td>
-
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        <%if(e.getGt()==1){
-                                        %>
-                                        Nam
-                                        <%}else{%>Nữ
-                                        <%}%>
-                                    </td>
-                                    <td  class="px-6 py-4">
-                                        <%=e.getNgaySinh()%>
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        <%=e.getDiaChi()%>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <%=e.getSDT()%>
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        <%=e.getEmail()%>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <%=e.getViTri()%>
-                                    </td>
-
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        <%=e.getLuong()%>
-                                    </td> 
-                                    <%if(s!=null){
-                                        if(s.equals("admin")){%>
-
-                                    <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">
-
-                                        <a href="changemanager?id=<%=e.getMaNV()%>" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-arrows-rotate"></i>
-                                            Change</a>
-
-                                        <a href="editem?id=<%=e.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                            Edit</a>
-
-                                        <%if(list.size() == 1){%>
-                                        <a href="#" onclick="doDelete('<%=e.getMaNV()%>')" class="mydelete" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-trash"></i>
-                                            Delete</a>
-                                            <%}%>
-                                    </td>
-                                    <%}}%>
-                                </tr> 
-                            </tbody>
-
-                        </table>
-                    </div>
-                    <%}%>
-                    <% if(list.size() >1){%>
                     <h5 style="color: rgb(0, 148, 156);margin-left: 20px;">Employee: </h5>
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg" style="margin: 5px;">
 
@@ -255,8 +147,7 @@
                                     <%}}%>
                                 </tr>
                             </thead>
-                            <% for (Employee nv : list) {
-                                if(nv.getMaNV() != e.getMaNV()){
+                            <% for (Employee nv : list) {                                
                             %>
                             <tr class="border-b border-gray-50 dark:border-gray-800">
                                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
@@ -294,9 +185,9 @@
                                 </td>
                                 <%if(s!=null){
                                     if(s.equals("admin")){%>
-                                <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
-                                    
-                                    <a href="changeposanddepart?id=<%=nv.getMaNV()%>" style="display: flex;align-items: center;">
+                                <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">
+                                    <%if(nv.getMaNV()!=e.getMaNV()){%>
+                                    <a href="changemanager?id=<%=e.getMaNV()%>" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-arrows-rotate"></i>
                                         Change</a>
 
@@ -307,29 +198,25 @@
                                     <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')" class="mydelete" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-trash"></i>
                                         Delete</a>
-
+                                        <%}else{%>
+                                        Manager
+                                        <%}%>
                                 </td>
                                 <%}}%>
                             </tr>  
-                            <%} }%>                          
+                            <% }%>                          
                             </tbody>
                         </table>
 
                     </div> 
-                    <%}%>
+
                     <% }else{ %>
                     <input type="hidden" name="TENPB" value="<%=session.getAttribute("tenPb")%>">
 
                     <div style="display: flex;align-items: center;justify-content: space-between;">
                         <div>
-                            <h4 style="color: red; padding: 20px;">This department does not have any Employee.</h4>
-                        </div>
-
-                        <div style="padding-right: 40px;">
-                            <button type="submit" style="width: 160px; height: 40px; border-radius: 10px; border: rgb(0, 135, 202) 3px solid; background: linear-gradient(135deg, #30CFD0 0%, #330867 100%);">
-                                <a href="addem?id=<%=session.getAttribute("mapb")%>" style="text-align: center;color: white;text-decoration: none;">Add Manager</a>
-                            </button>
-                        </div>
+                            <h4 style="color: red; padding: 20px;">Can not find any Employee.</h4>
+                        </div>                        
                     </div>
                     <%}%>
                 </div>

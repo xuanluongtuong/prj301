@@ -50,8 +50,7 @@
     <div class="mymenu">
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
 
-            <h4 style="width: 300px;margin: 0 0px 0 30px; color: #8b00a3;"> Project List </h4><br/>
-
+            <h4 style="margin: 0 10px 0 30px; color: #8b00a3;"> Project List </h4><br/>
 
             <%if(s!=null){
                     if(s.equals("admin")){%>
@@ -65,7 +64,20 @@
 
             <div class="mycontent">                    
 
+                <form action="searchp" method="get" style="width: 320px;margin: 20px 20px -10px 20px;">
 
+                    <div style="display: flex;">
+                        <c:if test="${requestScope.search != null}">
+                            <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="${requestScope.search}" />
+                        </c:if>
+                        <c:if test="${requestScope.search == null}">
+                            <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        </c:if>
+                            <button type="submit" class="btn btn-outline-primary">search</button>
+
+                    </div>
+
+                </form>
                 <div style="display: flex; justify-content: center;margin: 10px 0;">
                     <ul style="display: flex;flex-wrap: wrap;list-style: none;margin: 0;padding: 0;justify-content: space-evenly;">
                         <%  List<Project> list = (ArrayList<Project>)request.getAttribute("prolist");
@@ -80,17 +92,17 @@
                                     </div>
                                     <div>
                                         <%if(p.getTrangThai()==1){%>
-                                            <div style="color: rgb(24, 202, 0);font-weight: 600;">
-                                                Hoàn thành
-                                            </div>
+                                        <div style="color: rgb(24, 202, 0);font-weight: 600;">
+                                            Hoàn thành
+                                        </div>
                                         <%}else if(p.getTrangThai()==0){%>
-                                            <div style="color: rgb(174, 0, 81);font-weight: 600;">
-                                                Đã hủy
-                                            </div>
+                                        <div style="color: rgb(174, 0, 81);font-weight: 600;">
+                                            Đã hủy
+                                        </div>
                                         <%}else{%>
-                                            <div style="color: rgb(0, 145, 155);font-weight: 600;">
-                                                Đang thi công
-                                            </div>
+                                        <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                            Đang thi công
+                                        </div>
                                         <%}%>
                                     </div>
                                 </div>

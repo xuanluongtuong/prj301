@@ -180,6 +180,14 @@
         <servlet-name>ChangePwdServlet</servlet-name>
         <servlet-class>AccountController.ChangePwdServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchProjectServlet</servlet-name>
+        <servlet-class>ProjectController.SearchProjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchEmployeeServlet</servlet-name>
+        <servlet-class>EmployeeController.SearchEmployeeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -359,6 +367,14 @@
     <servlet-mapping>
         <servlet-name>ChangePwdServlet</servlet-name>
         <url-pattern>/changepwd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchProjectServlet</servlet-name>
+        <url-pattern>/searchp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchEmployeeServlet</servlet-name>
+        <url-pattern>/searche</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

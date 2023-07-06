@@ -198,7 +198,7 @@
                     <li id="the_object"><a href="resource">Resource</a></li>
                     <li id="the_object"><a href="customer">Customer</a></li>
                     <li id="the_object"><a href="changepwd">Change Password</a></li>
-                    <li><a href="#"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>Search</a></li>
+                    <li><a href="search.jsp"><i class="fa-solid fa-magnifying-glass" style="margin-right: 5px;"></i>Search</a></li>
                 </ul>
             </div>
             <div  style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">

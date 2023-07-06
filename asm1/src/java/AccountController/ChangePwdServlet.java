@@ -100,7 +100,8 @@ public class ChangePwdServlet extends HttpServlet {
             request.getRequestDispatcher("changePwd.jsp").forward(request, response);
         } 
         else {
-            accountDAO.changePassword(email, newpwd);            
+            accountDAO.changePassword(email, newpwd);   
+            session.removeAttribute("email");
             session.removeAttribute("role");
             session.removeAttribute("username");
             session.removeAttribute("password");
