@@ -109,39 +109,39 @@
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 50px">
                                         ID
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 170px;">
                                         Full name
                                     </th>
 
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 50px;">
                                         Gender
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 120px">
                                         Date of birth
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 240px">
                                         Address
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 120px">
                                         Phone Number
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 100px">
                                         Email
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Position
                                     </th>
 
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 50px">
                                         Salary<br>
                                         (milions Dong)
                                     </th>
                                     <%if(s!=null){
                                         if(s.equals("admin")){%>
-                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
+                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800" style="width: 100px">
                                         Action
                                     </th>
                                     <%}}%>

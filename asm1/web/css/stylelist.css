@@ -175,6 +175,7 @@ nav {
 
 #mytable table tr th, #mytable table tr td{
     border-right: #938f8f 2px solid;
+    border-bottom: #938f8f 2px solid;
 }
 
 .mylist{
