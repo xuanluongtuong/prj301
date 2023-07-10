@@ -101,7 +101,7 @@
                                                         </div>-->
                             <div class="form-group">                                
                                 <label class="form-label" >Upload new image</label>                                
-                                <input type="file" name="file" >
+                                <input type="file" name="file" required />
                             </div>
                             <div class="form-button">
                                 <button class="btn-submit" type="submit" style="margin: 24px;">Submit</button>

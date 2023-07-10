@@ -9,6 +9,7 @@ import static ProjectController.ProjectEditServlet.replaceWhitespace;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,6 +26,9 @@ import model.Project;
  *
  * @author admin
  */
+@MultipartConfig(fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 5,
+        maxRequestSize = 1024 * 1024 * 5 * 5)
 public class ProjectAddServlet extends HttpServlet {
 
     /**
@@ -98,7 +102,7 @@ public class ProjectAddServlet extends HttpServlet {
         // Tạo tên file mới
         if (filePart != null) {
             if (originalFileName != null && !originalFileName.equals("")) {
-                String newFileName = tenda + ".jpg";
+                String newFileName = tenda + ".png";
                 newFileName = replaceWhitespace(newFileName);
 
                 String filePath = uploadDirectory + File.separator + newFileName;
