@@ -27,7 +27,7 @@
             .form-group {
                 display: grid;
             }
-             .form-container {
+            .form-container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -49,7 +49,7 @@
 
     </head>
     <body>
-        
+
         <%@include file="header.jsp"%>
 
         <!-- menu -->
@@ -72,14 +72,14 @@
                                 <label class="form-label" for="DIADIEM">Address</label>
                                 <input class="form-input" type="text" id="DIADIEM" name="DIADIEM" required />
                             </div>
-                            
-                        </div>
-
-                        <div class="form-right">
                             <div class="form-group">
                                 <label class="form-label" for="NGANSACH">Budget(Milions Dong)</label>
                                 <input class="form-input" type="number" id="NGANSACH" name="NGANSACH" required />
                             </div>
+                        </div>
+
+                        <div class="form-right">
+
                             <div class="form-group">
                                 <label class="form-label" for="NGAYTHICONG">Start Date</label>
                                 <input class="form-input" type="date" id="NGAYTHICONG" name="NGAYTHICONG" required />
@@ -92,16 +92,21 @@
                                     <option value="0">Đã hủy</option>
                                 </select>
                             </div>
-<!--                            <div class="form-group">
-                                <label class="form-label" for="IMG">Image url</label>
-                                <input class="form-input" type="text" id="IMG" name="IMG" />
-                            </div>-->
+                            <!--                            <div class="form-group">
+                                                            <label class="form-label" >Image link</label>
+                                                            <input class="form-input" type="text" name="IMG" required />
+                                                        </div>-->
+                            <div class="form-group">                                
+                                <label class="form-label" >Upload new image</label>                                
+                                <input type="file" name="file" >
+                            </div>
+                            <div class="form-button">
+                                <button class="btn-submit" type="submit" style="margin: 24px;">Submit</button>
+                            </div>
                         </div>                        
                     </div>
 
-                    <div class="form-button">
-                        <button class="btn-submit" type="submit">Submit</button>
-                    </div>
+
                 </form>
             </div>
         </div>

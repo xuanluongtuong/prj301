@@ -108,7 +108,7 @@ public class ProjectEditServlet extends HttpServlet {
         // Tạo tên file mới
         if (filePart != null) {
             if (originalFileName != null && !originalFileName.equals("")) {
-                String newFileName = mada + ".png";
+                String newFileName = mada + tenda+ ".jpg";
                 newFileName = replaceWhitespace(newFileName);
 
                 String filePath = uploadDirectory + File.separator + newFileName;

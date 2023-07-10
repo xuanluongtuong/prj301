@@ -116,7 +116,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 50px;">
                                         Gender
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 120px;">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 130px;">
                                         Date of birth
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 240px;">
@@ -225,7 +225,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 50px;">
                                         Gender
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 120px">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 130px">
                                         Date of birth
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 240px">
