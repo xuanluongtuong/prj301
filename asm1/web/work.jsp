@@ -24,9 +24,9 @@
         <title>LXT Manager</title>        
 
         <script>
-            function doDelete(id, mada, mapb) {
+            function doDelete(id, mada, mapb, idpc) {
                 if (confirm("Are you sure to delete this Task?")) {
-                    window.location = "workdelete?id=" + id + "&mada=" + mada + "&mapb=" + mapb;
+                    window.location = "workdelete?id=" + id + "&mada=" + mada + "&mapb=" + mapb + "&idpc=" + idpc;
                 }
             }
         </script>
@@ -105,12 +105,11 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Status
                                     </th>
-                                    <%if(s!=null){
-                                        if(s.equals("admin") || s.equals("manager")){%>
+
                                     <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
                                         Action
                                     </th>
-                                    <%}}%>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -149,20 +148,22 @@
                                         </div>
                                         <%}%>
                                     </td>
-                                    <%if(s!=null){
-                                        if(s.equals("admin") || s.equals("manager")){%>
+
                                     <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
                                         <a href="workedit?mada=<%=w.getMada()%>&id=<%=w.getId()%>&mapb=<%=request.getAttribute("mapb")%>&idpc=<%=request.getAttribute("idpc")%>" class="myedit" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-pen-to-square"></i>
-                                            Edit</a>
-
-                                        <a href="#" onclick="doDelete('<%=w.getId()%>',<%=w.getMada()%>,<%=request.getAttribute("mapb")%>)" class="mydelete" style="display: flex;align-items: center;">
+                                            Edit
+                                        </a>
+                                        <%if(s!=null){
+                                        if(s.equals("admin") || s.equals("manager")){%>
+                                        <a href="#" onclick="doDelete('<%=w.getId()%>',<%=w.getMada()%>,<%=request.getAttribute("mapb")%>,<%=request.getAttribute("idpc")%>)" class="mydelete" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-trash"></i>
-                                            Delete</a>
-
+                                            Delete
+                                        </a>
+                                        <%}}%>
                                     </td>  
-                                    <%}}%>
+
                                 </tr>
                                 <%} %>
                             </tbody>

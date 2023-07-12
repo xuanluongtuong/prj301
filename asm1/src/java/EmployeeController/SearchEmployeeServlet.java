@@ -4,6 +4,7 @@
  */
 package EmployeeController;
 
+import DAL.DepartmentDAO;
 import DAL.EmployeeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.Department;
 import model.Employee;
 
 /**
@@ -60,15 +62,28 @@ public class SearchEmployeeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String search = request.getParameter("search");
+        String mapb = request.getParameter("mapb");
+        DepartmentDAO department = new DepartmentDAO();
+        
         HttpSession session = request.getSession();
+        Department dp=department.getDepartByID(Integer.parseInt((String) session.getAttribute("mapb")));
+        
         session.removeAttribute("list");
         EmployeeDAO nv = new EmployeeDAO();        
-
-        List<Employee> list = nv.getEmListBySearch(Integer.parseInt((String) session.getAttribute("mapb")), search);
+        List<Employee> list;
+        if(mapb==null){
+            list = nv.getEmListBySearch(Integer.parseInt((String) session.getAttribute("mapb")), search);
+        }else{
+            list = nv.getEmListBySearch(Integer.parseInt(mapb), search);
+            dp = department.getDepartByID(Integer.parseInt(mapb));
+        }
+        
+        session.setAttribute("department", dp);
+        
         session.setAttribute("list", list);
-        request.setAttribute("search", search);
-        response.sendRedirect("EmListSearch.jsp");
-
+        session.setAttribute("search", search);
+//        response.sendRedirect("EmListSearch.jsp");
+        request.getRequestDispatcher("EmListSearch.jsp").forward(request, response);
     }
 
     /**

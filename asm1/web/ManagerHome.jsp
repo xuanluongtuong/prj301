@@ -196,7 +196,7 @@
                     <li id="the_object"><a href="project">Project</a></li>                    
                     <li id="the_object"><a href="resource">Resource</a></li>
                     <li id="the_object"><a href="customer">Customer</a></li>
-                    <li id="the_object"><a href="depart">Employee</a></li>
+                    <li id="the_object"><a href="employ">Employee</a></li>
                     <li id="the_object"><a href="changepwd">Change Password</a></li>
                 </ul>
             </div>
@@ -217,7 +217,7 @@
         <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
             
             <div class="mylist">                
-
+                <h4 style="margin: 0 10px 0 30px; color: #8b00a3;"> Assignment List </h4>
                 <div class="mycontent">
 
                     <div style="margin: 20px 0 0 0;">  
@@ -310,11 +310,12 @@
                                         <%if(s!=null){
                                         if(s.equals("admin") || s.equals("manager")){%>
                                         <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
-                                            <%if(s.equals("admin")){%>
-                                            <a href="assignmentedit?id=<%=a.getId()%>&mada=<%=request.getAttribute("mada")%>"" class="myedit" style="display: flex;align-items: center;">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                Edit</a>
                                             
+                                            <a href="assignmentedit?id=<%=a.getId()%>&mada=<%=a.getMada()%>"" class="myedit" style="display: flex;align-items: center;">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                Edit
+                                            </a>
+                                            <%if(s.equals("admin")){%>
                                             <a href="#" onclick="doDelete('<%=a.getId()%>', '<%=a.getMada()%>')" class="mydelete" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-trash"></i>
                                                 Delete</a>

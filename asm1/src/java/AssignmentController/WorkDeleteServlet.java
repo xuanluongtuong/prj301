@@ -57,14 +57,15 @@ public class WorkDeleteServlet extends HttpServlet {
     throws ServletException, IOException {
         String id = request.getParameter("id");
         String mada = request.getParameter("mada");
+        String idpc = request.getParameter("idpc");
         request.setAttribute("mada", mada);
         String mapb = request.getParameter("mapb");
-        
+        request.setAttribute("mada", mapb);
         try {
             AssignmentDAO asDAO = new AssignmentDAO(); 
             asDAO.deleteWork(Integer.parseInt(id));
 //            request.getRequestDispatcher("work?mada="+mada+"&mapb="+mapb).forward(request, response);
-            response.sendRedirect("work?mada="+mada+"&mapb="+mapb);
+            response.sendRedirect("work?mada="+mada+"&mapb="+mapb+"&idpc="+idpc);
         } catch (IOException e) {
             System.out.println(e);
         }

@@ -36,26 +36,37 @@ public class EmployeeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        HttpSession session = request.getSession();
+
         String mapb = request.getParameter("maPB");
-        String depart = request.getParameter("tenPB");
-        String maql = request.getParameter("maQL");
-        HttpSession session = request.getSession();        
+        if (mapb == null) {
+            mapb = "1";
+        } else {
+            if (mapb.equals("")) {
+                mapb = "1";
+            }
+        }
+
+        DepartmentDAO department = new DepartmentDAO();
+        Department dp = department.getDepartByID(Integer.parseInt(mapb));
+
         EmployeeDAO nv = new EmployeeDAO();
-        
-        List<Employee> list = nv.getEmListByID(Integer.parseInt(mapb));        
-        
+
+        List<Employee> list = nv.getEmListByID(Integer.parseInt(mapb));
+
         session.setAttribute("list", list);
         session.setAttribute("mapb", mapb);
-        session.setAttribute("tenPb", depart);
-        session.setAttribute("maql", maql);
-        
-        DepartmentDAO department = new DepartmentDAO();
-        Employee mn = department.getManager(Integer.parseInt(maql));
-        Department dp = department.getDepartByID(Integer.parseInt(mapb));        
-        session.setAttribute("department", dp);        
+        session.setAttribute("tenPb", dp.getTenPB());
+        session.setAttribute("maql", dp.getMaQL());
+
+        Employee mn = department.getManager(dp.getMaQL());
+
+        session.setAttribute("department", dp);
         session.setAttribute("emql", mn);
 
-        response.sendRedirect("EmList.jsp");
+//        response.sendRedirect("EmList.jsp");
+        request.getRequestDispatcher("EmList.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

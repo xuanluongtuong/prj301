@@ -4,6 +4,7 @@
  */
 package EmployeeController;
 
+import DAL.DepartmentDAO;
 import DAL.EmployeeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Date;
 import java.util.List;
+import model.Department;
 import model.Employee;
 
 /**
@@ -64,6 +66,7 @@ public class EditEmployee extends HttpServlet {
         EmployeeDAO employ = new EmployeeDAO();
         Employee em = employ.getEmployeeByID(manv);
         request.setAttribute("employee", em);
+        request.setAttribute("gt", em.getGt());
         request.getRequestDispatcher("EmEdit.jsp").forward(request, response);
 
     }
@@ -99,7 +102,7 @@ public class EditEmployee extends HttpServlet {
 
             em.setMaNV(Integer.parseInt(manv));
             em.setHoVaTen(hoVaTen);
-            
+
             em.setGt(Integer.parseInt(phai));
             em.setNgaySinh(Date.valueOf(ngaySinh));
             em.setDiaChi(diaChi);
@@ -108,14 +111,19 @@ public class EditEmployee extends HttpServlet {
             em.setViTri(viTri);
             em.setMaql(Integer.parseInt(maql));
             em.setPhongBan(phongban);
-            
+
             em.setLuong(Float.parseFloat(luong));
-            
+
             employ.editEmployee(em, Integer.parseInt(mapb));
             List<Employee> list = employ.getEmListByID(Integer.parseInt(mapb));
             HttpSession session = request.getSession();
+            DepartmentDAO department = new DepartmentDAO();
+            Employee mn = department.getManager(Integer.parseInt(maql));
+            Department dp = department.getDepartByID(Integer.parseInt(mapb));
+            session.setAttribute("department", dp);
+            session.setAttribute("emql", mn);
             session.setAttribute("list", list);
-            response.sendRedirect("EmList.jsp");
+            request.getRequestDispatcher("EmList.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println(e);
         }

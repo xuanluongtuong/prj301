@@ -59,8 +59,8 @@ public class CustomerEditServlet extends HttpServlet {
             throws ServletException, IOException {
         int ma = Integer.parseInt(request.getParameter("id"));
         CustomerDAO customer = new CustomerDAO();
-        Customer obj = customer.getCustomerByID(ma);
-        request.setAttribute("customer", obj);
+        Customer cus = customer.getCustomerByID(ma);
+        request.setAttribute("cus", cus);
         request.getRequestDispatcher("CustomerEdit.jsp").forward(request, response);
     }
 

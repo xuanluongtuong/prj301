@@ -8,7 +8,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="jakarta.servlet.http.HttpSession"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,7 @@
             .form-group {
                 display: grid;
             }
-             .form-container {
+            .form-container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -49,33 +49,31 @@
 
     </head>
     <body>
-        
+
         <%@include file="header.jsp"%>
 
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
                 <form action="customeredit" method="post" style="display: inline; justify-content: center;">
-                    <% Customer cus = (Customer)request.getAttribute("customer");
-                    %>
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
                                 <label class="form-label" for="TENKH">Customer Name</label>
-                                <input type="hidden" name="MAKH" value="<%=cus.getMaKH()%>"/>
-                                <input class="form-input" type="text" id="TENKH" name="TENKH" value="<%=cus.getTenKH()%>" required />
+                                <input type="hidden" name="MAKH" value="${cus.getMaKH()}"/>
+                                <input class="form-input" type="text" id="TENKH" name="TENKH" value="${cus.getTenKH()}" required />
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="DCKH">Address</label>
-                                <input class="form-input" type="text" id="DCKH" name="DCKH" value="<%=cus.getDCKH()%>" required />
+                                <input class="form-input" type="text" id="DCKH" name="DCKH" value="${cus.getDCKH()}" required />
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="SDTKH">Phone Number</label>
-                                <input class="form-input" type="tel" id="SDTKH" name="SDTKH" value="<%=cus.getSDTKH()%>" required />
+                                <input class="form-input" type="tel" id="SDTKH" name="SDTKH" value="${cus.getSDTKH()}" required />
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="EMAILKH">Email</label>
-                                <input class="form-input" type="email" id="EMAILKH" name="EMAILKH" value="<%=cus.getEmailKH()%>" required />
+                                <input class="form-input" type="email" id="EMAILKH" name="EMAILKH" value="${cus.getEmailKH()}" required />
                             </div>
                         </div>
                         <div class="form-right">
@@ -84,8 +82,8 @@
                             </div>
                         </div>
                     </div>
-
                 </form>
+
             </div>
         </div>
         <!-- menu -->

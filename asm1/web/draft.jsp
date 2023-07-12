@@ -53,11 +53,10 @@
             <h4 style="width: 300px;margin: 0 0px 0 30px; color: #8b00a3;"> Draft List </h4><br/>
 
 
-            <%if(s!=null){
-                    if(s.equals("admin")){%>
+            
             <a href="draftadd" style="display:flex;align-items: center; text-decoration: none;color: rgb(129, 0, 185);margin: 0 35px 0px 0;font-size: 20px;">
                 <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Draft</a>
-                <%}}%>
+               
 
         </div>
 

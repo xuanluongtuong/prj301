@@ -83,20 +83,50 @@
 
 
                 <div class="mycontent">
-                    <form action="searche" method="get" style="width: 320px;margin: 20px;">
+                    <div style="display: flex;align-items: center;justify-content: space-between;">
+                        <form action="searche" method="get" style="width: 320px;margin: 20px;">
 
-                        <div style="display: flex;">
-                            <c:if test="${requestScope.search != null}">
-                                <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="${requestScope.search}" />
-                            </c:if>
-                            <c:if test="${requestScope.search == null}">
-                                <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                            </c:if>
-                            <button type="submit" class="btn btn-outline-primary">search</button>
+                            <div style="display: flex;">
 
+                                <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="${search}" />
+
+                                <button type="submit" class="btn btn-outline-primary">search</button>
+
+                            </div>
+
+                        </form>
+
+                        <div style="margin: 0 20px 0 0;">
+                            <form action="employ">
+                                <select name="maPB" class="form-select" aria-label="Default select example" onchange="redirect(this)">
+                                    <option value="1" <%=depart.getMaPB() == 1 ? "selected" : ""%>>Phòng quản lý dự án</option>
+                                    <option value="2" <%=depart.getMaPB() == 2 ? "selected" : ""%>>Phòng thiết kế</option>
+                                    <option value="3" <%=depart.getMaPB() == 3 ? "selected" : ""%>>Phòng kỹ thuật</option>
+                                    <option value="4" <%=depart.getMaPB() == 4 ? "selected" : ""%>>Phòng tài chính</option>
+                                    <option value="5" <%=depart.getMaPB() == 5 ? "selected" : ""%>>Phòng kinh doanh</option>
+                                    <option value="6" <%=depart.getMaPB() == 6 ? "selected" : ""%>>Phòng hành chính</option>
+                                </select>
+                            </form>
+                            <script>
+                                function redirect(select) {
+                                    var value = select.value;
+                                    if (value === "1") {
+                                        window.location.href = "searche?search=${search}&mapb=1";
+                                    } else if (value === "2") {
+                                        window.location.href = "searche?search=${search}&mapb=2";
+                                    } else if (value === "3") {
+                                        window.location.href = "searche?search=${search}&mapb=3";
+                                    } else if (value === "4") {
+                                        window.location.href = "searche?search=${search}&mapb=4";
+                                    } else if (value === "5") {
+                                        window.location.href = "searche?search=${search}&mapb=5";
+                                    } else if (value === "6") {
+                                        window.location.href = "searche?search=${search}&mapb=6";
+                                    }
+                                }
+                            </script>
                         </div>
-
-                    </form>
+                    </div>
 
 
                     <% if(list.size() >0){ %>
@@ -186,11 +216,18 @@
                                 <%if(s!=null){
                                     if(s.equals("admin")){%>
                                 <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">
-                                    <%if(nv.getMaNV()!=e.getMaNV()){%>
+                                    <%if(nv.getMaNV() != e.getMaNV()){%>
+                                    <a href="changeposanddepart?id=<%=nv.getMaNV()%>" style="display: flex;align-items: center;">
+                                        <i class="fa-solid fa-arrows-rotate"></i>
+                                        Change
+                                    </a>
+                                    <%}%>
+                                    <%if(nv.getMaNV() == e.getMaNV()){%>
                                     <a href="changemanager?id=<%=e.getMaNV()%>" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-arrows-rotate"></i>
-                                        Change</a>
-
+                                        Change
+                                    </a>
+                                    <%}%>
                                     <a href="editem?id=<%=nv.getMaNV()%>" class="myedit" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                         Edit</a>
@@ -198,9 +235,6 @@
                                     <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')" class="mydelete" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-trash"></i>
                                         Delete</a>
-                                        <%}else{%>
-                                        Manager
-                                        <%}%>
                                 </td>
                                 <%}}%>
                             </tr>  

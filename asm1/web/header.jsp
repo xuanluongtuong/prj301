@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -130,6 +131,10 @@
                 color: #f1e871;
             }
 
+            li#the_object a.active {
+                color: yellow;
+            }
+
             @media screen and (max-width: 890px) {
                 nav #the_object, nav #the_logout {
                     display: none;
@@ -177,25 +182,67 @@
                     <a href="workemployee?email=${email}">Home</a>
                     <%}}%>
                 </div>
-                <ul >
-                    <%if(s!=null){
-                        if(s.equals("admin")){%>
+                <ul>
 
-                    <li id="the_object"><a href="assignment">Assignment</a></li>
-                        <%}}%>
-                    
-                    <li id="the_object"><a href="project">Project</a></li>                    
-                    <li id="the_object"><a href="resource">Resource</a></li>
-                    <li id="the_object"><a href="customer">Customer</a></li>
-                    <li id="the_object"><a href="depart">Employee</a></li>
-                    <%if(s!=null){
-                        if(s.equals("admin")){%>
+
+                    <li id="the_object"><a id="assignment-link" href="assignment">Assignment</a></li>
+                    <li id="the_object"><a id="project-link" href="project">Project</a></li>                    
+                    <li id="the_object"><a id="resource-link" href="resource">Resource</a></li>
+                    <li id="the_object"><a id="customer-link" href="customer">Customer</a></li>
+                        <%if(s.equals("admin")){%>
+
+                    <li id="the_object"><a id="employ-link" href="employ">Employee</a></li>
+                        <%}%>
+                        
+                        <%if(s.equals("admin")){%>
                     <li id="the_object"><a href="signup">Sign up new</a></li>
                         <%}else{%>
-                        
+
                     <li id="the_object"><a href="changepwd">Change Password</a></li>
-                        <%}}%>
+                        <%}%>
                 </ul>
+                <script>
+
+                    var currentUrl = window.location.href;
+
+
+                    var linkList = document.getElementsByTagName("a");
+                    for (var i = 0; i < linkList.length; i++) {
+                        var link = linkList[i];
+                        if (link.href === currentUrl) {
+                            link.classList.add("active");
+                            break;
+                        }
+                    }
+                </script>
+                <script>
+                    // Lấy đường link (URL) hiện tại
+                    var currentUrl = window.location.href;                                       
+                    
+                    if (currentUrl.indexOf("assignment") !== -1 || currentUrl.indexOf("work") !== -1) {
+                        var customerLink = document.getElementById("assignment-link");
+                        customerLink.classList.add("active");
+                    }
+                    
+                    if (currentUrl.indexOf("project") !== -1 || currentUrl.indexOf("searchp") !== -1) {
+                        var customerLink = document.getElementById("project-link");
+                        customerLink.classList.add("active");
+                    }
+                    
+                    if (currentUrl.indexOf("resource") !== -1 || currentUrl.indexOf("searchd") !== -1 || currentUrl.indexOf("design") !== -1 || currentUrl.indexOf("draft") !== -1) {
+                        var customerLink = document.getElementById("resource-link");
+                        customerLink.classList.add("active");
+                    }
+                    
+                    if (currentUrl.indexOf("customer") !== -1 || currentUrl.indexOf("searchc") !== -1) {
+                        var customerLink = document.getElementById("customer-link");
+                        customerLink.classList.add("active");
+                    }
+                    if (currentUrl.indexOf("employ") !== -1 || currentUrl.indexOf("searche") !== -1 || currentUrl.indexOf("depart") !== -1 || currentUrl.indexOf("manage") !== -1) {
+                        var customerLink = document.getElementById("employ-link");
+                        customerLink.classList.add("active");
+                    }
+                </script>
             </div>
             <div  style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">
                 <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
@@ -209,5 +256,6 @@
             </div>
 
         </nav>
+
     </body>
 </html>

@@ -195,23 +195,25 @@
                                             </div>
                                             <%}%>
                                         </td>
-                                        <%if(s!=null){
-                                        if(s.equals("admin")){%>
+
                                         <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
                                             <a href="assignmentedit?id=<%=a.getId()%>&mada=<%=request.getAttribute("mada")%>"" class="myedit" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-pen-to-square"></i>
-                                                Edit</a>
-
+                                                Edit
+                                            </a>
+                                            <%if(s!=null){
+                                            if(s.equals("admin")){%>
                                             <a href="#" onclick="doDelete('<%=a.getId()%>', '<%=a.getMada()%>')" class="mydelete" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-trash"></i>
-                                                Delete</a>
-
+                                                Delete
+                                            </a>
+                                            <%}}%>
                                             <a href="work?idpc=<%=a.getId()%>&mapb=<%=a.getMapb()%>&mada=<%=a.getMada()%>" class="mystatus" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-user"></i>
                                                 Watch Task</a>
                                         </td>  
-                                        <%}}%>
+
                                         <%}%>
                                 </tbody>
                             </table>

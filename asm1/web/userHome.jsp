@@ -82,7 +82,9 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Status
                                     </th>
-
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Action
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -122,7 +124,15 @@
                                             Chưa hoàn thành
                                         </div>
                                         <%}%>
-                                    </td>                                  
+                                    </td> 
+                                    <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+
+                                        <a href="workedit?mada=<%=w.getMada()%>&id=<%=w.getId()%>&mapb=<%=w.getMapb()%>&idpc=<%=w.getIdpc()%>" class="myedit" style="display: flex;align-items: center;">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            Edit
+                                        </a>                                        
+
+                                    </td> 
                                 </tr>
                                 <%} %>
                             </tbody>

@@ -50,7 +50,7 @@ public class AssignmentDAO extends DBContext {
                 + "FROM dbo.PHONGBAN AS PB\n"
                 + "INNER JOIN dbo.PHANCONG AS PC ON PB.MAPB = PC.MAPB\n"
                 + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA WHERE PC.MADA= ? \n"
-                + "ORDER BY PC.MAPB";
+                + "ORDER BY NGAYBATDAU DESC";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -80,7 +80,7 @@ public class AssignmentDAO extends DBContext {
                 + "FROM dbo.PHONGBAN AS PB\n"
                 + "INNER JOIN dbo.PHANCONG AS PC ON PB.MAPB = PC.MAPB\n"
                 + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA WHERE PC.MAPB = ? \n"
-                + "ORDER BY PC.MADA";
+                + "ORDER BY NGAYBATDAU DESC";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -189,7 +189,7 @@ public class AssignmentDAO extends DBContext {
                 + "FROM dbo.PHANCONG AS PC\n"
                 + "INNER JOIN dbo.CONGVIEC AS CV ON PC.ID = CV.IDPC\n"
                 + "INNER JOIN dbo.NHANVIEN AS NV ON CV.MANV = NV.MANV\n"
-                + "WHERE CV.IDPC=? AND PC.MAPB=?";
+                + "WHERE CV.IDPC=? AND PC.MAPB=? ORDER BY CV.NGAYBATDAU DESC";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -223,7 +223,7 @@ public class AssignmentDAO extends DBContext {
                 + "INNER JOIN dbo.CONGVIEC AS CV ON PC.ID = CV.IDPC\n"
                 + "INNER JOIN dbo.NHANVIEN AS NV ON CV.MANV = NV.MANV\n"
                 + "INNER JOIN dbo.DU_AN AS DA ON PC.MADA = DA.MADA\n"
-                + "WHERE CV.MANV=?";
+                + "WHERE CV.MANV=? ORDER BY CV.NGAYBATDAU DESC";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);

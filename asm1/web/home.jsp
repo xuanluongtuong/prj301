@@ -190,7 +190,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <li id="the_object"><a href="project">Project</a></li>                    
                     <li id="the_object"><a href="resource">Resource</a></li>
                     <li id="the_object"><a href="customer">Customer</a></li>
-                    <li id="the_object"><a href="depart">Employee</a></li>
+                    <li id="the_object"><a href="employ">Employee</a></li>
 
                     <%if(s!=null){
                         if(s.equals("admin")){%>
@@ -260,7 +260,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                     </li>
                 </a>
-                <a href="depart">
+                <a href="employ">
                     <li class="mysub_menu">
                         <div class="mysub_menu_title">Employee</div>
                         <div class="mysub_menu_logo">
