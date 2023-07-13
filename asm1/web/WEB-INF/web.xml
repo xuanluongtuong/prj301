@@ -200,6 +200,10 @@
         <servlet-name>SearchDraftServlet</servlet-name>
         <servlet-class>DraftController.SearchDraftServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EmployeeInfoServlet</servlet-name>
+        <servlet-class>EmployeeController.EmployeeInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -399,6 +403,10 @@
     <servlet-mapping>
         <servlet-name>SearchDraftServlet</servlet-name>
         <url-pattern>/searchdr</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeInfoServlet</servlet-name>
+        <url-pattern>/employinfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

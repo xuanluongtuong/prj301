@@ -166,6 +166,36 @@ public class EmployeeDAO extends DBContext {
         }
         return null;
     }
+    
+    public Employee getEmployeeByEmail(String mail) {
+
+        try {
+            String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL \n"
+                    + "from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
+                    + "on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where EMAIL=?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, mail);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Employee em = new Employee();
+                em.setMaNV(rs.getInt("MANV"));
+                em.setHoVaTen(rs.getString("HO_VA_TEN"));
+                em.setGt(rs.getInt("PHAI"));
+                em.setNgaySinh(rs.getDate("NGAYSINH"));
+                em.setDiaChi(rs.getString("DIACHI"));
+                em.setSDT(rs.getString("SDT"));
+                em.setEmail(rs.getString("EMAIL"));
+                em.setViTri(rs.getString("VITRI"));
+                em.setPhongBan(rs.getString("TENPB"));
+                em.setLuong(rs.getFloat("LUONG"));
+                em.setMaql(rs.getInt("MAQL"));
+                return em;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
 
     //them 
     public void insertEmployee(Employee em, int mapb) {

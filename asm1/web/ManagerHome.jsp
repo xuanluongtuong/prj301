@@ -182,28 +182,29 @@
         <nav style="display: flex;justify-content: space-between;align-items: center;">
             <div style="display: flex;align-items: center;">
                 <div class="myhome">
-                    
+
                     <img src="img/home1.png" alt="">                    
                     <a href="assignmentmanager?email=<%=session.getAttribute("email")%>">Home</a>
-                    
+
                 </div>
                 <ul >
-                    <%if(s!=null){
-                        if(s.equals("admin")){%>
 
-                    <li id="the_object"><a href="assignment">Assignment</a></li>
-                        <%}}%>                    
+
+                    <li id="the_object"><a href="assignment">Assignment</a></li>                                           
                     <li id="the_object"><a href="project">Project</a></li>                    
                     <li id="the_object"><a href="resource">Resource</a></li>
-                    <li id="the_object"><a href="customer">Customer</a></li>
-                    <li id="the_object"><a href="employ">Employee</a></li>
+                    <li id="the_object"><a href="customer">Customer</a></li>                    
                     <li id="the_object"><a href="changepwd">Change Password</a></li>
                 </ul>
             </div>
             <div  style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">
-                <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
-                </i>
-                <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
+                <%if(!s.equals("admin")){%>
+                <a href="employinfo" style="display: flex; align-items: center; text-decoration: none;">
+                    <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
+                    </i>
+                    <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
+                </a>
+                <%}%>
                 <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
                     <div id="the_logout" style="margin-right: 5px;">&nbsp;| Log out
                     </div>
@@ -215,14 +216,14 @@
 
         <!-- menu -->
         <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
-            
+
             <div class="mylist">                
                 <h4 style="margin: 0 10px 0 30px; color: #8b00a3;"> Assignment List </h4>
                 <div class="mycontent">
 
                     <div style="margin: 20px 0 0 0;">  
                         <%  List<Assignment> list = (ArrayList<Assignment>) request.getAttribute("list");%>
-                        
+
                         <%if(list.size()==0){%>
                         <div >
                             <h4 style="color: #ad00ad;">Your Department have no Assignment</h4>                                    
@@ -310,7 +311,7 @@
                                         <%if(s!=null){
                                         if(s.equals("admin") || s.equals("manager")){%>
                                         <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
-                                            
+
                                             <a href="assignmentedit?id=<%=a.getId()%>&mada=<%=a.getMada()%>"" class="myedit" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                                 Edit
@@ -319,7 +320,7 @@
                                             <a href="#" onclick="doDelete('<%=a.getId()%>', '<%=a.getMada()%>')" class="mydelete" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-trash"></i>
                                                 Delete</a>
-                                            <%}%>
+                                                <%}%>
                                             <a href="work?idpc=<%=a.getId()%>&mapb=<%=a.getMapb()%>&mada=<%=a.getMada()%>" class="mystatus" style="display: flex;align-items: center;">
                                                 <i class="fa-solid fa-user"></i>
                                                 Watch Task</a>

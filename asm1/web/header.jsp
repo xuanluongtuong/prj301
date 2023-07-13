@@ -245,9 +245,17 @@
                 </script>
             </div>
             <div  style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">
+                <%if(!s.equals("admin")){%>
+                <a href="employinfo" style="display: flex; align-items: center; text-decoration: none;">
+                    <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
+                    </i>
+                    <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
+                </a>
+                <%}else{%>
                 <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
                 </i>
                 <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
+                <%}%>
                 <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
                     <div id="the_logout" style="margin-right: 5px;">&nbsp;| Log out
                     </div>

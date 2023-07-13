@@ -249,7 +249,7 @@
 
                     <div style="display: flex;align-items: center;justify-content: space-between;">
                         <div>
-                            <h4 style="color: red; padding: 20px;">Can not find any Employee.</h4>
+                            <h4 style="color: rgb(140, 0, 159); padding: 20px;">Can not find any Employee.</h4>
                         </div>                        
                     </div>
                     <%}%>
