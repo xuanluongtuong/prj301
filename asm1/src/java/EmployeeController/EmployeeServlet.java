@@ -38,7 +38,7 @@ public class EmployeeServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-
+        session.removeAttribute("search");        
         String mapb = request.getParameter("maPB");
         if (mapb == null) {
             mapb = "1";

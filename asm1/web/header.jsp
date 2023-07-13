@@ -129,10 +129,12 @@
             nav ul li a:hover {
                 /* background-color: #333; */
                 color: #f1e871;
+                
             }
 
             li#the_object a.active {
-                color: yellow;
+                color: rgb(79, 222, 254);
+                font-weight: 600;
             }
 
             @media screen and (max-width: 890px) {

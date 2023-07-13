@@ -64,22 +64,21 @@ public class SearchEmployeeServlet extends HttpServlet {
         String search = request.getParameter("search");
         String mapb = request.getParameter("mapb");
         DepartmentDAO department = new DepartmentDAO();
-        
+
         HttpSession session = request.getSession();
-        Department dp=department.getDepartByID(Integer.parseInt((String) session.getAttribute("mapb")));
-        
+        Department dp;
+
         session.removeAttribute("list");
-        EmployeeDAO nv = new EmployeeDAO();        
+        EmployeeDAO nv = new EmployeeDAO();
         List<Employee> list;
-        if(mapb==null){
-            list = nv.getEmListBySearch(Integer.parseInt((String) session.getAttribute("mapb")), search);
-        }else{
-            list = nv.getEmListBySearch(Integer.parseInt(mapb), search);
-            dp = department.getDepartByID(Integer.parseInt(mapb));
-        }
-        
-        session.setAttribute("department", dp);
-        
+
+        list = nv.getEmListBySearch(Integer.parseInt(mapb), search);
+        dp = department.getDepartByID(Integer.parseInt(mapb));
+
+        request.setAttribute("department", dp);
+        Employee mn = department.getManager(dp.getMaQL());
+        request.setAttribute("emql", mn);
+
         session.setAttribute("list", list);
         session.setAttribute("search", search);
 //        response.sendRedirect("EmListSearch.jsp");

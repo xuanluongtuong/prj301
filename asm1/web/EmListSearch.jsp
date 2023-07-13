@@ -63,16 +63,16 @@
 
                 <%
                     Employee e = new Employee();
-                    if(session.getAttribute("emql") != null){
-                        e = (Employee)session.getAttribute("emql");  
-                    }
+                    
+                    e = (Employee)request.getAttribute("emql");  
+                    
                 %>
 
                 <div class="myhead_title_table" style="margin-bottom: 25px;">
                     <div style="color: rgb(0, 148, 156);"><h3 style="margin-left: 30px;">Department:</h3>
                         <div style="margin-left: 70px;">
-                            <% Department depart = (Department)session.getAttribute("department"); %>
-                            Department Name: <%=session.getAttribute("tenPb")%></br>                            
+                            <% Department depart = (Department)request.getAttribute("department"); %>
+                            Department Name: <%=depart.getTenPB()%></br>                            
                             Address: <%=depart.getDiaDiem()%></br>
                             Manager ID: <%=e.getMaNV()%></br>
                             Manager Name: <%=e.getHoVaTen()%>
@@ -89,7 +89,7 @@
                             <div style="display: flex;">
 
                                 <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="${search}" />
-
+                                <input type="hidden" name="mapb" value="<%=depart.getMaPB()%>" />
                                 <button type="submit" class="btn btn-outline-primary">search</button>
 
                             </div>

@@ -61,7 +61,12 @@
             </div>
             <div class="mylist">  
 
-
+                <%
+                    Employee e = new Employee();
+                    if(session.getAttribute("emql") != null){
+                        e = (Employee)session.getAttribute("emql");  
+                    }
+                %>
 
                 <div class="myhead_title_table" style="margin-bottom: 25px;">
                     <div style="color: rgb(0, 148, 156);"><h3 style="margin-left: 30px;">Department:</h3>
@@ -69,6 +74,8 @@
                             <% Department depart = (Department)session.getAttribute("department"); %>
                             Department Name: <%=session.getAttribute("tenPb")%></br>                            
                             Address: <%=depart.getDiaDiem()%></br>
+                            Manager ID: <%=e.getMaNV()%></br>
+                            Manager Name: <%=e.getHoVaTen()%>
                         </div>
                     </div>                    
                 </div>
@@ -82,7 +89,7 @@
                             <div style="display: flex;">
 
                                 <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="${search}" />
-
+                                <input type="hidden" name="mapb" value="<%=depart.getMaPB()%>" />                                
 
                                 <button type="submit" class="btn btn-outline-primary">search</button>
 
@@ -120,13 +127,7 @@
                                 }
                             </script>
                         </div>
-                    </div>
-                    <%
-                    Employee e = new Employee();
-                    if(session.getAttribute("emql") != null){
-                        e = (Employee)session.getAttribute("emql");  
-                    }
-                    %>
+                    </div>                    
 
                     <% if(list.size() >= 1){ %>
 
@@ -245,21 +246,7 @@
 
                     </div> 
                     <%}%>
-                    <% }else{ %>
-                    <input type="hidden" name="TENPB" value="<%=session.getAttribute("tenPb")%>">
-
-                    <div style="display: flex;align-items: center;justify-content: space-between;">
-                        <div>
-                            <h4 style="color: red; padding: 20px;">This department does not have any Employee.</h4>
-                        </div>
-
-                        <div style="padding-right: 40px;">
-                            <button type="submit" style="width: 160px; height: 40px; border-radius: 10px; border: rgb(0, 135, 202) 3px solid; background: linear-gradient(135deg, #30CFD0 0%, #330867 100%);">
-                                <a href="addem?id=<%=session.getAttribute("mapb")%>" style="text-align: center;color: white;text-decoration: none;">Add Manager</a>
-                            </button>
-                        </div>
-                    </div>
-                    <%}%>
+                    <% }%>
                 </div>
             </div>
         </div>
