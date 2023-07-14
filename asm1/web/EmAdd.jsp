@@ -96,10 +96,8 @@
                             <div class="form-group">
                                 <label class="form-label" for="VITRI">Position</label>
                                 <input class="form-input" type="text" id="VITRI" name="VITRI" required />
-                            </div>
-                            <input  type="hidden"  name="MAQL"  value="<%=session.getAttribute("maql")%>"/>
-                            <input  type="hidden"  name="PHONGBAN"  value="<%=session.getAttribute("tenPb")%>"/>
-                            <input  type="hidden"  name="MAPB"  value="<%=session.getAttribute("mapb")%>"/>
+                            </div>                            
+                            <input  type="hidden"  name="MAPB"  value="${mapb}"/>
                             <div class="form-group">
                                 <label class="form-label" for="LUONG">Salary</label>
                                 <input class="form-input" type="number" id="LUONG" name="LUONG" required />

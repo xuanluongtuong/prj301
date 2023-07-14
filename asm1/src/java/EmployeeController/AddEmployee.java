@@ -59,7 +59,10 @@ public class AddEmployee extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       response.sendRedirect("EmAdd.jsp");
+        String mapb = request.getParameter("mapb");
+        request.setAttribute("mapb", mapb);
+//        response.sendRedirect("EmAdd.jsp");
+        request.getRequestDispatcher("EmAdd.jsp").forward(request, response);
     } 
 
     /** 
@@ -78,9 +81,7 @@ public class AddEmployee extends HttpServlet {
         String diaChi = request.getParameter("DIACHI");
         String SDT = request.getParameter("SDT");
         String Email = request.getParameter("EMAIL");
-        String viTri = request.getParameter("VITRI");
-        String maql = request.getParameter("MAQL");
-        String phongban = request.getParameter("PHONGBAN");
+        String viTri = request.getParameter("VITRI");       
         String mapb = request.getParameter("MAPB");
         String luong = request.getParameter("LUONG");
         
@@ -95,14 +96,14 @@ public class AddEmployee extends HttpServlet {
         em.setSDT(SDT);
         em.setEmail(Email);
         em.setViTri(viTri);
-        em.setMaql(Integer.parseInt(maql));
-        em.setPhongBan(phongban);        
+        em.setMapb(Integer.parseInt(mapb));
         em.setLuong(Float.parseFloat(luong));
-        employ.insertEmployee(em,Integer.parseInt(mapb));
-        List<Employee> list = employ.getEmListByID(Integer.parseInt(mapb));
-        HttpSession session = request.getSession();
-        session.setAttribute("list", list);
-        response.sendRedirect("EmList.jsp");
+        employ.insertEmployee(em);
+//        List<Employee> list = employ.getEmListByID(Integer.parseInt(mapb));
+//        HttpSession session = request.getSession();
+//        session.setAttribute("list", list);
+//        response.sendRedirect("EmList.jsp");
+        response.sendRedirect("employ?maPB="+em.getMapb());
     }
 
     /** 
