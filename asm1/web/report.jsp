@@ -56,22 +56,23 @@
                         <p style="font-size: 20px; min-height: 200px; border: rgb(72, 72, 72) 1px solid;border-radius: 5px;margin: 0 10px 0 0;">
                             <%=r.getChiTiet()%>
                         </p>
+                        <%if(s.equals("user")){%>
+                        <div class="edit_form" style="margin:10px 0 0 10px ;">
+                            <a href="reportedit?id=<%=r.getId()%>&macv=${macv}&idpc=${idpc}&mada=${mada}&mapb=${mapb}" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;text-decoration: none">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                Edit</a>
+
+<!--                    <a href="#" onclick="doDelete('<%=r.getId()%>')" class="mydelete" style="color: #ff0084;display: flex;align-items: center;text-decoration: none">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete</a>-->
+                        </div>
+                        <%}%>
                     </div>
                     <div style="width: 40%;">
                         <img style="width: 100%;" src="<%=r.getImg()%>" alt="alt"/>
                     </div>                
                 </div>
-                <%if(s.equals("user")){%>
-                <div class="edit_form" style="margin:0 0 0 10px ;">
-                    <a href="reportedit?id=<%=r.getId()%>&macv=${macv}&idpc=${idpc}&mada=${mada}&mapb=${mapb}" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;text-decoration: none">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        Edit</a>
 
-                    <a href="#" onclick="doDelete('<%=r.getId()%>')" class="mydelete" style="color: #ff0084;display: flex;align-items: center;text-decoration: none">
-                        <i class="fa-solid fa-trash"></i>
-                        Delete</a>
-                </div>
-                <%}%>
 
                 <%}else{%>
                 <div style="display: flex;align-items: center;justify-content: space-between;">
@@ -81,7 +82,7 @@
                 </div>
                 <%}%>
                 <%if(s.equals("admin") || s.equals("manager")){%>
-                <div style="margin: 10px;">
+                <div style="margin: -50px 0 0 10px;">
                     <form action="duyetwork" method="get" >                                
                         <label class="form-label">Accept Report</label>
                         <input type="hidden" name="macv" value="${macv}"/>

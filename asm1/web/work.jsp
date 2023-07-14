@@ -175,26 +175,28 @@
                                             <i class="fa-solid fa-trash"></i>
                                             Delete
                                         </a>
-
+                                        <a href="report?macv=<%=w.getId()%>&mada=<%=request.getAttribute("mada")%>&mapb=<%=request.getAttribute("mapb")%>&idpc=<%=request.getAttribute("idpc")%>" class="mystatus" style="display: flex;align-items: center;color: rgb(77, 0, 128);">
+                                            <i class="fa-solid fa-clipboard"></i>
+                                            Watch Report
+                                        </a>
                                         <%}%>
                                         <%if(s.equals("user")){%>
                                         <%ReportDAO rDAO = new ReportDAO();
                                             Report r = rDAO.getReportByMacv(w.getId());
                                             if(r==null){
                                         %>
-                                        
+
                                         <a href="reportadd?macv=<%=w.getId()%>" class="mystatus" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-file-pen"></i>
                                             Submit Report
                                         </a> 
-                                        <%}%>
-                                        <%}%>
-                                        
+                                        <%}else{%>
                                         <a href="report?macv=<%=w.getId()%>&mada=<%=request.getAttribute("mada")%>&mapb=<%=request.getAttribute("mapb")%>&idpc=<%=request.getAttribute("idpc")%>" class="mystatus" style="display: flex;align-items: center;color: rgb(77, 0, 128);">
                                             <i class="fa-solid fa-clipboard"></i>
                                             Watch Report
                                         </a>
-
+                                        <%}%>
+                                        <%}%>
                                         <%}%>
 
                                     </td>  

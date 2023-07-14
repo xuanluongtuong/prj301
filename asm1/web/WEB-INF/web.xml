@@ -220,6 +220,10 @@
         <servlet-name>ReportEditServlet</servlet-name>
         <servlet-class>ReportController.ReportEditServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReportDeleteServlet</servlet-name>
+        <servlet-class>ReportController.ReportDeleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -439,6 +443,10 @@
     <servlet-mapping>
         <servlet-name>ReportEditServlet</servlet-name>
         <url-pattern>/reportedit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportDeleteServlet</servlet-name>
+        <url-pattern>/reportdelete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

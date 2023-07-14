@@ -143,7 +143,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </style>
         <%String s=(String)session.getAttribute("role");
             if(s!=null){
-                if(!s.equals("admin") && !s.equals("user") && !s.equals("manager")){
+                if(!s.equals("admin")){
                     response.sendRedirect("login.jsp");
                 }
             }else{
