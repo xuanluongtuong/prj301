@@ -25,11 +25,21 @@
         <title>LTX Manager</title>        
         <%
             List<Employee> list = new ArrayList<>();
-                if(session.getAttribute("list") != null){
-                    list = (ArrayList<Employee>) session.getAttribute("list");
+                if(request.getAttribute("list") != null){
+                    list = (ArrayList<Employee>) request.getAttribute("list");
                     
-                }
-                                      
+                }else{
+                    list = (ArrayList<Employee>) session.getAttribute("list");
+                }                                      
+        %>
+        <% Department depart;
+                                
+            if(request.getAttribute("department") != null){
+            depart = (Department)request.getAttribute("department");
+
+            }else{
+                depart = (Department)session.getAttribute("department");
+            }
         %>
         <script>
             function doDelete(id) {
@@ -51,7 +61,7 @@
                 <div style="display: flex;justify-content: right;">
                     <%if(s!=null){
                     if(s.equals("admin")){%>
-                    <a href="addem" style="text-decoration: none;margin: 0px 45px 0px 0;font-size: 20px;color: rgb(133, 0, 159);">
+                    <a href="addem?mapb=<%=depart.getMaPB()%>" style="text-decoration: none;margin: 0px 45px 0px 0;font-size: 20px;color: rgb(133, 0, 159);">
                         <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
                         Create Employee
                     </a>
@@ -59,23 +69,15 @@
                 </div>
 
             </div>
-            <div class="mylist">  
-
-                <%
-                    Employee e = new Employee();
-                    if(session.getAttribute("emql") != null){
-                        e = (Employee)session.getAttribute("emql");  
-                    }
-                %>
+            <div class="mylist">                
 
                 <div class="myhead_title_table" style="margin-bottom: 25px;">
                     <div style="color: rgb(0, 148, 156);"><h3 style="margin-left: 30px;">Department:</h3>
                         <div style="margin-left: 70px;">
-                            <% Department depart = (Department)session.getAttribute("department"); %>
-                            Department Name: <%=session.getAttribute("tenPb")%></br>                            
+
+                            Department Name: <%=depart.getTenPB()%></br>                            
                             Address: <%=depart.getDiaDiem()%></br>
-                            Manager ID: <%=e.getMaNV()%></br>
-                            Manager Name: <%=e.getHoVaTen()%>
+
                         </div>
                     </div>                    
                 </div>
@@ -217,14 +219,14 @@
                                 <%if(s!=null){
                                     if(s.equals("admin")){%>
                                 <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
-                                    <%if(nv.getMaNV() != e.getMaNV()){%>
+                                    <%if(nv.getMaNV() != nv.getMaql()){%>
                                     <a href="changeposanddepart?id=<%=nv.getMaNV()%>" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-arrows-rotate"></i>
                                         Change
                                     </a>
                                     <%}%>
-                                    <%if(nv.getMaNV() == e.getMaNV()){%>
-                                    <a href="changemanager?id=<%=e.getMaNV()%>" style="display: flex;align-items: center;">
+                                    <%if(nv.getMaNV() == nv.getMaql()){%>
+                                    <a href="changemanager?id=<%=nv.getMaql()%>" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-arrows-rotate"></i>
                                         Change
                                     </a>

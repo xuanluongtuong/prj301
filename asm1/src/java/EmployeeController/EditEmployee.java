@@ -84,7 +84,6 @@ public class EditEmployee extends HttpServlet {
             throws ServletException, IOException {
         String manv = request.getParameter("MANV");
         String hoVaTen = request.getParameter("HOVATEN");
-        String ten = request.getParameter("TEN");
         String phai = request.getParameter("PHAI");
         String ngaySinh = request.getParameter("NGAYSINH");
         String diaChi = request.getParameter("DIACHI");
@@ -99,31 +98,32 @@ public class EditEmployee extends HttpServlet {
         try {
             EmployeeDAO employ = new EmployeeDAO();
             Employee em = new Employee();
-
+//
             em.setMaNV(Integer.parseInt(manv));
             em.setHoVaTen(hoVaTen);
-
+            
             em.setGt(Integer.parseInt(phai));
             em.setNgaySinh(Date.valueOf(ngaySinh));
             em.setDiaChi(diaChi);
             em.setSDT(SDT);
             em.setEmail(Email);
             em.setViTri(viTri);
+            em.setMapb(Integer.parseInt(mapb));
             em.setMaql(Integer.parseInt(maql));
             em.setPhongBan(phongban);
-
+            
             em.setLuong(Float.parseFloat(luong));
 
             employ.editEmployee(em, Integer.parseInt(mapb));
-            List<Employee> list = employ.getEmListByID(Integer.parseInt(mapb));
-            HttpSession session = request.getSession();
-            DepartmentDAO department = new DepartmentDAO();
-            Employee mn = department.getManager(Integer.parseInt(maql));
-            Department dp = department.getDepartByID(Integer.parseInt(mapb));
-            session.setAttribute("department", dp);
-            session.setAttribute("emql", mn);
-            session.setAttribute("list", list);
-            request.getRequestDispatcher("EmList.jsp").forward(request, response);
+//            List<Employee> list = employ.getEmListByID(Integer.parseInt(mapb));
+//            HttpSession session = request.getSession();
+//            DepartmentDAO department = new DepartmentDAO();
+//            Employee mn = department.getManager(Integer.parseInt(maql));
+//            Department dp = department.getDepartByID(Integer.parseInt(mapb));
+//            session.setAttribute("department", dp);
+//            session.setAttribute("emql", mn);
+//            session.setAttribute("list", list);
+            response.sendRedirect("employ?maPB="+em.getMapb());
         } catch (Exception e) {
             System.out.println(e);
         }

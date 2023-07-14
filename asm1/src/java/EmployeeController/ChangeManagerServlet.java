@@ -129,13 +129,13 @@ public class ChangeManagerServlet extends HttpServlet {
         DepartmentDAO department = new DepartmentDAO();
         Employee mn = department.getManager(Integer.parseInt(newId));
         Department dp = department.getDepartByID(Integer.parseInt(mapb));
-        session.setAttribute("department", dp);
-        session.setAttribute("emql", mn);
+        request.setAttribute("department", dp);
+        request.setAttribute("emql", mn);
 
-        session.removeAttribute("list");
-        session.setAttribute("list", list);
-        response.sendRedirect("EmList.jsp");
-
+        request.removeAttribute("list");
+        request.setAttribute("list", list);
+//        response.sendRedirect("EmList.jsp");
+        request.getRequestDispatcher("EmList.jsp").forward(request, response);
     }
 
     /**

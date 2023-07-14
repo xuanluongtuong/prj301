@@ -140,7 +140,7 @@ public class EmployeeDAO extends DBContext {
     public Employee getEmployeeByID(int manv) {
 
         try {
-            String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL \n"
+            String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL, dbo.NHANVIEN.MAPB \n"
                     + "from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
                     + "on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where MANV=?";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -159,6 +159,7 @@ public class EmployeeDAO extends DBContext {
                 em.setPhongBan(rs.getString("TENPB"));
                 em.setLuong(rs.getFloat("LUONG"));
                 em.setMaql(rs.getInt("MAQL"));
+                em.setMapb(rs.getInt("MAPB"));
                 return em;
             }
         } catch (SQLException e) {
@@ -198,7 +199,7 @@ public class EmployeeDAO extends DBContext {
     }
 
     //them 
-    public void insertEmployee(Employee em, int mapb) {
+    public void insertEmployee(Employee em) {
         String sql = "INSERT INTO dbo.NHANVIEN (HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, MAPB, LUONG)\n"
                 + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         try {
@@ -210,7 +211,7 @@ public class EmployeeDAO extends DBContext {
             st.setString(5, em.getSDT());
             st.setString(6, em.getEmail());
             st.setString(7, em.getViTri());
-            st.setInt(8, mapb);
+            st.setInt(8, em.getMapb());
             st.setFloat(9, em.getLuong());
             st.executeUpdate();
         } catch (SQLException e) {

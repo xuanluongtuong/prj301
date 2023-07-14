@@ -102,17 +102,17 @@ public class ChangePosAndDepartServlet extends HttpServlet {
         List<Employee> list = nv.getEmListByID(Integer.parseInt(newMapb));        
         
         HttpSession session = request.getSession();
-        session.setAttribute("list", list);
-        session.setAttribute("mapb", newMapb);
-        session.setAttribute("tenPb", d.getTenPB());
-        session.setAttribute("maql", d.getMaQL());        
+        request.setAttribute("list", list);
+        request.setAttribute("mapb", newMapb);
+        request.setAttribute("tenPb", d.getTenPB());
+        request.setAttribute("maql", d.getMaQL());        
         
         Employee mn = dpDAO.getManager(d.getMaQL());
                 
-        session.setAttribute("department", d);
-        session.setAttribute("emql", mn);
+        request.setAttribute("department", d);
+        request.setAttribute("emql", mn);
 
-        response.sendRedirect("EmList.jsp");  
+        request.getRequestDispatcher("EmList.jsp").forward(request, response);  
     }
 
     /** 

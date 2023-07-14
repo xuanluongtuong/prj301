@@ -99,9 +99,9 @@
                                 <label class="form-label" for="VITRI">Position</label>
                                 <input class="form-input" type="text" id="VITRI" name="VITRI" value="<%=em.getViTri()%>" required />
                             </div>
-                            <input  type="hidden"  name="MAQL"  value="<%=session.getAttribute("maql")%>"/>
-                            <input  type="hidden"  name="PHONGBAN"  value="<%=session.getAttribute("tenPb")%>"/>
-                            <input  type="hidden"  name="MAPB"  value="<%=session.getAttribute("mapb")%>"/>
+                            <input  type="hidden"  name="MAQL"  value="<%=em.getMaql()%>"/>
+                            <input  type="hidden"  name="PHONGBAN"  value="<%=em.getPhongBan()%>"/>
+                            <input  type="hidden"  name="MAPB"  value="<%=em.getMapb()%>"/>
                             <div class="form-group">
                                 <label class="form-label" for="LUONG">Salary</label>
                                 <input class="form-input" type="number" id="LUONG" name="LUONG" value="<%=em.getLuong()%>" required />

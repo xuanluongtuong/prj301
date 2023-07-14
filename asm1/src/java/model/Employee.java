@@ -23,6 +23,7 @@ public class Employee {
     float luong;
     int maql;
     String status;
+    int mapb;
 
     public Employee() {
     }
@@ -127,5 +128,13 @@ public class Employee {
     public void setStatus(String status) {
         this.status = status;
     }    
+
+    public int getMapb() {
+        return mapb;
+    }
+
+    public void setMapb(int mapb) {
+        this.mapb = mapb;
+    }
     
 }

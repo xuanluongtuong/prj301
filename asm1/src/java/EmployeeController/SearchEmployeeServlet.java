@@ -76,8 +76,8 @@ public class SearchEmployeeServlet extends HttpServlet {
         dp = department.getDepartByID(Integer.parseInt(mapb));
 
         request.setAttribute("department", dp);
-        Employee mn = department.getManager(dp.getMaQL());
-        request.setAttribute("emql", mn);
+//        Employee mn = department.getManager(dp.getMaQL());
+//        request.setAttribute("emql", mn);
 
         session.setAttribute("list", list);
         session.setAttribute("search", search);
