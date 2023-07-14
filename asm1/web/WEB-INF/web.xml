@@ -204,6 +204,22 @@
         <servlet-name>EmployeeInfoServlet</servlet-name>
         <servlet-class>EmployeeController.EmployeeInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReportServlet</servlet-name>
+        <servlet-class>ReportController.ReportServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DuyetWorkServlet</servlet-name>
+        <servlet-class>AssignmentController.DuyetWorkServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportAddServlet</servlet-name>
+        <servlet-class>ReportController.ReportAddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportEditServlet</servlet-name>
+        <servlet-class>ReportController.ReportEditServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin</servlet-name>
         <url-pattern>/sign</url-pattern>
@@ -407,6 +423,22 @@
     <servlet-mapping>
         <servlet-name>EmployeeInfoServlet</servlet-name>
         <url-pattern>/employinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/report</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DuyetWorkServlet</servlet-name>
+        <url-pattern>/duyetwork</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportAddServlet</servlet-name>
+        <url-pattern>/reportadd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportEditServlet</servlet-name>
+        <url-pattern>/reportedit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

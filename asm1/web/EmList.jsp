@@ -141,39 +141,45 @@
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 50px">
+                                    <th scope="col" class="px-3 py-3 bg-gray-200 dark:bg-gray-800" >
                                         ID
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 170px;">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" >
                                         Full name
                                     </th>
 
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 50px;">
+                                    <th scope="col" class="px-2 py-3 bg-gray-200 dark:bg-gray-800">
                                         Gender
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 130px">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" >
                                         Date of birth
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 240px">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" >
                                         Address
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 120px">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" >
                                         Phone Number
                                     </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 100px">
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" >
                                         Email
+                                    </th>
+                                    <th scope="col" class="px-2 py-3 bg-gray-200 dark:bg-gray-800" >
+                                        Manager ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                        Department
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Position
                                     </th>
 
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800" style="width: 50px">
+                                    <th scope="col" class="px-1 py-3 bg-gray-200 dark:bg-gray-800">
                                         Salary<br>
                                         (milions Dong)
                                     </th>
                                     <%if(s!=null){
                                         if(s.equals("admin")){%>
-                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800" style="width: 100px">
+                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
                                         Action
                                     </th>
                                     <%}}%>
@@ -183,14 +189,14 @@
                                 
                             %>
                             <tr class="border-b border-gray-50 dark:border-gray-800">
-                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                <td scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                     <%=nv.getMaNV()%>
                                 </td>
                                 <td class="px-6 py-4">
                                     <%=nv.getHoVaTen()%>
                                 </td>
 
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                <td class="px-3 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%if(nv.getGt()==1){
                                     %>
                                     Nam
@@ -210,10 +216,20 @@
                                     <%=nv.getEmail()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%=nv.getViTri()%>
+                                    <%if(nv.getMaNV() != nv.getMaql()){%>
+                                    <%=nv.getMaql()%>
+                                    <%}else{%>
+                                    
+                                    <%}%>
                                 </td>
-
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                    <%=nv.getPhongBan()%>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <%=nv.getViTri()%>
+                                </td>                                
+
+                                <td class="px-3 py-4 bg-gray-50 dark:bg-gray-800">
                                     <%=nv.getLuong()%>
                                 </td>
                                 <%if(s!=null){
@@ -235,9 +251,12 @@
                                         <i class="fa-solid fa-pen-to-square"></i>
                                         Edit</a>
 
+                                    <%if(nv.getMaNV() != nv.getMaql()){%>
                                     <a href="#" onclick="doDelete('<%=nv.getMaNV()%>')" class="mydelete" style="display: flex;align-items: center;">
                                         <i class="fa-solid fa-trash"></i>
-                                        Delete</a>
+                                        Delete
+                                    </a>
+                                    <%}%>
 
                                 </td>
                                 <%}}%>

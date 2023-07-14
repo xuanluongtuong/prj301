@@ -185,7 +185,7 @@ public class AssignmentDAO extends DBContext {
 
     public List<Work> getWorkByIdpcMapb(int idpc, int mapb) {
         List<Work> list = new ArrayList<>();
-        String sql = "SELECT CV.ID,CV.IDPC, MADA, PC.MAPB, HO_VA_TEN, CV.MANV, TEN_CONG_VIEC,CV.NGAYBATDAU, CV.NGAYKETTHUC, CV.TRANGTHAI\n"
+        String sql = "SELECT CV.ID,CV.IDPC, MADA, PC.MAPB, HO_VA_TEN, CV.MANV, TEN_CONG_VIEC,CV.NGAYBATDAU, CV.NGAYKETTHUC, CV.TRANGTHAI, CV.PHEDUYET\n"
                 + "FROM dbo.PHANCONG AS PC\n"
                 + "INNER JOIN dbo.CONGVIEC AS CV ON PC.ID = CV.IDPC\n"
                 + "INNER JOIN dbo.NHANVIEN AS NV ON CV.MANV = NV.MANV\n"
@@ -208,6 +208,7 @@ public class AssignmentDAO extends DBContext {
                 w.setStart(rs.getDate("NGAYBATDAU"));
                 w.setEnd(rs.getDate("NGAYKETTHUC"));
                 w.setTrangThai(rs.getInt("TRANGTHAI"));
+                w.setDuyet(rs.getInt("PHEDUYET"));
                 list.add(w);
             }
         } catch (SQLException e) {
@@ -218,7 +219,7 @@ public class AssignmentDAO extends DBContext {
 
     public List<Work> getWorkByManv(int manv) {
         List<Work> list = new ArrayList<>();
-        String sql = "SELECT CV.ID,CV.IDPC, PC.MADA,TENDA, PC.MAPB, HO_VA_TEN, CV.MANV, TEN_CONG_VIEC,CV.NGAYBATDAU, CV.NGAYKETTHUC, CV.TRANGTHAI\n"
+        String sql = "SELECT CV.ID,CV.IDPC, PC.MADA,TENDA, PC.MAPB, HO_VA_TEN, CV.MANV, TEN_CONG_VIEC,CV.NGAYBATDAU, CV.NGAYKETTHUC, CV.TRANGTHAI, CV.PHEDUYET\n"
                 + "FROM dbo.PHANCONG AS PC\n"
                 + "INNER JOIN dbo.CONGVIEC AS CV ON PC.ID = CV.IDPC\n"
                 + "INNER JOIN dbo.NHANVIEN AS NV ON CV.MANV = NV.MANV\n"
@@ -242,6 +243,7 @@ public class AssignmentDAO extends DBContext {
                 w.setStart(rs.getDate("NGAYBATDAU"));
                 w.setEnd(rs.getDate("NGAYKETTHUC"));
                 w.setTrangThai(rs.getInt("TRANGTHAI"));
+                w.setDuyet(rs.getInt("PHEDUYET"));
                 list.add(w);
             }
         } catch (SQLException e) {
@@ -340,8 +342,8 @@ public class AssignmentDAO extends DBContext {
     }
 
     public void insertWork(Work w) {
-        String sql = "INSERT INTO dbo.CONGVIEC (IDPC, MANV, TEN_CONG_VIEC,NGAYBATDAU,NGAYKETTHUC, TRANGTHAI)\n"
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO dbo.CONGVIEC (IDPC, MANV, TEN_CONG_VIEC,NGAYBATDAU,NGAYKETTHUC, TRANGTHAI, PHEDUYET)\n"
+                + "VALUES (?, ?, ?, ?, ?, ?, 2)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, w.getIdpc());
@@ -402,6 +404,19 @@ public class AssignmentDAO extends DBContext {
             st.setDate(4, w.getEnd());
             st.setInt(5, w.getTrangThai());
             st.setInt(6, w.getId());
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void duyetWork(int duyet, int macv) {
+        String sql = "UPDATE dbo.CONGVIEC SET PHEDUYET = ? WHERE ID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, duyet);            
+            st.setInt(2, macv);
             st.executeUpdate();
 
         } catch (SQLException e) {

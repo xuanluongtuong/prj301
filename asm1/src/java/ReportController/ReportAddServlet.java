@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package EmployeeController;
+package ReportController;
 
-import DAL.DepartmentDAO;
-import DAL.EmployeeDAO;
+import DAL.AssignmentDAO;
+import DAL.ReportDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,15 +13,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.List;
-import model.Department;
-import model.Employee;
+import java.time.LocalDateTime;
+import model.Report;
+import model.Work;
 
 /**
  *
  * @author admin
  */
-public class DeleteEmployee extends HttpServlet {
+public class ReportAddServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +40,10 @@ public class DeleteEmployee extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteEmployee</title>");
+            out.println("<title>Servlet ReportAddServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DeleteEmployee at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ReportAddServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,29 +60,16 @@ public class DeleteEmployee extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        int manv = Integer.parseInt(request.getParameter("id"));
+            throws ServletException, IOException {
+        String macv = request.getParameter("macv");
+        request.setAttribute("macv", macv);
         
-        EmployeeDAO em = new EmployeeDAO();
-        DepartmentDAO dd = new DepartmentDAO();
-        Department d = dd.getDepartByID(manv);
-        try {
-            Employee e = new Employee();
-            if (em.getEmployeeByID(manv) != null) {
-                e = em.getEmployeeByID(manv);
-                int mapb = d.getMaPB();                
-                em.deleteEmployee(manv);
-                List<Employee> list = em.getEmListByID(mapb);
-                HttpSession session = request.getSession();
-                session.setAttribute("department", d);
-                session.setAttribute("list", list);                
-                response.sendRedirect("EmList.jsp");
-            } else {
-                response.sendRedirect("EmList.jsp");
-            }
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+        AssignmentDAO aDAO = new AssignmentDAO();
+        Work w = aDAO.getWorkByID(Integer.parseInt(macv));
+        
+        request.setAttribute("tencv", w.getTen());
+//        response.sendRedirect("reportAdd.jsp");
+        request.getRequestDispatcher("reportAdd.jsp").forward(request, response);
     }
 
     /**
@@ -96,7 +83,36 @@ public class DeleteEmployee extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String macv = request.getParameter("macv");
+        String ten = request.getParameter("ten");
+        String noidung = request.getParameter("noidung");
+        String chitiet = request.getParameter("chitiet");
+        String img = request.getParameter("img");
+
+        LocalDateTime currentTime = LocalDateTime.now();
+        java.sql.Date sqlDate = java.sql.Date.valueOf(currentTime.toLocalDate());
+        
+        
+        ReportDAO rDAO = new ReportDAO();
+        Report r = new Report();
+        r.setIdcv(Integer.parseInt(macv));
+        r.setTen(ten);
+        
+        r.setTime(sqlDate);
+
+        r.setNoiDung(noidung);
+        r.setChiTiet(chitiet);
+        r.setImg(img);
+        
+        AssignmentDAO aDAO = new AssignmentDAO();
+        aDAO.duyetWork(2,Integer.parseInt(macv));
+        
+        rDAO.insertReport(r);
+
+        HttpSession session = request.getSession();
+        String email = (String) session.getAttribute("email");
+        response.sendRedirect("workemployee?email=" + email);
+
     }
 
     /**

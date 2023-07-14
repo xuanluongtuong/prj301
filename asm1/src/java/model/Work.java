@@ -22,6 +22,7 @@ public class Work {
     Date start;
     Date end;
     int trangThai;
+    int duyet;
 
     public Work() {
     }    
@@ -117,6 +118,13 @@ public class Work {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-    
+
+    public int getDuyet() {
+        return duyet;
+    }
+
+    public void setDuyet(int duyet) {
+        this.duyet = duyet;
+    }
     
 }

@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="model.*"%>
+<%@page import="DAL.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="jakarta.servlet.http.HttpSession"%>
@@ -69,7 +70,7 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Project Name (Click to see information of Project)
                                     </th>
-                                    
+
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Task
                                     </th>
@@ -100,7 +101,7 @@
                                     <td class="px-6 py-4">
                                         <a href="projectinfo?mada=<%=w.getMada()%>" style="text-decoration: none;"><%=w.getTenda()%></a>                                        
                                     </td>
-                                    
+
                                     <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
                                         <%=w.getTen()%>
                                     </td>
@@ -124,14 +125,40 @@
                                             Chưa hoàn thành
                                         </div>
                                         <%}%>
+                                        <%if(w.getDuyet()==1){%>
+                                        <div style="color: rgb(24, 202, 0);font-weight: 600;">
+                                            Đạt yêu cầu
+                                        </div>
+                                        <%}else if(w.getDuyet()==0){%>
+                                        <div style="color: rgb(174, 0, 81);font-weight: 600;">
+                                            Không đạt yêu cầu
+                                        </div>
+                                        <%}else{%>
+                                        <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                            Chờ duyệt
+                                        </div>
+                                        <%}%>                                       
                                     </td> 
                                     <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
                                         <a href="workedit?mada=<%=w.getMada()%>&id=<%=w.getId()%>&mapb=<%=w.getMapb()%>&idpc=<%=w.getIdpc()%>" class="myedit" style="display: flex;align-items: center;">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                             Edit
-                                        </a>                                        
-
+                                        </a>  
+                                        <%ReportDAO rDAO = new ReportDAO();
+                                            Report r = rDAO.getReportByMacv(w.getId());
+                                            if(r!=null){
+                                        %>
+                                        <a href="report?macv=<%=w.getId()%>" class="mystatus" style="display: flex;align-items: center;color: rgb(77, 0, 128);">
+                                            <i class="fa-solid fa-clipboard"></i>
+                                            Watch Report
+                                        </a>
+                                        <%}else{%>                                        
+                                        <a href="reportadd?macv=<%=w.getId()%>" class="mystatus" style="display: flex;align-items: center;">
+                                            <i class="fa-solid fa-file-pen"></i>
+                                            Submit Report
+                                        </a>
+                                        <%}%>
                                     </td> 
                                 </tr>
                                 <%} %>
