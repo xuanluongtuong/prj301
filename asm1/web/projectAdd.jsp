@@ -60,8 +60,8 @@
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
-                                <label class="form-label" for="TENKH">Customer Name</label>
-                                <input class="form-input" type="text" id="TENKH" name="TENKH" required />
+                                <label class="form-label" for="MAKH">Customer ID</label>
+                                <input class="form-input" type="text" id="MAKH" name="MAKH" required />
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="TENDA">Project Name</label>
@@ -92,23 +92,24 @@
                                     <option value="0">Đã hủy</option>
                                 </select>
                             </div>
-                            <!--                            <div class="form-group">
-                                                            <label class="form-label" >Image link</label>
-                                                            <input class="form-input" type="text" name="IMG" required />
-                                                        </div>-->
-                            <div class="form-group">                                
+                            <div class="form-group">
+                                <label class="form-label" >Image</label>
+                                <input class="form-input" type="text" name="IMG" required />
+                            </div>
+<!--                            <div class="form-group">                                
                                 <label class="form-label" >Upload new image</label>                                
                                 <input type="file" name="file" required />
-                            </div>
+                            </div>-->
                             <div class="form-button">
                                 <button class="btn-submit" type="submit" style="margin: 24px;">Submit</button>
                             </div>
                         </div>                        
                     </div>
-
-
-                </form>
+                    <h4 style="text-align: center; color: purple;">${requestScope.mes}</h4>
+                </form> 
+                
             </div>
+            
         </div>
         <!-- menu -->
 

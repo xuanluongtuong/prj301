@@ -82,7 +82,7 @@
                 </div>
                 <%}%>
                 <%if(s.equals("admin") || s.equals("manager")){%>
-                <div style="margin: -50px 0 0 10px;">
+                <div style="margin: -10px 0 0 10px;">
                     <form action="duyetwork" method="get" >                                
                         <label class="form-label">Accept Report</label>
                         <input type="hidden" name="macv" value="${macv}"/>

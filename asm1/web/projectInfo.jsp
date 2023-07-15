@@ -71,7 +71,10 @@
                                 </h3>
                             </div>
                             <div>
-                                Customer: <%=p.getTenKH()%>
+                                Customer ID: <%=p.getMakh()%>
+                            </div>
+                            <div>
+                                Customer: <%=p.getTenkh()%>
                             </div>
 
                             <div>

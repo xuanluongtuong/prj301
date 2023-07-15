@@ -11,7 +11,8 @@ import java.sql.Date;
  * @author admin
  */
 public class Project {
-    String tenKH;
+    int makh;
+    String tenkh;
     int maDA;
     String tenDA;
     String diaDiem;
@@ -23,13 +24,21 @@ public class Project {
     public Project() {
     }
 
-    public String getTenKH() {
-        return tenKH;
+    public int getMakh() {
+        return makh;
     }
 
-    public void setTenKH(String tenKH) {
-        this.tenKH = tenKH;
+    public void setMakh(int makh) {
+        this.makh = makh;
+    } 
+
+    public String getTenkh() {
+        return tenkh;
     }
+
+    public void setTenkh(String tenkh) {
+        this.tenkh = tenkh;
+    }    
 
     public int getMaDA() {
         return maDA;

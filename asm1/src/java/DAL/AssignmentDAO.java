@@ -22,13 +22,16 @@ public class AssignmentDAO extends DBContext {
 
     public List<Project> getPJ_Working_List() {
         List<Project> list = new ArrayList<>();
-        String sql = "select * from dbo.DU_AN where TRANGTHAI=2 ORDER BY NGAYTHICONG DESC,TRANGTHAI DESC";
+        String sql = "SELECT dbo.DU_AN.MAKH, TENKH, MADA, TENDA, DIADIEM,NGANSACH, NGAYTHICONG, TRANGTHAI, IMG\n"
+                + "FROM dbo.KHACHHANG\n"
+                + "INNER JOIN dbo.DU_AN ON dbo.KHACHHANG.MAKH = dbo.DU_AN.MAKH where TRANGTHAI=2 ORDER BY NGAYTHICONG DESC,TRANGTHAI DESC";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Project p = new Project();
-                p.setTenKH(rs.getString("TENKH"));
+                p.setMakh(rs.getInt("MAKH"));
+                p.setTenkh(rs.getString("TENKH"));
                 p.setMaDA(rs.getInt("MADA"));
                 p.setTenDA(rs.getString("TENDA"));
                 p.setDiaDiem(rs.getString("DIADIEM"));
@@ -332,8 +335,8 @@ public class AssignmentDAO extends DBContext {
             st.setInt(1, mapb);
             st.setInt(2, manv);
             ResultSet rs = st.executeQuery();
-            if(rs.next()) {                
-                return true;                
+            if (rs.next()) {
+                return true;
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -410,12 +413,12 @@ public class AssignmentDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
+
     public void duyetWork(int duyet, int macv) {
         String sql = "UPDATE dbo.CONGVIEC SET PHEDUYET = ? WHERE ID = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, duyet);            
+            st.setInt(1, duyet);
             st.setInt(2, macv);
             st.executeUpdate();
 

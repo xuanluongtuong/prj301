@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import model.Project;
-import model.Project;
 
 /**
  *
@@ -23,13 +22,16 @@ public class ProjectDAO extends DBContext {
 
     public List<Project> getPJList() {
         List<Project> list = new ArrayList<>();
-        String sql = "select * from dbo.DU_AN ORDER BY NGAYTHICONG DESC,TRANGTHAI DESC";
+        String sql = "SELECT dbo.DU_AN.MAKH, TENKH, MADA, TENDA, DIADIEM,NGANSACH, NGAYTHICONG, TRANGTHAI, IMG\n"
+                + "FROM dbo.KHACHHANG\n"
+                + "INNER JOIN dbo.DU_AN ON dbo.KHACHHANG.MAKH = dbo.DU_AN.MAKH ORDER BY NGAYTHICONG DESC,TRANGTHAI DESC";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Project p = new Project();
-                p.setTenKH(rs.getString("TENKH"));
+                p.setMakh(rs.getInt("MAKH"));
+                p.setTenkh(rs.getString("TENKH"));
                 p.setMaDA(rs.getInt("MADA"));
                 p.setTenDA(rs.getString("TENDA"));
                 p.setDiaDiem(rs.getString("DIADIEM"));
@@ -55,14 +57,17 @@ public class ProjectDAO extends DBContext {
 
     public Project getPJByID(int mada) {
 
-        String sql = "select * from dbo.DU_AN where MADA=?";
+        String sql = "SELECT dbo.DU_AN.MAKH, TENKH, MADA, TENDA, DIADIEM,NGANSACH, NGAYTHICONG, TRANGTHAI, IMG\n"
+                + "FROM dbo.KHACHHANG\n"
+                + "INNER JOIN dbo.DU_AN ON dbo.KHACHHANG.MAKH = dbo.DU_AN.MAKH where MADA=? ORDER BY NGAYTHICONG DESC,TRANGTHAI DESC";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, mada);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Project p = new Project();
-                p.setTenKH(rs.getString("TENKH"));
+                p.setMakh(rs.getInt("MAKH"));
+                p.setTenkh(rs.getString("TENKH"));
                 p.setMaDA(rs.getInt("MADA"));
                 p.setTenDA(rs.getString("TENDA"));
                 p.setDiaDiem(rs.getString("DIADIEM"));
@@ -80,11 +85,12 @@ public class ProjectDAO extends DBContext {
 
     //thpro 
     public void insertProject(Project pro) {
-        String sql = "INSERT INTO dbo.DU_AN (TENKH, TENDA, DIADIEM, NGANSACH, NGAYTHICONG, TRANGTHAI,IMG)VALUES (?, ?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO dbo.DU_AN ( TENDA,MAKH, DIADIEM, NGANSACH, NGAYTHICONG, TRANGTHAI,IMG)VALUES (?, ?, ?, ?, ?, ?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, pro.getTenKH());
-            st.setString(2, pro.getTenDA());
+
+            st.setString(1, pro.getTenDA());
+            st.setInt(2, pro.getMakh());
             st.setString(3, pro.getDiaDiem());
             st.setFloat(4, pro.getNganSach());
             st.setDate(5, pro.getNgayThiCong());
@@ -98,11 +104,12 @@ public class ProjectDAO extends DBContext {
 
     //sua 
     public void editProject(Project pro) {
-        String sql = "UPDATE dbo.DU_AN SET TENKH = ?, TENDA = ?, DIADIEM = ?, NGANSACH = ? , NGAYTHICONG = ?, TRANGTHAI = ?, IMG=? WHERE MADA = ?";
+        String sql = "UPDATE dbo.DU_AN SET TENDA = ?,MAKH = ?, DIADIEM = ?, NGANSACH = ? , NGAYTHICONG = ?, TRANGTHAI = ?, IMG=? WHERE MADA = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, pro.getTenKH());
-            st.setString(2, pro.getTenDA());
+
+            st.setString(1, pro.getTenDA());
+            st.setInt(2, pro.getMakh());
             st.setString(3, pro.getDiaDiem());
             st.setFloat(4, pro.getNganSach());
             st.setDate(5, pro.getNgayThiCong());
@@ -131,13 +138,16 @@ public class ProjectDAO extends DBContext {
 
     public List<Project> getListBySearch(String search) {
         List<Project> list = new ArrayList<>();
-        String sql = "select * from dbo.DU_AN ORDER BY NGAYTHICONG DESC,TRANGTHAI DESC";
+        String sql = "SELECT dbo.DU_AN.MAKH, TENKH, MADA, TENDA, DIADIEM,NGANSACH, NGAYTHICONG, TRANGTHAI, IMG\n"
+                + "FROM dbo.KHACHHANG\n"
+                + "INNER JOIN dbo.DU_AN ON dbo.KHACHHANG.MAKH = dbo.DU_AN.MAKH ORDER BY NGAYTHICONG DESC,TRANGTHAI DESC";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Project p = new Project();
-                p.setTenKH(rs.getString("TENKH"));
+                p.setMakh(rs.getInt("MAKH"));
+                p.setTenkh(rs.getString("TENKH"));
                 p.setMaDA(rs.getInt("MADA"));
                 p.setTenDA(rs.getString("TENDA"));
                 p.setDiaDiem(rs.getString("DIADIEM"));
@@ -204,10 +214,11 @@ public class ProjectDAO extends DBContext {
         return sb.toString();
     }
 
-//    public static void main(String[] args) {
-//        ProjectDAO project = new ProjectDAO();
-//        
-//        Project pro = project.getProjectByID(7);
-//        System.out.println(pro.getNgaySinh());
-//    }
+    public static void main(String[] args) {
+        ProjectDAO project = new ProjectDAO();
+        List<Project> list = project.getPJList();
+        Project pro = project.getPJByID(7);
+        System.out.println(list.get(0).getDiaDiem());
+        System.out.println(pro.getDiaDiem());
+    }
 }

@@ -56,14 +56,20 @@
                 %>
                 <form action="projectedit" method="post" enctype="multipart/form-data" style="display: inline; justify-content: center;">
 
-                    <input type="hidden" name="MADA" value="<%=pro.getMaDA()%>" />
-
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
-                                <label class="form-label" for="TENKH">Customer Name</label>
-                                <input class="form-input" type="text" id="TENKH" name="TENKH" value="<%=pro.getTenKH()%>" required />
+                                <label class="form-label" for="MAKH">Customer Name</label>
+                                <input class="form-input" type="text" id="MAKH" name="MAKH" value="<%=pro.getMakh()%>" required />
                             </div>
+                            <div class="form-group">
+                                <label class="form-label" for="TENKH">Customer Name</label>
+                                <input class="form-input" type="text" id="TENKH" name="TENKH" value="<%=pro.getTenkh()%>" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="TENDA">Project Name</label>
+                                <input class="form-input" type="text" id="TENDA" name="MADA" value="<%=pro.getMaDA()%>" required />
+                            </div> 
                             <div class="form-group">
                                 <label class="form-label" for="TENDA">Project Name</label>
                                 <input class="form-input" type="text" id="TENDA" name="TENDA" value="<%=pro.getTenDA()%>" required />
@@ -73,15 +79,15 @@
                                 <label class="form-label" for="DIADIEM">Address</label>
                                 <input class="form-input" type="text" id="DIADIEM" name="DIADIEM" value="<%=pro.getDiaDiem()%>" required />
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="NGANSACH">Budget(Milions Dong)</label>
-                                <input class="form-input" type="number" id="NGANSACH" name="NGANSACH" value="<%=pro.getNganSach()%>" required />
-                            </div>
+
                         </div>
 
                         <div class="form-right">
 
-
+                            <div class="form-group">
+                                <label class="form-label" for="NGANSACH">Budget(Milions Dong)</label>
+                                <input class="form-input" type="number" id="NGANSACH" name="NGANSACH" value="<%=pro.getNganSach()%>" required />
+                            </div>
 
                             <div class="form-group">
                                 <label class="form-label" for="NGAYTHICONG">Start Date</label>
@@ -96,15 +102,15 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" >Image link</label>
+                                <label class="form-label" >Image</label>
                                 <input class="form-input" type="text" name="IMG" value="<%=pro.getUrlImg()%>" required />
                             </div>
-<!--                            <input class="form-input" type="hidden" name="IMG" value="<%=pro.getUrlImg()%>" />-->
-                            <div class="form-group">   
 
-                                <label class="form-label" >Upload new image</label>                                
-                                <input type="file" name="file" />
-                            </div>
+                            <!--                            <div class="form-group">   
+                            
+                                                            <label class="form-label" >Upload new image</label>                                
+                                                            <input type="file" name="file" />
+                                                        </div>-->
                             <div class="form-button">
                                 <button class="btn-submit" type="submit" style="margin: 24px;">Submit</button>
                             </div>

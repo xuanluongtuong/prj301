@@ -4,6 +4,7 @@
  */
 package ProjectController;
 
+import DAL.CustomerDAO;
 import DAL.ProjectDAO;
 import static ProjectController.ProjectEditServlet.replaceWhitespace;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Date;
+import model.Customer;
 import model.Project;
 
 /**
@@ -83,7 +85,7 @@ public class ProjectAddServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String tenkh = request.getParameter("TENKH");
+        String makh = request.getParameter("MAKH");
         String tenda = request.getParameter("TENDA");
         String diaDiem = request.getParameter("DIADIEM");
         String nganSach = request.getParameter("NGANSACH");
@@ -92,70 +94,77 @@ public class ProjectAddServlet extends HttpServlet {
         String imgUrl = request.getParameter("IMG");
 
         //        String uploadDirectory = getServletContext().getRealPath("/img");
-        String uploadDirectory = "D:\\PRJ301\\Assignment\\asm1\\web\\img";
-        Part filePart = request.getPart("file");
-        String originalFileName = getFileName(filePart);
+//        String uploadDirectory = "D:\\PRJ301\\Assignment\\asm1\\web\\img";
+//        Part filePart = request.getPart("file");
+//        String originalFileName = getFileName(filePart);
 
         ProjectDAO project = new ProjectDAO();
         Project pro = new Project();
 
-        // Tạo tên file mới
-        if (filePart != null) {
-            if (originalFileName != null && !originalFileName.equals("")) {
-                String newFileName = tenda + ".png";
-                newFileName = replaceWhitespace(newFileName);
-
-                String filePath = uploadDirectory + File.separator + newFileName;
-                File file = new File(filePath);
-
-                // Kiểm tra nếu file đã tồn tại
-                if (file.exists()) {
-                    // Xóa file cũ trước khi lưu file mới
-                    file.delete();
-                }
-
-                // Lưu file mới lên server
-                OutputStream out = null;
-                InputStream fileContent = null;
-                final PrintWriter writer = response.getWriter();
-
-                try {
-                    out = new FileOutputStream(file);
-                    fileContent = filePart.getInputStream();
-
-                    int read;
-                    final byte[] bytes = new byte[1024];
-
-                    while ((read = fileContent.read(bytes)) != -1) {
-                        out.write(bytes, 0, read);
-                    }
-
-                    imgUrl = "img/" + newFileName;
-
-                } catch (FileNotFoundException fne) {
-                    request.setAttribute("mes", "Upload fail!");
-                    response.sendRedirect("projectInfo.jsp");
-                } finally {
-                    if (out != null) {
-                        out.close();
-                    }
-                    if (fileContent != null) {
-                        fileContent.close();
-                    }
-
-                }
-            }
-        }
+//        // Tạo tên file mới
+//        if (filePart != null) {
+//            if (originalFileName != null && !originalFileName.equals("")) {
+//                String newFileName = tenda + ".png";
+//                newFileName = replaceWhitespace(newFileName);
+//
+//                String filePath = uploadDirectory + File.separator + newFileName;
+//                File file = new File(filePath);
+//
+//                // Kiểm tra nếu file đã tồn tại
+//                if (file.exists()) {
+//                    // Xóa file cũ trước khi lưu file mới
+//                    file.delete();
+//                }
+//
+//                // Lưu file mới lên server
+//                OutputStream out = null;
+//                InputStream fileContent = null;
+//                final PrintWriter writer = response.getWriter();
+//
+//                try {
+//                    out = new FileOutputStream(file);
+//                    fileContent = filePart.getInputStream();
+//
+//                    int read;
+//                    final byte[] bytes = new byte[1024];
+//
+//                    while ((read = fileContent.read(bytes)) != -1) {
+//                        out.write(bytes, 0, read);
+//                    }
+//
+//                    imgUrl = "img/" + newFileName;
+//
+//                } catch (FileNotFoundException fne) {
+//                    request.setAttribute("mes", "Upload fail!");
+//                    response.sendRedirect("projectInfo.jsp");
+//                } finally {
+//                    if (out != null) {
+//                        out.close();
+//                    }
+//                    if (fileContent != null) {
+//                        fileContent.close();
+//                    }
+//
+//                }
+//            }
+//        }
         try {
-            pro.setTenKH(tenkh);
-            pro.setTenDA(tenda);
-            pro.setDiaDiem(diaDiem);
-            pro.setNganSach(Float.parseFloat(nganSach));
-            pro.setNgayThiCong(Date.valueOf(ngayThiCong));
-            pro.setTrangThai(Integer.parseInt(trangThai));
-            pro.setUrlImg(imgUrl);
-            project.insertProject(pro);
-            response.sendRedirect("project");
+            CustomerDAO cDAO = new CustomerDAO();
+            Customer c = cDAO.getCustomerByID(Integer.parseInt(makh));
+            if (c == null) {
+                request.setAttribute("mes","Mã khách hàng không tồn tại.");
+                request.getRequestDispatcher("projectAdd.jsp").forward(request, response);
+            } else {
+                pro.setMakh(Integer.parseInt(makh));
+                pro.setTenDA(tenda);
+                pro.setDiaDiem(diaDiem);
+                pro.setNganSach(Float.parseFloat(nganSach));
+                pro.setNgayThiCong(Date.valueOf(ngayThiCong));
+                pro.setTrangThai(Integer.parseInt(trangThai));
+                pro.setUrlImg(imgUrl);
+                project.insertProject(pro);
+                response.sendRedirect("project");
+            }
         } catch (Exception e) {
             System.out.println(e);
         }

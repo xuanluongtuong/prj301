@@ -131,11 +131,11 @@
                                         </div>
                                         <%}else if(w.getDuyet()==0){%>
                                         <div style="color: rgb(174, 0, 81);font-weight: 600;">
-                                            Không đạt yêu cầu
+                                            Chưa đạt yêu cầu
                                         </div>
                                         <%}else{%>
                                         <div style="color: rgb(0, 145, 155);font-weight: 600;">
-                                            Chờ duyệt
+                                            Chờ phê duyệt
                                         </div>
                                         <%}%>                                       
                                     </td> 
