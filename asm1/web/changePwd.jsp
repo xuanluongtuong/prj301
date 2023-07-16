@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/stylechangepwd.css">
+        <link rel="stylesheet" href="css/stylechangepwd.css?v51">
         <link rel="stylesheet" href="fontawesome/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,8 +32,11 @@
                 <img src="img/258888-P4JKHD-261.png" alt="">
             </div>
             <form action="changepwd" method="post" id="form-login">
-                <h1 class="form-heading">Change Password</h1>                
-                
+                <h1 class="form-heading">Change Account Information</h1>                
+                <div class="form-group">
+                    <i class="far fa-user"></i>
+                    <input type="text" class="form-input" name="user" value="${sessionScope.username}" required="">                    
+                </div>
                 <div class="form-group">
                     <i class="fas fa-key"></i>
                     <input type="password" class="form-input" name="oldPassword" placeholder="Enter old password">

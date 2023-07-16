@@ -152,12 +152,13 @@ public class AccountDAO extends DBContext {
 
     }
 
-    public boolean changePassword(String email, String newPassword) {
-        String sql = "UPDATE ACCOUNT SET password = ? WHERE email = ? ";
+    public boolean changePassword(String email,String username, String newPassword) {
+        String sql = "UPDATE ACCOUNT SET password = ?, username= ? WHERE email = ? ";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, newPassword);
-            ps.setString(2, email);
+            ps.setString(2, username);
+            ps.setString(3, email);
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {

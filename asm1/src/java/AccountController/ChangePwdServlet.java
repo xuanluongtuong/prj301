@@ -74,6 +74,7 @@ public class ChangePwdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        String user = request.getParameter("user");
         String email = (String) session.getAttribute("email");
         String oldpwd = request.getParameter("oldPassword");
         String newpwd = request.getParameter("newPassword");
@@ -100,7 +101,7 @@ public class ChangePwdServlet extends HttpServlet {
             request.getRequestDispatcher("changePwd.jsp").forward(request, response);
         } 
         else {
-            accountDAO.changePassword(email, newpwd);   
+            accountDAO.changePassword(email,user, newpwd);   
             session.removeAttribute("email");
             session.removeAttribute("role");
             session.removeAttribute("username");

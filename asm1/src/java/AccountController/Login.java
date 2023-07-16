@@ -96,6 +96,7 @@ public class Login extends HttpServlet {
         // check account
         AccountDAO accountDAO = new AccountDAO();
         Account account = accountDAO.checkAccount(email, password);  
+        session.setAttribute("username", account.getName());
         
         System.out.println(account.getRole());
         System.out.println(account.getRole());
