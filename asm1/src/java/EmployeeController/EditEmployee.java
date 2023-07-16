@@ -115,15 +115,8 @@ public class EditEmployee extends HttpServlet {
             em.setLuong(Float.parseFloat(luong));
 
             employ.editEmployee(em, Integer.parseInt(mapb));
-//            List<Employee> list = employ.getEmListByID(Integer.parseInt(mapb));
-//            HttpSession session = request.getSession();
-//            DepartmentDAO department = new DepartmentDAO();
-//            Employee mn = department.getManager(Integer.parseInt(maql));
-//            Department dp = department.getDepartByID(Integer.parseInt(mapb));
-//            session.setAttribute("department", dp);
-//            session.setAttribute("emql", mn);
-//            session.setAttribute("list", list);
-            response.sendRedirect("employ?maPB="+em.getMapb());
+
+            response.sendRedirect("employ?mapb="+em.getMapb());
         } catch (Exception e) {
             System.out.println(e);
         }

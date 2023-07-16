@@ -46,7 +46,7 @@
         </style>
     </head>
     <body>
-        
+
         <%@include file="header.jsp"%>
 
         <!-- menu -->
@@ -81,19 +81,12 @@
                                 <label class="form-label" for="NGAYSINH">Date of birth</label>
                                 <input class="form-input" type="date" id="NGAYSINH" name="NGAYSINH" value="<%=em.getNgaySinh()%>" required />
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="DIACHI">Address</label>
-                                <input class="form-input" type="text" id="DIACHI" name="DIACHI" value="<%=em.getDiaChi()%>" required />
-                            </div>
+
                         </div>
                         <div class="form-right">
                             <div class="form-group">
-                                <label class="form-label" for="SDT">Phone number</label>
-                                <input class="form-input" type="text" id="SDT" name="SDT" value="<%=em.getSDT()%>" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="EMAIL">Email</label>
-                                <input class="form-input" type="email" id="EMAIL" name="EMAIL" value="<%=em.getEmail()%>" required />
+                                <label class="form-label" for="DIACHI">Address</label>
+                                <input class="form-input" type="text" id="DIACHI" name="DIACHI" value="<%=em.getDiaChi()%>" required />
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="VITRI">Position</label>

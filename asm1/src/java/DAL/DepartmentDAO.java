@@ -39,17 +39,18 @@ public class DepartmentDAO extends DBContext {
     }
 
     public int getDepartIDByEmail(String email) {
-        int mapb=0;
+        int mapb = 0;
         String sql = "SELECT p.MAPB\n"
-                + "FROM dbo.NHANVIEN AS n\n"
-                + "INNER JOIN dbo.PHONGBAN AS p ON n.MAPB = p.MAPB\n"
+                + "FROM dbo.ACCOUNT\n"
+                + "INNER JOIN dbo.NHANVIEN ON dbo.ACCOUNT.accountID = dbo.NHANVIEN.MANV\n"
+                + "INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB"
                 + "WHERE EMAIL = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, email);
             ResultSet rs = st.executeQuery();
-            if(rs.next()) {
-                mapb=rs.getInt("MAPB");
+            if (rs.next()) {
+                mapb = rs.getInt("MAPB");
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -81,7 +82,7 @@ public class DepartmentDAO extends DBContext {
         }
         return null;
     }
-    
+
     public Department getDepartByDPID(int mapb) {
         String sql = "select * from dbo.PHONGBAN where MAPB=?";
 
@@ -108,8 +109,9 @@ public class DepartmentDAO extends DBContext {
     public Employee getManager(int maql) {
         try {
             String sql = " select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL \n"
-                    + "  from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
-                    + "  on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where MANV=MAQL and MANV=?";
+                    + "  FROM dbo.ACCOUNT\n"
+                    + "INNER JOIN dbo.NHANVIEN ON dbo.ACCOUNT.accountID = dbo.NHANVIEN.MANV\n"
+                    + "INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB where MANV=MAQL and MANV=?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, maql);
             ResultSet rs = st.executeQuery();
@@ -133,11 +135,10 @@ public class DepartmentDAO extends DBContext {
         }
         return null;
     }
-    
 
-    public static void main(String[] args) {
-        DepartmentDAO dp = new DepartmentDAO();
-        Department d = dp.getDepartByID(4);
-        System.out.println(d.getDiaDiem());
-    }
+//    public static void main(String[] args) {
+//        DepartmentDAO dp = new DepartmentDAO();
+//        Department d = dp.getDepartByID(4);
+//        System.out.println(d.getDiaDiem());
+//    }
 }

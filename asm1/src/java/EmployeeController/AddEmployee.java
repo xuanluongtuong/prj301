@@ -99,11 +99,8 @@ public class AddEmployee extends HttpServlet {
         em.setMapb(Integer.parseInt(mapb));
         em.setLuong(Float.parseFloat(luong));
         employ.insertEmployee(em);
-//        List<Employee> list = employ.getEmListByID(Integer.parseInt(mapb));
-//        HttpSession session = request.getSession();
-//        session.setAttribute("list", list);
-//        response.sendRedirect("EmList.jsp");
-        response.sendRedirect("employ?maPB="+em.getMapb());
+
+        response.sendRedirect("employ?mapb="+em.getMapb());
     }
 
     /** 

@@ -79,19 +79,12 @@
                                 <label class="form-label" for="NGAYSINH">Date of birth</label>
                                 <input class="form-input" type="date" id="NGAYSINH" name="NGAYSINH" required />
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="DIACHI">Address</label>
-                                <input class="form-input" type="text" id="DIACHI" name="DIACHI" required />
-                            </div>
+                            
                         </div>
                         <div class="form-right">
                             <div class="form-group">
-                                <label class="form-label" for="SDT">Phone Number</label>
-                                <input class="form-input" type="text" id="SDT" name="SDT" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="EMAIL">Email</label>
-                                <input class="form-input" type="email" id="EMAIL" name="EMAIL" required />
+                                <label class="form-label" for="DIACHI">Address</label>
+                                <input class="form-input" type="text" id="DIACHI" name="DIACHI" required />
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="VITRI">Position</label>

@@ -72,7 +72,7 @@
                                     </h3>
                                 </div>
                                 <div>
-                                    Customer: <%=p.getTenKH()%>
+                                    Customer: <%=p.getTenkh()%>
                                 </div>
 
                                 <div>

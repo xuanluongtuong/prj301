@@ -20,9 +20,11 @@ public class EmployeeDAO extends DBContext {
 
     public List<Employee> getEmListByID(int departID) {
         List<Employee> list = new ArrayList<>();
-        String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL\n"
-                + "  from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
-                + "  on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.PHONGBAN.MAPB=?";
+        String sql = "SELECT MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, phone, email, VITRI, TENPB, LUONG, MAQL, dbo.NHANVIEN.MAPB\n"
+                + "FROM dbo.ACCOUNT\n"
+                + "INNER JOIN dbo.NHANVIEN ON dbo.ACCOUNT.accountID = dbo.NHANVIEN.MANV\n"
+                + "INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB \n"
+                + "where dbo.PHONGBAN.MAPB = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, departID);
@@ -34,12 +36,13 @@ public class EmployeeDAO extends DBContext {
                 e.setGt(rs.getInt("PHAI"));
                 e.setNgaySinh(rs.getDate("NGAYSINH"));
                 e.setDiaChi(rs.getString("DIACHI"));
-                e.setSDT(rs.getString("SDT"));
-                e.setEmail(rs.getString("EMAIL"));
+                e.setSDT(rs.getString("phone"));
+                e.setEmail(rs.getString("email"));
                 e.setViTri(rs.getString("VITRI"));
                 e.setPhongBan(rs.getString("TENPB"));
                 e.setLuong(rs.getFloat("LUONG"));
                 e.setMaql(rs.getInt("MAQL"));
+                e.setMapb(rs.getInt("MAPB"));
                 list.add(e);
             }
         } catch (SQLException e) {
@@ -47,12 +50,14 @@ public class EmployeeDAO extends DBContext {
         }
         return list;
     }
-    
+
     public List<Employee> getEmListBySearch(int departID, String search) {
         List<Employee> list = new ArrayList<>();
-        String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL\n"
-                + "  from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
-                + "  on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.PHONGBAN.MAPB=?";
+        String sql = "SELECT MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, phone, email, VITRI, TENPB, LUONG, MAQL, dbo.NHANVIEN.MAPB\n"
+                + "FROM dbo.ACCOUNT\n"
+                + "INNER JOIN dbo.NHANVIEN ON dbo.ACCOUNT.accountID = dbo.NHANVIEN.MANV\n"
+                + "INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB \n"
+                + "where dbo.PHONGBAN.MAPB = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, departID);
@@ -64,12 +69,13 @@ public class EmployeeDAO extends DBContext {
                 e.setGt(rs.getInt("PHAI"));
                 e.setNgaySinh(rs.getDate("NGAYSINH"));
                 e.setDiaChi(rs.getString("DIACHI"));
-                e.setSDT(rs.getString("SDT"));
-                e.setEmail(rs.getString("EMAIL"));
+                e.setSDT(rs.getString("phone"));
+                e.setEmail(rs.getString("email"));
                 e.setViTri(rs.getString("VITRI"));
                 e.setPhongBan(rs.getString("TENPB"));
                 e.setLuong(rs.getFloat("LUONG"));
                 e.setMaql(rs.getInt("MAQL"));
+                e.setMapb(rs.getInt("MAPB"));
                 list.add(e);
             }
         } catch (SQLException e) {
@@ -89,7 +95,7 @@ public class EmployeeDAO extends DBContext {
             return list2;
         }
     }
-    
+
     private final char[] SOURCE_CHARACTERS = {'À', 'Á', 'Â', 'Ã', 'È', 'É',
         'Ê', 'Ì', 'Í', 'Ò', 'Ó', 'Ô', 'Õ', 'Ù', 'Ú', 'Ý', 'Ỳ', 'Ỷ', 'Ỹ', 'Ỵ', 'à', 'á', 'â',
         'ã', 'è', 'é', 'ê', 'ì', 'í', 'ò', 'ó', 'ô', 'õ', 'ù', 'ú', 'ý', 'ỳ', 'ỷ', 'ỹ', 'ỵ',
@@ -140,9 +146,10 @@ public class EmployeeDAO extends DBContext {
     public Employee getEmployeeByID(int manv) {
 
         try {
-            String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL, dbo.NHANVIEN.MAPB \n"
-                    + "from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
-                    + "on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where MANV=?";
+            String sql = "SELECT MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, phone, email, VITRI, TENPB, LUONG, MAQL, dbo.NHANVIEN.MAPB\n"
+                    + "FROM dbo.ACCOUNT\n"
+                    + "INNER JOIN dbo.NHANVIEN ON dbo.ACCOUNT.accountID = dbo.NHANVIEN.MANV\n"
+                    + "INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB where MANV=?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, manv);
             ResultSet rs = st.executeQuery();
@@ -153,8 +160,8 @@ public class EmployeeDAO extends DBContext {
                 em.setGt(rs.getInt("PHAI"));
                 em.setNgaySinh(rs.getDate("NGAYSINH"));
                 em.setDiaChi(rs.getString("DIACHI"));
-                em.setSDT(rs.getString("SDT"));
-                em.setEmail(rs.getString("EMAIL"));
+                em.setSDT(rs.getString("phone"));
+                em.setEmail(rs.getString("email"));
                 em.setViTri(rs.getString("VITRI"));
                 em.setPhongBan(rs.getString("TENPB"));
                 em.setLuong(rs.getFloat("LUONG"));
@@ -167,13 +174,14 @@ public class EmployeeDAO extends DBContext {
         }
         return null;
     }
-    
+
     public Employee getEmployeeByEmail(String mail) {
 
         try {
-            String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL \n"
-                    + "from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
-                    + "on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where EMAIL=?";
+            String sql = "SELECT MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, phone, email, VITRI, TENPB, LUONG, MAQL\n"
+                    + "FROM dbo.ACCOUNT\n"
+                    + "INNER JOIN dbo.NHANVIEN ON dbo.ACCOUNT.accountID = dbo.NHANVIEN.MANV\n"
+                    + "INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB where email=?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, mail);
             ResultSet rs = st.executeQuery();
@@ -184,8 +192,8 @@ public class EmployeeDAO extends DBContext {
                 em.setGt(rs.getInt("PHAI"));
                 em.setNgaySinh(rs.getDate("NGAYSINH"));
                 em.setDiaChi(rs.getString("DIACHI"));
-                em.setSDT(rs.getString("SDT"));
-                em.setEmail(rs.getString("EMAIL"));
+                em.setSDT(rs.getString("phone"));
+                em.setEmail(rs.getString("email"));
                 em.setViTri(rs.getString("VITRI"));
                 em.setPhongBan(rs.getString("TENPB"));
                 em.setLuong(rs.getFloat("LUONG"));
@@ -200,19 +208,17 @@ public class EmployeeDAO extends DBContext {
 
     //them 
     public void insertEmployee(Employee em) {
-        String sql = "INSERT INTO dbo.NHANVIEN (HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, MAPB, LUONG)\n"
-                + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO dbo.NHANVIEN (HO_VA_TEN, PHAI, NGAYSINH, DIACHI, VITRI, MAPB, LUONG)\n"
+                + " VALUES (?, ?, ?, ?, ?, ?, ?);";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, em.getHoVaTen());
             st.setInt(2, em.getGt());
             st.setDate(3, em.getNgaySinh());
             st.setString(4, em.getDiaChi());
-            st.setString(5, em.getSDT());
-            st.setString(6, em.getEmail());
-            st.setString(7, em.getViTri());
-            st.setInt(8, em.getMapb());
-            st.setFloat(9, em.getLuong());
+            st.setString(5, em.getViTri());
+            st.setInt(6, em.getMapb());
+            st.setFloat(7, em.getLuong());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -226,8 +232,6 @@ public class EmployeeDAO extends DBContext {
                 + "    PHAI = ?,\n"
                 + "    NGAYSINH = ?,\n"
                 + "    DIACHI = ?,\n"
-                + "    SDT = ?,\n"
-                + "    EMAIL = ?,\n"
                 + "    VITRI = ?,\n"
                 + "    MAPB = ?,\n"
                 + "    LUONG = ?\n"
@@ -238,12 +242,10 @@ public class EmployeeDAO extends DBContext {
             st.setInt(2, em.getGt());
             st.setDate(3, em.getNgaySinh());
             st.setString(4, em.getDiaChi());
-            st.setString(5, em.getSDT());
-            st.setString(6, em.getEmail());
-            st.setString(7, em.getViTri());
-            st.setInt(8, mapb);
-            st.setFloat(9, em.getLuong());
-            st.setInt(10, em.getMaNV());
+            st.setString(5, em.getViTri());
+            st.setInt(6, mapb);
+            st.setFloat(7, em.getLuong());
+            st.setInt(8, em.getMaNV());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -252,11 +254,16 @@ public class EmployeeDAO extends DBContext {
 
     //xoa 
     public void deleteEmployee(int manv) {
-        String sql = "delete from dbo.NHANVIEN where MANV=?";
+        String sql1 = "delete from dbo.NHANVIEN where MANV=?";
+        String sql2 = "delete from dbo.ACCOUNT where accountID=?";
+
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, manv);
-            st.executeUpdate();
+            PreparedStatement st1 = connection.prepareStatement(sql1);
+            st1.setInt(1, manv);
+            st1.executeUpdate();
+            PreparedStatement st2 = connection.prepareStatement(sql2);
+            st2.setInt(1, manv);
+            st2.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -283,11 +290,8 @@ public class EmployeeDAO extends DBContext {
 
     public void changeDepartmentID(int newMapb, int maql, int oldMapb, int manv) {
         String sql1 = "update dbo.NHANVIEN set MAPB=? where MANV=?\n"
-                
                 + "update dbo.NHANVIEN set MAPB=? where MANV=?\n"
-                
-                + "update dbo.PHONGBAN set MAQL=? where MAPB=?\n"
-                ;
+                + "update dbo.PHONGBAN set MAQL=? where MAPB=?\n";
 
         try {
             PreparedStatement st1 = connection.prepareStatement(sql1);
@@ -357,7 +361,7 @@ public class EmployeeDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
+
     public void changeDepartment(int manv, int mapb) {
         String sql = "update dbo.NHANVIEN set MAPB=?  where MANV=?";
         try {
@@ -369,25 +373,27 @@ public class EmployeeDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
-    public void changeRole(int role,String email){
+
+    public void changeRole(int role, String email) {
         String sql = "UPDATE ACCOUNT SET role = ? WHERE email = ? ";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);     
+            PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, role);
             ps.setString(2, email);
             ps.executeUpdate();
-            
+
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        
+
     }
 
     public static void main(String[] args) {
         EmployeeDAO e = new EmployeeDAO();
         List<Employee> list = e.getEmListByID(1);
-        Employee em = e.getEmployeeByID(7);
-        System.out.println(e.getManagerIdByDepartmentId(10));
+        for (Employee el : list) {
+            System.out.println(el.getHoVaTen());
+        }
+        System.out.println(list.get(0).getHoVaTen());
     }
 }

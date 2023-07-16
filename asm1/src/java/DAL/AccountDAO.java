@@ -41,7 +41,7 @@ public class AccountDAO extends DBContext {
     public int getMapbByEmail(String email) {
         String sql = "SELECT p.MAPB\n"
                 + "FROM dbo.ACCOUNT AS a\n"
-                + "INNER JOIN dbo.NHANVIEN AS n ON a.email = n.EMAIL\n"
+                + "INNER JOIN dbo.NHANVIEN AS n ON a.accountID = n.MANV\n"
                 + "INNER JOIN dbo.PHONGBAN AS p ON n.MAPB = p.MAPB\n"
                 + "WHERE n.email = ?";
         try {
@@ -61,7 +61,7 @@ public class AccountDAO extends DBContext {
     public int getManvByEmail(String email) {
         String sql = "SELECT n.MANV\n"
                 + "FROM dbo.ACCOUNT AS a\n"
-                + "INNER JOIN dbo.NHANVIEN AS n ON a.email = n.EMAIL\n"
+                + "INNER JOIN dbo.NHANVIEN AS n ON a.accountID = n.MANV\n"
                 + "INNER JOIN dbo.PHONGBAN AS p ON n.MAPB = p.MAPB\n"
                 + "WHERE n.email = ?";
         try {
@@ -184,7 +184,7 @@ public class AccountDAO extends DBContext {
     
     public static void main(String[] args) {
         AccountDAO accDAO = new AccountDAO();
-        Account a = accDAO.getAccountByEmail("nhandq@gmail.com");
+        Account a = accDAO.getAccountByEmail("admin@gmail.com");
         System.out.println(a.getPassword());
     }
 }

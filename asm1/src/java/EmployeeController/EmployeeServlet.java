@@ -37,7 +37,7 @@ public class EmployeeServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String mapb = request.getParameter("maPB");
+        String mapb = request.getParameter("mapb");
         HttpSession session = request.getSession();
         session.removeAttribute("search");        
         
@@ -50,16 +50,14 @@ public class EmployeeServlet extends HttpServlet {
         }
 
         DepartmentDAO department = new DepartmentDAO();
-        Department dp = department.getDepartByID(Integer.parseInt(mapb));
+        Department dp = department.getDepartByDPID(Integer.parseInt(mapb));
 
         EmployeeDAO nv = new EmployeeDAO();
-
         List<Employee> list = nv.getEmListByID(Integer.parseInt(mapb));
-
-        request.setAttribute("list", list);        
+        request.setAttribute("list", list); 
         
-        request.setAttribute("department", dp);        
-
+        request.setAttribute("dp", dp);        
+        System.out.println(dp.getDiaDiem());
 //        response.sendRedirect("EmList.jsp");
         request.getRequestDispatcher("EmList.jsp").forward(request, response);
     }

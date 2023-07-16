@@ -67,16 +67,15 @@ public class DeleteEmployee extends HttpServlet {
         DepartmentDAO dd = new DepartmentDAO();
         Department d = dd.getDepartByID(manv);
         try {
-            Employee e = new Employee();
+            
             if (em.getEmployeeByID(manv) != null) {
-                e = em.getEmployeeByID(manv);
+                
                 int mapb = d.getMaPB();                
                 em.deleteEmployee(manv);
-                List<Employee> list = em.getEmListByID(mapb);
-                HttpSession session = request.getSession();
-                session.setAttribute("department", d);
-                session.setAttribute("list", list);                
-                response.sendRedirect("EmList.jsp");
+                List<Employee> list = em.getEmListByID(mapb);                
+                request.setAttribute("dp", d);
+                request.setAttribute("list", list);                
+                request.getRequestDispatcher("EmList.jsp").forward(request, response);
             } else {
                 response.sendRedirect("EmList.jsp");
             }

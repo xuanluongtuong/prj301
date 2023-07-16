@@ -66,14 +66,13 @@ public class SearchEmployeeServlet extends HttpServlet {
         DepartmentDAO department = new DepartmentDAO();
 
         HttpSession session = request.getSession();
-        Department dp;
 
         session.removeAttribute("list");
         EmployeeDAO nv = new EmployeeDAO();
         List<Employee> list;
 
         list = nv.getEmListBySearch(Integer.parseInt(mapb), search);
-        dp = department.getDepartByID(Integer.parseInt(mapb));
+        Department dp = department.getDepartByDPID(Integer.parseInt(mapb));
 
         request.setAttribute("department", dp);
 //        Employee mn = department.getManager(dp.getMaQL());

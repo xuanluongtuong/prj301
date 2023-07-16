@@ -37,25 +37,8 @@ CREATE TABLE dbo.PHONGBAN
     MAQL INT
 );
 
-CREATE TABLE dbo.NHANVIEN
-(
-    MANV INT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
-    HO_VA_TEN NVARCHAR(100),    
-    PHAI BIT,
-    NGAYSINH DATE,
-    DIACHI NVARCHAR(100),
-    SDT NVARCHAR(10),
-    EMAIL NVARCHAR(100),
-    VITRI NVARCHAR(100),
-    MAPB INT,
-    LUONG FLOAT NOT NULL,    
-    
-    FOREIGN KEY (MAPB) REFERENCES dbo.PHONGBAN(MAPB)
-);
-
 CREATE TABLE dbo.ACCOUNT(
 	accountID INT PRIMARY KEY identity(1,1) NOT NULL,
-	--FOREIGN KEY (accountID) REFERENCES dbo.NHANVIEN(MANV),
 	email NVARCHAR(50) NOT NULL,
 	[password] NVARCHAR(30) NOT NULL,
 	username NVARCHAR(30) NOT NULL,	
@@ -63,7 +46,20 @@ CREATE TABLE dbo.ACCOUNT(
 	[role] INT NOT NULL
 );
 
-drop table dbo.ACCOUNT
+CREATE TABLE dbo.NHANVIEN
+(
+    MANV INT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
+	FOREIGN KEY (MANV) REFERENCES dbo.ACCOUNT(accountID),
+    HO_VA_TEN NVARCHAR(100),    
+    PHAI BIT,
+    NGAYSINH DATE,
+    DIACHI NVARCHAR(100),
+    VITRI NVARCHAR(100),
+    MAPB INT,
+    LUONG FLOAT,    
+    
+    FOREIGN KEY (MAPB) REFERENCES dbo.PHONGBAN(MAPB)
+);
 
 CREATE TABLE dbo.PHANCONG
 (	
@@ -106,12 +102,13 @@ CREATE TABLE dbo.BAOCAO
 	EDIT INT,
 );
 
-drop table dbo.CONGVIEC
-drop table dbo.PHANCONG
-drop table dbo.BAOCAO
-drop table dbo.DU_AN
-drop table dbo.NHANVIEN
-drop table dbo.ACCOUNT
+--drop table dbo.CONGVIEC
+--drop table dbo.PHANCONG
+--drop table dbo.BAOCAO
+--drop table dbo.DU_AN
+--drop table dbo.PHONGBAN
+--drop table dbo.NHANVIEN
+--drop table dbo.ACCOUNT
 
 CREATE TABLE dbo.THIETKE
 (
@@ -130,16 +127,15 @@ CREATE TABLE dbo.BANVE
 );
 
 
-insert into dbo.ACCOUNT values(N'admin@gmail.com', N'111', N'Administrator',N'1111111111',1)
 
 INSERT INTO dbo.PHONGBAN (TENPB, MAQL,DIADIEM)
 VALUES
-	( N'Phòng quản lý dự án',1, N'Tầng 3, Tòa nhà A'),
-	( N'Phòng thiết kế',2,  N'Tầng 3, Tòa nhà A'),
-	( N'Phòng kỹ thuật', 3, N'Tầng 3, Tòa nhà A'),
-	( N'Phòng tài chính',4, N'Tầng 3, Tòa nhà A'),	
-	( N'Phòng kinh doanh', 5, N'Tầng 3, Tòa nhà A'),
-	( N'Phòng hành chính', 6, N'Tầng 3, Tòa nhà A');
+	( N'Phòng quản lý dự án',2, N'Tầng 3, Tòa nhà A'),
+	( N'Phòng thiết kế',3,  N'Tầng 3, Tòa nhà A'),
+	( N'Phòng kỹ thuật', 4, N'Tầng 3, Tòa nhà A'),
+	( N'Phòng tài chính',5, N'Tầng 3, Tòa nhà A'),	
+	( N'Phòng kinh doanh', 6, N'Tầng 3, Tòa nhà A'),
+	( N'Phòng hành chính', 7, N'Tầng 3, Tòa nhà A');
 
 INSERT INTO dbo.DU_AN(MAKH, TENDA, DIADIEM, NGANSACH, NGAYTHICONG, TRANGTHAI,IMG)
 VALUES
@@ -203,53 +199,103 @@ VALUES
 	( N'Phòng khám da liễu S-Beauty', N'81 P. Trung Kính, P, Cầu Giấy, Hà Nội',N'6896036867', N'xdvmv8l@gmail.com'),
 	( N'Hội đồng pháp thuật tối cao', N'tài liệu mật', N'tài liệu mật', N'tài liệu mật')	
 
-INSERT INTO dbo.NHANVIEN(HO_VA_TEN,PHAI,NGAYSINH,DIACHI,SDT,EMAIL,VITRI,MAPB,LUONG)
+INSERT INTO dbo.ACCOUNT (email, [password], username, phone, [role])
+VALUES 
+(N'admin@gmail.com', N'111', N'Administrator',N'1111111111',1),
+(N'nhandq@gmail.com', N'111', N'Đào Quý Nhân', '4739439038', 2),
+(N'bachnm@gmail.com', N'111', N'Nguyễn Minh Bách', '3903859190', 2),
+(N'thuandp@gmail.com', N'111', N'Đoàn Phan Thuận', '5919064376', 2),
+(N'anhtp@gmail.com', N'111', N'Trần Phương Anh', '6437679836', 2),
+(N'lannh@gmail.com', N'111', N'Nguyễn Hương Lan', '7983656243', 2),
+(N'hiana@gmail.com', N'111', N'Nguyễn Anh Hỉa', '5624357963', 2),
+(N'thaiph@gmail.com', N'111', N'Phạm Hồng Thái', '5796311135', 3),
+(N'phongpd@gmail.com', N'111', N'Phạm Duy Phong', '1113576562', 3),
+(N'dungnd@gmail.com', N'111', N'Nguyễn Đình Dũng', '7656243208', 3),
+(N'chivq@gamil.com', N'111', N'Vũ Quỳnh Chi', '4320842877', 3),
+(N'hungnt@gmail.com', N'111', N'Nguyễn Tuấn Hưng', '4287731575', 3),
+(N'lamtp@gmail.com', N'111', N'Trần Phương Lam', '3157532746', 3),
+(N'lamnt@gmail.com', N'111', N'Nguyễn Thanh Lam', '3274653682', 3),
+(N'huongmt@gmail.com', N'111', N'Mai Thu Hương', '5368274911', 3),
+(N'tuanna@gmail.com', N'111', N'Nguyễn Anh Tuấn', '7491171092', 3),
+(N'huutt@gmail.com', N'111', N'Trần Trọng Hữu', '7109224925', 3),
+(N'anhttp@gmail.com', N'111', N'Trần Thị Phương Anh', '3523140038', 3),
+(N'trungnq@gamil.com', N'111', N'Nguyễn Quang Trung', '4003841068', 3),
+(N'hungnq@gmail.com', N'111', N'Nguyễn Quang Hưng', '4106866487', 3),
+(N'trongtd@gmail.com', N'111', N'Trần Đình Trọng', '6648745567', 3),
+(N'manhkd@gmail.com', N'111', N'Kiều Đức Mạnh', '4556716072', 3),
+(N'mymtt@gmail.com', N'111', N'Mai Thị Trà My', '1607280383', 3),
+(N'anhpv@gmail.com', N'111', N'Phan Vân Anh', '8038361147', 3),
+(N'ducnm@gmail.com', N'111', N'Ngô Minh Đức', '6114770669', 3),
+(N'anhnh@gmail.com', N'111', N'Nguyễn Hải Anh', '7066938908', 3),
+(N'tamtt@gmail.com', N'111', N'Trần Thanh Tâm', '3890886321', 3),
+(N'sonnh@gmail.com', N'111', N'Nguyễn Hồng Sơn', '8632177603', 3),
+(N'thainh@gmail.com', N'111', N'Nguyễn Hồng Thái', '7760381560', 3),
+(N'sonpt@gmail.com', N'111', N'Phạm Thanh Sơn', '8156038113', 3),
+(N'mymt@gmail.com', N'111', N'Mai Trà My', '3811379686', 3),
+(N'baong@gmail.com', N'111', N'Nguyễn Gia Bảo', '2061340802', 3),
+(N'haimn@gmail.com', N'111', N'Mai Nam Hải', '4080290059', 3),
+(N'hungdn@gmail.com', N'111', N'Đinh Ngọc Hùng', '9005924392', 3),
+(N'anhlm@gmail.com', N'111', N'Lưu Minh Anh', '2439283538', 3),
+(N'huyennn@gmail.com', N'111', N'Nguyễn Ngọc Huyền', '8353855188', 3),
+(N'ngocnth@gmail.com', N'111', N'Nguyễn Thị Hồng Ngọc', '5518848920', 3),
+(N'maivtt@gmail.com', N'111', N'Vũ Thị Thanh Mai', '4892065240', 3),
+(N'namnh@gmail.com', N'111', N'Nguyễn Hoài Nam', '6524064232', 3),
+(N'ngocnvh@gmail.com', N'111', N'Nguyễn Vũ Hồng Ngọc', '6423223388', 3),
+(N'huongttt@gmail.com', N'111', N'Trần Thị Thu Hương', '2338838112', 3),
+(N'manhld@gmail.com', N'111', N'Lưu Đức Mạnh', '3811238511', 3),
+(N'taina@gmail.com', N'111', N'Nguyễn Anh Tài', '3851160647', 3),
+(N'phuongnt@gmail.com', N'111', N'Nguyễn Thu Phương', '6064765684', 3),
+(N'hangnt@gmail.com', N'111', N'Nguyễn Thu Hằng', '6568421083', 3),
+(N'vannt@gmail.com', N'111', N'Nguyễn Thị Vân', '2108313503', 3);
+
+INSERT INTO dbo.NHANVIEN(HO_VA_TEN,PHAI,NGAYSINH,DIACHI,VITRI,MAPB,LUONG)
 VALUES
-	( N'Đào Quý Nhân', 1, '1989-09-09', N'Đà Nẵng',N'4739439038',N'nhandq@gmail.com',N'Giám đốc dự án', 1, 20),
-	( N'Nguyễn Minh Bách', 1, '1990-10-27',N'Hà Nội',N'3903859190',N'bachnm@gmail.com',N'Giám đốc thiết kế', 2, 20),
-	( N'Đoàn Phan Thuận', 1, '1989-03-05',N'Hà Nội',N'5919064376',N'thuandp@gmail.com',N'Trưởng ban kỹ thuật', 3, 20),
-	( N'Trần Phương Anh', 0, '1994-05-22', N'Hà Nội',N'6437679836', N'anhtp@gmail.com',N'Giám đốc tài chính', 4, 20),
-	( N'Nguyễn Hương Lan', 0, '1992-06-20',N'Hà Nội', N'7983656243',N'lannh@gmail.com',N'Giám đốc kinh doanh',5, 20),
-	( N'Nguyễn Anh Hỉa',1,'1991-05-17',N'Hà Nội',N'5624357963',N'hiana@gmail.com',N'Trưởng phòng hành chính',6, 20),
-	( N'Phạm Hồng Thái', 1,'1989-04-29',N'Hưng Yên',N'5796311135', N'thaiph@gmail.com', N'Quản lý dự án', 1, 10),
-	( N'Phạm Duy Phong',1, '1990-11-22',N'Vĩnh Phúc',N'1113576562', N'phongpd@gmail.com', N'Chuyên viên kỹ thuật', 1, 10),
-	( N'Nguyễn Đình Dũng',1,'1994-03-25', N'Hà Tĩnh',N'7656243208', N'dungnd@gmail.com', N'Chuyên viên tài chính',1, 10),
-	( N'Vũ Quỳnh Chi',0, '1994-02-07', N'Hà Nội',N'4320842877', N'chivq@gamil.com',N'Trưởng phòng thiết kế', 2, 20),
-	( N'Nguyễn Tuấn Hưng',1, '1992-10-23', N'Hà Nội',N'4287731575', N'hungnt@gmail.com', N'Nhân viên thiết kế',2, 10),
-	( N'Trần Phương Lam', 0, '1994-01-23', N'Hà Nội',N'3157532746', N'lamtt@gmail.com', N'Kỹ sư cầu nối', 2, 10),
-	( N'Nguyễn Thanh Lam', 0, '1993-02-13', N'Nam Định',N'3274653682', N'lamnt@gmail.com', N'Kỹ sư chuyên môn', 2, 10),
-	( N'Mai Thu Hương', 0, '1995-04-16', N'Hải Dương',N'5368274911', N'huongmt@gmail.com', N'Kiến trúc sư', 3, 15),
-	( N'Nguyễn Anh Tuấn', 1, '1992-12-27', N'Hải Dương',N'7491171092', N'tuanna@gmail.com', N'Kỹ sư thiết kế', 3, 15),
-	( N'Nguyễn Trọng Hữu', 1, '1993-05-08', N'Vĩnh Phúc',N'7109224925', N'huunt@gmail.com', N'Kỹ sư an toàn', 3, 10),
-	( N'Trần Thị Phương Anh', 0, '1994-12-24', N'Hà Nội',N'3523140038', N'anhttp@gmail.com', N'Kỹ sư thiết kế', 3, 10),
-	( N'Nguyễn Quang Trung', 1, '1990-06-08', N'Nam Định',N'4003841068', N'trungnq@gamil.com', N'Kiến trúc sư', 3, 10),
-	( N'Nguyễn Quang Hưng', 1, '1991-07-19', N'Hà Tĩnh',N'4106866487', N'hungnq@gmail.com', N'Kỹ thuật viên', 3, 10),
-	( N'Trần Đình Trọng', 1, '1993-02-22', N'Nam Định',N'6648745567', N'trongtd@gmail.com', N'Chuyên viên sản xuất', 3, 10),
-	( N'Kiều Đức Mạnh', 1, '1990-03-09', N'Hà Nội',N'4556716072', N'manhkd@gmail.com', N'Quản lý kế toán', 4, 15),
-	( N'Mai Thị Trà My', 0, '1994-12-23', N'Hà Nội',N'1607280383', N'mymtt@gmail.com', N'Kế Toán Trưởng', 4, 15),
-	( N'Phan Vân Anh', 0, '1995-10-20', N'Hà Nội',N'8038361147', N'anhpv@gmail.com', N'Kế toán viên', 4, 10),
-	( N'Ngô Minh Đức', 1, '1993-12-10', N'Hà Nội',N'6114770669', N'ducnm@gmail.com', N'Chuyên viên thuế', 4, 10),
-	( N'Nguyễn Hải Anh', 1, '1990-02-28', N'Hải Dương',N'7066938908', N'anhnh@gmail.com', N'Chuyên viên tài chính', 4, 10),
-	( N'Trần Thanh Tâm', 0, '1995-11-20', N'Vĩnh Phúc',N'3890886321', N'tamtt@gmail.com', N'Nhân viên hành chính kế toán', 4, 10),
-	( N'Nguyễn Hồng Sơn', 1, '1992-12-30', N'Hưng Yên',N'8632177603', N'sonnh@gmail.com', N'Chuyên viên kiểm toán', 4, 10),
-	( N'Nguyễn Hồng Thái', 1, '1991-08-16', N'Hà Nội',N'7760381560', N'thainh@gmail.com', N'Chuyên viên phân tích tài chính' , 4, 10),
-	( N'Phạm Thanh Sơn', 1, '1993-04-25', N'Hà Nội',N'8156038113', N'sonpt@gmail.com', N'kế toán viên', 4, 10),
-	( N'Mai Trà My', 0, '1995-03-12', N'Nam Định',N'3811379686', N'mymt@gmail.com', N'kế toán viên', 4, 10),
-	( N'Nguyễn Gia Bảo', 1, '1993-02-20', N'Hà Nội',N'2061340802', N'baong@gmail.com', N'Trưởng phòng kinh doanh',5, 15),
-	( N'Mai Nam Hải', 1, '1990-05-04', N'Hải Dương',N'4080290059', N'haimn@gmail.com', N'Nhân viên kinh doanh',5, 10),
-	( N'Đinh Ngọc Hùng', 1, '1995-09-08', N'Hà Nội',N'9005924392', N'hungdn@gmail.com', N'Kế toán kinh doanh',5, 10),
-	( N'Lưu Minh Anh', 0, '1995-11-29', N'Hà Nội',N'2439283538', N'anhlm@gmail.com', N'Chuyên viên khách hàng',5, 10),
-	( N'Nguyễn Ngọc Huyền', 0, '1994-02-19', N'Hà Nội',N'8353855188', N'huyennn@gmail.com', N'Chuyên viên marketing',5, 15),
-	( N'Nguyễn Thị Hồng Ngọc', 0, '1995-11-21', N'Hà Nội',N'5518848920', N'ngocnth@gmail.com', N'Chuyên viên quản lý dữ liệu kinh doanh',5, 15),
-	( N'Vũ Thị Thanh Mai', 0, '1992-12-04', N'Hà Nội',N'4892065240', N'maivtt@gmail.com', N'Chuyên viên phân tích thị trường',5, 15),
-	( N'Nguyễn Hoài Nam', 1, '1994-04-04', N'Hà Nội',N'6524064232', N'namnh@gmail.com', N'Trưởng phòng hành chính',6, 15),
-	( N'Nguyễn Vũ Hồng Ngọc', 0, '1993-11-09', N'Hà Nội',N'6423223388', N'ngocnvh@gmail.com', N'Nhân viên hành chính',6, 10),
-	( N'Trần Thị Thu Hương', 0, '1994-05-05', N'Hà Nội',N'2338838112', N'huongttt@gmail.com', N'Nhân viên hỗ trợ khách hàng',6, 10),
-	( N'Lưu Đức Mạnh', 1, '1992-10-22', N'Hà Nội',N'3811238511', N'manhld@gmail.com', N'Chuyên viên tuyển dụng',6, 10),
-	( N'Nguyễn Anh Tài', 1, '1990-11-26', N'Hà Nội',N'3851160647', N'taina@gmail.com', N'Chuyên viên tuyển dụng',6, 10),
-	( N'Nguyễn Thu Phương', 0, '1995-03-17', N'Hải Dương',N'6064765684', N'phuongnt@gmail.com', N'Nhân viên hỗ trợ khách hàng',6, 10),
-	( N'Nguyễn Thu Hằng',0, '1992-04-10', N'Hà Nội',N'6568421083', N'hangnt@gmail.com', N'Thư ký',6, 10),
-	( N'Nguyễn Thị Vân', 0, '1995-07-10', N'Nam Định',N'2108313503', N'vannt@gmail.com', N'Nhân viên hỗ trợ khách hàng',6, 10);
+	( N'Admin', 1, NULL, N'', N'', NULL, NULL),
+	( N'Đào Quý Nhân', 1, '1989-09-09', N'Đà Nẵng',N'Giám đốc dự án', 1, 20),
+	( N'Nguyễn Minh Bách', 1, '1990-10-27',N'Hà Nội',N'Giám đốc thiết kế', 2, 20),
+	( N'Đoàn Phan Thuận', 1, '1989-03-05',N'Hà Nội',N'Trưởng ban kỹ thuật', 3, 20),
+	( N'Trần Phương Anh', 0, '1994-05-22', N'Hà Nội',N'Giám đốc tài chính', 4, 20),
+	( N'Nguyễn Hương Lan', 0, '1992-06-20',N'Hà Nội', N'Giám đốc kinh doanh',5, 20),
+	( N'Nguyễn Anh Hỉa',1,'1991-05-17',N'Hà Nội',N'Trưởng phòng hành chính',6, 20),
+	( N'Phạm Hồng Thái', 1,'1989-04-29',N'Hưng Yên', N'Quản lý dự án', 1, 10),
+	( N'Phạm Duy Phong',1, '1990-11-22',N'Vĩnh Phúc', N'Chuyên viên kỹ thuật', 1, 10),
+	( N'Nguyễn Đình Dũng',1,'1994-03-25', N'Hà Tĩnh', N'Chuyên viên tài chính',1, 10),
+	( N'Vũ Quỳnh Chi',0, '1994-02-07', N'Hà Nội',N'Trưởng phòng thiết kế', 2, 20),
+	( N'Nguyễn Tuấn Hưng',1, '1992-10-23', N'Hà Nội', N'Nhân viên thiết kế',2, 10),
+	( N'Trần Phương Lam', 0, '1994-01-23', N'Hà Nội', N'Kỹ sư cầu nối', 2, 10),
+	( N'Nguyễn Thanh Lam', 0, '1993-02-13', N'Nam Định',N'Kỹ sư chuyên môn', 2, 10),
+	( N'Mai Thu Hương', 0, '1995-04-16', N'Hải Dương', N'Kiến trúc sư', 3, 15),
+	( N'Nguyễn Anh Tuấn', 1, '1992-12-27', N'Hải Dương', N'Kỹ sư thiết kế', 3, 15),
+	( N'Trần Trọng Hữu', 1, '1993-05-08', N'Vĩnh Phúc', N'Kỹ sư an toàn', 3, 10),
+	( N'Trần Thị Phương Anh', 0, '1994-12-24', N'Hà Nội', N'Kỹ sư thiết kế', 3, 10),
+	( N'Nguyễn Quang Trung', 1, '1990-06-08', N'Nam Định', N'Kiến trúc sư', 3, 10),
+	( N'Nguyễn Quang Hưng', 1, '1991-07-19', N'Hà Tĩnh', N'Kỹ thuật viên', 3, 10),
+	( N'Trần Đình Trọng', 1, '1993-02-22', N'Nam Định', N'Chuyên viên sản xuất', 3, 10),
+	( N'Kiều Đức Mạnh', 1, '1990-03-09', N'Hà Nội', N'Quản lý kế toán', 4, 15),
+	( N'Mai Thị Trà My', 0, '1994-12-23', N'Hà Nội',N'Kế Toán Trưởng', 4, 15),
+	( N'Phan Vân Anh', 0, '1995-10-20', N'Hà Nội',N'Kế toán viên', 4, 10),
+	( N'Ngô Minh Đức', 1, '1993-12-10', N'Hà Nội', N'Chuyên viên thuế', 4, 10),
+	( N'Nguyễn Hải Anh', 1, '1990-02-28', N'Hải Dương', N'Chuyên viên tài chính', 4, 10),
+	( N'Trần Thanh Tâm', 0, '1995-11-20', N'Vĩnh Phúc', N'Nhân viên hành chính kế toán', 4, 10),
+	( N'Nguyễn Hồng Sơn', 1, '1992-12-30', N'Hưng Yên', N'Chuyên viên kiểm toán', 4, 10),
+	( N'Nguyễn Hồng Thái', 1, '1991-08-16', N'Hà Nội', N'Chuyên viên phân tích tài chính' , 4, 10),
+	( N'Phạm Thanh Sơn', 1, '1993-04-25', N'Hà Nội', N'kế toán viên', 4, 10),
+	( N'Mai Trà My', 0, '1995-03-12', N'Nam Định', N'kế toán viên', 4, 10),
+	( N'Nguyễn Gia Bảo', 1, '1993-02-20', N'Hà Nội', N'Trưởng phòng kinh doanh',5, 15),
+	( N'Mai Nam Hải', 1, '1990-05-04', N'Hải Dương', N'Nhân viên kinh doanh',5, 10),
+	( N'Đinh Ngọc Hùng', 1, '1995-09-08', N'Hà Nội', N'Kế toán kinh doanh',5, 10),
+	( N'Lưu Minh Anh', 0, '1995-11-29', N'Hà Nội', N'Chuyên viên khách hàng',5, 10),
+	( N'Nguyễn Ngọc Huyền', 0, '1994-02-19', N'Hà Nội',N'Chuyên viên marketing',5, 15),
+	( N'Nguyễn Thị Hồng Ngọc', 0, '1995-11-21', N'Hà Nội', N'Chuyên viên quản lý dữ liệu kinh doanh',5, 15),
+	( N'Vũ Thị Thanh Mai', 0, '1992-12-04', N'Hà Nội', N'Chuyên viên phân tích thị trường',5, 15),
+	( N'Nguyễn Hoài Nam', 1, '1994-04-04', N'Hà Nội', N'Trưởng phòng hành chính',6, 15),
+	( N'Nguyễn Vũ Hồng Ngọc', 0, '1993-11-09', N'Hà Nội', N'Nhân viên hành chính',6, 10),
+	( N'Trần Thị Thu Hương', 0, '1994-05-05', N'Hà Nội', N'Nhân viên hỗ trợ khách hàng',6, 10),
+	( N'Lưu Đức Mạnh', 1, '1992-10-22', N'Hà Nội',  N'Chuyên viên tuyển dụng',6, 10),
+	( N'Nguyễn Anh Tài', 1, '1990-11-26', N'Hà Nội',N'Chuyên viên tuyển dụng',6, 10),
+	( N'Nguyễn Thu Phương', 0, '1995-03-17', N'Hải Dương', N'Nhân viên hỗ trợ khách hàng',6, 10),
+	( N'Nguyễn Thu Hằng',0, '1992-04-10', N'Hà Nội', N'Thư ký',6, 10),
+	( N'Nguyễn Thị Vân', 0, '1995-07-10', N'Nam Định', N'Nhân viên hỗ trợ khách hàng',6, 10);
 
 Insert into dbo.THIETKE (TEN, ANH)
 Values 
@@ -282,7 +328,16 @@ SELECT *
 FROM dbo.KHACHHANG
 INNER JOIN dbo.DU_AN ON dbo.KHACHHANG.MAKH = dbo.DU_AN.MAKH;
 
-SELECT dbo.DU_AN.MAKH, TENKH, MADA, TENDA, DIADIEM, NGAYTHICONG, TRANGTHAI, IMG
+SELECT dbo.DU_AN.MAKH, TENKH, MADA, TENDA, DIADIEM,NGANSACH, NGAYTHICONG, TRANGTHAI, IMG
 FROM dbo.KHACHHANG
 INNER JOIN dbo.DU_AN ON dbo.KHACHHANG.MAKH = dbo.DU_AN.MAKH
 
+SELECT MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, phone, email, VITRI, TENPB, LUONG, MAQL
+FROM dbo.ACCOUNT
+INNER JOIN dbo.NHANVIEN ON dbo.ACCOUNT.accountID = dbo.NHANVIEN.MANV
+INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB 
+where dbo.PHONGBAN.MAPB =1
+
+select MAQL from dbo.PHONGBAN where MAPB=1
+
+select * from dbo.PHONGBAN where MAPB=1
