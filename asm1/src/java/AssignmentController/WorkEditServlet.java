@@ -111,7 +111,7 @@ public class WorkEditServlet extends HttpServlet {
         request.setAttribute("page", page);
 
         DepartmentDAO departDAO = new DepartmentDAO();
-        Department d = departDAO.getDepartByID(Integer.parseInt(mapb));
+        Department d = departDAO.getDepartByDPID(Integer.parseInt(mapb));
         request.setAttribute("tenpb", d.getTenPB());
 
         request.getRequestDispatcher("workEdit.jsp").forward(request, response);

@@ -70,7 +70,7 @@ public class WorkEmployeeServlet extends HttpServlet {
         DepartmentDAO departDAO = new DepartmentDAO();
         int mapb = departDAO.getDepartIDByEmail(email);
         
-        Department d = departDAO.getDepartByID(mapb);
+        Department d = departDAO.getDepartByDPID(mapb);
         request.setAttribute("tenpb", d.getTenPB());
         
         List<Work> list = assDAO.getWorkByManv(manv);        

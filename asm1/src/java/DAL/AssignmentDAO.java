@@ -285,9 +285,10 @@ public class AssignmentDAO extends DBContext {
 
     public List<Employee> getEmListByWork(int departID) {
         List<Employee> emList = new ArrayList<>();
-        String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, SDT, EMAIL, VITRI, TENPB, LUONG, MAQL\n"
-                + "  from dbo.PHONGBAN inner join dbo.NHANVIEN \n"
-                + "  on dbo.PHONGBAN.MAPB = dbo.NHANVIEN.MAPB where dbo.PHONGBAN.MAPB=?";
+        String sql = "select MANV, HO_VA_TEN, PHAI, NGAYSINH, DIACHI, phone, email, VITRI, TENPB, LUONG, MAQL\n"
+                + "  FROM dbo.ACCOUNT\n"
+                + "INNER JOIN dbo.NHANVIEN ON dbo.ACCOUNT.accountID = dbo.NHANVIEN.MANV\n"
+                + "INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB where dbo.PHONGBAN.MAPB=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, departID);
@@ -299,8 +300,8 @@ public class AssignmentDAO extends DBContext {
                 em.setGt(rs.getInt("PHAI"));
                 em.setNgaySinh(rs.getDate("NGAYSINH"));
                 em.setDiaChi(rs.getString("DIACHI"));
-                em.setSDT(rs.getString("SDT"));
-                em.setEmail(rs.getString("EMAIL"));
+                em.setSDT(rs.getString("phone"));
+                em.setEmail(rs.getString("email"));
                 em.setViTri(rs.getString("VITRI"));
                 em.setPhongBan(rs.getString("TENPB"));
                 em.setLuong(rs.getFloat("LUONG"));

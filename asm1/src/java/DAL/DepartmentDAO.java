@@ -40,11 +40,11 @@ public class DepartmentDAO extends DBContext {
 
     public int getDepartIDByEmail(String email) {
         int mapb = 0;
-        String sql = "SELECT p.MAPB\n"
+        String sql = "SELECT dbo.PHONGBAN.MAPB\n"
                 + "FROM dbo.ACCOUNT\n"
                 + "INNER JOIN dbo.NHANVIEN ON dbo.ACCOUNT.accountID = dbo.NHANVIEN.MANV\n"
-                + "INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB"
-                + "WHERE EMAIL = ?";
+                + "INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB\n"
+                + "WHERE email = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, email);
@@ -136,9 +136,11 @@ public class DepartmentDAO extends DBContext {
         return null;
     }
 
-//    public static void main(String[] args) {
-//        DepartmentDAO dp = new DepartmentDAO();
-//        Department d = dp.getDepartByID(4);
-//        System.out.println(d.getDiaDiem());
-//    }
+    public static void main(String[] args) {
+        DepartmentDAO dp = new DepartmentDAO();
+        int mapb = dp.getDepartIDByEmail("thaiph@gmail.com");
+        Department d = dp.getDepartByID(4);
+        System.out.println(d.getDiaDiem());
+        System.out.println(mapb);
+    }
 }

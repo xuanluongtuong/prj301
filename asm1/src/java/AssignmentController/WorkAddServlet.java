@@ -88,6 +88,7 @@ public class WorkAddServlet extends HttpServlet {
         request.setAttribute("tenpc", a.getTen());
         
         request.setAttribute("mapb", mapb);
+        
         List<Employee> list = asignDAO.getEmListByWork(Integer.parseInt(mapb));
 
         int page, numperpage = 5;
@@ -109,7 +110,7 @@ public class WorkAddServlet extends HttpServlet {
         request.setAttribute("page", page);
 
         DepartmentDAO departDAO = new DepartmentDAO();
-        Department d = departDAO.getDepartByID(Integer.parseInt(mapb));
+        Department d = departDAO.getDepartByDPID(Integer.parseInt(mapb));
         request.setAttribute("tenpb", d.getTenPB());
 
         request.getRequestDispatcher("workAdd.jsp").forward(request, response);

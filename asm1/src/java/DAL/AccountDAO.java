@@ -43,13 +43,13 @@ public class AccountDAO extends DBContext {
                 + "FROM dbo.ACCOUNT AS a\n"
                 + "INNER JOIN dbo.NHANVIEN AS n ON a.accountID = n.MANV\n"
                 + "INNER JOIN dbo.PHONGBAN AS p ON n.MAPB = p.MAPB\n"
-                + "WHERE n.email = ?";
+                + "WHERE a.email = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                int mapb = rs.getInt("MAPB");                
+                int mapb = rs.getInt("MAPB");
                 return mapb;
             }
         } catch (SQLException ex) {
@@ -57,19 +57,19 @@ public class AccountDAO extends DBContext {
         }
         return 0;
     }
-    
+
     public int getManvByEmail(String email) {
-        String sql = "SELECT n.MANV\n"
-                + "FROM dbo.ACCOUNT AS a\n"
-                + "INNER JOIN dbo.NHANVIEN AS n ON a.accountID = n.MANV\n"
-                + "INNER JOIN dbo.PHONGBAN AS p ON n.MAPB = p.MAPB\n"
-                + "WHERE n.email = ?";
+        String sql = "SELECT MANV\n"
+                + "FROM dbo.ACCOUNT\n"
+                + "INNER JOIN dbo.NHANVIEN ON dbo.ACCOUNT.accountID = dbo.NHANVIEN.MANV\n"
+                + "INNER JOIN dbo.PHONGBAN ON dbo.NHANVIEN.MAPB = dbo.PHONGBAN.MAPB\n"
+                + "WHERE email = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                int manv = rs.getInt("MANV");                
+                int manv = rs.getInt("MANV");
                 return manv;
             }
         } catch (SQLException ex) {
@@ -151,7 +151,6 @@ public class AccountDAO extends DBContext {
         }
 
     }
-    
 
     public boolean changePassword(String email, String newPassword) {
         String sql = "UPDATE ACCOUNT SET password = ? WHERE email = ? ";
@@ -181,10 +180,12 @@ public class AccountDAO extends DBContext {
         }
         return false;
     }
-    
+
     public static void main(String[] args) {
         AccountDAO accDAO = new AccountDAO();
         Account a = accDAO.getAccountByEmail("admin@gmail.com");
+        int manv = accDAO.getManvByEmail("thaiph@gmail.com");
         System.out.println(a.getPassword());
+        System.out.println(manv);
     }
 }
