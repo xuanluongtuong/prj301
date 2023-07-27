@@ -28,7 +28,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             .myheader{
                 position: relative;
                 width: 100%;
-                background-image: url(https://media.zicxa.com/5852926);
+                background-image: url(img/background.jpg);
                 background-size: cover;
                 color: white;
                 font-size: 36px;
