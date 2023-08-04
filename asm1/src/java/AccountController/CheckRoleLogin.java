@@ -49,11 +49,7 @@ public class CheckRoleLogin extends HttpServlet {
 //                request.getRequestDispatcher("assignmentmanager?email=" + email).forward(request, response);
                 response.sendRedirect("workemployee?email=" + email);
                 break;
-            }
-            default: {
-                response.sendRedirect("login");
-                break;
-            }
+            }            
         }
     }
 

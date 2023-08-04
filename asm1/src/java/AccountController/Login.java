@@ -96,13 +96,14 @@ public class Login extends HttpServlet {
         // check account
         AccountDAO accountDAO = new AccountDAO();
         Account account = accountDAO.checkAccount(email, password);  
-        session.setAttribute("username", account.getName());
         
-        System.out.println(account.getRole());
-        System.out.println(account.getRole());
+        
+//        System.out.println(account.getRole());
+//        System.out.println(account.getRole());
         
         // set session
         if (account != null) {
+            session.setAttribute("username", account.getName());
             if (account.getRole() == UserRole.ADMIN.getValue()) {                
                 session.setAttribute("role", "admin");
                 session.setMaxInactiveInterval(60*60*24);
@@ -124,6 +125,7 @@ public class Login extends HttpServlet {
             request.setAttribute("error", "Email or password is incorrect");
             request.getRequestDispatcher("login.jsp").forward(request, response);            
         }
+        
     }
 
     /** 
