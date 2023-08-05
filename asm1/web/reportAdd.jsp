@@ -111,7 +111,7 @@
                     </div>
                     <div class="form-group">
                         <label for="img">Image</label>
-                        <input type="text" id="img" name="img" required>
+                        <textarea type="text" id="img" name="img" required></textarea>
                     </div>
                     <div class="form-button">
                         <button type="submit">Submit</button>

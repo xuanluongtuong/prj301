@@ -427,6 +427,22 @@ public class AssignmentDAO extends DBContext {
             System.out.println(e);
         }
     }
+    
+     //thay doi trang thai cong viec
+    public void changeWorkStatus(int macv, int i){
+        String sql = "UPDATE dbo.CONGVIEC SET TRANGTHAI = ? WHERE ID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            
+            st.setInt(1, i);
+            st.setInt(1, macv);
+            
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 
     public static void main(String[] args) {
         AssignmentDAO assDAO = new AssignmentDAO();
