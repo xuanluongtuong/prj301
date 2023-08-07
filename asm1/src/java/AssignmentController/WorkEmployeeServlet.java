@@ -8,6 +8,7 @@ package AssignmentController;
 import DAL.AccountDAO;
 import DAL.AssignmentDAO;
 import DAL.DepartmentDAO;
+import DAL.ReportDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -72,6 +73,9 @@ public class WorkEmployeeServlet extends HttpServlet {
         
         Department d = departDAO.getDepartByDPID(mapb);
         request.setAttribute("tenpb", d.getTenPB());
+        
+        ReportDAO rDAO = new ReportDAO();
+        request.setAttribute("rDAO", rDAO);
         
         List<Work> list = assDAO.getWorkByManv(manv);        
         int page, numperpage = 4;

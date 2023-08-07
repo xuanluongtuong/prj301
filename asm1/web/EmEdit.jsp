@@ -4,10 +4,8 @@
     Author     : admin
 --%>
 
-<%@page import="model.Employee"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@page import="jakarta.servlet.http.HttpSession"%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -48,19 +46,19 @@
     <body>
 
         <%@include file="header.jsp"%>
-
+      
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
-                <% Employee em = (Employee)request.getAttribute("employee");
-                %>
+                <c:set var="e" value="${employee}" ></c:set>
+                
                 <form action="editem" method="post">
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
                                 <label class="form-label" for="HO_VA_TEN">Full name</label>
-                                <input type="hidden" name="MANV" value="<%=em.getMaNV()%>" required />
-                                <input class="form-input" type="text" id="HOVATEN" name="HOVATEN" value="<%=em.getHoVaTen()%>" required />
+                                <input type="hidden" name="MANV" value="${e.getMaNV()}" required />
+                                <input class="form-input" type="text" id="HOVATEN" name="HOVATEN" value="${e.getHoVaTen()}" required />
                             </div>
 
                             <div class="form-group" style="margin: 21px 0;">
@@ -68,36 +66,36 @@
                                 <div class="radio-group">
 
                                     <label>
-                                        <input type="radio" name="PHAI" value="1" required <%if(em.getGt()==1){%>checked<%}%>/>                                        
+                                        <input type="radio" name="PHAI" value="1" <c:if test="${e.getGt() == 1}">checked=""</c:if> required />                                        
                                         Nam
                                     </label>
                                     <label>
-                                        <input type="radio" name="PHAI" value="0" required <%if(em.getGt()==0){%>checked<%}%>/>                                        
+                                        <input type="radio" name="PHAI" value="0" <c:if test="${e.getGt() == 0}">checked=""</c:if> required />                                        
                                         Nữ
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="NGAYSINH">Date of birth</label>
-                                <input class="form-input" type="date" id="NGAYSINH" name="NGAYSINH" value="<%=em.getNgaySinh()%>" required />
+                                <input class="form-input" type="date" id="NGAYSINH" name="NGAYSINH" value="${e.getNgaySinh()}" required />
                             </div>
 
                         </div>
                         <div class="form-right">
                             <div class="form-group">
                                 <label class="form-label" for="DIACHI">Address</label>
-                                <input class="form-input" type="text" id="DIACHI" name="DIACHI" value="<%=em.getDiaChi()%>" required />
+                                <input class="form-input" type="text" id="DIACHI" name="DIACHI" value="${e.getDiaChi()}" required />
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="VITRI">Position</label>
-                                <input class="form-input" type="text" id="VITRI" name="VITRI" value="<%=em.getViTri()%>" required />
+                                <input class="form-input" type="text" id="VITRI" name="VITRI" value="${e.getViTri()}" required />
                             </div>
-                            <input  type="hidden"  name="MAQL"  value="<%=em.getMaql()%>"/>
-                            <input  type="hidden"  name="PHONGBAN"  value="<%=em.getPhongBan()%>"/>
-                            <input  type="hidden"  name="MAPB"  value="<%=em.getMapb()%>"/>
+                            <input  type="hidden"  name="MAQL"  value="${e.getMaql()}"/>
+                            <input  type="hidden"  name="PHONGBAN"  value="${e.getPhongBan()}"/>
+                            <input  type="hidden"  name="MAPB"  value="${e.getMapb()}"/>
                             <div class="form-group">
                                 <label class="form-label" for="LUONG">Salary</label>
-                                <input class="form-input" type="number" id="LUONG" name="LUONG" value="<%=em.getLuong()%>" required />
+                                <input class="form-input" type="number" id="LUONG" name="LUONG" value="${e.getLuong()}" required />
                             </div>
 
                         </div>

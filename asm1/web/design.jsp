@@ -53,10 +53,10 @@
             <h4 style="width: 300px;margin: 0 0px 0 30px; color: #8b00a3;"> Design List </h4><br/>
 
 
-            
+
             <a href="designadd" style="display:flex;align-items: center; text-decoration: none;color: rgb(129, 0, 185);margin: 0 35px 0px 0;font-size: 20px;">
                 <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Design</a>
-               
+
 
         </div>
 
@@ -80,16 +80,16 @@
 
                 <div style="display: flex; justify-content: center;margin: 10px 0;">
                     <ul style="display: flex;flex-wrap: wrap;list-style: none;margin: 0;padding: 0;justify-content: space-evenly;">
-                        <%  List<Design> list = (ArrayList<Design>)request.getAttribute("designlist");
-                            for (Design d : list) {                                
-                        %>
-                        <li style="width: 320px;margin: 20px 15px; box-shadow: 2px 2px 2px 0.5px #66696b;border-radius: 4px;overflow: hidden;">
-                            <img src="<%=d.getImg()%>" alt="Design have not had image yet" style="width: 100%;height: 200px;">
-                            <a href="designinfo?ma=<%=d.getId()%>" style="color: black; text-decoration: none;font-size: 17px;">
-                                <div style="height: 50px;padding: 0px 5px;"><%=d.getName()%></div>
-                            </a>
-                        </li>
-                        <%}%>
+                        <c:forEach items="${designlist}" var="d">
+                           
+                            <li style="width: 320px;margin: 20px 15px; box-shadow: 2px 2px 2px 0.5px #66696b;border-radius: 4px;overflow: hidden;">
+                                <img src="${d.getImg()}" alt="Design have not had image yet" style="width: 100%;height: 200px;">
+                                <a href="designinfo?ma=${d.getId()}" style="color: black; text-decoration: none;font-size: 17px;">
+                                    <div style="height: 50px;padding: 0px 5px;">${d.getName()}</div>
+                                </a>
+                            </li>
+                            
+                        </c:forEach>
                     </ul>
                 </div>
                 <div style="margin-bottom:20px">

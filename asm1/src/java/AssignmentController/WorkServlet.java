@@ -8,7 +8,7 @@ package AssignmentController;
 import DAL.AssignmentDAO;
 import DAL.DepartmentDAO;
 import DAL.ProjectDAO;
-import com.oracle.wls.shaded.org.apache.bcel.generic.AALOAD;
+import DAL.ReportDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -83,6 +83,9 @@ public class WorkServlet extends HttpServlet {
         Assignment a = assignDAO.getASByID(Integer.parseInt(idpc));
         
         request.setAttribute("tenpc", a.getTen());
+        
+        ReportDAO rDAO = new ReportDAO();
+        request.setAttribute("rDAO", rDAO);
         
         List<Work> list = assignDAO.getWorkByIdpcMapb(Integer.parseInt(idpc), Integer.parseInt(mapb));
         int page, numperpage = 4;

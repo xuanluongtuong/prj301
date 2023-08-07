@@ -58,7 +58,8 @@ public class SignUp extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.sendRedirect("signup.jsp");
+//        response.sendRedirect("signup.jsp");
+        request.getRequestDispatcher("signup.jsp").forward(request, response);
     } 
 
     /** 

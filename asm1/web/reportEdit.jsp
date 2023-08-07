@@ -85,33 +85,38 @@
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
-                <%Report r = (Report)request.getAttribute("report");
-                %>                    
+                <c:set var="r" value="${report}">
+                </c:set>
+
                 <form action="reportedit" method="post">
-                    <input type="hidden" name="edit" value="<%=r.getEdit()%>" readonly>
+                    <input type="hidden" name="idpc" value="${idpc}" readonly>
+                    <input type="hidden" name="macv" value="${macv}" readonly>
+                    <input type="hidden" name="mapb" value="${mapb}" readonly>
+                    <input type="hidden" name="mada" value="${mada}" readonly>
+                    <input type="hidden" name="edit" value="${r.getEdit()}" readonly>
                     <div class="form-group">
                         <label for="macv">Report ID</label>
-                        <input type="text" name="id" value="<%=r.getId()%>" readonly>
+                        <input type="text" name="id" value="${r.getId()}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="ten">Report Name</label>
-                        <input type="text" id="ten" name="ten" value="<%=r.getTen()%>" required>
+                        <input type="text" id="ten" name="ten" value="${r.getTen()}" required>
                     </div>
 
                     <div class="form-group">
                         <label for="noidung">Title</label>
-                        <input type="text" id="noidung" name="noidung" value="<%=r.getNoiDung()%>" required>
+                        <input type="text" id="noidung" name="noidung" value="${r.getNoiDung()}" required>
                     </div>
                     <div class="form-group">
                         <label for="chitiet">Detail</label>
                         <textarea id="chitiet" name="chitiet" rows="4" required></textarea>
                         <script>
-                            document.getElementById("chitiet").value = "<%=r.getChiTiet()%>";
+                            document.getElementById("chitiet").value = "${r.getChiTiet()}";
                         </script>
                     </div>
                     <div class="form-group">
                         <label for="img">Image</label>
-                        <input type="text" id="img" name="img" value="<%=r.getImg()%>" required>
+                        <input type="text" id="img" name="img" value="${r.getImg()}" required>
                     </div>
                     <div class="form-button">
                         <button type="submit">Submit</button>

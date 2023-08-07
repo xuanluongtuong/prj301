@@ -33,17 +33,19 @@
 
     </head>
     <body>
-        
+
         <%@include file="header.jsp"%>
-        
+
         <!-- menu -->
         <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
             <div style="width: 100%; display: flex;justify-content: space-between;margin:10px 30px;">
-                <%if(s!=null){
-                    if(s.equals("admin")){%>
+                <%--<c:if test="${sessionScope.role == 'admin'}">--%>
                 <div><h4>Draft</h4></div>
-                <a href="draftadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 40px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Draft</a>
-                <%}}%>
+                <a href="draftadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 40px;font-size: 20px;">
+                    <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
+                    Add New Draft
+                </a>
+                <%--</c:if>--%>
             </div>
             <div class="mylist">
 
@@ -53,14 +55,13 @@
 
                     <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
-                        <%  Draft d = (Draft)request.getAttribute("info");
-                            if(d==null){
-                                d = (Draft)session.getAttribute("draftinfo");
-                            }
-                        %>
+                        <c:set var="d" value="${info}"></c:set>
+                        <c:if test="${d==null}" >
+                            <c:set var="d" value="${sessionScope.designinfo}"></c:set>
+                        </c:if> 
 
                         <div class="project_img">
-                            <img src="<%=d.getImg()%>" alt="alt" />
+                            <img src="${d.getImg()}" alt="alt" />
                         </div>
                         <div class="project_content">
                             <div class="project_content_title">
@@ -68,34 +69,31 @@
                                     Draft Information
                                 </h3>
                             </div>
-                            
+
 
                             <div>
-                                Draft ID: <%=d.getId()%>
+                                Draft ID: ${d.getId()}
                             </div>
 
                             <div>
-                                Draft name: <%=d.getName()%>
+                                Draft name: ${d.getName()}
                             </div>
-
                             
 
-                        <%if(s!=null){
-                            if(s.equals("admin")){%>
                             <div class="edit_form">
-                                <a href="draftedit?id=<%=d.getId()%>" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;">
+                                <a href="draftedit?id=${d.getId()}" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;">
                                     <i class="fa-solid fa-pen-to-square"></i>
-                                    Edit</a>
-
-                                <a href="#" onclick="doDelete('<%=d.getId()%>')" class="mydelete" style="color: #ff0084;display: flex;align-items: center;">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Delete</a>
+                                    Edit
+                                </a>
+                                <c:if test="${sessionScope.role == 'admin'}">
+                                    <a href="#" onclick="doDelete('${d.getId()}')" class="mydelete" style="color: #ff0084;display: flex;align-items: center;">
+                                        <i class="fa-solid fa-trash"></i>
+                                        Delete
+                                    </a>
+                                </c:if>
                             </div>
-                        <%}}%>
 
                         </div>
-
-
 
                     </div>
 
@@ -106,6 +104,6 @@
     <!-- menu -->
 
     <%@include file="footer.jsp"%>
-    
+
 </body>
 </html>

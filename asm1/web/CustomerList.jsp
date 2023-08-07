@@ -57,10 +57,9 @@
                 <h4 style="min-width: 300px;margin: 0 0 0 30px; color: purple;"> Customer List </h4><br/>                        
 
 
-                <%if(s!=null){
-                    if(s.equals("admin")){%>
+                <%--<c:if test="${role=='admin'}" >--%>
                 <a href="customeradd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Customer</a>
-                <%}}%>
+                <%--</c:if>--%>
 
             </div>
 
@@ -104,50 +103,55 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
                                         Email
                                     </th>
-                                    <%if(s!=null){
-                                        if(s.equals("admin")){%>
-                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
-                                        Action
-                                    </th>
-                                    <%}}%>
+                                    <%--<c:if test="${role=='admin'}" >--%>
+                                        <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
+                                            Action
+                                        </th>
+                                    <%--</c:if>--%>
                                 </tr>
                             </thead>
                             <tbody>
-                                <%  List<Customer> list = (ArrayList<Customer>) request.getAttribute("customer");
-                                    for (Customer c : list) {                                
-                                %>
-                                <tr class="border-b border-gray-50 dark:border-gray-800">
-                                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                        <%=c.getMaKH()%>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <%=c.getTenKH()%>
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        <%=c.getDCKH()%>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <%=c.getSDTKH()%>
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        <%=c.getEmailKH()%>
-                                    </td>
-                                    <%if(s!=null){
-                                        if(s.equals("admin")){%>
-                                    <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+                                <c:forEach items="${customer}" var="c">
 
-                                        <a href="customeredit?id=<%=c.getMaKH()%>" class="myedit" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                            Edit</a>
+                                    <tr class="border-b border-gray-50 dark:border-gray-800">
+                                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
 
-                                        <a href="#" onclick="doDelete('<%=c.getMaKH()%>')" class="mydelete" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-trash"></i>
-                                            Delete</a>
+                                            ${c.getMaKH()}
+                                        </td>
+                                        <td class="px-6 py-4">
 
-                                    </td>  
-                                    <%}}%>
-                                </tr>
-                                <%} %>
+                                            ${c.getTenKH()}
+                                        </td>
+                                        <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+
+                                            ${c.getDCKH()}
+                                        </td>
+                                        <td class="px-6 py-4">
+
+                                            ${c.getSDTKH()}
+                                        </td>
+                                        <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+
+                                            ${c.getEmailKH()}
+                                        </td>
+
+                                        <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+
+                                            <a href="customeredit?id=${c.getMaKH()}" class="myedit" style="display: flex;align-items: center;">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                Edit
+                                            </a>
+                                            <c:if test="${role=='admin'}" >
+                                                <a href="#" onclick="doDelete('${c.getMaKH()}')" class="mydelete" style="display: flex;align-items: center;">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                    Delete
+                                                </a>
+                                            </c:if>
+                                        </td>  
+
+                                    </tr>
+
+                                </c:forEach>
                             </tbody>
                         </table>
 

@@ -72,19 +72,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%  List<Department> list = (ArrayList<Department>)request.getAttribute("data");
-                                        if(list!=null)
-                                        for (Department d : list) {                                
-                                    %>
-                                    <tr class="border-b border-gray-50 dark:border-gray-800">
-                                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                            <%=d.getMaPB()%>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <%=d.getTenPB()%>
-                                        </td>                                        
-                                    </tr>
-                                    <%} %>
+                                    <c:forEach items="${data}" var="d" >
+                                        
+                                        <tr class="border-b border-gray-50 dark:border-gray-800">
+                                            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                                ${d.getMaPB()}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                ${d.getTenPB()}
+                                            </td>                                        
+                                        </tr>
+                                        
+                                    </c:forEach>
                                 </tbody>
                             </table>
 
@@ -132,7 +131,7 @@
                             <div class="form-button" style="display: flex; justify-content: left;">
                                 <button class="btn-submit" type="submit">Submit</button>
                             </div>
-                            
+
                         </div>
                     </div>
 

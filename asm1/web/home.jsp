@@ -141,15 +141,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 }
             }
         </style>
-        <%String s=(String)session.getAttribute("role");
-            if(s!=null){
-                if(!s.equals("admin")){
-                    response.sendRedirect("login.jsp");
-                }
-            }else{
-                response.sendRedirect("login.jsp");
-            }
-        %>
+
+
         <!--start header-->
         <div class="myheader" style="height: 12rem">
 
@@ -171,40 +164,45 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <div style="display: flex;align-items: center;">
                 <div class="myhome">
                     <img src="img/home1.png" alt="">
-                    <%if(s!=null){
-                        if(s.equals("admin")){%>
-                    <a href="home.jsp">Home</a>
-                    <%}else if(s.equals("manager")){%>
-                    <a href="assignmentmanager?email=${email}">Home</a>
-                    <%}else if(s.equals("user")){%>
-                    <a href="workemployee?email=${email}">Home</a>
-                    <%}}%>
+                    <c:if test="${sessionScope.role=='admin'}">
+                        <a href="home.jsp">Home</a>
+                    </c:if>
+                    <c:if test="${sessionScope.role=='manager'}">
+                        <a href="assignmentmanager?email=${email}">Home</a>
+                    </c:if>
+                    <c:if test="${sessionScope.role=='user'}">
+                        <a href="workemployee?email=${email}">Home</a>
+                    </c:if>
                 </div>
                 <ul >
-                    <%if(s!=null){
-                        if(s.equals("admin")){%>
-
-                    <li id="the_object"><a href="assignment">Assignment</a></li>
-                        <%}}%>
+                    <c:if test="${sessionScope.role=='admin'}">
+                        <li id="the_object">
+                            <a href="assignment">Assignment</a>
+                        </li>
+                    </c:if>
 
                     <li id="the_object"><a href="project">Project</a></li>                    
                     <li id="the_object"><a href="resource">Resource</a></li>
                     <li id="the_object"><a href="customer">Customer</a></li>
                     <li id="the_object"><a href="employ">Employee</a></li>
 
-                    <%if(s!=null){
-                        if(s.equals("admin")){%>
-                    <li id="the_object"><a href="signup">Sign up new</a></li>
-                        <%}else{%>
-                        
-                    <li id="the_object"><a href="changepwd">Change Password</a></li>
-                        <%}}%>
+                    <c:if test="${sessionScope.role=='admin'}">
+                        <li id="the_object">
+                            <a href="signup">Sign up new</a>
+                        </li>
+                    </c:if>
+                    <%--<c:if test="${sessionScope.role!='admin'}">--%>
+
+                        <li id="the_object">
+                            <a href="changepwd">Change Password</a>
+                        </li>
+                    <%--</c:if>--%>
                 </ul>
             </div>
             <div  style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">
                 <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
                 </i>
-                <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
+                <div id="the_logout" style="color: white;">${sessionScope.name}</div>
                 <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
                     <div id="the_logout" style="margin-right: 5px;">&nbsp;| Log out
                     </div>

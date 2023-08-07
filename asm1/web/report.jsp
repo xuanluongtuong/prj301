@@ -39,53 +39,52 @@
         <!-- menu -->
         <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">            
             <div class="mylist">
-                <%  Report r;
-                    if(request.getAttribute("report")!=null){
-                    r = (Report)request.getAttribute("report");
-                %>
-                <div style="margin: 10px;display: flex;">
-                    <div style="width: 60%;">
-                        <h5>Report ID: <%=r.getId()%></h5>
-                        <h5>Report Name: <%=r.getTen()%></h5>
-                        <h5>Task Name: <%=r.getTencv()%></h5>
-                        <h5>Employee: <%=r.getTennv()%></h5>
-                        <h5>Department: <%=r.getTenpb()%></h5>
-                        <h5>Title: <%=r.getNoiDung()%></h5>
-                        <h5>Report day: <%=r.getTime()%></h5>
-                        <h5>Detail: </h5>
-                        <p style="font-size: 20px; min-height: 200px; border: rgb(72, 72, 72) 1px solid;border-radius: 5px;margin: 0 10px 0 0;">
-                            <%=r.getChiTiet()%>
-                        </p>
-                        <%if(s.equals("user")){%>
-                        <div class="edit_form" style="margin:10px 0 0 10px ;">
-                            <a href="reportedit?id=<%=r.getId()%>&macv=${macv}&idpc=${idpc}&mada=${mada}&mapb=${mapb}" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;text-decoration: none">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                                Edit</a>
+                <c:set var="r" value="${report}"></c:set>
+                <c:if test="${r!=null}">
 
-<!--                    <a href="#" onclick="doDelete('<%=r.getId()%>')" class="mydelete" style="color: #ff0084;display: flex;align-items: center;text-decoration: none">
-                        <i class="fa-solid fa-trash"></i>
-                        Delete</a>-->
+                    <div style="margin: 10px;display: flex;">
+                        <div style="width: 60%;">
+                            <h5>Report ID: ${r.getId()}</h5>
+                            <h5>Report Name: ${r.getTen()}</h5>
+                            <h5>Task Name: ${r.getTencv()}</h5>
+                            <h5>Employee: ${r.getTennv()}</h5>
+                            <h5>Department: ${r.getTenpb()}</h5>
+                            <h5>Title: ${r.getNoiDung()}</h5>
+                            <h5>Report day: ${r.getTime()}</h5>
+                            <h5>Detail: </h5>
+                            <p style="font-size: 20px; min-height: 200px; border: rgb(72, 72, 72) 1px solid;border-radius: 5px;margin: 0 10px 0 0;">
+                                ${r.getChiTiet()}
+                            </p>
+                            <c:if test="${sessionScope.role=='user' || sessionScope.role=='manager'}">
+
+                                <div class="edit_form" style="margin:10px 0 0 10px ;">
+                                    <a href="reportedit?id=${r.getId()}&macv=${macv}&idpc=${idpc}&mada=${mada}&mapb=${mapb}" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;text-decoration: none">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        Edit</a>
+
+                                </div>
+                            </c:if>
                         </div>
-                        <%}%>
+                        <div style="width: 40%;">
+                            <img style="width: 100%;" src="${r.getImg()}" alt="alt"/>
+                        </div>                
                     </div>
-                    <div style="width: 40%;">
-                        <img style="width: 100%;" src="<%=r.getImg()%>" alt="alt"/>
-                    </div>                
-                </div>
 
+                </c:if>
+                <c:if test="${r==null}">
+                    <div style="display: flex;align-items: center;justify-content: space-between;">
+                        <div>
+                            <h4 style="color: rgb(140, 0, 159); padding: 20px;">Have no report.</h4>
+                        </div>                    
+                    </div>
+                </c:if>
+                
+                <c:if test="${sessionScope.role=='admin' || sessionScope.role=='manager'}">
 
-                <%}else{%>
-                <div style="display: flex;align-items: center;justify-content: space-between;">
-                    <div>
-                        <h4 style="color: rgb(140, 0, 159); padding: 20px;">Have no report.</h4>
-                    </div>                    
-                </div>
-                <%}%>
-                <%if(s.equals("admin") || s.equals("manager")){%>
-                <div style="margin: -10px 0 0 10px;">
-                    <form action="duyetwork" method="get" >                                
-                        <label class="form-label">Accept Report</label>
-                        <input type="hidden" name="macv" value="${macv}"/>
+                    <div style="margin: -10px 0 0 10px;">
+                        <form action="duyetwork" method="get" >                                
+                            <label class="form-label">Accept Report</label>
+                            <input type="hidden" name="macv" value="${macv}"/>
                         <input type="hidden" name="idpc" value="${idpc}"/>
                         <input type="hidden" name="mada" value="${mada}"/>
                         <input type="hidden" name="mapb" value="${mapb}"/>
@@ -106,14 +105,14 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
-                <%}%>
+            </c:if>
 
-            </div>
         </div>
     </div>
-    <!-- menu -->
+</div>
+<!-- menu -->
 
-    <%@include file="footer.jsp"%>
+<%@include file="footer.jsp"%>
 
 </body>
 </html>

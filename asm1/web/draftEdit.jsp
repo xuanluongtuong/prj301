@@ -52,17 +52,18 @@
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
-                <% Draft d = (Draft)request.getAttribute("draft");
-                %>
+                
+                <c:set var="d" value="${draft}"></c:set>
+                
                 <form action="draftedit" method="post" style="display: inline; justify-content: center;">
 
-                    <input type="hidden" name="ma" value="<%=d.getId()%>" />
+                    <input type="hidden" name="ma" value="${d.getId()}" />
 
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
                                 <label class="form-label" >Draft Name</label>
-                                <input class="form-input" type="text" name="ten" value="<%=d.getName()%>" required />
+                                <input class="form-input" type="text" name="ten" value="${d.getName()}" required />
                             </div>
                             
                             
@@ -72,7 +73,7 @@
                             
                             <div class="form-group">
                                 <label class="form-label" >Image</label>
-                                <input class="form-input" type="text" name="anh" value="<%=d.getImg()%>" required />
+                                <input class="form-input" type="text" name="anh" value="${d.getImg()}" required />
                             </div>
 
                             

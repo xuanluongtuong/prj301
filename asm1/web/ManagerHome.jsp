@@ -8,7 +8,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="jakarta.servlet.http.HttpSession"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -153,38 +153,30 @@
     </head>
     <body>
 
-        <%String s=(String)session.getAttribute("role");
-            if(s!=null){
-                if(!s.equals("admin") && !s.equals("user") && !s.equals("manager")){
-                    response.sendRedirect("login.jsp");
-                }
-            }else{
-                response.sendRedirect("login.jsp");
-            }
-        %>
-        <!--start header-->
-        <div class="myheader" style="height: 12rem">
+        <c:set var="role" value="${sessionScope.role}"></c:set>
+            <!--start header-->
+            <div class="myheader" style="height: 12rem">
 
-            <div class="mylogo">
-                <img src="https://mshgroup.vn/wp-content/uploads/2022/06/logo-happy-home-7.png" alt="">
+                <div class="mylogo">
+                    <img src="https://mshgroup.vn/wp-content/uploads/2022/06/logo-happy-home-7.png" alt="">
+                </div>
+
+                <div class="myslogan">
+                    <h1 class="myshadow">Smart management, shaping the future</h1>
+                </div>
+
             </div>
 
-            <div class="myslogan">
-                <h1 class="myshadow">Smart management, shaping the future</h1>
-            </div>
-
-        </div>
-
-        <!--end header-->
+            <!--end header-->
 
 
 
-        <nav style="display: flex;justify-content: space-between;align-items: center;">
-            <div style="display: flex;align-items: center;">
-                <div class="myhome">
+            <nav style="display: flex;justify-content: space-between;align-items: center;">
+                <div style="display: flex;align-items: center;">
+                    <div class="myhome">
 
-                    <img src="img/home1.png" alt="">                    
-                    <a href="assignmentmanager?email=<%=session.getAttribute("email")%>">Home</a>
+                        <img src="img/home1.png" alt="">                    
+                        <a href="assignmentmanager?email=<%=session.getAttribute("email")%>">Home</a>
 
                 </div>
                 <ul >
@@ -198,13 +190,13 @@
                 </ul>
             </div>
             <div  style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">
-                <%if(!s.equals("admin")){%>
-                <a href="employinfo" style="display: flex; align-items: center; text-decoration: none;">
-                    <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
-                    </i>
-                    <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
-                </a>
-                <%}%>
+                <c:if test="${role!='admin'}">
+                    <a href="employinfo" style="display: flex; align-items: center; text-decoration: none;">
+                        <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
+                        </i>
+                        <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
+                    </a>
+                </c:if>
                 <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
                     <div id="the_logout" style="margin-right: 5px;">&nbsp;| Log out
                     </div>
@@ -218,120 +210,130 @@
         <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
 
             <div class="mylist">                
-                <h4 style="margin: 0 10px 0 30px; color: #8b00a3;"> Assignment List </h4>
+                <h4 style="margin: 0 10px 10px 30px; color: #8b00a3;"> Assignment List </h4>
                 <div class="mycontent">
 
                     <div style="margin: 20px 0 0 0;">  
-                        <%  List<Assignment> list = (ArrayList<Assignment>) request.getAttribute("list");%>
 
-                        <%if(list.size()==0){%>
-                        <div >
-                            <h4 style="color: #ad00ad;">Your Department have no Assignment</h4>                                    
-                        </div>
-                        <%}%>                                
-                        <%if(list.size()>0){%>
+                        <c:set var="list" value="${list}"></c:set>
+                        <c:if test="${list==null}">
+                            <c:set var="list" value="${sessionScope.list}"></c:set>
+                        </c:if>
+                        
+                        <c:if test="${list.size()==0}">
 
-                        <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                            <div style="margin: -10px 0 15px 40px;">
+                                <h4 style="color: #ad00ad;">Your Department have no Assignment</h4>                                    
+                            </div>
 
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Department ID
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Department Name
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Project ID
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Project Name
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Assignment Name
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Start Date
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            End Date
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Status
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                            Action
-                                        </th>
+                        </c:if>
+
+                        <c:if test="${list.size()!=0}">
+
+                            <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                                Department ID
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                                Department Name
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                                Project ID
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                                Project Name
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                                Assignment Name
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                                Start Date
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                                End Date
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                                Status
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                                Action
+                                            </th>
 
 
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${list}" var="a">
 
-                                    <%for (Assignment a : list) {                                
-                                    %>
-                                    <tr class="border-b border-gray-50 dark:border-gray-800">
-                                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                            <%=a.getMapb()%>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <%=a.getTenpb()%>
-                                        </td>
-                                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                            <%=a.getMada()%>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <%=a.getTenda()%>
-                                        </td>
-                                        <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                            <%=a.getTen()%>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <%=a.getStart()%>
-                                        </td>
-                                        <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                            <%=a.getEnd()%>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <%if(a.getTrangThai()==1){%>
-                                            <div style="color: rgb(24, 202, 0);font-weight: 600;">
-                                                Hoàn thành
-                                            </div>
-                                            <%}else if(a.getTrangThai()==0){%>
-                                            <div style="color: rgb(174, 0, 81);font-weight: 600;">
-                                                Đã hủy
-                                            </div>
-                                            <%}else{%>
-                                            <div style="color: rgb(0, 145, 155);font-weight: 600;">
-                                                Chưa hoàn thành
-                                            </div>
-                                            <%}%>
-                                        </td>
-                                        <%if(s!=null){
-                                        if(s.equals("admin") || s.equals("manager")){%>
-                                        <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+                                            <tr class="border-b border-gray-50 dark:border-gray-800">
+                                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                                    ${a.getMapb()}
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    ${a.getTenpb()}
+                                                </td>
+                                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                                    ${a.getMada()}
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    ${a.getTenda()}
+                                                </td>
+                                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                                    ${a.getTen()}
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    ${a.getStart()}
+                                                </td>
+                                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                                    ${a.getEnd()}
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    <c:if test="${a.getTrangThai()==1}">
 
-                                            <a href="assignmentedit?id=<%=a.getId()%>&mada=<%=a.getMada()%>"" class="myedit" style="display: flex;align-items: center;">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                Edit
-                                            </a>
-                                            <%if(s.equals("admin")){%>
-                                            <a href="#" onclick="doDelete('<%=a.getId()%>', '<%=a.getMada()%>')" class="mydelete" style="display: flex;align-items: center;">
-                                                <i class="fa-solid fa-trash"></i>
-                                                Delete</a>
-                                                <%}%>
-                                            <a href="work?idpc=<%=a.getId()%>&mapb=<%=a.getMapb()%>&mada=<%=a.getMada()%>" class="mystatus" style="display: flex;align-items: center;">
-                                                <i class="fa-solid fa-user"></i>
-                                                Watch Task</a>
-                                        </td>  
-                                        <%}}%>
-                                        <%}%>
-                                </tbody>
-                            </table>
+                                                        <div style="color: rgb(24, 202, 0);font-weight: 600;">
+                                                            Hoàn thành
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${a.getTrangThai()==0}">
+                                                        <div style="color: rgb(174, 0, 81);font-weight: 600;">
+                                                            Đã hủy
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${a.getTrangThai()!=1 && a.getTrangThai()!=0}">
+                                                        <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                                            Chưa hoàn thành
+                                                        </div>
+                                                    </c:if>
+                                                </td>
+                                                <c:if test="${role!='user'}">
+                                                    <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
 
-                        </div>
-                        <%}%>                                
+                                                        <a href="assignmentedit?id=${a.getId()}&mada=${a.getMada()}"" class="myedit" style="display: flex;align-items: center;">
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                            Edit
+                                                        </a>
+                                                        <c:if test="${role=='admin'}">
+                                                            <a href="#" onclick="doDelete('${a.getId()}', '${a.getMada()}')" class="mydelete" style="display: flex;align-items: center;">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                                Delete
+                                                            </a>
+                                                        </c:if>
+                                                        <a href="work?idpc=${a.getId()}&mapb=${a.getMapb()}&mada=${a.getMada()}" class="mystatus" style="display: flex;align-items: center;">
+                                                            <i class="fa-solid fa-user"></i>
+                                                            Watch Task</a>
+                                                    </td>  
+                                                </c:if>
+
+                                            </c:forEach>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </c:if>
                     </div>
 
                 </div>

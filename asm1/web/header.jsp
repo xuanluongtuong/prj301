@@ -129,7 +129,7 @@
             nav ul li a:hover {
                 /* background-color: #333; */
                 color: #f1e871;
-                
+
             }
 
             li#the_object a.active {
@@ -145,15 +145,7 @@
                 }
             }
         </style>
-        <%String s=(String)session.getAttribute("role");
-            if(s!=null){
-                if(!s.equals("admin") && !s.equals("user") && !s.equals("manager")){
-                    response.sendRedirect("login.jsp");
-                }
-            }else{
-                response.sendRedirect("login.jsp");
-            }
-        %>
+
         <!--start header-->
         <div class="myheader" style="height: 12rem">
 
@@ -169,21 +161,24 @@
 
         <!--end header-->
 
+        <c:set var="role" value="${sessionScope.role}"></c:set>
 
+            <nav style="display: flex;justify-content: space-between;align-items: center;">
+                <div style="display: flex;align-items: center;">
 
-        <nav style="display: flex;justify-content: space-between;align-items: center;">
-            <div style="display: flex;align-items: center;">
-                <div class="myhome">
-                    <img src="img/home1.png" alt="">
-                    <%if(s!=null){
-                        if(s.equals("admin")){%>
-                    <a href="home.jsp">Home</a>
-                    <%}else if(s.equals("manager")){%>
-                    <a href="assignmentmanager?email=${email}">Home</a>
-                    <%}else if(s.equals("user")){%>
-                    <a href="workemployee?email=${email}">Home</a>
-                    <%}}%>
+                    <div class="myhome">
+                        <img src="img/home1.png" alt="">
+                    <c:if test="${role=='admin'}" >
+                        <a href="home.jsp">Home</a>
+                    </c:if>
+                    <c:if test="${role=='manager'}" >
+                        <a href="assignmentmanager?email=${email}">Home</a>
+                    </c:if>
+                    <c:if test="${role=='user'}" >
+                        <a href="workemployee?email=${email}">Home</a>
+                    </c:if>
                 </div>
+
                 <ul>
 
 
@@ -191,17 +186,15 @@
                     <li id="the_object"><a id="project-link" href="project">Project</a></li>                    
                     <li id="the_object"><a id="resource-link" href="resource">Resource</a></li>
                     <li id="the_object"><a id="customer-link" href="customer">Customer</a></li>
-                        <%if(s.equals("admin")){%>
+                        <c:if test="${role=='admin'}" >
 
-                    <li id="the_object"><a id="employ-link" href="employ">Employee</a></li>
-                        <%}%>
-                        
-                        <%if(s.equals("admin")){%>
-                    <li id="the_object"><a href="signup">Sign up new</a></li>
-                        <%}else{%>
+                        <li id="the_object"><a id="employ-link" href="employ">Employee</a></li>
 
-                    <li id="the_object"><a href="changepwd">Change Password</a></li>
-                        <%}%>
+                        <li id="the_object"><a href="signup">Sign up new</a></li>
+                        </c:if>
+                        <%--<c:if test="${role!='admin'}" >--%>
+                        <li id="the_object"><a href="changepwd">Change Password</a></li>
+                        <%--</c:if>--%>
                 </ul>
                 <script>
 
@@ -219,23 +212,23 @@
                 </script>
                 <script>
                     // Lấy đường link (URL) hiện tại
-                    var currentUrl = window.location.href;                                       
-                    
+                    var currentUrl = window.location.href;
+
                     if (currentUrl.indexOf("assignment") !== -1 || currentUrl.indexOf("work") !== -1) {
                         var customerLink = document.getElementById("assignment-link");
                         customerLink.classList.add("active");
                     }
-                    
+
                     if (currentUrl.indexOf("project") !== -1 || currentUrl.indexOf("searchp") !== -1) {
                         var customerLink = document.getElementById("project-link");
                         customerLink.classList.add("active");
                     }
-                    
+
                     if (currentUrl.indexOf("resource") !== -1 || currentUrl.indexOf("searchd") !== -1 || currentUrl.indexOf("design") !== -1 || currentUrl.indexOf("draft") !== -1) {
                         var customerLink = document.getElementById("resource-link");
                         customerLink.classList.add("active");
                     }
-                    
+
                     if (currentUrl.indexOf("customer") !== -1 || currentUrl.indexOf("searchc") !== -1) {
                         var customerLink = document.getElementById("customer-link");
                         customerLink.classList.add("active");
@@ -247,17 +240,18 @@
                 </script>
             </div>
             <div  style="display: flex;justify-content: right;align-items: center;padding-bottom: 5px;">
-                <%if(!s.equals("admin")){%>
-                <a href="employinfo" style="display: flex; align-items: center; text-decoration: none;">
+                <c:if test="${role!='admin'}" >
+                    <a href="employinfo" style="display: flex; align-items: center; text-decoration: none;">
+                        <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
+                        </i>
+                        <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
+                    </a>
+                </c:if>
+                <c:if test="${role=='admin'}" >
                     <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
                     </i>
                     <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
-                </a>
-                <%}else{%>
-                <i id="the_logout" class="fa-solid fa-user" style="margin-right: 5px;color: white;">
-                </i>
-                <div id="the_logout" style="color: white;"><%=session.getAttribute("name")%></div>
-                <%}%>
+                </c:if>
                 <a href="logout" style="display:flex; align-items: center; text-decoration: none;color: white;">
                     <div id="the_logout" style="margin-right: 5px;">&nbsp;| Log out
                     </div>

@@ -58,11 +58,12 @@
 
 
 
-                <%if(s!=null){
-                    if(s.equals("admin") || s.equals("manager")){%>
-                <a href="workadd?mada=<%=request.getAttribute("mada")%>&mapb=<%=request.getAttribute("mapb")%>&idpc=<%=request.getAttribute("idpc")%>" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;">
-                    <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Task</a>
-                    <%}}%>
+                <c:if test="${sessionScope.role=='admin' || sessionScope.role=='manager'}">
+                    <a href="workadd?mada=${mada}&mapb=${mapb}&idpc=${idpc}" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 30px;font-size: 20px;">
+                        <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
+                        Add New Task
+                    </a>
+                </c:if>
 
             </div>
 
@@ -75,145 +76,152 @@
                     <h5 style="min-width: 300px;margin: 0px 0 0 20px; color: rgb(0, 102, 142);">Project Name: ${tenda} </h5>
                     <h5 style="min-width: 300px;margin: 0px 0 20px 20px; color: rgb(114, 0, 142);">Assignment Name: ${tenpc}</h5>
 
-                    <%List<Work> list = (ArrayList<Work>) request.getAttribute("list");%>
-
-                    <%if(list.isEmpty()){%>
-                    <h4 style="min-width: 300px;margin: 20px 0 10px 20px; color: purple;">This Department have no work.</h4>
-                    <%}else{%>
-
-                    <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <c:set var="list" value="${list}"></c:set>
 
 
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                                <tr>
+                    <c:if test="${list.size()==0}">
+                        <h4 style="min-width: 300px;margin: 20px 0 10px 20px; color: purple;">This Department have no work.</h4>
+                    </c:if>
+                    <c:if test="${list.size()!=0}">
+                        <div id="mytable" class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Employee ID
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Employee Name
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Task
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Start Date
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        End Date
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
-                                        Status
-                                    </th>
 
-                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
-                                        Action
-                                    </th>
+                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                                    <tr>
 
-                                </tr>
-                            </thead>
-                            <tbody>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Employee ID
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Employee Name
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Task
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Start Date
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            End Date
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-200 dark:bg-gray-800">
+                                            Status
+                                        </th>
 
-                                <%for (Work w : list) {                                
-                                %>
-                                <tr class="border-b border-gray-50 dark:border-gray-800">
+                                        <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
+                                            Action
+                                        </th>
 
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        <%=w.getManv()%>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <%=w.getTennv()%>
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        <%=w.getTen()%>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <%=w.getStart()%>
-                                    </td>
-                                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                        <%=w.getEnd()%>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <%if(w.getTrangThai()==1){%>
-                                        <div style="color: rgb(24, 202, 0);font-weight: 600;">
-                                            Hoàn thành
-                                        </div>
-                                        <%}else if(w.getTrangThai()==0){%>
-                                        <div style="color: rgb(174, 0, 81);font-weight: 600;">
-                                            Đã hủy
-                                        </div>
-                                        <%}else{%>
-                                        <div style="color: rgb(0, 145, 155);font-weight: 600;">
-                                            Chưa hoàn thành
-                                        </div>
-                                        <%}%>
-                                        <%if(w.getDuyet()==1){%>
-                                        <div style="color: rgb(24, 202, 0);font-weight: 600;">
-                                            Đạt yêu cầu
-                                        </div>
-                                        <%}else if(w.getDuyet()==0){%>
-                                        <div style="color: rgb(174, 0, 81);font-weight: 600;">
-                                            Chưa đạt yêu cầu
-                                        </div>
-                                        <%}else{%>
-                                        <div style="color: rgb(0, 145, 155);font-weight: 600;">
-                                            Chờ phê duyệt
-                                        </div>
-                                        <%}%>
-                                    </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                    <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+                                    <c:forEach items="${list}" var="w">
 
-                                        <a href="workedit?mada=<%=w.getMada()%>&id=<%=w.getId()%>&mapb=<%=request.getAttribute("mapb")%>&idpc=<%=request.getAttribute("idpc")%>" class="myedit" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                            Edit
-                                        </a>
-                                        <%if(s!=null){
-                                        if(s.equals("admin") || s.equals("manager")){%>
-                                        <a href="#" onclick="doDelete('<%=w.getId()%>',<%=w.getMada()%>,<%=request.getAttribute("mapb")%>,<%=request.getAttribute("idpc")%>)" class="mydelete" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-trash"></i>
-                                            Delete
-                                        </a>
-                                        <a href="report?macv=<%=w.getId()%>&mada=<%=request.getAttribute("mada")%>&mapb=<%=request.getAttribute("mapb")%>&idpc=<%=request.getAttribute("idpc")%>" class="mystatus" style="display: flex;align-items: center;color: rgb(77, 0, 128);">
-                                            <i class="fa-solid fa-clipboard"></i>
-                                            Watch Report
-                                        </a>
-                                        <%}%>
-                                        <%if(s.equals("user")){%>
-                                        <%ReportDAO rDAO = new ReportDAO();
-                                            Report r = rDAO.getReportByMacv(w.getId());
-                                            if(r==null){
-                                        %>
+                                        <tr class="border-b border-gray-50 dark:border-gray-800">
 
-                                        <a href="reportadd?macv=<%=w.getId()%>" class="mystatus" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-file-pen"></i>
-                                            Submit Report
-                                        </a> 
-                                        <%}else{%>
-                                        <a href="report?macv=<%=w.getId()%>&mada=<%=request.getAttribute("mada")%>&mapb=<%=request.getAttribute("mapb")%>&idpc=<%=request.getAttribute("idpc")%>" class="mystatus" style="display: flex;align-items: center;color: rgb(77, 0, 128);">
-                                            <i class="fa-solid fa-clipboard"></i>
-                                            Watch Report
-                                        </a>
-                                        <%}%>
-                                        <%}%>
-                                        <%}%>
+                                            <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                                ${w.getManv()}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                ${w.getTennv()}
+                                            </td>
+                                            <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                                ${w.getTen()}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                ${w.getStart()}
+                                            <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                                ${w.getEnd()}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                <!--Tien do cong viec-->
 
-                                    </td>  
+                                                <c:if test="${w.getTrangThai()==1}">
 
-                                </tr>
-                                <%} %>
-                            </tbody>
-                        </table>
+                                                    <div style="color: rgb(24, 202, 0);font-weight: 600;">
+                                                        Hoàn thành
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${w.getTrangThai()==0}">
+                                                    <div style="color: rgb(174, 0, 81);font-weight: 600;">
+                                                        Đã hủy
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${w.getTrangThai()!=1 && w.getTrangThai()!=0}">
+                                                    <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                                        Chưa hoàn thành
+                                                    </div>
+                                                </c:if>
 
-                    </div>
-                    <%}%>
+                                                <!--phe duyet bao cao cong viec-->
+                                                <c:if test="${w.getDuyet()==1}">
+                                                    <div style="color: rgb(24, 202, 0);font-weight: 600;">
+                                                        Đạt yêu cầu
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${w.getDuyet()==0}">
+                                                    <div style="color: rgb(174, 0, 81);font-weight: 600;">
+                                                        Chưa đạt yêu cầu
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${w.getDuyet()!=1 && w.getDuyet()!=0}">
+                                                    <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                                        Chờ phê duyệt
+                                                    </div>
+                                                </c:if>
+
+                                            </td>
+
+                                            <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction">   
+
+                                                <a href="workedit?mada=${w.getMada()}&id=${w.getId()}&mapb=${w.getMapb()}&idpc=${w.getIdpc()}" class="myedit" style="display: flex;align-items: center;">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    Edit
+                                                </a>
+                                                <c:if test="${sessionScope.role=='admin' }">
+                                                    <a href="#" onclick="doDelete(${w.getId()},${w.getMada()},${mapb},${idpc})" class="mydelete" style="display: flex;align-items: center;">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                        Delete
+                                                    </a>
+                                                    <a href="report?macv=${w.getId()}&mada=${mada}&mapb=${mapb}&idpc=${idpc}" class="mystatus" style="display: flex;align-items: center;color: rgb(77, 0, 128);">
+                                                        <i class="fa-solid fa-clipboard"></i>
+                                                        Watch Report
+                                                    </a>
+                                                </c:if>
+                                                <c:if test="${sessionScope.role=='user'|| sessionScope.role=='manager'}">
+                                                    <c:set var="r" value="${requestScope.rDAO.getReportByMacv(w.getId())}"></c:set>
+                                                    <c:if test="${r==null}">
+
+                                                        <a href="reportadd?macv=${w.getId()}" class="mystatus" style="display: flex;align-items: center;">
+                                                            <i class="fa-solid fa-file-pen"></i>
+                                                            Submit Report
+                                                        </a> 
+                                                    </c:if>
+                                                    <c:if test="${r!=null}">
+                                                        <a href="report?macv=${w.getId()}&mada=${mada}&mapb=${mapb}&idpc=${idpc}" class="mystatus" style="display: flex;align-items: center;color: rgb(77, 0, 128);">
+                                                            <i class="fa-solid fa-clipboard"></i>
+                                                            Watch Report
+                                                        </a>
+                                                    </c:if>
+                                                </c:if>
+
+                                            </td>  
+
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </c:if>
                 </div>
                 <div style="margin:20px">
                     <c:set var="page" value="${requestScope.page}"/>
                     <div class="pagination" style="justify-content: center;">
                         <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                            <a id="page-${i}" class="page-link" href="work?page=${i}&mada=${mada}&mapb=${mapb}&idpc=<%=request.getAttribute("idpc")%>">${i}</a>
+                            <a id="page-${i}" class="page-link" href="work?page=${i}&mada=${mada}&mapb=${mapb}&idpc=${idpc}">${i}</a>
                         </c:forEach>
                     </div>
                 </div>

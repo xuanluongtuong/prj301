@@ -30,10 +30,7 @@ public class LogOut extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        session.removeAttribute("email");
-        session.removeAttribute("role");
-        session.removeAttribute("username");
-        session.removeAttribute("password");       
+        session.invalidate();
         response.sendRedirect("login");
     } 
 

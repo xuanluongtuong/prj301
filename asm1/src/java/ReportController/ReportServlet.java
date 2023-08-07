@@ -58,6 +58,7 @@ public class ReportServlet extends HttpServlet {
         String macv = request.getParameter("macv");
         String idpc = request.getParameter("idpc");
         String mada = request.getParameter("mada");
+        System.out.println(mada);
         String mapb = request.getParameter("mapb");
         ReportDAO rDAO = new ReportDAO();
         Report r = rDAO.getReportByMacv(Integer.parseInt(macv));

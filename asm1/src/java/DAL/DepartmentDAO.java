@@ -94,9 +94,9 @@ public class DepartmentDAO extends DBContext {
             if (rs.next()) {
                 Department dp = new Department();
                 dp.setMaPB(rs.getInt("MAPB"));
-                dp.setTenPB(rs.getString("TENPB"));
-                dp.setMaQL(rs.getInt("MAQL"));
+                dp.setTenPB(rs.getString("TENPB"));                
                 dp.setDiaDiem(rs.getString("DIADIEM"));
+                dp.setMaQL(rs.getInt("MAQL"));
                 return dp;
             }
 
@@ -139,8 +139,9 @@ public class DepartmentDAO extends DBContext {
     public static void main(String[] args) {
         DepartmentDAO dp = new DepartmentDAO();
         int mapb = dp.getDepartIDByEmail("thaiph@gmail.com");
-        Department d = dp.getDepartByID(4);
-        System.out.println(d.getDiaDiem());
+        Department d = dp.getDepartByDPID(1);
         System.out.println(mapb);
+        System.out.println(d.getTenPB());
+        
     }
 }

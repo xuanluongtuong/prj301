@@ -23,8 +23,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <title>LTX Manager</title>        
 
-        
-        
+
+
         <script>
             function doDelete(id) {
                 if (confirm("Are you sure to delete?")) {
@@ -43,13 +43,12 @@
             <div style="width: 100%; display: flex;justify-content: right;margin-top: 10px;">                
 
                 <div style="display: flex;justify-content: right;">
-                    <%if(s!=null){
-                    if(s.equals("admin")){%>
-                    <a href="addem?mapb=${dp.getMaPB()}" style="text-decoration: none;margin: 0px 45px 0px 0;font-size: 20px;color: rgb(133, 0, 159);">
-                        <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
-                        Create Employee
-                    </a>
-                    <%} }%>
+                    <c:if test="${role=='admin'}" >
+                        <a href="addem?mapb=${dp.getMaPB()}" style="text-decoration: none;margin: 0px 45px 0px 0;font-size: 20px;color: rgb(133, 0, 159);">
+                            <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
+                            Create Employee
+                        </a>
+                    </c:if>
                 </div>
 
             </div>
@@ -159,12 +158,11 @@
                                         Salary<br>
                                         (milions Dong)
                                     </th>
-                                    <%if(s!=null){
-                                        if(s.equals("admin")){%>
-                                    <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
-                                        Action
-                                    </th>
-                                    <%}}%>
+                                    <c:if test="${role=='admin'}" >
+                                        <th scope="col" class="px-6 py-3 bg-blue-200 dark:bg-blue-800">
+                                            Action
+                                        </th>
+                                    </c:if>
                                 </tr>
                             </thead>
                             <c:forEach var="nv" items="${requestScope.list}" >
@@ -211,36 +209,35 @@
                                     <td class="px-3 py-4 bg-gray-50 dark:bg-gray-800">
                                         ${nv.getLuong()}                                        
                                     </td>
-                                    <%if(s!=null){
-                                    if(s.equals("admin")){%>
-                                    <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction"> 
-                                        <c:if test="${nv.getMaNV() != nv.getMaql()}">
+                                    <c:if test="${role=='admin'}" >
+                                        <td class="px-6 py-4 bg-blue-100 dark:bg-blue-800" id="myaction"> 
+                                            <c:if test="${nv.getMaNV() != nv.getMaql()}">
 
-                                            <a href="changeposanddepart?id=${nv.getMaNV()}" style="display: flex;align-items: center;">
-                                                <i class="fa-solid fa-arrows-rotate"></i>
-                                                Change
-                                            </a>
+                                                <a href="changeposanddepart?id=${nv.getMaNV()}" style="display: flex;align-items: center;">
+                                                    <i class="fa-solid fa-arrows-rotate"></i>
+                                                    Change
+                                                </a>
 
-                                        </c:if>
-                                        <c:if test="${nv.getMaNV() == nv.getMaql()}">
-                                            <a href="changemanager?id=${nv.getMaNV()}" style="display: flex;align-items: center;">
-                                                <i class="fa-solid fa-arrows-rotate"></i>
-                                                Change
-                                            </a>
-                                        </c:if>
-                                        <a href="editem?id=${nv.getMaNV()}" class="myedit" style="display: flex;align-items: center;">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                            Edit</a>
+                                            </c:if>
+                                            <c:if test="${nv.getMaNV() == nv.getMaql()}">
+                                                <a href="changemanager?id=${nv.getMaNV()}" style="display: flex;align-items: center;">
+                                                    <i class="fa-solid fa-arrows-rotate"></i>
+                                                    Change
+                                                </a>
+                                            </c:if>
+                                            <a href="editem?id=${nv.getMaNV()}" class="myedit" style="display: flex;align-items: center;">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                Edit</a>
 
-                                        <c:if test="${nv.getMaNV() != nv.getMaql()}">
-                                            <a href="#" onclick="doDelete('${nv.getMaNV()}')" class="mydelete" style="display: flex;align-items: center;">
-                                                <i class="fa-solid fa-trash"></i>
-                                                Delete
-                                            </a>
-                                        </c:if>
+                                            <c:if test="${nv.getMaNV() != nv.getMaql()}">
+                                                <a href="#" onclick="doDelete('${nv.getMaNV()}')" class="mydelete" style="display: flex;align-items: center;">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                    Delete
+                                                </a>
+                                            </c:if>
 
-                                    </td>
-                                    <%}}%>
+                                        </td>
+                                    </c:if>
                                 </tr>  
                             </c:forEach>                   
                             </tbody>

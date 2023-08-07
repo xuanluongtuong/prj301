@@ -59,7 +59,8 @@ public class ChangePwdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("changePwd.jsp");
+//        response.sendRedirect("changePwd.jsp");
+        request.getRequestDispatcher("changePwd.jsp").forward(request, response);
     }
 
     /**

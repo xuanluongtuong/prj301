@@ -80,7 +80,7 @@ public class AsignmentEditServlet extends HttpServlet {
         request.setAttribute("tenda", p.getTenDA());
         DepartmentDAO departDAO = new DepartmentDAO();
         
-        Department d = departDAO.getDepartByID(a.getMapb());
+        Department d = departDAO.getDepartByDPID(a.getMapb());
         request.setAttribute("tenpb", d.getTenPB());        
         
         request.getRequestDispatcher("assignmentEdit.jsp").forward(request, response);

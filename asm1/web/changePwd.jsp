@@ -17,15 +17,7 @@
         <title>Change Password</title>
     </head>
     <body style="background-color: #717674">
-        <%String s=(String)session.getAttribute("role");
-            if(s!=null){
-                if(s.equals("admin")){
-                    response.sendRedirect("login.jsp");
-                }
-            }else{
-                response.sendRedirect("login.jsp");
-            }
-        %>
+        
 
         <div id="wrapper">
             <div class="wrapper-img col-md-5" id="wrapper-img" style="margin: 0;object-fit: cover;width: 621px">
@@ -63,7 +55,7 @@
 
                 <input type="submit" value="Save Change" class="form-submit" style="border-radius: 30px">
                 <div style="width: 100%;display: flex;justify-content: right;align-items: center;">
-                    <a href="home.jsp" style="text-decoration: none;text-align: center;padding: 3px;margin-top: 20px;color: black;">Back to Home</a>
+                    <a href="checkrole" style="text-decoration: none;text-align: center;padding: 3px;margin-top: 20px;color: black;">Back to Home</a>
                 </div>
                 <h5 style="max-width: 300px; color: purple; text-align: center;position: absolute;top: 600px;margin-left: 10px">${error}</h5>
             </form>

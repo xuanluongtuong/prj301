@@ -61,26 +61,26 @@
 
                 <div style="display: flex; justify-content: center;margin: 10px 0;">
                     <ul style="display: flex;flex-wrap: wrap;list-style: none;margin: 0;padding: 0;justify-content: space-evenly;">
-                        <%  List<Project> list = (ArrayList<Project>)request.getAttribute("list");
-                            for (Project p : list) {                                
-                        %>
-                        <li style="width: 320px;margin: 20px 15px; box-shadow: 2px 2px 2px 0.5px #66696b;border-radius: 4px;overflow: hidden;">
-                            <img src="<%=p.getUrlImg()%>" alt="Project still not have image" style="width: 100%;height: 200px;">                            
-                            <a href="assignmentinfo?mada=<%=p.getMaDA()%>" style="color: black; text-decoration: none;font-size: 17px;">
-                                <div style="padding: 0 5px;">
-                                    <div >
-                                        <%=p.getTenDA()%>
-                                    </div>
-                                    <div>
-                                        <div style="color: rgb(0, 145, 155);font-weight: 600;">
-                                            Đang thi công
-                                        </div>
+                        <c:forEach items="${list}" var="p">
 
+                            <li style="width: 320px;margin: 20px 15px; box-shadow: 2px 2px 2px 0.5px #66696b;border-radius: 4px;overflow: hidden;">
+                                <img src="${p.getUrlImg()}" alt="Project still not have image" style="width: 100%;height: 200px;">                            
+                                <a href="assignmentinfo?mada=${p.getMaDA()}" style="color: black; text-decoration: none;font-size: 17px;">
+                                    <div style="padding: 0 5px;">
+                                        <div >
+                                            ${p.getTenDA()}
+                                        </div>
+                                        <div>
+                                            <div style="color: rgb(0, 145, 155);font-weight: 600;">
+                                                Đang thi công
+                                            </div>
+
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </li>
-                        <%}%>
+                                </a>
+                            </li>
+
+                        </c:forEach>
                     </ul>
                 </div>
                 <div style="margin-bottom:20px">

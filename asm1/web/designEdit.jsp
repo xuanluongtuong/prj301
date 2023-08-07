@@ -52,17 +52,17 @@
         <!-- menu -->
         <div class="mymenu">
             <div class="mylist">
-                <% Design d = (Design)request.getAttribute("design");
-                %>
+                <c:set var="d" value="${design}"></c:set>
+                
                 <form action="designedit" method="post" style="display: inline; justify-content: center;">
 
-                    <input type="hidden" name="ma" value="<%=d.getId()%>" />
+                    <input type="hidden" name="ma" value="${d.getId()}" />
 
                     <div class="form-container">
                         <div class="form-left">
                             <div class="form-group">
                                 <label class="form-label" >Design Name</label>
-                                <input class="form-input" type="text" name="ten" value="<%=d.getName()%>" required />
+                                <input class="form-input" type="text" name="ten" value="${d.getName()}" required />
                             </div>
                             
                             
@@ -72,7 +72,7 @@
                             
                             <div class="form-group">
                                 <label class="form-label" >Image</label>
-                                <input class="form-input" type="text" name="anh" value="<%=d.getImg()%>" required />
+                                <input class="form-input" type="text" name="anh" value="${d.getImg()}" required />
                             </div>
 
                             

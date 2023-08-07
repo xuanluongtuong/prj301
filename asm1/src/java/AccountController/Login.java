@@ -58,7 +58,8 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.sendRedirect("login.jsp");
+//        response.sendRedirect("login.jsp");
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     } 
 
     /** 
@@ -113,6 +114,7 @@ public class Login extends HttpServlet {
                 session.setMaxInactiveInterval(60*60*24);
             }
             session.setAttribute("name", account.getName());
+            session.setMaxInactiveInterval(60*60*24);
 //            response.sendRedirect("chekrole?email="+email);
             request.getRequestDispatcher("checkrole?email="+email).forward(request, response);
         } else {

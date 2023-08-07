@@ -62,11 +62,11 @@
                             <input  type="hidden"  name="id" value="${id}" />
                             <div class="form-group">
                                 <label class="form-label" >Project ID</label>
-                                <input class="form-input" type="text"  name="mada" value="<%=request.getAttribute("mada")%>" readonly/>
+                                <input class="form-input" type="text"  name="mada" value="${mada}" readonly/>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Project Name</label>
-                                <input class="form-input" type="text"  name="tenda" value="<%=request.getAttribute("tenda")%>" readonly/>
+                                <input class="form-input" type="text"  name="tenda" value="${tenda}" readonly/>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Department</label>
@@ -91,11 +91,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" >Status</label>
-
+                                
                                 <select class="form-input" name="status" required>
-                                    <option value="2" <%= request.getAttribute("status").equals(2) ? "selected" : "" %>>Chưa hoàn thành</option>
-                                    <option value="1" <%= request.getAttribute("status").equals(1) ? "selected" : "" %>>Hoàn thành</option>
-                                    <option value="0" <%= request.getAttribute("status").equals(0) ? "selected" : "" %>>Đã hủy</option>
+                                    <option value="2" <c:if test="${requestScope.status != 1 && requestScope.status != 0}">selected</c:if>>Chưa hoàn thành</option>
+                                    <option value="1" <c:if test="${requestScope.status == 1}">selected</c:if>>Hoàn thành</option>
+                                    <option value="0" <c:if test="${requestScope.status == 0}">selected</c:if>>Đã hủy</option>
                                 </select>
                             </div>
                             <div class="form-button" style="display: flex; justify-content: center;margin: 42px 0 13px 0">

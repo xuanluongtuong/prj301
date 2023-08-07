@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Account;
 
 /**
@@ -30,14 +31,16 @@ public class CheckRoleLogin extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
+        HttpSession session = request.getSession();
+        String email = (String)session.getAttribute("email");
         AccountDAO accDAO = new AccountDAO();
         Account a = accDAO.getAccountByEmail(email);
         int role = a.getRole();
         
         switch (role) {
             case 1: {
-                response.sendRedirect("home.jsp");
+//                response.sendRedirect("home.jsp");
+                request.getRequestDispatcher("home.jsp").forward(request, response);
                 break;
             }
             case 2: {

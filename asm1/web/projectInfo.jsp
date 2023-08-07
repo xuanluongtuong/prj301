@@ -39,18 +39,20 @@
         <!-- menu -->
         <div class="mymenu" style="background: linear-gradient(-135deg, #59ffff 0%, #cc7aff 100%);">
             <div style="width: 100%; display: flex;justify-content: space-between;margin:10px 30px;">
-                <%if(s!=null){
-                    if(s.equals("admin")){%>
+                <%--<c:if test="${sessionScope.role=='admin'}">--%>
                 <div><h4>Project</h4></div>
-                <a href="projectadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 40px;font-size: 20px;"><i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>Add New Project</a>
-                <%}}%>
+                <a href="projectadd" style="text-decoration: none;color: rgb(173, 0, 185);margin-right: 40px;font-size: 20px;">
+                    <i class="fa-solid fa-square-plus" style="padding-right: 5px;"></i>
+                    Add New Project
+                </a>
+                <%--</c:if>--%>
             </div>
             <div class="mylist">
-                <%  Project p = (Project)request.getAttribute("project");
-                    if(p==null){
-                        p = (Project)session.getAttribute("projectinfo");
-                    }
-                %>
+
+                <c:set var="p" value="${project}"></c:set>
+                <c:if test="${p==null}">
+                    <c:set var="p" value="${sessionScope.projectinfo}"></c:set>
+                </c:if>                
 
                 <div class="mycontent">
 
@@ -60,7 +62,7 @@
 
                         <div class="project_img">
 
-                            <img id="projectImage" src="<%= p.getUrlImg()%>" alt="alt" />                     
+                            <img id="projectImage" src="${p.getUrlImg()}" alt="alt" />                     
 
                         </div>
                         <div class="project_content">
@@ -71,61 +73,67 @@
                                 </h3>
                             </div>
                             <div>
-                                Customer ID: <%=p.getMakh()%>
+                                Customer ID: ${p.getMakh()}
                             </div>
                             <div>
-                                Customer: <%=p.getTenkh()%>
-                            </div>
-
-                            <div>
-                                Project ID: <%=p.getMaDA()%>
+                                Customer: ${p.getTenkh()}
                             </div>
 
                             <div>
-                                Project name: <%=p.getTenDA()%>
+                                Project ID: ${p.getMaDA()}
                             </div>
 
                             <div>
-                                Address: <%=p.getDiaDiem()%>
+                                Project name: ${p.getTenDA()}
                             </div>
 
                             <div>
-                                Budget: <%=p.getNganSach()%>
+                                Address: ${p.getDiaDiem()}
                             </div>
 
                             <div>
-                                Start Date: <%=p.getNgayThiCong()%>
+                                Budget: ${p.getNganSach()}
+                            </div>
+
+                            <div>
+                                Start Date: ${p.getNgayThiCong()}
                             </div>
 
                             <div>
                                 Status: 
-                                <%if(p.getTrangThai()==1){%>
-                                <span style="color: rgb(24, 202, 0);font-weight: 600;">
-                                    Hoàn thành
-                                </span>
-                                <%}else if(p.getTrangThai()==0){%>
-                                <span style="color: rgb(174, 0, 81);font-weight: 600;">
-                                    Đã hủy
-                                </span>
-                                <%}else{%>
-                                <span style="color: rgb(0, 145, 155);font-weight: 600;">
-                                    Đang thi công
-                                </span>
-                                <%}%>
+                                <c:if test="${p.getTrangThai()==1}">                                
+                                    <span style="color: rgb(24, 202, 0);font-weight: 600;">
+                                        Hoàn thành
+                                    </span>
+                                </c:if>
+
+                                <c:if test="${p.getTrangThai()==0}">
+                                    <span style="color: rgb(174, 0, 81);font-weight: 600;">
+                                        Đã hủy
+                                    </span>
+                                </c:if>
+
+                                <c:if test="${p.getTrangThai()!=1 && p.getTrangThai()!=0}">
+                                    <span style="color: rgb(0, 145, 155);font-weight: 600;">
+                                        Đang thi công
+                                    </span>
+                                </c:if>
                             </div>
 
-                            <%if(s!=null){
-                            if(s.equals("admin")){%>
+
                             <div class="edit_form">
-                                <a href="projectedit?id=<%=p.getMaDA()%>" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;">
+                                <a href="projectedit?id=${p.getMaDA()}" class="myedit" style="color: rgb(0, 131, 91); display: flex;align-items: center;">
                                     <i class="fa-solid fa-pen-to-square"></i>
-                                    Edit</a>
-
-                                <a href="#" onclick="doDelete('<%=p.getMaDA()%>')" class="mydelete" style="color: #ff0084;display: flex;align-items: center;">
-                                    <i class="fa-solid fa-trash"></i>
-                                    Delete</a>
+                                    Edit
+                                </a>
+                                <c:if test="${sessionScope.role=='admin'}">    
+                                    <a href="#" onclick="doDelete('${p.getMaDA()}')" class="mydelete" style="color: #ff0084;display: flex;align-items: center;">
+                                        <i class="fa-solid fa-trash"></i>
+                                        Delete
+                                    </a>
+                                </c:if>
                             </div>
-                            <%}}%>
+
 
                         </div>
                         <h1 style="color: red;">${mes}</h1>
